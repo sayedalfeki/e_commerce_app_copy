@@ -1,0 +1,35 @@
+import 'package:flower_app/app/config/di/di.dart';
+import 'package:flower_app/app/core/routes/app_page.dart';
+import 'package:flower_app/app/core/routes/app_route.dart';
+import 'package:flower_app/app/core/theme/app_theme.dart';
+import 'package:flower_app/l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+void main() {
+  configureDependencies();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) => MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        home: child,
+        onGenerateRoute: RouteGenerator.getRoutes,
+        initialRoute: Routes.splash,
+      ),
+    );
+  }
+}
