@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
     });
     return Scaffold(
       body: Center(
-        child: Image.asset(AssetsIcons.logo, width: 200).animate().scale(
+        child: SvgPicture.asset(AssetsSvg.logoSvg, width: 200).animate().scale(
           delay: Duration(milliseconds: 1500),
           duration: Duration(milliseconds: 500),
           curve: Curves.fastOutSlowIn,
