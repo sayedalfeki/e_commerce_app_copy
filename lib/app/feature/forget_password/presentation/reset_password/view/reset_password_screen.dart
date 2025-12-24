@@ -1,10 +1,15 @@
+import 'package:flower_app/app/core/custom_widgets/app_dialoge.dart';
 import 'package:flower_app/app/core/custom_widgets/custom_app_bar.dart';
+import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/feature/forget_password/presentation/reset_password/view_model/reset_password_intent.dart';
 import 'package:flower_app/app/feature/forget_password/presentation/reset_password/view_model/reset_password_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../config/di/di.dart';
+import '../../../../../core/utils/app_locale.dart';
+import '../../../../../core/utils/helper_function.dart';
+import '../view_model/reset_password_event.dart';
 import '../view_model/reset_password_state.dart';
 import 'widgets/reset_password_body.dart';
 
@@ -18,25 +23,54 @@ class ResetPasswordScreen extends StatefulWidget {
 }
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+  final ResetPasswordViewModel _resetPasswordViewModel = getIt.get<
+      ResetPasswordViewModel>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _resetPasswordViewModel.cubitStream.listen((event) {
+      if (event is BackNavigationEvent) {
+        if (Navigator.canPop(context)) {
+          Navigator.pop(context);
+        }
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final ResetPasswordViewModel _resetPasswordViewModel = getIt.get<ResetPasswordViewModel>();
-    return BlocBuilder<ResetPasswordViewModel, ResetPasswordState>(
+    return BlocListener<ResetPasswordViewModel, ResetPasswordState>(
       bloc: _resetPasswordViewModel,
-
-      builder:
-          (context, state) => Scaffold(
+      listener: (context, state) {
+        if (state.resetPasswordState.error != null) {
+          Navigator.pop(context);
+          AppDialogue.viewDialogue(context,
+              getException(context, state.resetPasswordState.error),
+              cancelText: AppLocale(context).cancel
+          );
+        }
+        if (state.resetPasswordState.success != null) {
+          Navigator.pushNamedAndRemoveUntil(context,
+              Routes.login,
+                  (route) => false);
+        }
+        if (state.resetPasswordState.isLoading == true) {
+          AppDialogue.viewDialogue(context, '');
+        }
+      },
+      child: Scaffold(
             appBar:CustomAppBar(
               onLeadingIconClicked: () {
                 _resetPasswordViewModel.doIntent(
                   BackNavigationAction(),
                 );
-              }, text: 'password',
+              }, text: AppLocale(context).password,
             ),
             body: Stack(
               children: [
                 ResetPasswordBody(_resetPasswordViewModel, email: widget.email),
-
               ],
             ),
           ),

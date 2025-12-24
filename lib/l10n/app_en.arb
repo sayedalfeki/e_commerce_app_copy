@@ -57,5 +57,7 @@
   "successMessage": "Sign up is successful",
   "loading": "Loading...",
   "cancel":"cancel",
-  "ok":"ok"
+  "ok":"ok",
+  "confirm":"confirm",
+  "connectionFailed":"No Internet Connection"
 }

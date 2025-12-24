@@ -1,5 +1,3 @@
-
-
 class ConnectionError implements Exception {
   String message;
 

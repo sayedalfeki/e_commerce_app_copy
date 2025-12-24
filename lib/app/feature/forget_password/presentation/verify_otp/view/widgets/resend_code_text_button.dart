@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-
 import '../../../../../../core/resources/app_colors.dart';
+import '../../../../../../core/utils/app_locale.dart';
 
 class ResendCodeTextButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -13,17 +13,27 @@ class ResendCodeTextButton extends StatelessWidget {
     mainAxisSize: MainAxisSize.max,
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Text('LocaleKeys.didNotReceiveCode'),
+      Text(AppLocale(context).receiveCodeQuestion,
+        style: Theme
+            .of(context)
+            .textTheme
+            .bodyLarge,
+      ),
       TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(padding: EdgeInsets.zero),
         child: Text(
-          'LocaleKeys.resend',
-          style: TextStyle(
-            color: AppColors.primaryColor,
-            decoration: TextDecoration.underline,
-            decorationColor: AppColors.primaryColor,
-          ),
+            AppLocale(context).resend,
+            style: Theme
+                .of(context)
+                .textTheme
+                .bodyLarge
+                ?.copyWith(
+              color: AppColors.primaryColor,
+              decoration: TextDecoration.underline,
+              decorationColor: AppColors.primaryColor,
+            )
+
         ),
       ),
     ],

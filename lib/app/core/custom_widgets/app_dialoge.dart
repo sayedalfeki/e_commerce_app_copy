@@ -15,7 +15,7 @@ class AppDialogue {
   }) {
     showDialog(
       useSafeArea: true,
-      barrierDismissible: cancelAction == null && acceptAction == null,
+      barrierDismissible: false,
       context: context,
       builder: (context) {
         return AlertDialog(

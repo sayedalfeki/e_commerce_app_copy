@@ -1,6 +1,5 @@
 
 import 'package:flower_app/app/core/custom_widgets/app_dialoge.dart';
-import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/helper_function.dart';
 import 'package:flower_app/app/feature/forget_password/presentation/forget_password/view/widgets/forget_password_body_screen.dart';
@@ -35,6 +34,13 @@ final ForgetPasswordViewModel _forgetPasswordViewModel=getIt<ForgetPasswordViewM
       }
     });
   }
+
+@override
+void dispose() {
+  // TODO: implement dispose
+  super.dispose();
+  emailController.dispose();
+}
   final TextEditingController emailController=TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -48,7 +54,7 @@ final ForgetPasswordViewModel _forgetPasswordViewModel=getIt<ForgetPasswordViewM
         if(state.forgetPasswordState.error!=null){
           Navigator.pop(context);
           AppDialogue.viewDialogue(context,
-              getException(state.forgetPasswordState.error!),
+            getException(context, state.forgetPasswordState.error!),
           cancelText: AppLocale(context).cancel,
 
           );

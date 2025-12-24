@@ -1,10 +1,11 @@
+import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/validation/app_validators.dart';
 import 'package:flower_app/app/feature/forget_password/domain/request/reset_password_request.dart';
 import 'package:flower_app/app/feature/forget_password/presentation/reset_password/view_model/reset_password_intent.dart';
 import 'package:flower_app/app/feature/forget_password/presentation/reset_password/view_model/reset_password_view_model.dart';
 import 'package:flutter/material.dart';
 
-
+import '../../../../../../core/utils/app_locale.dart';
 class ResetPasswordBody extends StatefulWidget {
   final String email;
   final ResetPasswordViewModel _resetPasswordViewModel;
@@ -26,24 +27,30 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
       TextEditingController();
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    passwordController.dispose();
+    passwordConfirmController.dispose();
+  }
+  @override
   Widget build(BuildContext context) => Padding(
     padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
     child: SingleChildScrollView(
       child: Form(
         key: formKey,
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Text(
-              'LocaleKeys.resetPasswordLabel',
+            Text(AppLocale(context).resetPassword,
               style: Theme.of(context).textTheme.headlineSmall,
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Text(
-                'LocaleKeys.resetPasswordDescription',
+              child: Text(AppLocale(context).resetPasswordQuote,
                 textAlign: TextAlign.center,
 
               ),
@@ -51,11 +58,20 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
             const SizedBox(height: 32),
             TextFormField(
               controller: passwordController,
-              validator:(value) => AppValidators.validateEmail(value, context),
+              decoration: InputDecoration(
+                hintText: AppLocale(context).enterYourPassword,
+                labelText: AppLocale(context).password,
+              ),
+              validator: (value) =>
+                  AppValidators.validatePassword(value, context),
             ),
             const SizedBox(height: 16),
             TextFormField(
               controller: passwordConfirmController,
+                decoration: InputDecoration(
+                  hintText: AppLocale(context).confirmPassword,
+                  labelText: AppLocale(context).confirmPassword,
+                ),
               validator:
                   (value) =>AppValidators.validateConfirmPassword(value,passwordController.text, context)
 
@@ -74,7 +90,14 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                   );
                 }
               },
-              child:Text('ocaleKeys.resetPasswordLabel'),
+              child: Text(AppLocale(context).confirm,
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(
+                    color: AppColors.whiteColor,
+                  )),
             ),
           ],
         ),
