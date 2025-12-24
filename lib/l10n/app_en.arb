@@ -55,5 +55,7 @@
   "passwordNotMatch" : "Password not match",
   "confirmPasswordRequired": "Confirm password is required",
   "successMessage": "Sign up is successful",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "cancel":"cancel",
+  "ok":"ok"
 }

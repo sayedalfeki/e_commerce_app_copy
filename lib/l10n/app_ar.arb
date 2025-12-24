@@ -56,5 +56,7 @@
     "passwordNotMatch": "كلمة المرور غير متطابقة",
       "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
       "successMessage": "تم التسجيل بنجاح",
-"loading": "جاري التحميل..."
+"loading": "جاري التحميل...",
+"cancel":"الغاء",
+  "ok":"موافق"
 }

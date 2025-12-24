@@ -1,9 +1,41 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/app/core/endpoint/app_endpoint.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+import '../../feature/forget_password/api/forget_password_api_client.dart';
 
 @module
 abstract class DiAuthModel {
-  @singleton
-  Dio get dio => Dio(BaseOptions(baseUrl: AppEndPoint.baseUrl));
+  // @singleton
+  // Dio get dio => Dio(BaseOptions(baseUrl: AppEndPoint.baseUrl));
+  @lazySingleton
+  ForgetPasswordApiClient provideForgetPasswordApiClient(Dio dio) =>
+      ForgetPasswordApiClient(dio, baseUrl: AppEndPoint.baseUrl);
+
+
+  @lazySingleton
+  Dio provideDio(
+      BaseOptions baseOptions,
+      PrettyDioLogger logger,
+      ) {
+    final Dio dio = Dio(baseOptions);
+    dio.interceptors.add(logger);
+    return dio;
+  }
+
+  @lazySingleton
+  BaseOptions provideBaseOptions() => BaseOptions(
+    sendTimeout: Duration(seconds: 60),
+    receiveTimeout: Duration(seconds: 60),
+    connectTimeout: Duration(seconds: 60),
+  );
+
+  @lazySingleton
+  PrettyDioLogger providePrettyDioLogger() => PrettyDioLogger(
+    requestHeader: true,
+    requestBody: true,
+    responseBody: true,
+    responseHeader: true,
+  );
 }

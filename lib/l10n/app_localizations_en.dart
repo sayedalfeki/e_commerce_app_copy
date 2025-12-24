@@ -185,4 +185,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loading => 'Loading...';
+
+  @override
+  String get cancel => 'cancel';
+
+  @override
+  String get ok => 'ok';
 }

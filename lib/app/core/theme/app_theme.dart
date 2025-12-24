@@ -6,11 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.primaryColor,
+     seedColor: AppColors.primaryColor,
       primary: AppColors.primaryColor,
       secondary: AppColors.secondaryColor,
     ),
-    scaffoldBackgroundColor: AppColors.secondaryColor,
+    scaffoldBackgroundColor: AppColors.whiteColor,
 
     // appBarTheme
     appBarTheme: AppBarTheme(
@@ -52,5 +52,29 @@ class AppTheme {
         color: AppColors.whiteColor,
       ),
     ),
+    // input decoration style
+    inputDecorationTheme: _inputDecorationTheme(),
   );
+  static ThemeData darkTheme = ThemeData(
+  );
+
 }
+InputDecorationTheme _inputDecorationTheme() => InputDecorationTheme(
+  border: const OutlineInputBorder(),
+  floatingLabelBehavior: FloatingLabelBehavior.always,
+  floatingLabelStyle: TextStyle(color: AppColors.grayColor),
+  errorStyle: TextStyle(color: AppColors.errorColor),
+  enabledBorder: const OutlineInputBorder(
+    borderSide: BorderSide(color: AppColors.grayColor, width: 1),
+  ),
+  focusedBorder: const OutlineInputBorder(
+    borderSide: BorderSide(color: AppColors.grayColor, width: 1),
+  ),
+  errorBorder: const OutlineInputBorder(
+    borderSide: BorderSide(color: AppColors.errorColor, width: 1),
+  ),
+  focusedErrorBorder: const OutlineInputBorder(
+    borderSide: BorderSide(color: AppColors.errorColor, width: 1),
+  ),
+);
+
