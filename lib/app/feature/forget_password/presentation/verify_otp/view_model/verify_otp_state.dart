@@ -1,11 +1,17 @@
-
+import 'package:equatable/equatable.dart';
 
 import '../../../../../config/base_state/base_state.dart';
 
-class VerifyOtpState {
+class VerifyOtpState extends Equatable {
   final BaseState verifyOtpState;
-  VerifyOtpState({required this.verifyOtpState});
+
+  const VerifyOtpState({required this.verifyOtpState});
   VerifyOtpState copyWith({BaseState? verifyOtpState}){
     return VerifyOtpState(verifyOtpState: verifyOtpState ?? this.verifyOtpState);
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [verifyOtpState];
+
 }

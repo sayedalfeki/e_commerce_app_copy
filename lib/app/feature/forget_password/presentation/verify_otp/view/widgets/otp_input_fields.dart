@@ -26,8 +26,8 @@ class OtpInputFields extends StatelessWidget {
     pinTheme: PinTheme(
       shape: PinCodeFieldShape.box,
       borderRadius: BorderRadius.circular(8),
-      fieldHeight: 68,
-      fieldWidth: 50,
+      fieldHeight: MediaQuery.sizeOf(context).height * .07,
+      fieldWidth: MediaQuery.sizeOf(context).width / 7,
       activeColor: AppColors.white60Color,
       inactiveColor: AppColors.white60Color,
       selectedColor: AppColors.white60Color,
