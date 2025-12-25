@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format width=80
+// GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
 // InjectableConfigGenerator
@@ -13,6 +13,8 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../feature/home/presentation/view_model/home_view_model.dart'
+    as _i60;
 import '../di_model/di_auth_model.dart' as _i347;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -23,6 +25,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final diAuthModel = _$DiAuthModel();
+    gh.factory<_i60.HomeViewModel>(() => _i60.HomeViewModel());
     gh.singleton<_i361.Dio>(() => diAuthModel.dio);
     return this;
   }

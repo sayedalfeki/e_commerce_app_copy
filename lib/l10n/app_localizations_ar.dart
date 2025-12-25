@@ -187,5 +187,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loading => 'جاري التحميل...';
 
   @override
-  String get welcome => 'مرحباً';
+  String get categories => 'الفئات';
+
+  @override
+  String get cart => 'عربة التسوق';
+
+  @override
+  String get profile => 'الملف الشخصي';
 }
