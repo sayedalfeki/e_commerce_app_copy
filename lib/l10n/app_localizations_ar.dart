@@ -198,4 +198,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get connectionFailed => 'لا يوجد اتصال بالانترنت';
+
+  @override
+  String get invalidOtp => 'كود غير صحيح';
 }

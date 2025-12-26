@@ -33,7 +33,7 @@ void main() {
     'when calling dointent with verify otp action it should emit correct state',
     setUp: () {
       provideDummy<BaseResponse<VerifyOtpResponse>>(
-        (SuccessResponse(data: verifyOtpResponse)),
+        SuccessResponse(data: verifyOtpResponse),
       );
       when(verifyOtpUseCase.invoke(verifyOtpRequest)).thenAnswer((
         realInvocation,
@@ -52,12 +52,9 @@ void main() {
         state.copyWith(verifyOtpState: BaseState(success: verifyOtpResponse)),
       ];
     },
-    verify: (bloc) {
-      verifyOtpUseCase.invoke(verifyOtpRequest);
-    },
   );
   blocTest(
-    'when calling dointent with reset password action with error it should emit correct state',
+    'when calling dointent with verify otp action with error it should emit correct state',
     setUp: () {
       provideDummy<BaseResponse<VerifyOtpResponse>>(
         ErrorResponse(error: UnexpectedError()),
@@ -79,14 +76,11 @@ void main() {
         state.copyWith(verifyOtpState: BaseState(error: UnexpectedError())),
       ];
     },
-    verify: (bloc) {
-      verifyOtpUseCase.invoke(verifyOtpRequest);
-    },
   );
   test('BackNavigation emits event (broadcast)', () async {
     final future = expectLater(
       verifyOtpViewModel.streamController.stream,
-      emits(isA<BacskNavigationEvent>()),
+      emits(isA<BackNavigationEvent>()),
     );
 
     verifyOtpViewModel.doIntent(BackNavigation());

@@ -29,10 +29,10 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     _verifyOtpViewModel.cubitStream.listen((event) {
-      if (event is BacskNavigationEvent) {
+      if (event is BackNavigationEvent) {
         if (Navigator.canPop(context)) {
           Navigator.pop(context);
         }
@@ -42,7 +42,6 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _errorController.close();
   }
@@ -56,8 +55,10 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
           _errorController.add(ErrorAnimationType.shake);
         }
         if (state.verifyOtpState.success != null) {
-          Navigator.pushNamed(
-              context, Routes.resetPassword, arguments: widget.email);
+          if (mounted) {
+            Navigator.pushNamed(
+                context, Routes.resetPassword, arguments: widget.email);
+          }
         }
       },
       builder:

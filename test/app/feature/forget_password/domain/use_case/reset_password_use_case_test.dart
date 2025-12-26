@@ -16,7 +16,8 @@ void main() {
   setUpAll(() {
     forgetPasswordRepo = MockForgetPasswordRepoContract();
     resetPasswordUseCase = ResetPasswordUseCase(forgetPasswordRepo);
-    resetPasswordRequest = ResetPasswordRequest(newPassword: 'password');
+    resetPasswordRequest =
+        ResetPasswordRequest(newPassword: 'password', email: 'email');
     resetPasswordResponse = ResetPasswordResponse();
   });
 

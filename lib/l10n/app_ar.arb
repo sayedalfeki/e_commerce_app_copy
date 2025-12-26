@@ -60,6 +60,7 @@
 "cancel":"الغاء",
   "ok":"موافق",
   "confirm":"تأكيد",
-  "connectionFailed":"لا يوجد اتصال بالانترنت"
+  "connectionFailed":"لا يوجد اتصال بالانترنت",
+  "invalidOtp":"كود غير صحيح"
 
 }

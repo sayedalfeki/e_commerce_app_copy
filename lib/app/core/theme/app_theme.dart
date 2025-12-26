@@ -55,8 +55,6 @@ class AppTheme {
     // input decoration style
     inputDecorationTheme: _inputDecorationTheme(),
   );
-  static ThemeData darkTheme = ThemeData(
-  );
 
 }
 InputDecorationTheme _inputDecorationTheme() => InputDecorationTheme(

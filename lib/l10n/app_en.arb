@@ -59,5 +59,6 @@
   "cancel":"cancel",
   "ok":"ok",
   "confirm":"confirm",
-  "connectionFailed":"No Internet Connection"
+  "connectionFailed":"No Internet Connection",
+  "invalidOtp":"invalid code"
 }

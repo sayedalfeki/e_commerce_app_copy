@@ -4,5 +4,5 @@ class BackArrowIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      Icon(Icons.arrow_back_ios_rounded, color: Colors.black);
+      const Icon(Icons.arrow_back_ios_rounded, color: Colors.black);
 }

@@ -198,4 +198,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get connectionFailed => 'No Internet Connection';
+
+  @override
+  String get invalidOtp => 'invalid code';
 }

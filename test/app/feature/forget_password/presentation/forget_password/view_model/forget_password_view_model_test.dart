@@ -57,9 +57,6 @@ void main() {
         ),
       ];
     },
-    verify: (bloc) {
-      forgetPasswordUseCase.invoke(forgetPasswordRequest);
-    },
   );
   blocTest(
     'when calling dointent with forget password action with error it should emit correct state',
@@ -87,9 +84,6 @@ void main() {
           forgetPasswordState: BaseState(error: UnexpectedError()),
         ),
       ];
-    },
-    verify: (bloc) {
-      forgetPasswordUseCase.invoke(forgetPasswordRequest);
     },
   );
   test('BackNavigation emits event (broadcast)', () async {

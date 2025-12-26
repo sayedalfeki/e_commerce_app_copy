@@ -34,7 +34,8 @@ void main() {
     forgetPasswordResponse = ForgetPasswordResponse();
     verifyOtpRequest = VerifyOtpRequest(resetCode: 'otp');
     verifyOtpResponse = VerifyOtpResponse();
-    resetPasswordRequest = ResetPasswordRequest(newPassword: 'password');
+    resetPasswordRequest =
+        ResetPasswordRequest(newPassword: 'password', email: 'email');
     resetPasswordResponse = ResetPasswordResponse();
   });
   test(

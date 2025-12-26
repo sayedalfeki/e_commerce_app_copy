@@ -1,12 +1,12 @@
 class ResetPasswordRequest {
 
-  final String? email;
+  final String email;
 
-  final String? newPassword;
+  final String newPassword;
 
   ResetPasswordRequest ({
-    this.email,
-    this.newPassword,
+    required this.email,
+    required this.newPassword,
   });
 
 

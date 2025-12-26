@@ -22,7 +22,25 @@ Future<BaseResponse<T>> executeApi<T>(Future<T> Function() apiCall) async {
       default:
         {
           final data = exception.response?.data;
-          final json = data is String ? jsonDecode(data) : data;
+
+          // The server error response can arrive either as a raw JSON string
+          // or as a pre-parsed Map, depending on how Dio is configured and
+          // how the backend sends the payload. We handle both defensively
+          // to avoid runtime type errors when deserializing.
+          Map<String, dynamic>? json;
+          if (data is String) {
+            final decoded = jsonDecode(data);
+            if (decoded is Map<String, dynamic>) {
+              json = decoded;
+            }
+          } else if (data is Map<String, dynamic>) {
+            json = data;
+          }
+
+          if (json == null) {
+            // Fallback when the error body cannot be parsed into the expected shape.
+            return ErrorResponse(error: UnexpectedError());
+          }
           final response = ServerErrorResponse.fromJson(json);
           return ErrorResponse(error: ServerError(message: response.error));
         }

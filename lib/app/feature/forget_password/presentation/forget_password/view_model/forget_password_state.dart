@@ -5,7 +5,8 @@ import '../../../data/model/forget_password_response.dart';
 
 class ForgetPasswordState extends Equatable {
   final BaseState<ForgetPasswordResponse> forgetPasswordState;
-  ForgetPasswordState({required this.forgetPasswordState});
+
+  const ForgetPasswordState({required this.forgetPasswordState});
 
   ForgetPasswordState copyWith(
       {BaseState<ForgetPasswordResponse>? forgetPasswordState}) {
@@ -14,6 +15,5 @@ class ForgetPasswordState extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [forgetPasswordState];
   }

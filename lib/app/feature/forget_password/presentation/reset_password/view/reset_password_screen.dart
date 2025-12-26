@@ -28,7 +28,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     _resetPasswordViewModel.cubitStream.listen((event) {
       if (event is BackNavigationEvent) {
@@ -46,18 +46,20 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       listener: (context, state) {
         if (state.resetPasswordState.error != null) {
           Navigator.pop(context);
-          AppDialogue.viewDialogue(context,
+          AppDialog.viewDialog(context,
               getException(context, state.resetPasswordState.error),
               cancelText: AppLocale(context).cancel
           );
         }
         if (state.resetPasswordState.success != null) {
-          Navigator.pushNamedAndRemoveUntil(context,
-              Routes.login,
-                  (route) => false);
+          if (mounted) {
+            Navigator.pushNamedAndRemoveUntil(context,
+                Routes.login,
+                    (route) => false);
+          }
         }
         if (state.resetPasswordState.isLoading == true) {
-          AppDialogue.viewDialogue(context, '');
+          AppDialog.viewDialog(context, '');
         }
       },
       child: Scaffold(

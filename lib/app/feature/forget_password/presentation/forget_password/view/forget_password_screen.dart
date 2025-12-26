@@ -24,7 +24,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 final ForgetPasswordViewModel _forgetPasswordViewModel=getIt<ForgetPasswordViewModel>();
 @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     _forgetPasswordViewModel.cubitStream.listen((event) {
       if(event is BackToLoginNavigationEvent){
@@ -37,7 +37,7 @@ final ForgetPasswordViewModel _forgetPasswordViewModel=getIt<ForgetPasswordViewM
 
 @override
 void dispose() {
-  // TODO: implement dispose
+
   super.dispose();
   emailController.dispose();
 }
@@ -49,11 +49,11 @@ void dispose() {
       bloc: _forgetPasswordViewModel,
       listener: (context, state) {
         if(state.forgetPasswordState.isLoading==true){
-          AppDialogue.viewDialogue(context,'');
+          AppDialog.viewDialog(context, '');
         }
         if(state.forgetPasswordState.error!=null){
           Navigator.pop(context);
-          AppDialogue.viewDialogue(context,
+          AppDialog.viewDialog(context,
             getException(context, state.forgetPasswordState.error!),
           cancelText: AppLocale(context).cancel,
 
@@ -68,8 +68,10 @@ void dispose() {
               duration: const Duration(seconds: 2),
             ),
           );
-
-          Navigator.pushNamed(context, Routes.verifyOtp,arguments:emailController.text );
+          if (mounted) {
+            Navigator.pushNamed(
+                context, Routes.verifyOtp, arguments: emailController.text);
+          }
         }
       },
       child: Scaffold(

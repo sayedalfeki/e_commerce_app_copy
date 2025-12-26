@@ -3,12 +3,11 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../config/base_state/base_state.dart';
 import '../../../../../config/base_state/custom_cubit.dart';
+import '../../../data/model/verify_otp_response.dart';
 import '../../../domain/request/verify_otp_request.dart';
+import '../../../domain/use_case/verify_otp_use_case.dart';
 import 'verify_otp_event.dart';
 import 'verify_otp_intent.dart';
-
-import '../../../data/model/verify_otp_response.dart';
-import '../../../domain/use_case/verify_otp_use_case.dart';
 import 'verify_otp_state.dart';
 @injectable
 class VerifyOtpViewModel extends CustomCubit<VerifyOtpEvent,VerifyOtpState> {
@@ -34,7 +33,7 @@ class VerifyOtpViewModel extends CustomCubit<VerifyOtpEvent,VerifyOtpState> {
         break;
 
       case BackNavigation():
-        streamController.add(BacskNavigationEvent());
+        streamController.add(BackNavigationEvent());
         break;
     }
   }

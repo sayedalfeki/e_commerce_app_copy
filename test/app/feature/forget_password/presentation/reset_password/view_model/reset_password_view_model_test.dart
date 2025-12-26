@@ -24,7 +24,8 @@ void main() {
 
   setUpAll(() {
     resetPasswordUseCase = MockResetPasswordUseCase();
-    resetPasswordRequest = ResetPasswordRequest(newPassword: 'password');
+    resetPasswordRequest =
+        ResetPasswordRequest(newPassword: 'password', email: 'email');
     resetPasswordResponse = ResetPasswordResponse();
   });
   setUp(() {
@@ -34,8 +35,8 @@ void main() {
   blocTest(
     'when calling dointent with reset password action it should emit correct state',
     setUp: () {
-      provideDummy<BaseResponse<ResetPasswordResponse>>(
-        (SuccessResponse(data: resetPasswordResponse)),
+      provideDummy<BaseResponse<ResetPasswordResponse>>
+        (SuccessResponse(data: resetPasswordResponse),
       );
       when(resetPasswordUseCase.invoke(resetPasswordRequest)).thenAnswer((
         realInvocation,
@@ -58,9 +59,7 @@ void main() {
         ),
       ];
     },
-    verify: (bloc) {
-      resetPasswordUseCase.invoke(resetPasswordRequest);
-    },
+
   );
   blocTest(
     'when calling dointent with reset password action with error it should emit correct state',
@@ -87,9 +86,7 @@ void main() {
         state.copyWith(resetPasswordState: BaseState(error: UnexpectedError())),
       ];
     },
-    verify: (bloc) {
-      resetPasswordUseCase.invoke(resetPasswordRequest);
-    },
+
   );
   test('BackNavigation emits event (broadcast)', () async {
     final future = expectLater(

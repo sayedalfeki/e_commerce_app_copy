@@ -28,7 +28,7 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+
     super.dispose();
     passwordController.dispose();
     passwordConfirmController.dispose();
@@ -73,8 +73,9 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                   labelText: AppLocale(context).confirmPassword,
                 ),
               validator:
-                  (value) =>AppValidators.validateConfirmPassword(value,passwordController.text, context)
-
+                  (value) =>
+                  AppValidators.validateConfirmPassword(
+                      value, passwordController.text, context),
             ),
             const SizedBox(height: 48),
             ElevatedButton(

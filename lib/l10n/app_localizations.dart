@@ -463,6 +463,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No Internet Connection'**
   String get connectionFailed;
+
+  /// No description provided for @invalidOtp.
+  ///
+  /// In en, this message translates to:
+  /// **'invalid code'**
+  String get invalidOtp;
 }
 
 class _AppLocalizationsDelegate

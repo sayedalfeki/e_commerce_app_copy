@@ -84,7 +84,7 @@ class _VerifyOtpBodyState extends State<VerifyOtpBody> {
                 size: 16,
               ),
               Text(
-                'invalid code',
+                AppLocale(context).invalidOtp,
                 style: Theme
                     .of(
                   context,

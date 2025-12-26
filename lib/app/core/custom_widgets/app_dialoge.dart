@@ -4,8 +4,8 @@ import '../resources/app_colors.dart';
 import '../utils/app_locale.dart';
 
 
-class AppDialogue {
-  static void viewDialogue(
+class AppDialog {
+  static void viewDialog(
     BuildContext context,
     String message, {
     String? acceptText,
@@ -29,10 +29,10 @@ class AppDialogue {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CircularProgressIndicator(
+                      const CircularProgressIndicator(
                         backgroundColor: AppColors.primaryColor,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(AppLocale(context).loading),
                     ],
                   ),
@@ -62,7 +62,7 @@ class AppDialogue {
                                 child: Text(acceptText ?? ''),
                               ),
                             ),
-                            SizedBox(width: 15),
+                            const SizedBox(width: 15),
                             Visibility(
                               visible: cancelText != null,
                               child: TextButton(
