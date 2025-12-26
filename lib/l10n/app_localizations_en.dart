@@ -187,5 +187,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loading => 'Loading...';
 
   @override
-  String get welcome => 'Welcome';
+  String get gender => 'Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get accountcreatedsuccessfully => 'Account Created Successfully';
 }
