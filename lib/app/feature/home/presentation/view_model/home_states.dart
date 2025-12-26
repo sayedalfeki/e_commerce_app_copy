@@ -1,9 +1,11 @@
+import 'package:flower_app/app/feature/home/presentation/view_model/app_tab.dart';
+
 class HomeStates {
-  int? currIndex;
-  HomeStates({this.currIndex=0});
-  HomeStates copyWith({int? currIndex}){
+  AppTab currAppTab;
+  HomeStates({this.currAppTab=AppTab.home});
+  HomeStates copyWith({AppTab? currAppTab}){
     return HomeStates(
-      currIndex: currIndex ?? this.currIndex
+      currAppTab: currAppTab?? this.currAppTab
     );
   }
 }

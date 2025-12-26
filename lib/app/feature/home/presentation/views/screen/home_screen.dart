@@ -1,5 +1,6 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/feature/home/presentation/view_model/app_tab.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_states.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_view_model.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/cart_tab/presentation/views/screen/cart_tab.dart';
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: BlocBuilder<HomeViewModel,HomeStates>(
         builder: (context, state) {
           return Scaffold(
-            body: tabs[state.currIndex!],
+            body: tabs[state.currAppTab.index],
             bottomNavigationBar: Container(
               decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: AppColors.borderBottomNavBarColor,width: 1))
@@ -42,8 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
               child: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
                 backgroundColor: AppColors.secondaryColor,
-                currentIndex: state.currIndex!,
-                onTap: viewModel.switchTab,
+                currentIndex: state.currAppTab.index,
+                onTap: (index) {
+                  final tab=AppTab.values[index];
+                  viewModel.switchTab(tab);
+                },
                 items: [
                   BottomNavigationBarItem(icon: Icon(Icons.home_outlined,),label: AppLocalizations.of(context)!.home),
                   BottomNavigationBarItem(icon: Icon(Icons.category_outlined),label: AppLocalizations.of(context)!.categories),
