@@ -4,7 +4,7 @@
   "password": "Password",
   "receiveCodeQuestion":"Didn't receive code?",
   "resend": "resend",
-  "forgetPassword": "Forget Password",
+  "forgetPassword": "Forget Password?",
   "forgetPasswordQuote": "Please enter your email associated to your account",
   "continueTxt": "Continue",
   "email": "Email",
@@ -17,7 +17,7 @@
     "rememberMe": "Remember Me",
   "login": "Login",
   "signup": "Sign up",
-  "dontHaveAnAccount": "Don't Have An Account",
+  "dontHaveAnAccount": "Don't Have An Account?",
   "home":"Home",
   "userName": "User Name",
   "enterUserName": "Enter User Name",
@@ -55,5 +55,6 @@
   "passwordNotMatch" : "Password not match",
   "confirmPasswordRequired": "Confirm password is required",
   "successMessage": "Sign up is successful",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "continueAsGuest": "Continue as guest"
 }

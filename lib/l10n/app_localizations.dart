@@ -131,7 +131,7 @@ abstract class AppLocalizations {
   /// No description provided for @forgetPassword.
   ///
   /// In en, this message translates to:
-  /// **'Forget Password'**
+  /// **'Forget Password?'**
   String get forgetPassword;
 
   /// No description provided for @forgetPasswordQuote.
@@ -209,7 +209,7 @@ abstract class AppLocalizations {
   /// No description provided for @dontHaveAnAccount.
   ///
   /// In en, this message translates to:
-  /// **'Don\'t Have An Account'**
+  /// **'Don\'t Have An Account?'**
   String get dontHaveAnAccount;
 
   /// No description provided for @home.
@@ -440,11 +440,11 @@ abstract class AppLocalizations {
   /// **'Loading...'**
   String get loading;
 
-  /// No description provided for @welcome.
+  /// No description provided for @continueAsGuest.
   ///
   /// In en, this message translates to:
-  /// **'Welcome'**
-  String get welcome;
+  /// **'Continue as guest'**
+  String get continueAsGuest;
 }
 
 class _AppLocalizationsDelegate

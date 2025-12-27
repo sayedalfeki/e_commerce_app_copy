@@ -187,5 +187,5 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loading => 'جاري التحميل...';
 
   @override
-  String get welcome => 'مرحباً';
+  String get continueAsGuest => 'المتابعة كزائر';
 }

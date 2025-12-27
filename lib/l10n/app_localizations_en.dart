@@ -25,7 +25,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resend => 'resend';
 
   @override
-  String get forgetPassword => 'Forget Password';
+  String get forgetPassword => 'Forget Password?';
 
   @override
   String get forgetPasswordQuote =>
@@ -66,7 +66,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signup => 'Sign up';
 
   @override
-  String get dontHaveAnAccount => 'Don\'t Have An Account';
+  String get dontHaveAnAccount => 'Don\'t Have An Account?';
 
   @override
   String get home => 'Home';
@@ -187,5 +187,5 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loading => 'Loading...';
 
   @override
-  String get welcome => 'Welcome';
+  String get continueAsGuest => 'Continue as guest';
 }
