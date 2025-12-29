@@ -6,6 +6,10 @@ import 'package:flower_app/app/feature/home/presentation/views/screen/home_scree
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../feature/forget_password/presentation/forget_password/view/forget_password_screen.dart';
+import '../../feature/forget_password/presentation/reset_password/view/reset_password_screen.dart';
+import '../../feature/forget_password/presentation/verify_otp/view/verify_otp_screen.dart';
+
 class RouteGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {
     switch (settings.name) {
@@ -17,6 +21,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case Routes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
+      case Routes.verifyOtp:
+        String email = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => VerifyOtpScreen(email));
+      case Routes.resetPassword:
+        String email = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => ResetPasswordScreen(email));
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
 
