@@ -62,9 +62,8 @@ class LoginScreen extends StatelessWidget {
                   label: AppLocalizations.of(context)!.email,
                   hint: AppLocalizations.of(context)!.enterEmail,
                   controller: emailController,
-                  validator: (value) {
-                    AppValidators.validateEmail(value, context);
-                  },
+                  validator: (value) =>
+                      AppValidators.validateEmail(value, context),
                 ),
                 SizedBox(height: AppSize.s12),
                 AppTextField(
@@ -72,9 +71,8 @@ class LoginScreen extends StatelessWidget {
                   hint: AppLocalizations.of(context)!.enterPassword,
                   controller: passwordController,
                   isPassword: true,
-                  validator: (value) {
-                    AppValidators.validatePassword(value, context);
-                  },
+                  validator: (value) =>
+                      AppValidators.validatePassword(value, context),
                 ),
                 Padding(
                   padding: EdgeInsets.all(AppSize.s10),
@@ -104,7 +102,9 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.forgetPassword);
+                        },
                         child: Text(
                           AppLocalizations.of(context)!.forgetPassword,
                           style: AppTheme.lightTheme.textTheme.bodySmall!
@@ -228,16 +228,17 @@ class LoginScreen extends StatelessWidget {
               },
               barrierDismissible: false,
             );
-          } else if (state.loginState?.data != null) {
+          } else if (state.loginState?.success != null) {
             Navigator.pop(context); // Close the loading dialog
             Navigator.pushReplacementNamed(context, Routes.home);
-          } else if (state.loginState?.errorMessage != null) {
+          } else if (state.loginState?.error != null) {
+            Navigator.pop(context); // Close the loading dialog
             showDialog(
               context: context,
               builder: (context) {
                 return AlertDialog(
                   content: Text(
-                    state.loginState!.errorMessage!.toString(),
+                    state.loginState?.error.toString() ?? '',
                     style: AppTheme.lightTheme.textTheme.bodyMedium,
                   ),
                   backgroundColor: AppTheme.lightTheme.colorScheme.onPrimary,

@@ -37,7 +37,7 @@ class LoginViewModel extends Cubit<LoginStates> {
         emit(
           state.copyWith(
             loginStateParam: BaseState<AuthModel>(
-              data: loginResponse.data,
+              success: loginResponse.data,
               isLoading: false,
             ),
           ),
@@ -48,7 +48,7 @@ class LoginViewModel extends Cubit<LoginStates> {
         emit(
           state.copyWith(
             loginStateParam: BaseState<AuthModel>(
-              errorMessage: loginResponse.error.toString(),
+              error: loginResponse.error,
               isLoading: false,
             ),
           ),
