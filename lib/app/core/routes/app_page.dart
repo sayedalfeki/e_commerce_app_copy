@@ -1,6 +1,5 @@
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/feature/auth/presentation/views/screen/login/login_Screen.dart';
-import 'package:flower_app/app/feature/auth/presentation/views/screen/register/register_Screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/screen/home_screen.dart';
 import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.dart';
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';

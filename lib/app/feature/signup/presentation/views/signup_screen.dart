@@ -112,8 +112,7 @@ class SignupScreen extends StatelessWidget {
                           child: FormBuilderRadioGroup<String>(name: "",
                           focusColor: AppColors.primaryColor,
                           activeColor: AppColors.primaryColor,
-
-                          onSaved: (newValue) {
+                              onSaved: (newValue) {
                             signupViewModel.gender=newValue;
                           },
                           hoverColor: Colors.transparent,
@@ -171,7 +170,7 @@ class SignupScreen extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
-                                signupViewModel.DoIntent(
+                                signupViewModel.doIntent(
                                   SignupEvent(),
                                   firstName:
                                       signupViewModel.firstNameController.text,
@@ -234,10 +233,15 @@ class SignupScreen extends StatelessWidget {
         }, listener: (context, state) {
       if(state.signupState?.isLoading==true){
         ShowDialogUtils.showLoading(context);
-      }else if (state.signupState?.errorMessage!=null){
+      } else if (state.signupState?.error != null) {
         ShowDialogUtils.hideLoading(context);
-        ShowDialogUtils.showMessage(context, Title: state.signupState?.errorMessage,NigActionName: "ok",NigAction: (){Navigator.pop(context);});
-      }else if (state.signupState?.data!=null){
+        ShowDialogUtils.showMessage(
+            context, Title: state.signupState?.error.toString(),
+            NigActionName: "ok",
+            NigAction: () {
+              Navigator.pop(context);
+            });
+      } else if (state.signupState?.success != null) {
         ShowDialogUtils.hideLoading(context);
         ShowDialogUtils.showMessage(context, Title: AppLocale(context).accountcreatedsuccessfully,NigActionName: "ok",NigAction: (){Navigator.pop(context);});
       }
