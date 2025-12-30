@@ -61,6 +61,7 @@
   "ok":"موافق",
   "confirm":"تأكيد",
   "connectionFailed":"لا يوجد اتصال بالانترنت",
-  "invalidOtp":"كود غير صحيح"
+  "invalidOtp":"كود غير صحيح",
+  "continueAsGuest": "المتابعة كزائر"
 
 }

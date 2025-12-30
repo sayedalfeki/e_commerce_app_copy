@@ -16,7 +16,7 @@ class RouteGenerator {
       case Routes.splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.login:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       case Routes.register:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case Routes.forgetPassword:

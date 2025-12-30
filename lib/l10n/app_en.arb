@@ -56,9 +56,10 @@
   "confirmPasswordRequired": "Confirm password is required",
   "successMessage": "Sign up is successful",
   "loading": "Loading...",
-  "cancel":"cancel",
-  "ok":"ok",
-  "confirm":"confirm",
-  "connectionFailed":"No Internet Connection",
-  "invalidOtp":"invalid code"
+    "cancel":"cancel",
+    "ok":"ok",
+    "confirm":"confirm",
+    "connectionFailed":"No Internet Connection",
+    "invalidOtp":"invalid code",
+     "continueAsGuest": "Continue as guest"
 }
