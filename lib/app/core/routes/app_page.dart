@@ -2,6 +2,7 @@ import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/feature/auth/presentation/views/screen/login/login_Screen.dart';
 import 'package:flower_app/app/feature/auth/presentation/views/screen/register/register_Screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/screen/home_screen.dart';
+import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.dart';
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class RouteGenerator {
       case Routes.login:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case Routes.register:
-        return MaterialPageRoute(builder: (_) => const RegisterScreen());
+        return MaterialPageRoute(builder: (_) =>  SignupScreen());
       case Routes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
         case Routes.verifyOtp:
@@ -28,7 +29,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) =>  ResetPasswordScreen(email));
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-
+      
       default:
         return unDefinedRoute();
     }

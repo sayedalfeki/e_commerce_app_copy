@@ -56,10 +56,16 @@
   "confirmPasswordRequired": "Confirm password is required",
   "successMessage": "Sign up is successful",
   "loading": "Loading...",
-    "cancel":"cancel",
-    "ok":"ok",
-    "confirm":"confirm",
-    "connectionFailed":"No Internet Connection",
-    "invalidOtp":"invalid code",
-     "continueAsGuest": "Continue as guest"
+   "cancel":"cancel",
+      "ok":"ok",
+      "confirm":"confirm",
+      "connectionFailed":"No Internet Connection",
+      "invalidOtp":"invalid code",
+       "continueAsGuest": "Continue as guest",
+       "gender":"Gender",
+         "male":"Male",
+         "female":"Female",
+         "accountcreatedsuccessfully":"Account Created Successfully"
+         "creatinganaccountyouagreetoour":"Creating an account, you agree to our",
+         "termsandconditions":"Terms&Conditions"
 }
