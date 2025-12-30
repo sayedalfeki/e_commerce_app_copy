@@ -10,7 +10,7 @@ class AppTheme {
       primary: AppColors.primaryColor,
       secondary: AppColors.secondaryColor,
     ),
-    scaffoldBackgroundColor: AppColors.secondaryColor,
+    scaffoldBackgroundColor: AppColors.whiteColor,
 
     // appBarTheme
     appBarTheme: AppBarTheme(

@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../../config/di/di.dart';
-import '../../../../../core/custom_widgets/custom_app_bar.dart';
+import '../../../../../core/reusable_widgets/custom_app_bar.dart';
 import '../view_model/verify_otp_event.dart';
 import '../view_model/verify_otp_state.dart';
 import '../view_model/verify_otp_view_model.dart';

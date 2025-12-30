@@ -1,5 +1,4 @@
-
-import 'package:flower_app/app/core/custom_widgets/app_dialoge.dart';
+import 'package:flower_app/app/core/reusable_widgets/app_dialoge.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/helper_function.dart';
 import 'package:flower_app/app/feature/forget_password/presentation/forget_password/view/widgets/forget_password_body_screen.dart';
@@ -7,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../config/di/di.dart';
-import '../../../../../core/custom_widgets/custom_app_bar.dart';
+import '../../../../../core/reusable_widgets/custom_app_bar.dart';
 import '../../../../../core/utils/app_locale.dart';
 import '../view_model/forget_password_event.dart';
 import '../view_model/forget_password_intent.dart';

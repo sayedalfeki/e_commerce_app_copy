@@ -1,5 +1,5 @@
-import 'package:flower_app/app/core/custom_widgets/app_dialoge.dart';
-import 'package:flower_app/app/core/custom_widgets/custom_app_bar.dart';
+import 'package:flower_app/app/core/reusable_widgets/app_dialoge.dart';
+import 'package:flower_app/app/core/reusable_widgets/custom_app_bar.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/feature/forget_password/presentation/reset_password/view_model/reset_password_intent.dart';
 import 'package:flower_app/app/feature/forget_password/presentation/reset_password/view_model/reset_password_view_model.dart';

@@ -1,4 +1,5 @@
 import 'package:flower_app/app/config/di/di.dart';
+import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/resources/font_manager.dart';
 import 'package:flower_app/app/core/resources/values_manager.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
@@ -23,7 +24,6 @@ class LoginScreen extends StatelessWidget {
 
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: AppTheme.lightTheme.colorScheme.secondary,
       title: Padding(
         padding: const EdgeInsets.all(AppPadding.p14),
         child: Text(
@@ -47,167 +47,177 @@ class LoginScreen extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
-
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return BlocProvider(
       create: (context) => viewModel,
       child: BlocConsumer<LoginViewModel, LoginStates>(
         builder: (context, state) {
           return Padding(
             padding: EdgeInsets.all(AppPadding.p20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                AppTextField(
-                  label: AppLocalizations.of(context)!.email,
-                  hint: AppLocalizations.of(context)!.enterEmail,
-                  controller: emailController,
-                  validator: (value) =>
-                      AppValidators.validateEmail(value, context),
-                ),
-                SizedBox(height: AppSize.s12),
-                AppTextField(
-                  label: AppLocalizations.of(context)!.password,
-                  hint: AppLocalizations.of(context)!.enterPassword,
-                  controller: passwordController,
-                  isPassword: true,
-                  validator: (value) =>
-                      AppValidators.validatePassword(value, context),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(AppSize.s10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-                        child: Row(
-                          children: [
-                            Checkbox(
-                              value: state.rememberMeChickBox == 1,
-                              onChanged: (value) {
-                                viewModel.doIntent(RememberMeEvent());
-                              },
-                            ),
-                            Flexible(
-                              child: Text(
-                                AppLocalizations.of(context)!.rememberMe,
-                                style: AppTheme.lightTheme.textTheme.bodySmall!
-                                    .copyWith(
-                                      fontSize: AppSize.s14,
-                                      fontWeight: FontWeights.regular,
-                                    ),
+            child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  AppTextField(
+                    label: AppLocalizations.of(context)!.email,
+                    hint: AppLocalizations.of(context)!.enterEmail,
+                    controller: emailController,
+                    validator: (value) =>
+                        AppValidators.validateEmail(value, context),
+                  ),
+                  SizedBox(height: AppSize.s12),
+                  AppTextField(
+                    label: AppLocalizations.of(context)!.password,
+                    hint: AppLocalizations.of(context)!.enterPassword,
+                    controller: passwordController,
+                    isPassword: true,
+                    validator: (value) =>
+                        AppValidators.validatePassword(value, context),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(AppSize.s10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                value: state.rememberMeChickBox == 1,
+                                onChanged: (value) {
+                                  viewModel.doIntent(RememberMeEvent());
+                                },
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, Routes.forgetPassword);
-                        },
-                        child: Text(
-                          AppLocalizations.of(context)!.forgetPassword,
-                          style: AppTheme.lightTheme.textTheme.bodySmall!
-                              .copyWith(
-                                fontSize: AppSize.s14,
-                                fontWeight: FontWeights.regular,
-                                decoration: TextDecoration.underline,
+                              Flexible(
+                                child: Text(
+                                  AppLocalizations.of(context)!.rememberMe,
+                                  style: AppTheme
+                                      .lightTheme
+                                      .textTheme
+                                      .bodySmall!
+                                      .copyWith(
+                                        fontSize: AppSize.s14,
+                                        fontWeight: FontWeights.regular,
+                                      ),
+                                ),
                               ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: AppSize.s30),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        AppTheme.lightTheme.colorScheme.primary,
-                      ),
-                    ),
-                    onPressed: () {
-                      viewModel.doIntent(
-                        LoginEvent(),
-                        email: emailController.text,
-                        password: passwordController.text,
-                      );
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.login,
-                      style: AppTheme.lightTheme.textTheme.titleMedium!
-                          .copyWith(
-                            fontSize: FontSize.s16,
-                            fontWeight: FontWeights.medium,
-                          ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: AppSize.s16),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        AppTheme.lightTheme.colorScheme.secondary,
-                      ),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppSize.s50),
-                          side: BorderSide(
-                            color: AppTheme.lightTheme.colorScheme.shadow,
+                            ],
                           ),
                         ),
-                      ),
-                    ),
-                    onPressed: () => Navigator.pushNamed(context, Routes.home),
-                    child: Text(
-                      AppLocalizations.of(context)!.continueAsGuest,
-                      style: AppTheme.lightTheme.textTheme.titleMedium!
-                          .copyWith(
-                            fontSize: FontSize.s16,
-                            fontWeight: FontWeights.medium,
-                            color: AppTheme.lightTheme.colorScheme.shadow
-                                .withOpacity(0.5),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, Routes.forgetPassword);
+                          },
+                          child: Text(
+                            AppLocalizations.of(context)!.forgetPassword,
+                            style: AppTheme.lightTheme.textTheme.bodySmall!
+                                .copyWith(
+                                  fontSize: AppSize.s14,
+                                  fontWeight: FontWeights.regular,
+                                  decoration: TextDecoration.underline,
+                                ),
                           ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(AppSize.s10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.dontHaveAnAccount,
-                        style: AppTheme.lightTheme.textTheme.bodySmall!
+                  SizedBox(height: AppSize.s30),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                          AppTheme.lightTheme.colorScheme.primary,
+                        ),
+                      ),
+                      onPressed: () {
+                        if (formKey.currentState?.validate() ?? false) {
+                          viewModel.doIntent(
+                            LoginEvent(),
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
+                        }
+                      },
+                      child: Text(
+                        AppLocalizations.of(context)!.login,
+                        style: AppTheme.lightTheme.textTheme.titleMedium!
                             .copyWith(
-                              fontSize: AppSize.s16,
-                              fontWeight: FontWeights.regular,
+                              fontSize: FontSize.s16,
+                              fontWeight: FontWeights.medium,
                             ),
                       ),
-                      SizedBox(width: AppSize.s4),
-                      InkWell(
-                        onTap: () =>
-                            Navigator.pushNamed(context, Routes.register),
-                        child: Text(
-                          AppLocalizations.of(context)!.signup,
+                    ),
+                  ),
+                  SizedBox(height: AppSize.s16),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                          AppColors.whiteColor,
+                        ),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                  AppSize.s50,
+                                ),
+                                side: BorderSide(color: AppColors.whiteColor),
+                              ),
+                            ),
+                      ),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, Routes.home),
+                      child: Text(
+                        AppLocalizations.of(context)!.continueAsGuest,
+                        style: AppTheme.lightTheme.textTheme.titleMedium!
+                            .copyWith(
+                              fontSize: FontSize.s16,
+                              fontWeight: FontWeights.medium,
+                              color: AppTheme.lightTheme.colorScheme.shadow,
+                            ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(AppSize.s10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.dontHaveAnAccount,
                           style: AppTheme.lightTheme.textTheme.bodySmall!
                               .copyWith(
                                 fontSize: AppSize.s16,
                                 fontWeight: FontWeights.regular,
-                                decoration: TextDecoration.underline,
-                                decorationColor:
-                                    AppTheme.lightTheme.colorScheme.primary,
-                                color: AppTheme.lightTheme.colorScheme.primary,
                               ),
                         ),
-                      ),
-                    ],
+                        SizedBox(width: AppSize.s4),
+                        InkWell(
+                          onTap: () =>
+                              Navigator.pushNamed(context, Routes.register),
+                          child: Text(
+                            AppLocalizations.of(context)!.signup,
+                            style: AppTheme.lightTheme.textTheme.bodySmall!
+                                .copyWith(
+                                  fontSize: AppSize.s16,
+                                  fontWeight: FontWeights.regular,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor:
+                                      AppTheme.lightTheme.colorScheme.primary,
+                                  color:
+                                      AppTheme.lightTheme.colorScheme.primary,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
