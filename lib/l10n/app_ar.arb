@@ -56,7 +56,7 @@
     "passwordNotMatch": "كلمة المرور غير متطابقة",
       "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
       "successMessage": "تم التسجيل بنجاح",
-"loading": "جاري التحميل...",
+"loading": "جاري التحميل..."x,
 "cancel":"الغاء",
   "ok":"موافق",
   "confirm":"تأكيد",
@@ -68,6 +68,9 @@
   "female":"انثى",
   "accountcreatedsuccessfully":"تم إنشاء الحساب بنجاح",
   "creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا",
-  "termsandconditions":"الشروط والأحكام"
+  "termsandconditions":"الشروط والأحكام",
+  "categories": "الفئات",
+    "cart": "عربة التسوق",
+    "profile": "الملف الشخصي"
 
 }

@@ -6,11 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
-     seedColor: AppColors.primaryColor,
+      seedColor: AppColors.primaryColor,
       primary: AppColors.primaryColor,
       secondary: AppColors.secondaryColor,
     ),
-    scaffoldBackgroundColor: AppColors.whiteColor,
+    scaffoldBackgroundColor: AppColors.secondaryColor,
 
     // appBarTheme
     appBarTheme: AppBarTheme(
@@ -64,10 +64,14 @@ class AppTheme {
         color: AppColors.whiteColor,
       ),
     ),
-    // input decoration style
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedItemColor: AppColors.primaryColor,
+          unselectedItemColor: AppColors.unSelectedSectionGreyColor,
+          showSelectedLabels: true,
+          showUnselectedLabels: true
+      ),
     inputDecorationTheme: _inputDecorationTheme(),
   );
-
 }
 InputDecorationTheme _inputDecorationTheme() => InputDecorationTheme(
   border: const OutlineInputBorder(),
@@ -87,4 +91,3 @@ InputDecorationTheme _inputDecorationTheme() => InputDecorationTheme(
     borderSide: BorderSide(color: AppColors.errorColor, width: 1),
   ),
 );
-

@@ -9,4 +9,6 @@ abstract class AppColors {
   static const Color blackColor = Color(0xFF0C1015);
   static const Color errorColor = Color(0xFFB3261E);
   static const Color grayColor = Color(0xFF535353);
+  static const Color unSelectedSectionGreyColor=Color(0xFF7D7D7D);
+  static const Color borderBottomNavBarColor=Color(0xFFCFCFCF);
 }
