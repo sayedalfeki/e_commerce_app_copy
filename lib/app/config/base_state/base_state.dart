@@ -1,6 +1,13 @@
-class BaseState<T> {
+import 'package:equatable/equatable.dart';
+
+// ignore: must_be_immutable
+class BaseState<T> extends Equatable{
   bool? isLoading;
-  String? errorMessage;
-  T? data;
-  BaseState({this.isLoading = false, this.errorMessage, this.data});
+  Exception? error;
+  T? success;
+  BaseState({this.isLoading = false, this.error, this.success});
+  
+  @override
+  // TODO: implement props
+  List<Object?> get props => [isLoading,success,error];
 }

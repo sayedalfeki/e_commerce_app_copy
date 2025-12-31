@@ -58,5 +58,6 @@
   "loading": "Loading...",
   "categories":"Categories",
   "cart":"Cart",
-  "profile":"Profile"
+  "profile":"Profile",
+  "connectionFailed":"No Internet Connection"
 }
