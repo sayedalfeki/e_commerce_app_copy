@@ -1,3 +1,4 @@
+import 'package:flower_app/app/config/api_utils/api_utils.dart';
 import 'package:flower_app/app/config/base_response/base_response.dart';
 import 'package:flower_app/app/feature/auth/api/api_auth/api_auth.dart';
 import 'package:flower_app/app/feature/auth/data/datasource/remote/remote_datasource_contract.dart';
@@ -12,15 +13,10 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasourceContract {
 
   @override
   Future<BaseResponse<AuthDto>> login(String email, String password) async {
-    try {
-      final response = await apiClient.login({
-        'email': email,
-        'password': password,
-      });
-
-      return SuccessResponse<AuthDto>(data: response);
-    } on Exception catch (e) {
-      return ErrorResponse<AuthDto>(error: e);
-    }
+    return await executeApi(() =>
+        apiClient.login({
+          'email': email,
+          'password': password,
+        }),);
   }
 }

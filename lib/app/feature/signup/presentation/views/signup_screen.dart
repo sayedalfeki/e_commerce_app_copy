@@ -3,6 +3,7 @@ import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/reusable_widgets/show_dialog_utils.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
+import 'package:flower_app/app/core/utils/helper_function.dart';
 import 'package:flower_app/app/core/validation/app_validators.dart';
 import 'package:flower_app/app/feature/signup/presentation/vie_model/signup_events.dart';
 import 'package:flower_app/app/feature/signup/presentation/vie_model/signup_states.dart';
@@ -236,7 +237,7 @@ class SignupScreen extends StatelessWidget {
       } else if (state.signupState?.error != null) {
         ShowDialogUtils.hideLoading(context);
         ShowDialogUtils.showMessage(
-            context, Title: state.signupState?.error.toString(),
+            context, Title: getException(context, state.signupState?.error),
             NigActionName: "ok",
             NigAction: () {
               Navigator.pop(context);

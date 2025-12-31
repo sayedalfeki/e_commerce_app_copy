@@ -5,6 +5,7 @@ import 'package:flower_app/app/core/resources/values_manager.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/theme/app_theme.dart';
 import 'package:flower_app/app/core/utils/app_text_field.dart';
+import 'package:flower_app/app/core/utils/helper_function.dart';
 import 'package:flower_app/app/core/validation/app_validators.dart';
 import 'package:flower_app/app/feature/auth/presentation/view_model/login_events.dart';
 import 'package:flower_app/app/feature/auth/presentation/view_model/login_states.dart';
@@ -248,7 +249,7 @@ class LoginScreen extends StatelessWidget {
               builder: (context) {
                 return AlertDialog(
                   content: Text(
-                    state.loginState?.error.toString() ?? '',
+                    getException(context, state.loginState?.error),
                     style: AppTheme.lightTheme.textTheme.bodyMedium,
                   ),
                   backgroundColor: AppTheme.lightTheme.colorScheme.onPrimary,
