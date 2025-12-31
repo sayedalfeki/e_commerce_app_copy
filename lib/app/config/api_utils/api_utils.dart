@@ -42,7 +42,8 @@ Future<BaseResponse<T>> executeApi<T>(Future<T> Function() apiCall) async {
             return ErrorResponse(error: UnexpectedError());
           }
           final response = ServerErrorResponse.fromJson(json);
-          return ErrorResponse(error: ServerError(message: response.error));
+          return ErrorResponse(
+              error: ServerError(message: response.error ?? response.message));
         }
     }
   } catch (exception) {
