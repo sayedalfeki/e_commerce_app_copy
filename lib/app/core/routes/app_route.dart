@@ -4,6 +4,8 @@ abstract class Routes {
   static const String register = _Paths.registerScreen;
   static const String forgetPassword = _Paths.forgetPasswordScreen;
   static const String home = _Paths.homeScreen;
+  static const String productDetails = _Paths.productDetails;
+
 }
 
 abstract class _Paths {
@@ -12,4 +14,6 @@ abstract class _Paths {
   static const String registerScreen = 'Register';
   static const String forgetPasswordScreen = 'Forget_Password';
   static const String homeScreen = 'Home';
+  static const String productDetails = 'productDetails';
+
 }

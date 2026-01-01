@@ -4,4 +4,5 @@ abstract class AppEndPoint {
   static const String changePassword = '/auth/changePassword';
   static const String login = "/auth/signin";
   static const String signUp = '/auth/signup';
+  static const String products = "/products/{productId}";
 }

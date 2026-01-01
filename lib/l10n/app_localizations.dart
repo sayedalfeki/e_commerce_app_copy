@@ -463,6 +463,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Account Created Successfully'**
   String get accountcreatedsuccessfully;
+
+  /// No description provided for @termsandconditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms&Conditions'**
+  String get termsandconditions;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'status'**
+  String get status;
+
+  /// No description provided for @allpricesincludetax.
+  ///
+  /// In en, this message translates to:
+  /// **'All prices include tax'**
+  String get allpricesincludetax;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @addtocart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addtocart;
+
+  /// No description provided for @outofstock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Stock'**
+  String get outofstock;
+
+  /// No description provided for @instock.
+  ///
+  /// In en, this message translates to:
+  /// **'In Stock'**
+  String get instock;
 }
 
 class _AppLocalizationsDelegate

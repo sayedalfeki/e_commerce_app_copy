@@ -43,3 +43,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+lib/app/feature/product_details/api/api_client/api_client.g.dart
+lib/app/feature/product_details/data/models/product_details_dto.g.dart
+lib/app/config/di/di.config.dart
+pubspec.lock

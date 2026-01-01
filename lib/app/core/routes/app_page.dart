@@ -3,6 +3,7 @@ import 'package:flower_app/app/feature/auth/presentation/views/screen/forget_pas
 import 'package:flower_app/app/feature/auth/presentation/views/screen/login/login_Screen.dart';
 import 'package:flower_app/app/feature/auth/presentation/views/screen/register/register_Screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/screen/home_screen.dart';
+import 'package:flower_app/app/feature/product_details/presentation/views/screens/product_details_screen.dart';
 import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.dart';
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      
+      case Routes.productDetails:
+        return MaterialPageRoute(builder: (_) =>  ProductDetailsScreen());
       default:
         return unDefinedRoute();
     }

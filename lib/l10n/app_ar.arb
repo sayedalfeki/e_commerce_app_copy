@@ -61,6 +61,11 @@
 "male":"ذكر",
 "female":"انثى",
 "accountcreatedsuccessfully":"تم إنشاء الحساب بنجاح",
-"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا"
-"termsandconditions":"الشروط والأحكام"
+"termsandconditions":"الشروط والأحكام",
+"status":"الحاله",
+"allpricesincludetax":"جميع الأسعار تشمل الضريبة",
+"description":"الوصف",
+"addtocart":"أضف إلى السلة",
+"outofstock":"إنتهى من المخزن",
+"instock":"في المخزن"
 }
