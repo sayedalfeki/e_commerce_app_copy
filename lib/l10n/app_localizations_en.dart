@@ -188,4 +188,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get welcome => 'Welcome';
+
+  @override
+  String get occasion => 'Occasion';
+
+  @override
+  String get occasionSubtitle => 'Bloom with our exquisite best sellers';
+
+  @override
+  String get wedding => 'Wedding';
+
+  @override
+  String get graduation => 'Graduation';
+
+  @override
+  String get birthday => 'Birthday';
+
+  @override
+  String get katbKetab => 'Katb Ketab';
+
+  @override
+  String get addToCart => 'Add to cart';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get networkError => 'No internet connection';
+
+  @override
+  String get serverError => 'Something went wrong. Please try again';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get noProductsForOccasion => 'No products available for this occasion';
 }

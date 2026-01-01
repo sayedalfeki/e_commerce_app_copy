@@ -56,6 +56,20 @@
     "passwordNotMatch": "كلمة المرور غير متطابقة",
       "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
       "successMessage": "تم التسجيل بنجاح",
-"loading": "جاري التحميل..."
+  "loading": "جاري التحميل...",
+  "welcome": "مرحباً",
+  "occasion": "المناسبات",
+  "occasionSubtitle": "ازدهر مع أفضل المبيعات الرائعة لدينا",
+  "wedding": "زفاف",
+  "graduation": "تخرج",
+  "birthday": "عيد ميلاد",
+  "katbKetab": "كتب كتاب",
+  "addToCart": "أضف إلى السلة",
+  "egp": "جنيه",
+  "viewAll": "عرض الكل",
+  "networkError": "لا يوجد اتصال بالإنترنت",
+  "serverError": "حدث خطأ ما. يرجى المحاولة مرة أخرى",
+  "retry": "إعادة المحاولة",
+  "noProductsForOccasion": "لا توجد منتجات متاحة لهذه المناسبة"
 
 }

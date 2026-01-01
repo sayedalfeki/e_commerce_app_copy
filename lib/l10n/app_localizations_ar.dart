@@ -188,4 +188,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get welcome => 'مرحباً';
+
+  @override
+  String get occasion => 'المناسبات';
+
+  @override
+  String get occasionSubtitle => 'ازدهر مع أفضل المبيعات الرائعة لدينا';
+
+  @override
+  String get wedding => 'زفاف';
+
+  @override
+  String get graduation => 'تخرج';
+
+  @override
+  String get birthday => 'عيد ميلاد';
+
+  @override
+  String get katbKetab => 'كتب كتاب';
+
+  @override
+  String get addToCart => 'أضف إلى السلة';
+
+  @override
+  String get egp => 'جنيه';
+
+  @override
+  String get viewAll => 'عرض الكل';
+
+  @override
+  String get networkError => 'لا يوجد اتصال بالإنترنت';
+
+  @override
+  String get serverError => 'حدث خطأ ما. يرجى المحاولة مرة أخرى';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get noProductsForOccasion => 'لا توجد منتجات متاحة لهذه المناسبة';
 }

@@ -445,6 +445,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Welcome'**
   String get welcome;
+
+  /// No description provided for @occasion.
+  ///
+  /// In en, this message translates to:
+  /// **'Occasion'**
+  String get occasion;
+
+  /// No description provided for @occasionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bloom with our exquisite best sellers'**
+  String get occasionSubtitle;
+
+  /// No description provided for @wedding.
+  ///
+  /// In en, this message translates to:
+  /// **'Wedding'**
+  String get wedding;
+
+  /// No description provided for @graduation.
+  ///
+  /// In en, this message translates to:
+  /// **'Graduation'**
+  String get graduation;
+
+  /// No description provided for @birthday.
+  ///
+  /// In en, this message translates to:
+  /// **'Birthday'**
+  String get birthday;
+
+  /// No description provided for @katbKetab.
+  ///
+  /// In en, this message translates to:
+  /// **'Katb Ketab'**
+  String get katbKetab;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addToCart;
+
+  /// No description provided for @egp.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get egp;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// No description provided for @networkError.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get networkError;
+
+  /// No description provided for @serverError.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again'**
+  String get serverError;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @noProductsForOccasion.
+  ///
+  /// In en, this message translates to:
+  /// **'No products available for this occasion'**
+  String get noProductsForOccasion;
 }
 
 class _AppLocalizationsDelegate
