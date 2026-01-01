@@ -74,7 +74,7 @@ class _OccasionScreenState extends State<OccasionScreen> {
                     ElevatedButton(
                       onPressed: () => viewModel.getAllOccasions(),
                       child: Text(
-                        'Retry',
+                        AppLocale(context).retry,
                         style: TextStyle(
                           fontFamily: FontsFamily.inter,
                           fontSize: FontSize.s16,
@@ -179,7 +179,6 @@ class _OccasionScreenState extends State<OccasionScreen> {
 
   @override
   void dispose() {
-    viewModel.dispose();
     super.dispose();
   }
 }

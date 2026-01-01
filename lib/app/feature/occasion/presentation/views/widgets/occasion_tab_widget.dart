@@ -3,6 +3,7 @@ import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/resources/font_manager.dart';
 import 'package:flower_app/app/core/resources/values_manager.dart';
+import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/occasion/data/models/product_model.dart';
 import 'package:flower_app/app/feature/occasion/domain/use_cases/get_products_by_occasion_use_case.dart';
 import 'package:flower_app/app/feature/occasion/presentation/views/widgets/product_card_widget.dart';
@@ -89,7 +90,7 @@ class _OccasionTabWidgetState extends State<OccasionTabWidget> {
             SizedBox(height: AppSize.s16.h),
             ElevatedButton(
               onPressed: _fetchProducts,
-              child: const Text('Retry'),
+              child: Text(AppLocale(context).retry),
             ),
           ],
         ),

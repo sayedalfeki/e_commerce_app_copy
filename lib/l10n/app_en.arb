@@ -67,7 +67,7 @@
   "egp": "EGP",
   "viewAll": "View All",
   "networkError": "No internet connection",
-"serverError": "Something went wrong. Please try again",
-"retry": "Retry",
-"noProductsForOccasion": "No products available for this occasion"
+  "serverError": "Something went wrong. Please try again",
+  "retry": "Retry",
+  "noProductsForOccasion": "No products available for this occasion"
 }
