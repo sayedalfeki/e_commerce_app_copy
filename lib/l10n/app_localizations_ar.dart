@@ -197,4 +197,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get connectionFailed => 'لا يوجد اتصال بالانترنت';
+
+  @override
+  String get flowery => 'مُزْهَر';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get deliveryLocation => 'التوصيل إلى 2XVP+XC - الشيخ زايد';
+
+  @override
+  String get empty_data => 'لا توجد منتجات لعرضها';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get egyptianLivre => 'ج.م';
+
+  @override
+  String get occasion => 'المناسبة';
+
+  @override
+  String get bestSeller => 'الأكثر مبيعاً';
 }

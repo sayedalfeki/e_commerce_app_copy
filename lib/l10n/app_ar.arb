@@ -60,5 +60,13 @@
 "categories": "الفئات",
   "cart": "عربة التسوق",
   "profile": "الملف الشخصي",
-  "connectionFailed":"لا يوجد اتصال بالانترنت"
+  "connectionFailed":"لا يوجد اتصال بالانترنت",
+  "flowery": "مُزْهَر",
+  "search": "بحث",
+  "deliveryLocation": "التوصيل إلى 2XVP+XC - الشيخ زايد",
+  "empty_data": "لا توجد منتجات لعرضها",
+  "view_all": "عرض الكل",
+  "egyptianLivre": "ج.م",
+  "occasion": "المناسبة",
+  "bestSeller": "الأكثر مبيعاً"
 }

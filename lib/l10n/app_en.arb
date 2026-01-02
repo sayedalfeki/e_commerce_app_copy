@@ -59,5 +59,13 @@
   "categories":"Categories",
   "cart":"Cart",
   "profile":"Profile",
-  "connectionFailed":"No Internet Connection"
+  "connectionFailed":"No Internet Connection",
+  "flowery":"Flowery",
+  "search":"Search",
+  "deliveryLocation":"Deliver to 2XVP+XC - Sheikh Zayed ",
+  "empty_data":"No products to be shown",
+  "view_all":"View All",
+  "egyptianLivre":"EGP",
+  "occasion":"Occasion",
+  "bestSeller":"Best Seller"
 }
