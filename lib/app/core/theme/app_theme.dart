@@ -64,5 +64,11 @@ class AppTheme {
         color: AppColors.whiteColor,
       ),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: AppColors.primaryColor,
+      unselectedItemColor: AppColors.unSelectedSectionGreyColor,
+      showSelectedLabels: true,
+      showUnselectedLabels: true
+    )
   );
 }

@@ -187,6 +187,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loading => 'Loading...';
 
   @override
+  String get categories => 'Categories';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
   String get gender => 'Gender';
 
   @override
@@ -197,4 +206,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountcreatedsuccessfully => 'Account Created Successfully';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'Creating an account, you agree to our';
+
+  @override
+  String get termsandconditions => 'Terms&Conditions';
 }

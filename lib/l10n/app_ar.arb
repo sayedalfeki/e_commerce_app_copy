@@ -57,10 +57,14 @@
       "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
       "successMessage": "تم التسجيل بنجاح",
 "loading": "جاري التحميل...",
+"categories": "الفئات",
+  "cart": "عربة التسوق",
+  "profile": "الملف الشخصي",
+"loading": "جاري التحميل...",
 "gender":"الجنس",
 "male":"ذكر",
 "female":"انثى",
 "accountcreatedsuccessfully":"تم إنشاء الحساب بنجاح",
-"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا"
+"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا",
 "termsandconditions":"الشروط والأحكام"
 }
