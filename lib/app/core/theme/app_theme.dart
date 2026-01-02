@@ -45,6 +45,18 @@ class AppTheme {
         fontWeight: FontWeights.regular,
         color: AppColors.grayColor,
       ),
+      headlineMedium: TextStyle(
+        fontFamily: FontsFamily.roboto,
+        fontSize: FontSize.s16,
+        fontWeight: FontWeights.medium,
+        color: AppColors.blackColor,
+      ),
+      headlineSmall: TextStyle(
+        fontFamily: FontsFamily.roboto,
+        fontSize: 2,
+        fontWeight: FontWeights.medium,
+        color: AppColors.blackColor,
+      ),
       titleMedium: TextStyle(
         fontFamily: FontsFamily.roboto,
         fontSize: FontSize.s16,
