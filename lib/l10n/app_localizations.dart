@@ -453,10 +453,31 @@ abstract class AppLocalizations {
   String get cart;
 
   /// No description provided for @profile.
+  /// No description provided for @gender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
+  /// No description provided for @accountcreatedsuccessfully.
   ///
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+  /// **'Account Created Successfully'**
+  String get accountcreatedsuccessfully;
 }
 
 class _AppLocalizationsDelegate
