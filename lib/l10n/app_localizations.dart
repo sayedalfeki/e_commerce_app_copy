@@ -453,6 +453,11 @@ abstract class AppLocalizations {
   String get cart;
 
   /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
   /// No description provided for @gender.
   ///
   /// In en, this message translates to:
@@ -474,10 +479,20 @@ abstract class AppLocalizations {
   /// No description provided for @accountcreatedsuccessfully.
   ///
   /// In en, this message translates to:
-  /// **'Profile'**
-  String get profile;
   /// **'Account Created Successfully'**
   String get accountcreatedsuccessfully;
+
+  /// No description provided for @creatinganaccountyouagreetoour.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating an account, you agree to our'**
+  String get creatinganaccountyouagreetoour;
+
+  /// No description provided for @termsandconditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms&Conditions'**
+  String get termsandconditions;
 }
 
 class _AppLocalizationsDelegate

@@ -194,6 +194,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
   String get gender => 'Gender';
 
   @override
@@ -204,4 +206,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountcreatedsuccessfully => 'Account Created Successfully';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'Creating an account, you agree to our';
+
+  @override
+  String get termsandconditions => 'Terms&Conditions';
 }
