@@ -171,8 +171,8 @@ class SignupScreen extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
-                                signupViewModel.DoIntent(
-                                  SignupEvent(),
+                                signupViewModel.doIntent(
+                                  SignupEvent(
                                   firstName:
                                       signupViewModel.firstNameController.text,
                                   lastName:
@@ -185,6 +185,8 @@ class SignupScreen extends StatelessWidget {
                                       .text,
                                   phone: signupViewModel.phoneController.text,
                                   gender: signupViewModel.gender??"female"
+                                  ),
+                                  
                                 );
                               }
                             },
