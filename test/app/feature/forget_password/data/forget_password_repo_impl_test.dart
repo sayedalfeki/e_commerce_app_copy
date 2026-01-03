@@ -51,7 +51,9 @@ void main() {
       ).thenAnswer(
         (_) => Future.value(SuccessResponse(data: forgetPasswordResponse)),
       );
-      await forgetPasswordRepo.forgetPassword(forgetPasswordRequest);
+      var result = await forgetPasswordRepo.forgetPassword(
+          forgetPasswordRequest);
+      expect(result, isA<SuccessResponse<ForgetPasswordResponse>>());
       verify(
         forgetPasswordDataSourceContract.forgetPassword(forgetPasswordRequest),
       );
@@ -64,7 +66,8 @@ void main() {
     when(
       forgetPasswordDataSourceContract.verifyOtp(verifyOtpRequest),
     ).thenAnswer((_) => Future.value(SuccessResponse(data: verifyOtpResponse)));
-    await forgetPasswordRepo.verifyOtp(verifyOtpRequest);
+    var result = await forgetPasswordRepo.verifyOtp(verifyOtpRequest);
+    expect(result, isA<SuccessResponse<VerifyOtpResponse>>());
     verify(forgetPasswordDataSourceContract.verifyOtp(verifyOtpRequest));
   });
   test(
@@ -78,7 +81,8 @@ void main() {
       ).thenAnswer(
         (_) => Future.value(SuccessResponse(data: resetPasswordResponse)),
       );
-      await forgetPasswordRepo.resetPassword(resetPasswordRequest);
+      var result = await forgetPasswordRepo.resetPassword(resetPasswordRequest);
+      expect(result, isA<SuccessResponse<ResetPasswordResponse>>());
       verify(
         forgetPasswordDataSourceContract.resetPassword(resetPasswordRequest),
       );

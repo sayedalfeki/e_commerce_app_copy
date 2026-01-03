@@ -30,7 +30,8 @@ void main() {
       when(forgetPasswordRepo.forgetPassword(forgetPasswordRequest)).thenAnswer(
         (_) => Future.value(SuccessResponse(data: forgetPasswordResponse)),
       );
-      await forgetPasswordUseCase.invoke(forgetPasswordRequest);
+      var result = await forgetPasswordUseCase.invoke(forgetPasswordRequest);
+      expect(result, isA<SuccessResponse<ForgetPasswordResponse>>());
       verify(forgetPasswordRepo.forgetPassword(forgetPasswordRequest));
     },
   );

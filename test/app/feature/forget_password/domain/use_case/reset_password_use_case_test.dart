@@ -32,7 +32,8 @@ void main() {
       when(forgetPasswordRepo.resetPassword(resetPasswordRequest)).thenAnswer(
         (_) => Future.value(SuccessResponse(data: resetPasswordResponse)),
       );
-      await resetPasswordUseCase.invoke(resetPasswordRequest);
+      var result = await resetPasswordUseCase.invoke(resetPasswordRequest);
+      expect(result, isA<SuccessResponse<ResetPasswordResponse>>());
       verify(forgetPasswordRepo.resetPassword(resetPasswordRequest));
     },
   );

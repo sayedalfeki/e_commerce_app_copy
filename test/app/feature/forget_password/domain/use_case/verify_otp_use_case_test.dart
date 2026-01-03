@@ -28,7 +28,8 @@ void main() {
     when(
       forgetPasswordRepo.verifyOtp(verifyOtpRequest),
     ).thenAnswer((_) => Future.value(SuccessResponse(data: verifyOtpResponse)));
-    await verifyOtpUseCase.invoke(verifyOtpRequest);
+    var result = await verifyOtpUseCase.invoke(verifyOtpRequest);
+    expect(result, isA<SuccessResponse<VerifyOtpResponse>>());
     verify(forgetPasswordRepo.verifyOtp(verifyOtpRequest));
   });
 }
