@@ -440,11 +440,59 @@ abstract class AppLocalizations {
   /// **'Loading...'**
   String get loading;
 
-  /// No description provided for @welcome.
+  /// No description provided for @categories.
   ///
   /// In en, this message translates to:
-  /// **'Welcome'**
-  String get welcome;
+  /// **'Categories'**
+  String get categories;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @gender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
+  /// No description provided for @accountcreatedsuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Created Successfully'**
+  String get accountcreatedsuccessfully;
+
+  /// No description provided for @creatinganaccountyouagreetoour.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating an account, you agree to our'**
+  String get creatinganaccountyouagreetoour;
+
+  /// No description provided for @termsandconditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms&Conditions'**
+  String get termsandconditions;
 }
 
 class _AppLocalizationsDelegate

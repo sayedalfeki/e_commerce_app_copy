@@ -187,5 +187,30 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loading => 'جاري التحميل...';
 
   @override
-  String get welcome => 'مرحباً';
+  String get categories => 'الفئات';
+
+  @override
+  String get cart => 'عربة التسوق';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'انثى';
+
+  @override
+  String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get termsandconditions => 'الشروط والأحكام';
 }
