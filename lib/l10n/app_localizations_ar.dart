@@ -184,16 +184,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get successMessage => 'تم التسجيل بنجاح';
 
   @override
-  String get loading => 'جاري التحميل...';
-
-  @override
   String get categories => 'الفئات';
 
   @override
   String get cart => 'عربة التسوق';
-
-  @override
-  String get profile => 'الملف الشخصي';
 
   @override
   String get connectionFailed => 'لا يوجد اتصال بالانترنت';
@@ -221,6 +215,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get bestSeller => 'الأكثر مبيعاً';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get loading => 'جاري التحميل...';
 
   @override
   String get gender => 'الجنس';

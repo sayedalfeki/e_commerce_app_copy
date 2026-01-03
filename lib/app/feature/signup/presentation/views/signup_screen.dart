@@ -2,6 +2,7 @@ import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
+import 'package:flower_app/app/core/utils/helper_function.dart';
 import 'package:flower_app/app/core/validation/app_validators.dart';
 import 'package:flower_app/app/feature/signup/presentation/vie_model/signup_events.dart';
 import 'package:flower_app/app/feature/signup/presentation/vie_model/signup_states.dart';
@@ -236,10 +237,10 @@ class SignupScreen extends StatelessWidget {
         }, listener: (context, state) {
       if(state.signupState?.isLoading==true){
         ShowDialogUtils.showLoading(context);
-      }else if (state.signupState?.errorMessage!=null){
+      }else if (state.signupState?.error!=null){
         ShowDialogUtils.hideLoading(context);
-        ShowDialogUtils.showMessage(context, Title: state.signupState?.errorMessage,NigActionName: "ok",NigAction: (){Navigator.pop(context);});
-      }else if (state.signupState?.data!=null){
+        ShowDialogUtils.showMessage(context, Title: getException(context, state.signupState?.error),NigActionName: "ok",NigAction: (){Navigator.pop(context);});
+      }else if (state.signupState?.success!=null){
         ShowDialogUtils.hideLoading(context);
         ShowDialogUtils.showMessage(context, Title: AppLocale(context).accountcreatedsuccessfully,NigActionName: "ok",NigAction: (){Navigator.pop(context);});
       }

@@ -184,16 +184,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get successMessage => 'Sign up is successful';
 
   @override
-  String get loading => 'Loading...';
-
-  @override
   String get categories => 'Categories';
 
   @override
   String get cart => 'Cart';
-
-  @override
-  String get profile => 'Profile';
 
   @override
   String get connectionFailed => 'No Internet Connection';
@@ -221,6 +215,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bestSeller => 'Best Seller';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get loading => 'Loading...';
 
   @override
   String get gender => 'Gender';

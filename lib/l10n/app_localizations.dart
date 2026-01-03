@@ -434,12 +434,6 @@ abstract class AppLocalizations {
   /// **'Sign up is successful'**
   String get successMessage;
 
-  /// No description provided for @loading.
-  ///
-  /// In en, this message translates to:
-  /// **'Loading...'**
-  String get loading;
-
   /// No description provided for @categories.
   ///
   /// In en, this message translates to:
@@ -451,12 +445,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cart'**
   String get cart;
-
-  /// No description provided for @profile.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile'**
-  String get profile;
 
   /// No description provided for @connectionFailed.
   ///
@@ -511,6 +499,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Best Seller'**
   String get bestSeller;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
 
   /// No description provided for @gender.
   ///
