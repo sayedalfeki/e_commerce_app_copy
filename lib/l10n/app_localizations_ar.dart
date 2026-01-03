@@ -221,4 +221,23 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get bestSeller => 'الأكثر مبيعاً';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'انثى';
+
+  @override
+  String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get termsandconditions => 'الشروط والأحكام';
 }

@@ -69,4 +69,12 @@
   "egyptianLivre": "ج.م",
   "occasion": "المناسبة",
   "bestSeller": "الأكثر مبيعاً"
+  "profile": "الملف الشخصي",
+"loading": "جاري التحميل...",
+"gender":"الجنس",
+"male":"ذكر",
+"female":"انثى",
+"accountcreatedsuccessfully":"تم إنشاء الحساب بنجاح",
+"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا",
+"termsandconditions":"الشروط والأحكام"
 }

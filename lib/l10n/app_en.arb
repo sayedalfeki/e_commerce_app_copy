@@ -68,4 +68,12 @@
   "egyptianLivre":"EGP",
   "occasion":"Occasion",
   "bestSeller":"Best Seller"
+  "profile":"Profile",
+  "loading": "Loading...",
+  "gender":"Gender",
+  "male":"Male",
+  "female":"Female",
+  "accountcreatedsuccessfully":"Account Created Successfully",
+  "creatinganaccountyouagreetoour":"Creating an account, you agree to our",
+  "termsandconditions":"Terms&Conditions"
 }
