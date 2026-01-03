@@ -2,7 +2,10 @@ import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/resources/assets_manager.dart';
 import 'package:flower_app/app/core/resources/font_manager.dart';
+import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/helper_function.dart';
+import 'package:flower_app/app/feature/home/presentation/view_model/app_tab.dart';
+import 'package:flower_app/app/feature/home/presentation/view_model/home_view_model.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/home_tab/presentation/view_model/home_tab_events.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/home_tab/presentation/view_model/home_tab_states.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/home_tab/presentation/view_model/home_tab_view_model.dart';
@@ -24,7 +27,6 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   HomeTabViewModel viewModel=getIt<HomeTabViewModel>();
-
   @override
   Widget build(BuildContext context) {
     var width=MediaQuery.sizeOf(context).width;
@@ -89,7 +91,7 @@ class _HomeTabState extends State<HomeTab> {
                           HeaderWidget(
                             name: AppLocalizations.of(context)!.categories, 
                             onTap: () {
-                              
+                              context.read<HomeViewModel>().switchTab(AppTab.categories);
                             },
                           ),
                           SizedBox(
@@ -100,7 +102,7 @@ class _HomeTabState extends State<HomeTab> {
                           HeaderWidget(
                             name: AppLocalizations.of(context)!.bestSeller, 
                             onTap: () {
-                              
+                              Navigator.pushNamed(context, Routes.bestSeller);
                             },
                           ),
                           SizedBox(
@@ -111,7 +113,7 @@ class _HomeTabState extends State<HomeTab> {
                           HeaderWidget(
                             name: AppLocalizations.of(context)!.occasion, 
                             onTap: () {
-                              
+                              Navigator.pushNamed(context, Routes.occasion);
                             },
                           ),
                           SizedBox(
