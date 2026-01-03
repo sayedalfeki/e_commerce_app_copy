@@ -71,6 +71,10 @@
   "termsandconditions":"الشروط والأحكام",
   "categories": "الفئات",
     "cart": "عربة التسوق",
-    "profile": "الملف الشخصي"
+    "profile": "الملف الشخصي",
+    "retry":"اعد المحاولة",
+     "occasions":"مناسبات",
+     "occasions_title":"تزهر معنا مع أفضل منتجاتنا المميزة"
+
 
 }

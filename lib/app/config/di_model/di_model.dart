@@ -5,15 +5,18 @@ import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../../feature/forget_password/api/forget_password_api_client.dart';
+import '../../feature/occasions/api/occasions_api_client/occasions_api_clients.dart';
 
 @module
-abstract class DiAuthModel {
+abstract class DiModel {
 
   @lazySingleton
   ForgetPasswordApiClient provideForgetPasswordApiClient(Dio dio) =>
       ForgetPasswordApiClient(dio, baseUrl: AppEndPoint.baseUrl);
 
-
+  @lazySingleton
+  OccasionsApiClient provideOccasionsApiClient(Dio dio) =>
+      OccasionsApiClient(dio, baseUrl: AppEndPoint.baseUrl);
   @lazySingleton
   Dio provideDio(
       BaseOptions baseOptions,

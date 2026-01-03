@@ -1,8 +1,8 @@
-import 'package:flower_app/app/core/model/meta_data_dto.dart';
+import 'package:flower_app/app/core/model/meta_data/meta_data_dto.dart';
 import 'package:flower_app/app/feature/occasions/domain/model/all_occasions_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'all_occassions_response.g.dart';
+part 'all_occasions_response.g.dart';
 
 @JsonSerializable()
 class AllOccasionResponse {
@@ -16,19 +16,20 @@ class AllOccasionResponse {
   AllOccasionResponse({this.message, this.metadata, this.occasions});
 
   factory AllOccasionResponse.fromJson(Map<String, dynamic> json) {
-    return _$AllOccassionResponseFromJson(json);
+    return _$AllOccasionResponseFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$AllOccassionResponseToJson(this);
+    return _$AllOccasionResponseToJson(this);
   }
 
   AllOccasionsEntity toAllOccasionsEntity() {
-    List<String>? allOccasions = [];
+    List<OccasionEntity>? allOccasions = [];
     allOccasions = List.generate(occasions!.length, (index) {
-      return occasions?[index].name ?? '';
+      return OccasionEntity(
+          id: occasions?[index].Id ?? '', title: occasions?[index].name ?? '');
     });
-    return AllOccasionsEntity(occasionsTitle: allOccasions);
+    return AllOccasionsEntity(occasionsEntity: allOccasions);
   }
 }
 
@@ -63,10 +64,10 @@ class OccasionsDto {
   });
 
   factory OccasionsDto.fromJson(Map<String, dynamic> json) {
-    return _$OccasionsFromJson(json);
+    return _$OccasionsDtoFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$OccasionsToJson(this);
+    return _$OccasionsDtoToJson(this);
   }
 }

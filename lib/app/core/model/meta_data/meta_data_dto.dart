@@ -16,10 +16,10 @@ class MetadataDto {
   MetadataDto({this.currentPage, this.limit, this.totalPages, this.totalItems});
 
   factory MetadataDto.fromJson(Map<String, dynamic> json) {
-    return _$MetadataFromJson(json);
+    return _$MetadataDtoFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$MetadataToJson(this);
+    return _$MetadataDtoToJson(this);
   }
 }

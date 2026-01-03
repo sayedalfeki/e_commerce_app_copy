@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import '../../feature/forget_password/presentation/forget_password/view/forget_password_screen.dart';
 import '../../feature/forget_password/presentation/reset_password/view/reset_password_screen.dart';
 import '../../feature/forget_password/presentation/verify_otp/view/verify_otp_screen.dart';
+import '../../feature/occasions/presentation/view/occasions_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {
@@ -28,7 +29,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) =>  ResetPasswordScreen(email));
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      
+      case Routes.occasions:
+        return MaterialPageRoute(builder: (_) => OccasionsScreen());
       default:
         return unDefinedRoute();
     }
