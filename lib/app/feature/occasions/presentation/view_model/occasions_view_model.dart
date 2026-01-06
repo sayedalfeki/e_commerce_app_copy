@@ -4,6 +4,7 @@ import 'package:flower_app/app/feature/occasions/domain/use_case/get_all_occasio
 import 'package:flower_app/app/feature/occasions/presentation/view_model/occasions_event.dart';
 import 'package:flower_app/app/feature/occasions/presentation/view_model/occasions_intent.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../config/base_response/base_response.dart';
 import '../../../../config/base_state/base_state.dart';
 import '../../domain/use_case/get_products_occasion_use_case.dart';
@@ -39,7 +40,7 @@ class OccasionsViewModel extends CustomCubit<OccasionsEvent, OccasionsState> {
         );
         emit(baseState);
         _getProductsOccasion(
-          '${state.allOccasionsState.success?.occasionsEntity?[0].id}7',
+          '${state.allOccasionsState.success?.occasionsEntity?[0].id}',
         );
         break;
       case ErrorResponse():
@@ -54,40 +55,45 @@ class OccasionsViewModel extends CustomCubit<OccasionsEvent, OccasionsState> {
     }
   }
 
-  _getOccasion(int index) {
+  void _getOccasion(int index) {
     baseState = state.copyWith(
       allOccasionsState: OccasionBaseState(index: index),
     );
     emit(baseState);
     _getProductsOccasion(
-      '${state.allOccasionsState.success?.occasionsEntity?[index].id}6',
+      '${state.allOccasionsState.success?.occasionsEntity?[index].id}',
     );
   }
 
   Future<void> _getProductsOccasion(String occasionId) async {
-    baseState = state.copyWith(
-      productsOccasionState: BaseState(isLoading: true),
-    );
-    emit(baseState);
+    emit(state.copyWith(
+        productsOccasionState: BaseState(isLoading: true,),
+        clearSuccess: true,
+        clearError: true
+    ));
     final response = await _productsOccasionUseCase.invoke(occasionId);
     switch (response) {
       case SuccessResponse<ProductsOccasionEntity>():
-        baseState = state.copyWith(
+        emit(state.copyWith(
           productsOccasionState: BaseState(
             isLoading: false,
             success: response.data,
           ),
-        );
-        emit(baseState);
+            clearError: true
+        ));
+        // emit(baseState);
+        break;
       case ErrorResponse<ProductsOccasionEntity>():
-        baseState = state.copyWith(
+        emit(state.copyWith(
           productsOccasionState: BaseState(
             isLoading: false,
             success: null,
             error: response.error,
           ),
-        );
-        emit(baseState);
+            clearSuccess: true
+        ));
+        // emit(baseState);
+        break;
     }
   }
 
@@ -100,6 +106,7 @@ class OccasionsViewModel extends CustomCubit<OccasionsEvent, OccasionsState> {
         _getOccasion((intent.index));
         break;
       case GetProductsOccasionIntent():
+        _getProductsOccasion(intent.occasionId);
     }
   }
 }

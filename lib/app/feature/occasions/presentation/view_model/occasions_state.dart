@@ -6,12 +6,12 @@ import '../../domain/model/products_occasion_entity.dart';
 class OccasionsState {
   final OccasionBaseState allOccasionsState;
   final BaseState<ProductsOccasionEntity> productsOccasionState;
-
   OccasionsState(
       {required this.allOccasionsState, required this.productsOccasionState});
 
   OccasionsState copyWith({OccasionBaseState? allOccasionsState,
-    BaseState<ProductsOccasionEntity>? productsOccasionState}) {
+    BaseState<
+        ProductsOccasionEntity>? productsOccasionState, bool clearSuccess = false, bool clearError = false}) {
     return OccasionsState(
         allOccasionsState: OccasionBaseState(
           isLoading: allOccasionsState?.isLoading ??
@@ -23,17 +23,17 @@ class OccasionsState {
         productsOccasionState: BaseState(
           isLoading: productsOccasionState?.isLoading ??
               this.productsOccasionState.isLoading,
-          success: productsOccasionState?.success ??
-              this.productsOccasionState.success,
-          error: productsOccasionState?.error ??
-              this.productsOccasionState.error,
+          success: clearSuccess ? null : (productsOccasionState?.success ??
+              this.productsOccasionState.success),
+          error: clearError ? null : (productsOccasionState?.error ??
+              this.productsOccasionState.error),
         )
     );
   }
 }
 
 class OccasionBaseState extends BaseState<AllOccasionsEntity> {
-  OccasionBaseState(
+  const OccasionBaseState(
       {this.index = 0, super.isLoading, super.success, super.error});
 
   final int index;

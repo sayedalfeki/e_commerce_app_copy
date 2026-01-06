@@ -1,4 +1,3 @@
-import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/model/products_occasion_entity.dart';
@@ -6,14 +5,17 @@ import '../../../domain/model/products_occasion_entity.dart';
 class ProductCartItem extends StatelessWidget {
   const ProductCartItem({super.key, required this.productOccasionEntity});
 
-  final ProductOccasionEntity productOccasionEntity;
+  final ProductOccasionEntity? productOccasionEntity;
 
   @override
   Widget build(BuildContext context) {
     double discount =
-        (productOccasionEntity.price! /
-            productOccasionEntity.priceAfterDiscount!.toInt()) *
-        100;
+        productOccasionEntity?.price != null &&
+            productOccasionEntity?.priceAfterDiscount != null
+        ? (productOccasionEntity!.price! /
+                  productOccasionEntity!.priceAfterDiscount!.toInt()) *
+              100
+        : 0;
     return Container(
       padding: EdgeInsets.all(8),
       margin: EdgeInsets.all(8),
@@ -27,20 +29,22 @@ class ProductCartItem extends StatelessWidget {
           Expanded(
             child: Container(
               alignment: Alignment.center,
-              child: Image.network(
-                productOccasionEntity.imgCover ?? '',
-                fit: BoxFit.cover,
+              child: productOccasionEntity == null
+                  ? Icon(Icons.not_interested)
+                  : Image.network(
+                      productOccasionEntity?.imgCover ?? '',
+                      fit: BoxFit.cover,
               ),
             ),
           ),
-          Text(productOccasionEntity.title ?? ''),
+          Text(productOccasionEntity?.title ?? ''),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('EGP'),
-              Text('${productOccasionEntity.priceAfterDiscount}'),
+              Text('${productOccasionEntity?.priceAfterDiscount ?? 0}'),
               Text(
-                '${productOccasionEntity.price}',
+                '${productOccasionEntity?.price ?? 0}',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   decoration: TextDecoration.lineThrough,
                 ),
@@ -48,8 +52,9 @@ class ProductCartItem extends StatelessWidget {
               Text('${discount.toInt()}%'),
             ],
           ),
-          ElevatedButton(
-            onPressed: () {},
+          productOccasionEntity != null
+              ? ElevatedButton(
+                  onPressed: () {},
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -58,7 +63,8 @@ class ProductCartItem extends StatelessWidget {
                 Text('Add to cart'),
               ],
             ),
-          ),
+                )
+              : SizedBox(),
         ],
       ),
     );

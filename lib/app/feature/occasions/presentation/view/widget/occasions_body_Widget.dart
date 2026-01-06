@@ -5,6 +5,7 @@ import 'package:flower_app/app/feature/occasions/presentation/view/widget/all_oc
 import 'package:flower_app/app/feature/occasions/presentation/view/widget/product_cart_item.dart';
 import 'package:flower_app/app/feature/occasions/presentation/view_model/occasions_state.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../../core/reusable_widgets/custom_error_widget.dart';
 import '../../view_model/occasions_intent.dart';
 import '../../view_model/occasions_view_model.dart';
@@ -80,8 +81,16 @@ class OccasionsBodyWidget extends StatelessWidget {
           state.productsOccasionState.isLoading == true
               ? LoadingWidget()
               : state.productsOccasionState.success != null
-              ? Expanded(
-                  child: GridView.builder(
+              ? state.productsOccasionState.success?.product != null &&
+              state.productsOccasionState.success!.product!.isEmpty ?
+          Container(
+              height: MediaQuery
+                  .sizeOf(context)
+                  .height * .25,
+              child: ProductCartItem(productOccasionEntity: null)) :
+          Expanded(
+            child:
+            GridView.builder(
                     itemCount:
                         state.productsOccasionState.success!.product!.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -105,7 +114,13 @@ class OccasionsBodyWidget extends StatelessWidget {
                     state.productsOccasionState.error,
                   ),
                   onRetry: () {
-                    occasionsViewModel.doIntent(AllOccasionsIntent());
+                    occasionsViewModel.doIntent(
+                        GetProductsOccasionIntent(occasionId:
+                        state.allOccasionsState.success?.occasionsEntity?[
+                        state.allOccasionsState.index
+                        ].id ?? ''
+                        )
+                    );
                   },
                 )
               : Container(),
