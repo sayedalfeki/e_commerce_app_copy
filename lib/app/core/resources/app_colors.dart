@@ -8,4 +8,6 @@ abstract class AppColors {
   static const Color blackColor = Colors.black;
   static const Color errorColor = Colors.red;
   static const Color grayColor = Color(0xFF535353);
+  static const Color unSelectedSectionGreyColor=Color(0xFF7D7D7D);
+  static const Color borderBottomNavBarColor=Color(0xFFCFCFCF);
 }

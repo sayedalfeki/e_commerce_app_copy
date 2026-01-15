@@ -69,5 +69,14 @@
   "networkError": "No internet connection",
   "serverError": "Something went wrong. Please try again",
   "retry": "Retry",
-  "noProductsForOccasion": "No products available for this occasion"
+  "noProductsForOccasion": "No products available for this occasion",
+  "categories": "Categories",
+  "cart": "Cart",
+  "profile": "Profile",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "accountcreatedsuccessfully": "Account Created Successfully",
+  "creatinganaccountyouagreetoour": "Creating an account, you agree to our",
+  "termsandconditions": "Terms&Conditions"
 }

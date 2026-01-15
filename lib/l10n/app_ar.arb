@@ -70,5 +70,14 @@
   "networkError": "لا يوجد اتصال بالإنترنت",
   "serverError": "حدث خطأ ما. يرجى المحاولة مرة أخرى",
   "retry": "إعادة المحاولة",
-  "noProductsForOccasion": "لا توجد منتجات متاحة لهذه المناسبة"
+  "noProductsForOccasion": "لا توجد منتجات متاحة لهذه المناسبة",
+  "categories": "الفئات",
+  "cart": "عربة التسوق",
+  "profile": "الملف الشخصي",
+  "gender": "الجنس",
+  "male": "ذكر",
+  "female": "انثى",
+  "accountcreatedsuccessfully": "تم إنشاء الحساب بنجاح",
+  "creatinganaccountyouagreetoour": "بإنشاء حساب، فإنك توافق على شروطنا",
+  "termsandconditions": "الشروط والأحكام"
 }
