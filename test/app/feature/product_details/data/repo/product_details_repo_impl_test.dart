@@ -22,7 +22,7 @@ void main() {
     test("Test Success case with Product Details", ()async{
 
       when(productDetailsRepoImpl.getProductDetails("fdsd342412weqs")).thenAnswer((_) async{
-        return await SuccessResponse<ProductDetailsModel>(data: ProductDetailsModel(id:"fdsd342412weqs"));
+        return SuccessResponse<ProductDetailsModel>(data: ProductDetailsModel(id:"fdsd342412weqs"));
       },);
       var response = await productDetailsRepoImpl.getProductDetails("fdsd342412weqs");
       expect(response, isA<SuccessResponse<ProductDetailsModel>>());
@@ -31,7 +31,7 @@ void main() {
 
     test("Test Error case with Product Details", ()async{
       when(productDetailsRepoImpl.getProductDetails("fdsd342412weqs")).thenAnswer((_) async{
-        return await ErrorResponse<ProductDetailsModel>(error: Exception());
+        return ErrorResponse<ProductDetailsModel>(error: Exception());
       },);
       var result = await productDetailsRepoImpl.getProductDetails("fdsd342412weqs");
       expect(result, isA<ErrorResponse<ProductDetailsModel>>());

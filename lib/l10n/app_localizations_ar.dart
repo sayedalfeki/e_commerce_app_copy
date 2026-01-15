@@ -218,4 +218,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get instock => 'في المخزن';
+
+  @override
+  String get bouquetinclude => 'الباقه تحتوي على';
+
+  @override
+  String get egp => 'ج.م';
 }

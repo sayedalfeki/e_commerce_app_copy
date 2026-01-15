@@ -8,19 +8,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsScreen extends StatelessWidget{
+  String? productId;
+  ProductDetailsScreen({this.productId});
   ProductDetailsViewModel viewModel = getIt<ProductDetailsViewModel>();
   @override
   Widget build(BuildContext context) {
-    var widht = MediaQuery.of(context).size.width;
+    var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    viewModel.doIntent(GetProductDetailsEvent("673e1cd711599201718280fb"));
+    viewModel.doIntent(GetProductDetailsEvent(productId??"673e1cd711599201718280fb"));
     return BlocProvider<ProductDetailsViewModel>(
       create: (context) => viewModel,
       
       child:Scaffold(
-      //appBar: AppBar(
-      //  backgroundColor: Colors.transparent,
-      //),
+      
       body:BlocBuilder<ProductDetailsViewModel,ProductDetailsStates>(
         builder: (context, state) {
           if(state.productDetailsState?.isLoading==true){
@@ -32,8 +32,7 @@ class ProductDetailsScreen extends StatelessWidget{
               slivers: [
               SliverAppBar(
                 pinned: true,
-                //title: Text(state.productDetailsState!.data!.title!,style: Theme.of(context).textTheme.headlineMedium,),
-                //centerTitle: true,
+                
                 leading: Icon(Icons.arrow_back_ios_rounded),
                 expandedHeight: height*0.50,
                 flexibleSpace: FlexibleSpaceBar(
@@ -43,7 +42,7 @@ class ProductDetailsScreen extends StatelessWidget{
                     color: AppColors.secondaryColor,
                     child: SizedBox(
                       height: height*0.50,
-                      child: CarouselView(itemExtent: widht,
+                      child: CarouselView(itemExtent: width,
                        
                        itemSnapping: true,
                        children: state.productDetailsState!.data!.images!.map((e) {
@@ -66,7 +65,7 @@ class ProductDetailsScreen extends StatelessWidget{
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Row(
                     children: [
-                      Text("EGP ${state.productDetailsState!.data!.price}",style: Theme.of(context).textTheme.headlineLarge,),
+                      Text("${AppLocale(context).egp} ${state.productDetailsState!.data!.price}",style: Theme.of(context).textTheme.headlineLarge,),
                       Spacer(),
                       Text("${AppLocale(context).status} :",style: Theme.of(context).textTheme.headlineLarge),
                       Text(state.productDetailsState!.data!.quantity! <=0?AppLocale(context).outofstock:AppLocale(context).instock,
@@ -111,7 +110,7 @@ class ProductDetailsScreen extends StatelessWidget{
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text("Bouquet include",style:Theme.of(context).textTheme.headlineLarge ,),
+                  child: Text(AppLocale(context).bouquetinclude,style:Theme.of(context).textTheme.headlineLarge ,),
                 ),
               ),
               SliverToBoxAdapter(
@@ -120,7 +119,7 @@ class ProductDetailsScreen extends StatelessWidget{
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text("White wrap",style:Theme.of(context).textTheme.headlineMedium ,),
+                  child: Text(state.productDetailsState!.data!.description??"",style:Theme.of(context).textTheme.headlineMedium ,),
                 ),
               ),
               SliverToBoxAdapter(
@@ -138,7 +137,7 @@ class ProductDetailsScreen extends StatelessWidget{
 
           }else{
 
-            return Container(child:Text("Erroooor"));
+            return Container();
 
           }
         },

@@ -20,7 +20,7 @@ void main() {
     test("Test Success case with Product Details", ()async{
 
       when(productDetailsRemoteDataSourceImpl.getProductDetails("fdsd342412weqs")).thenAnswer((_) async{
-        return await SuccessResponse<ProductDetailsDto>(data: ProductDetailsDto(message: "success",product: Product(id:"fdsd342412weqs")));
+        return  SuccessResponse<ProductDetailsDto>(data: ProductDetailsDto(message: "success",product: Product(id:"fdsd342412weqs")));
       },);
       var response = await productDetailsRemoteDataSourceImpl.getProductDetails("fdsd342412weqs");
       expect(response, isA<SuccessResponse<ProductDetailsDto>>());
@@ -29,7 +29,7 @@ void main() {
 
     test("Test Error case with Product Details", ()async{
       when(productDetailsRemoteDataSourceImpl.getProductDetails("fdsd342412weqs")).thenAnswer((_) async{
-        return await ErrorResponse<ProductDetailsDto>(error: Exception());
+        return  ErrorResponse<ProductDetailsDto>(error: Exception());
       },);
       var result = await productDetailsRemoteDataSourceImpl.getProductDetails("fdsd342412weqs");
       expect(result, isA<ErrorResponse<ProductDetailsDto>>());

@@ -4,7 +4,6 @@ import 'package:flower_app/app/feature/auth/presentation/views/screen/login/logi
 import 'package:flower_app/app/feature/auth/presentation/views/screen/register/register_Screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/screen/home_screen.dart';
 import 'package:flower_app/app/feature/product_details/presentation/views/screens/product_details_screen.dart';
-import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.dart';
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +14,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
-      case Routes.register:
-        return MaterialPageRoute(builder: (_) =>  SignupScreen());
+      
       case Routes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
       case Routes.home:

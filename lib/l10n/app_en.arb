@@ -66,5 +66,7 @@
   "description":"Description",
   "addtocart":"Add to cart",
   "outofstock":"Out of Stock",
-  "instock":"In Stock"
+  "instock":"In Stock",
+  "bouquetinclude":"Bouquet include",
+  "egp":"EGP"
 }

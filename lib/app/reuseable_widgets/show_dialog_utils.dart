@@ -28,32 +28,32 @@ class ShowDialogUtils {
 
   static void showMessage(
     BuildContext context, {
-    String? Title,
-    String? Content,
-    String? PosActionName,
-    Function? PosAction,
-    String? NigActionName,
-    Function? NigAction,
+    String? title,
+    String? content,
+    String? posActionName,
+    Function? posAction,
+    String? nigActionName,
+    Function? nigAction,
   }) {
-    List<Widget> Actions = [];
+    List<Widget> actions = [];
 
-    if (PosActionName != null) {
-      Actions.add(
+    if (posActionName != null) {
+      actions.add(
         TextButton(
           onPressed: () {
-            PosAction == null ? Navigator.pop(context) : PosAction.call();
+            posAction == null ? Navigator.pop(context) : posAction.call();
           },
-          child: Text(PosActionName, style:Theme.of(context).textTheme.headlineMedium),
+          child: Text(posActionName, style:Theme.of(context).textTheme.headlineMedium),
         ),
       );
     }
-    if (NigActionName != null) {
-      Actions.add(
+    if (nigActionName != null) {
+      actions.add(
         TextButton(
           onPressed: () {
-            NigAction == null ? Navigator.pop(context) : NigAction.call();
+            nigAction == null ? Navigator.pop(context) : nigAction.call();
           },
-          child: Text(NigActionName, style: Theme.of(context).textTheme.headlineMedium),
+          child: Text(nigActionName, style: Theme.of(context).textTheme.headlineMedium),
         ),
       );
     }
@@ -61,9 +61,9 @@ class ShowDialogUtils {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(Title ?? "", style: Theme.of(context).textTheme.headlineMedium),
-          content: Text(Content ?? '', style: Theme.of(context).textTheme.headlineMedium),
-          actions: Actions,
+          title: Text(title ?? "", style: Theme.of(context).textTheme.headlineMedium),
+          content: Text(content ?? '', style: Theme.of(context).textTheme.headlineMedium),
+          actions: actions,
           backgroundColor: Colors.white,
         );
       },

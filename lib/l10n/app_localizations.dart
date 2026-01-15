@@ -505,6 +505,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'In Stock'**
   String get instock;
+
+  /// No description provided for @bouquetinclude.
+  ///
+  /// In en, this message translates to:
+  /// **'Bouquet include'**
+  String get bouquetinclude;
+
+  /// No description provided for @egp.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get egp;
 }
 
 class _AppLocalizationsDelegate

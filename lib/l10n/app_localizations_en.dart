@@ -218,4 +218,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get instock => 'In Stock';
+
+  @override
+  String get bouquetinclude => 'Bouquet include';
+
+  @override
+  String get egp => 'EGP';
 }
