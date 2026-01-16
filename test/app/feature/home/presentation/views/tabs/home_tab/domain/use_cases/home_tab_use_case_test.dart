@@ -24,8 +24,8 @@ void main() {
       when(mockHomeTabRepoImpl.getHomeTabDetails()).thenAnswer(
         (_) async=> SuccessResponse<GetHomeTabResponseModel>(data: dummyRes),
       );
-      final reult=await homeTabUseCase.call();
-      expect(reult, isA<SuccessResponse<GetHomeTabResponseModel>>());
+      final result=await homeTabUseCase.call();
+      expect(result, isA<SuccessResponse<GetHomeTabResponseModel>>());
       verify(mockHomeTabRepoImpl.getHomeTabDetails()).called(1);
     },);
   },);
@@ -34,8 +34,8 @@ void main() {
     when(mockHomeTabRepoImpl.getHomeTabDetails()).thenAnswer(
       (_)async => ErrorResponse<GetHomeTabResponseModel>(error: dummyError),
     );
-    final reult=await homeTabUseCase.call();
-    expect(reult, isA<ErrorResponse<GetHomeTabResponseModel>>());
+    final result=await homeTabUseCase.call();
+    expect(result, isA<ErrorResponse<GetHomeTabResponseModel>>());
     verify(mockHomeTabRepoImpl.getHomeTabDetails()).called(1);
   },);
 }

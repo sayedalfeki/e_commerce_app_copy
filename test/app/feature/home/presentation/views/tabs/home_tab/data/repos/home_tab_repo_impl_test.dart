@@ -22,7 +22,7 @@ void main() {
     homeTabRepoImpl=HomeTabRepoImpl(mockHomeTabRemoteDataSourceImpl);
   },);
   group('getHomeTabDetails test cases', () {
-    test('success case with home tab resonse',() async{
+    test('success case with home tab response',() async{
       GetHomeTabResponse dummyHomeTabResponse=GetHomeTabResponse(
         bestSeller: [BestSellerDTO(id: 'id1',title: 'title1'),BestSellerDTO(id: 'id2',title: 'title2')],
         categories: [CategoryDTO(id: 'id1',name: 'name1'),CategoryDTO(id: 'id2',name: 'name2')],

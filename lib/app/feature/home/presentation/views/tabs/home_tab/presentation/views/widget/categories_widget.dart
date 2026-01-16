@@ -25,11 +25,11 @@ class CategoriesWidget extends StatelessWidget {
                   color: AppColors.lightPinkColor,
                   borderRadius: BorderRadius.circular(0.05*width),
                   border: Border.all(width: 2,color: AppColors.lightPinkColor),
-                  image: DecorationImage(image: NetworkImage(categoryModels[index].image!,),fit: BoxFit.contain)
+                  image: DecorationImage(image: NetworkImage(categoryModels[index].image ?? '',),fit: BoxFit.contain)
                 ),
               ),
               SizedBox(height: 0.01*height,),
-              Text(categoryModels[index].name!,style: Theme.of(context).textTheme.labelMedium?.copyWith(
+              Text(categoryModels[index].name ?? '',style: Theme.of(context).textTheme.labelMedium?.copyWith(
                 fontSize: FontSize.s14,
                 color: AppColors.blackColor
               ),)

@@ -25,11 +25,11 @@ class BestSellerWidget extends StatelessWidget {
                 Container(
                   height: 0.18*height,
                   decoration: BoxDecoration(
-                    image: DecorationImage(image: NetworkImage(bestSellers[index].imgCover!),fit: BoxFit.cover)
+                    image: DecorationImage(image: NetworkImage(bestSellers[index].imgCover ?? ''),fit: BoxFit.cover)
                   ),
                 ),
                 SizedBox(height: 0.01*height,),
-                Text(bestSellers[index].title!,style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                Text(bestSellers[index].title ?? '',style: Theme.of(context).textTheme.labelMedium?.copyWith(
                   fontSize: FontSize.s12,
                   color: AppColors.blackColor
                 ),),

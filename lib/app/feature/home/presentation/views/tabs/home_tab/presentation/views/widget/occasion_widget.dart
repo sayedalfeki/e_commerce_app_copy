@@ -23,11 +23,11 @@ class OccasionWidget extends StatelessWidget {
                 Container(
                   height: 0.18*height,
                   decoration: BoxDecoration(
-                    image: DecorationImage(image: NetworkImage(occasions[index].image!),fit: BoxFit.cover)
+                    image: DecorationImage(image: NetworkImage(occasions[index].image ??''),fit: BoxFit.cover)
                   ),
                 ),
                 SizedBox(height: 0.01*height,),
-                Text(occasions[index].name!,style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: FontSize.s14),)
+                Text(occasions[index].name ?? '',style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: FontSize.s14),)
               ],
             ),
           );
