@@ -223,15 +223,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loading => 'Loading...';
 
   @override
-  String get gender => 'Gender';
+  String get cancel => 'cancel';
 
   @override
-  String get male => 'Male';
+  String get ok => 'ok';
 
   @override
-  String get female => 'Female';
+  String get confirm => 'confirm';
 
   @override
+  String get connectionFailed => 'No Internet Connection';
+
+  @override
+  String get invalidOtp => 'invalid code';
+  @override
+  String get continueAsGuest => 'Continue as guest';
+  @override
+  String get welcome => 'Welcome';
+
   String get accountcreatedsuccessfully => 'Account Created Successfully';
 
   @override

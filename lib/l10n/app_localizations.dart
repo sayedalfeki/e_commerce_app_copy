@@ -511,6 +511,32 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Loading...'**
   String get loading;
+  String get cancel;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'ok'**
+  String get ok;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'confirm'**
+  String get confirm;
+
+  /// No description provided for @connectionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'No Internet Connection'**
+  String get connectionFailed;
+
+  /// No description provided for @invalidOtp.
+  ///
+  /// In en, this message translates to:
+  /// **'invalid code'**
+  String get invalidOtp;
+  String get continueAsGuest;
 
   /// No description provided for @gender.
   ///
@@ -535,18 +561,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Account Created Successfully'**
   String get accountcreatedsuccessfully;
-
-  /// No description provided for @creatinganaccountyouagreetoour.
-  ///
-  /// In en, this message translates to:
-  /// **'Creating an account, you agree to our'**
-  String get creatinganaccountyouagreetoour;
-
-  /// No description provided for @termsandconditions.
-  ///
-  /// In en, this message translates to:
-  /// **'Terms&Conditions'**
-  String get termsandconditions;
 }
 
 class _AppLocalizationsDelegate

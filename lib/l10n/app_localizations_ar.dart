@@ -223,7 +223,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loading => 'جاري التحميل...';
 
   @override
-  String get gender => 'الجنس';
+  String get welcome => 'مرحباً';
+  @override
+  String get cancel => 'الغاء';
 
   @override
   String get male => 'ذكر';
@@ -233,11 +235,4 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
-
-  @override
-  String get creatinganaccountyouagreetoour =>
-      'بإنشاء حساب، فإنك توافق على شروطنا';
-
-  @override
-  String get termsandconditions => 'الشروط والأحكام';
 }
