@@ -61,7 +61,7 @@
 "male":"ذكر",
 "female":"انثى",
 "accountcreatedsuccessfully":"تم إنشاء الحساب بنجاح",
-"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا"
+"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا",
 "termsandconditions":"الشروط والأحكام",
 "categories": "الفئات",
   "cart": "عربة التسوق",
@@ -80,5 +80,5 @@
     "confirm":"تأكيد",
     "connectionFailed":"لا يوجد اتصال بالانترنت",
     "invalidOtp":"كود غير صحيح",
-    "continueAsGuest": "المتابعة كزائر",
+    "continueAsGuest": "المتابعة كزائر"
 }

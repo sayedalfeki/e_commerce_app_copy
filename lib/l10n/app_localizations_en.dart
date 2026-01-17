@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -232,15 +233,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirm => 'confirm';
 
   @override
-  String get connectionFailed => 'No Internet Connection';
-
-  @override
   String get invalidOtp => 'invalid code';
+
   @override
   String get continueAsGuest => 'Continue as guest';
-  @override
-  String get welcome => 'Welcome';
 
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
   String get accountcreatedsuccessfully => 'Account Created Successfully';
 
   @override
