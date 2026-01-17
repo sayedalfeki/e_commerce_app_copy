@@ -28,6 +28,7 @@ import 'package:mockito/src/dummies.dart' as _i7;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
+// ignore_for_file: invalid_use_of_internal_member
 
 class _FakeSignupApiClient_0 extends _i1.SmartFake
     implements _i2.SignupApiClient {
@@ -56,11 +57,10 @@ class MockSignupRemoteDataSourceImpl extends _i1.Mock
           as _i2.SignupApiClient);
 
   @override
-  set signupApiClient(_i2.SignupApiClient? _signupApiClient) =>
-      super.noSuchMethod(
-        Invocation.setter(#signupApiClient, _signupApiClient),
-        returnValueForMissingStub: null,
-      );
+  set signupApiClient(_i2.SignupApiClient? value) => super.noSuchMethod(
+    Invocation.setter(#signupApiClient, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   _i4.Future<_i5.BaseResponse<_i6.SignupDto>> register(

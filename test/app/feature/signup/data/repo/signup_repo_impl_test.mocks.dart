@@ -28,6 +28,7 @@ import 'package:mockito/src/dummies.dart' as _i7;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
+// ignore_for_file: invalid_use_of_internal_member
 
 class _FakeSignupRemoteDataSourceContract_0 extends _i1.SmartFake
     implements _i2.SignupRemoteDataSourceContract {
@@ -57,9 +58,9 @@ class MockSignupRepoImpl extends _i1.Mock implements _i3.SignupRepoImpl {
           as _i2.SignupRemoteDataSourceContract);
 
   @override
-  set signupRemote(_i2.SignupRemoteDataSourceContract? _signupRemote) =>
+  set signupRemote(_i2.SignupRemoteDataSourceContract? value) =>
       super.noSuchMethod(
-        Invocation.setter(#signupRemote, _signupRemote),
+        Invocation.setter(#signupRemote, value),
         returnValueForMissingStub: null,
       );
 

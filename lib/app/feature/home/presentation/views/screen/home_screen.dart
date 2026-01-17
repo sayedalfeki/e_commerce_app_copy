@@ -30,12 +30,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<HomeViewModel>(
-      create: (context) => viewModel,
+    return BlocProvider<HomeViewModel>.value(
+      value: viewModel,
       child: BlocBuilder<HomeViewModel,HomeStates>(
         builder: (context, state) {
           return Scaffold(
-            body: tabs[state.currAppTab.index],
+            body: IndexedStack(
+              index: state.currAppTab.index,
+              children: tabs,
+            ),
             bottomNavigationBar: Container(
               decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: AppColors.borderBottomNavBarColor,width: 1))
@@ -46,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 currentIndex: state.currAppTab.index,
                 onTap: (index) {
                   final tab=AppTab.values[index];
-                  viewModel.switchTab(tab);
+                  context.read<HomeViewModel>().switchTab(tab);
                 },
                 items: [
                   BottomNavigationBarItem(icon: Icon(Icons.home_outlined,),label: AppLocalizations.of(context)!.home),

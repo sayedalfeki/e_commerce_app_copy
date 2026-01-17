@@ -35,10 +35,9 @@ class SignupViewModel extends Cubit<SignupStates>{
 
     switch(signupResponse){
       case SuccessResponse():
-        emit(state.copyWith(signupStateParam: BaseState(data: signupResponse.data,isLoading: false)));
+        emit(state.copyWith(signupStateParam: BaseState(success: signupResponse.data,isLoading: false)));
       case ErrorResponse():
-        String errorMassege = signupResponse.error.toString();
-        emit(state.copyWith(signupStateParam: BaseState(errorMessage: errorMassege ,isLoading: false)));
+        emit(state.copyWith(signupStateParam: BaseState(error: signupResponse.error ,isLoading: false)));
     }
   }
 

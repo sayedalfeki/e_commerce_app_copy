@@ -184,16 +184,58 @@ class AppLocalizationsAr extends AppLocalizations {
   String get successMessage => 'تم التسجيل بنجاح';
 
   @override
-  String get loading => 'جاري التحميل...';
-
-  @override
   String get categories => 'الفئات';
 
   @override
   String get cart => 'عربة التسوق';
 
   @override
+  String get connectionFailed => 'لا يوجد اتصال بالانترنت';
+
+  @override
+  String get flowery => 'مُزْهَر';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get deliveryLocation => 'التوصيل إلى 2XVP+XC - الشيخ زايد';
+
+  @override
+  String get empty_data => 'لا توجد منتجات لعرضها';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get egyptianLivre => 'ج.م';
+
+  @override
+  String get occasion => 'المناسبة';
+
+  @override
+  String get bestSeller => 'الأكثر مبيعاً';
+
+  @override
   String get profile => 'الملف الشخصي';
+
+  @override
+  String get loading => 'جاري التحميل...';
+
+  @override
+  String get cancel => 'الغاء';
+
+  @override
+  String get ok => 'موافق';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get invalidOtp => 'كود غير صحيح';
+
+  @override
+  String get continueAsGuest => 'المتابعة كزائر';
 
   @override
   String get gender => 'الجنس';

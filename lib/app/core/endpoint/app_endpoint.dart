@@ -4,4 +4,9 @@ abstract class AppEndPoint {
   static const String changePassword = '/auth/changePassword';
   static const String login = "/auth/signin";
   static const String signUp = '/auth/signup';
+  //tabs end points
+  static const String home='/home';
+  static const String forgetPassword='/auth/forgotPassword';
+  static const String verifyOtp='/auth/verifyResetCode';
+  static const String resetPassword='/auth/resetPassword';
 }

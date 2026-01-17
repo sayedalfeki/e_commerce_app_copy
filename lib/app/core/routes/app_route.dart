@@ -3,7 +3,11 @@ abstract class Routes {
   static const String login = _Paths.loginScreen;
   static const String register = _Paths.registerScreen;
   static const String forgetPassword = _Paths.forgetPasswordScreen;
+  static const String resetPassword = _Paths.resetPasswordScreen;
+  static const String verifyOtp = _Paths.verifyOtpScreen;
   static const String home = _Paths.homeScreen;
+  static const String occasion = _Paths.occasionScreen;
+  static const String bestSeller=_Paths.bestSellerScreen;
 }
 
 abstract class _Paths {
@@ -11,5 +15,9 @@ abstract class _Paths {
   static const String loginScreen = 'Login';
   static const String registerScreen = 'Register';
   static const String forgetPasswordScreen = 'Forget_Password';
+  static const String verifyOtpScreen = 'Verify_Otp';
+  static const String resetPasswordScreen = 'Reset_Password';
   static const String homeScreen = 'Home';
+  static const String occasionScreen = 'Occasion';
+  static const String bestSellerScreen='Best_Seller';
 }
