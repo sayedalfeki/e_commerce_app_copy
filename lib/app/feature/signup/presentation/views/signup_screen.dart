@@ -1,5 +1,6 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/core/reusable_widgets/show_dialog_utils.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/core/utils/helper_function.dart';
@@ -7,7 +8,6 @@ import 'package:flower_app/app/core/validation/app_validators.dart';
 import 'package:flower_app/app/feature/signup/presentation/vie_model/signup_events.dart';
 import 'package:flower_app/app/feature/signup/presentation/vie_model/signup_states.dart';
 import 'package:flower_app/app/feature/signup/presentation/vie_model/signup_view_model.dart';
-import 'package:flower_app/app/reuseable_widgets/show_dialog_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
