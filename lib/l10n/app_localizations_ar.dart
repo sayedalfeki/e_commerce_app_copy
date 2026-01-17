@@ -184,10 +184,44 @@ class AppLocalizationsAr extends AppLocalizations {
   String get successMessage => 'تم التسجيل بنجاح';
 
   @override
-  String get loading => 'جاري التحميل...';
+  String get categories => 'الفئات';
 
   @override
-  String get welcome => 'مرحباً';
+  String get cart => 'عربة التسوق';
+
+  @override
+  String get connectionFailed => 'لا يوجد اتصال بالانترنت';
+
+  @override
+  String get flowery => 'مُزْهَر';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get deliveryLocation => 'التوصيل إلى 2XVP+XC - الشيخ زايد';
+
+  @override
+  String get empty_data => 'لا توجد منتجات لعرضها';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get egyptianLivre => 'ج.م';
+
+  @override
+  String get occasion => 'المناسبة';
+
+  @override
+  String get bestSeller => 'الأكثر مبيعاً';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get loading => 'جاري التحميل...';
+
   @override
   String get cancel => 'الغاء';
 
@@ -198,10 +232,27 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirm => 'تأكيد';
 
   @override
-  String get connectionFailed => 'لا يوجد اتصال بالانترنت';
+  String get invalidOtp => 'كود غير صحيح';
 
   @override
-  String get invalidOtp => 'كود غير صحيح';
-  @override
   String get continueAsGuest => 'المتابعة كزائر';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'انثى';
+
+  @override
+  String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get termsandconditions => 'الشروط والأحكام';
 }

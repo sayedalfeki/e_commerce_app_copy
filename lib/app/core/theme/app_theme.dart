@@ -1,7 +1,9 @@
 import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/resources/font_manager.dart';
+import 'package:flower_app/app/core/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
@@ -10,7 +12,7 @@ class AppTheme {
       primary: AppColors.primaryColor,
       secondary: AppColors.secondaryColor,
     ),
-    scaffoldBackgroundColor: AppColors.whiteColor,
+    scaffoldBackgroundColor: AppColors.secondaryColor,
 
     // appBarTheme
     appBarTheme: AppBarTheme(
@@ -45,6 +47,11 @@ class AppTheme {
         fontWeight: FontWeights.regular,
         color: AppColors.grayColor,
       ),
+      headlineLarge: GoogleFonts.inter(
+        fontSize: AppSize.s18,
+        fontWeight: FontWeights.medium,
+        color: AppColors.blackColor
+      ),
       headlineMedium: TextStyle(
         fontFamily: FontsFamily.roboto,
         fontSize: FontSize.s16,
@@ -63,13 +70,18 @@ class AppTheme {
         fontWeight: FontWeights.medium,
         color: AppColors.whiteColor,
       ),
+      bodyMedium: GoogleFonts.inter(
+        fontSize: FontSize.s16,
+        fontWeight: FontWeights.medium,
+        color: AppColors.blackColor
+      )
     ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor: AppColors.primaryColor,
-          unselectedItemColor: AppColors.unSelectedSectionGreyColor,
-          showSelectedLabels: true,
-          showUnselectedLabels: true
-      ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: AppColors.primaryColor,
+      unselectedItemColor: AppColors.unSelectedSectionGreyColor,
+      showSelectedLabels: true,
+      showUnselectedLabels: true
+    ),
     inputDecorationTheme: _inputDecorationTheme(),
   );
 }
@@ -90,4 +102,5 @@ InputDecorationTheme _inputDecorationTheme() => InputDecorationTheme(
   focusedErrorBorder: const OutlineInputBorder(
     borderSide: BorderSide(color: AppColors.errorColor, width: 1),
   ),
+  hintStyle: GoogleFonts.inter(fontWeight: FontWeights.medium,fontSize:AppSize.s14,color: AppColors.lightGrayColor),
 );

@@ -184,7 +184,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String get successMessage => 'Sign up is successful';
 
   @override
+  String get categories => 'Categories';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get connectionFailed => 'No Internet Connection';
+
+  @override
+  String get flowery => 'Flowery';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get deliveryLocation => 'Deliver to 2XVP+XC - Sheikh Zayed ';
+
+  @override
+  String get empty_data => 'No products to be shown';
+
+  @override
+  String get view_all => 'View All';
+
+  @override
+  String get egyptianLivre => 'EGP';
+
+  @override
+  String get occasion => 'Occasion';
+
+  @override
+  String get bestSeller => 'Best Seller';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
   String get loading => 'Loading...';
+
   @override
   String get cancel => 'cancel';
 
@@ -195,13 +232,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirm => 'confirm';
 
   @override
-  String get connectionFailed => 'No Internet Connection';
-
-  @override
   String get invalidOtp => 'invalid code';
+
   @override
   String get continueAsGuest => 'Continue as guest';
-  @override
-  String get welcome => 'Welcome';
 
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get accountcreatedsuccessfully => 'Account Created Successfully';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'Creating an account, you agree to our';
+
+  @override
+  String get termsandconditions => 'Terms&Conditions';
 }

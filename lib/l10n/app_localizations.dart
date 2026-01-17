@@ -434,11 +434,88 @@ abstract class AppLocalizations {
   /// **'Sign up is successful'**
   String get successMessage;
 
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
+
+  /// No description provided for @connectionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'No Internet Connection'**
+  String get connectionFailed;
+
+  /// No description provided for @flowery.
+  ///
+  /// In en, this message translates to:
+  /// **'Flowery'**
+  String get flowery;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @deliveryLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Deliver to 2XVP+XC - Sheikh Zayed '**
+  String get deliveryLocation;
+
+  /// No description provided for @empty_data.
+  ///
+  /// In en, this message translates to:
+  /// **'No products to be shown'**
+  String get empty_data;
+
+  /// No description provided for @view_all.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get view_all;
+
+  /// No description provided for @egyptianLivre.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get egyptianLivre;
+
+  /// No description provided for @occasion.
+  ///
+  /// In en, this message translates to:
+  /// **'Occasion'**
+  String get occasion;
+
+  /// No description provided for @bestSeller.
+  ///
+  /// In en, this message translates to:
+  /// **'Best Seller'**
+  String get bestSeller;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
   /// No description provided for @loading.
   ///
   /// In en, this message translates to:
   /// **'Loading...'**
   String get loading;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'cancel'**
   String get cancel;
 
   /// No description provided for @ok.
@@ -453,17 +530,16 @@ abstract class AppLocalizations {
   /// **'confirm'**
   String get confirm;
 
-  /// No description provided for @connectionFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'No Internet Connection'**
-  String get connectionFailed;
-
   /// No description provided for @invalidOtp.
   ///
   /// In en, this message translates to:
   /// **'invalid code'**
   String get invalidOtp;
+
+  /// No description provided for @continueAsGuest.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue as guest'**
   String get continueAsGuest;
 
   /// No description provided for @gender.
@@ -489,6 +565,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Account Created Successfully'**
   String get accountcreatedsuccessfully;
+
+  /// No description provided for @creatinganaccountyouagreetoour.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating an account, you agree to our'**
+  String get creatinganaccountyouagreetoour;
+
+  /// No description provided for @termsandconditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms&Conditions'**
+  String get termsandconditions;
 }
 
 class _AppLocalizationsDelegate

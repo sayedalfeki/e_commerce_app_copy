@@ -113,7 +113,8 @@ class SignupScreen extends StatelessWidget {
                           child: FormBuilderRadioGroup<String>(name: "",
                           focusColor: AppColors.primaryColor,
                           activeColor: AppColors.primaryColor,
-                              onSaved: (newValue) {
+
+                          onSaved: (newValue) {
                             signupViewModel.gender=newValue;
                           },
                           hoverColor: Colors.transparent,
@@ -172,7 +173,7 @@ class SignupScreen extends StatelessWidget {
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 signupViewModel.doIntent(
-                                  SignupEvent(),
+                                  SignupEvent(
                                   firstName:
                                       signupViewModel.firstNameController.text,
                                   lastName:
@@ -185,6 +186,8 @@ class SignupScreen extends StatelessWidget {
                                       .text,
                                   phone: signupViewModel.phoneController.text,
                                   gender: signupViewModel.gender??"female"
+                                  ),
+                                  
                                 );
                               }
                             },
@@ -234,23 +237,12 @@ class SignupScreen extends StatelessWidget {
         }, listener: (context, state) {
       if(state.signupState?.isLoading==true){
         ShowDialogUtils.showLoading(context);
-      } else if (state.signupState?.error != null) {
+      }else if (state.signupState?.error!=null){
         ShowDialogUtils.hideLoading(context);
-        ShowDialogUtils.showMessage(
-            context, Title: getException(context, state.signupState?.error),
-            NigActionName: "ok",
-            NigAction: () {
-              Navigator.pop(context);
-            });
-      } else if (state.signupState?.success != null) {
+        ShowDialogUtils.showMessage(context, Title: getException(context, state.signupState?.error),NigActionName: "ok",NigAction: (){Navigator.pop(context);});
+      }else if (state.signupState?.success!=null){
         ShowDialogUtils.hideLoading(context);
-        ShowDialogUtils.showMessage(
-            context, Title: AppLocale(context).accountcreatedsuccessfully,
-            NigActionName: "ok",
-            NigAction: () {
-              Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, Routes.login);
-            });
+        ShowDialogUtils.showMessage(context, Title: AppLocale(context).accountcreatedsuccessfully,NigActionName: "ok",NigAction: (){Navigator.pop(context);});
       }
         
     },
