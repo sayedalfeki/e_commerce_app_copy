@@ -68,7 +68,13 @@
   "bestSeller":"Best Seller",
   "profile":"Profile",
   "loading": "Loading...",
-   "cancel":"cancel",
+  "gender":"Gender",
+  "male":"Male",
+  "female":"Female",
+  "accountcreatedsuccessfully":"Account Created Successfully"
+  "creatinganaccountyouagreetoour":"Creating an account, you agree to our",
+  "termsandconditions":"Terms&Conditions",
+  "cancel":"cancel",
         "ok":"ok",
         "confirm":"confirm",
         "connectionFailed":"No Internet Connection",
@@ -82,5 +88,13 @@
            "termsandconditions":"Terms&Conditions",
            "categories":"Categories",
              "cart":"Cart",
-             "profile":"Profile"
+             "profile":"Profile",
+  "status":"status",
+  "allpricesincludetax":"All prices include tax",
+  "description":"Description",
+  "addtocart":"Add to cart",
+  "outofstock":"Out of Stock",
+  "instock":"In Stock",
+  "bouquetinclude":"Bouquet include",
+  "egp":"EGP"
 }

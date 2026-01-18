@@ -61,7 +61,7 @@
 "male":"ذكر",
 "female":"انثى",
 "accountcreatedsuccessfully":"تم إنشاء الحساب بنجاح",
-"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا",
+"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا"
 "termsandconditions":"الشروط والأحكام",
 "categories": "الفئات",
   "cart": "عربة التسوق",
@@ -76,9 +76,18 @@
   "occasion": "المناسبة",
   "bestSeller": "الأكثر مبيعاً",
   "cancel":"الغاء",
-    "ok":"موافق",
-    "confirm":"تأكيد",
-    "connectionFailed":"لا يوجد اتصال بالانترنت",
-    "invalidOtp":"كود غير صحيح",
-    "continueAsGuest": "المتابعة كزائر"
+  "ok":"موافق",
+  "confirm":"تأكيد",
+  "connectionFailed":"لا يوجد اتصال بالانترنت",
+  "invalidOtp":"كود غير صحيح",
+  "continueAsGuest": "المتابعة كزائر",
+  "status":"الحاله",
+  "allpricesincludetax":"جميع الأسعار تشمل الضريبة",
+  "description":"الوصف",
+  "addtocart":"أضف إلى السلة",
+  "outofstock":"إنتهى من المخزن",
+  "instock":"في المخزن",
+  "bouquetinclude":"الباقه تحتوي على",
+  "egp":"ج.م"
+
 }
