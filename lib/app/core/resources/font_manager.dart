@@ -1,6 +1,6 @@
 import 'dart:ui';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 abstract class FontsFamily {
   static const String roboto = 'Roboto';
@@ -20,6 +20,7 @@ abstract class FontWeights {
 }
 
 abstract class FontSize {
+
   static double s2 = 2.0.sp;
   static double s12 = 12.0.sp;
   static double s13 = 13.0.sp;

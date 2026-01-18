@@ -24,6 +24,7 @@ migrate_working_dir/
 #.vscode/
 
 # Flutter/Dart/Pub related
+pubspec.lock
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
@@ -43,6 +44,10 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+#generated files
+lib/app/config/di/di.config.dart
+*.g.dart
+*.mocks.dart
 lib/app/feature/product_details/api/api_client/api_client.g.dart
 lib/app/feature/product_details/data/models/product_details_dto.g.dart
 lib/app/config/di/di.config.dart

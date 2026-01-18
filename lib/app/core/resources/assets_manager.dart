@@ -3,11 +3,12 @@ const String iconsPath = "assets/icons";
 const String svgPath = "assets/svg";
 
 abstract class AssetsImage {
-  // static const String logo = '$imagePath/flower_logo.png';
+  static const String flower='$imagePath/Flower.png';
 }
 
 abstract class AssetsIcons {
   static const String logo = '$iconsPath/flower_logo.png';
+  static const String dropIcon='$iconsPath/drop -down icon.png';
 }
 
 abstract class AssetsSvg {
