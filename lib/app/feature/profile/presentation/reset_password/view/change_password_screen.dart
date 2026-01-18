@@ -76,7 +76,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               BackToEditProfileNavigationAction(),
             );
           },
-          text: AppLocale(context).password,
+          text: AppLocale(context).resetPassword,
         ),
         body: Stack(children: [ResetPasswordBody(_changePasswordViewModel)]),
       ),
