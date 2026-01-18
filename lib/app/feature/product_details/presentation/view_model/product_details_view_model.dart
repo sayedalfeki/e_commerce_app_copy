@@ -26,9 +26,9 @@ class ProductDetailsViewModel extends Cubit<ProductDetailsStates>{
     switch(response){
       
       case SuccessResponse<ProductDetailsModel>():
-        emit(state.copyWith(productDetailsStateParam: BaseState(isLoading: false,data: response.data)));
+        emit(state.copyWith(productDetailsStateParam: BaseState(isLoading: false,success: response.data)));
       case ErrorResponse<ProductDetailsModel>():
-        emit(state.copyWith(productDetailsStateParam: BaseState(isLoading: false,errorMessage: response.error.toString())));
+        emit(state.copyWith(productDetailsStateParam: BaseState(isLoading: false,error: response.error)));
     }
   }
 }

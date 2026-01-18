@@ -64,12 +64,6 @@ class AppTheme {
         fontWeight: FontWeights.medium,
         color: AppColors.blackColor,
       ),
-      headlineLarge: TextStyle(
-        fontFamily: FontsFamily.roboto,
-        fontSize: FontSize.s20,
-        fontWeight: FontWeights.bold,
-        color: AppColors.blackColor,
-      ),
       titleMedium: TextStyle(
         fontFamily: FontsFamily.roboto,
         fontSize: FontSize.s16,
