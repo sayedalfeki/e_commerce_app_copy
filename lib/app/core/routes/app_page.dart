@@ -1,5 +1,4 @@
 import 'package:flower_app/app/core/routes/app_route.dart';
-
 import 'package:flower_app/app/feature/auth/presentation/views/screen/login/login_Screen.dart';
 import 'package:flower_app/app/feature/best_seller/presentation/views/screen/best_seller_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/screen/home_screen.dart';
@@ -11,6 +10,7 @@ import 'package:flutter/material.dart';
 import '../../feature/forget_password/presentation/forget_password/view/forget_password_screen.dart';
 import '../../feature/forget_password/presentation/reset_password/view/reset_password_screen.dart';
 import '../../feature/forget_password/presentation/verify_otp/view/verify_otp_screen.dart';
+import '../../feature/profile/presentation/reset_password/view/change_password_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {
@@ -35,6 +35,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const OccasionScreen());
       case Routes.bestSeller:
         return MaterialPageRoute(builder: (_) => const BestSellerScreen());
+      case Routes.changePassword:
+        return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
 
       default:
         return unDefinedRoute();
