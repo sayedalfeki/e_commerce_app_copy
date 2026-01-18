@@ -255,4 +255,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsandconditions => 'Terms&Conditions';
+
+  @override
+  String get status => 'status';
+
+  @override
+  String get allpricesincludetax => 'All prices include tax';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get addtocart => 'Add to cart';
+
+  @override
+  String get outofstock => 'Out of Stock';
+
+  @override
+  String get instock => 'In Stock';
+
+  @override
+  String get bouquetinclude => 'Bouquet include';
+
+  @override
+  String get egp => 'EGP';
 }

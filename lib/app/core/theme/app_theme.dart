@@ -60,7 +60,7 @@ class AppTheme {
       ),
       headlineSmall: TextStyle(
         fontFamily: FontsFamily.roboto,
-        fontSize: 2,
+        fontSize: FontSize.s2,
         fontWeight: FontWeights.medium,
         color: AppColors.blackColor,
       ),

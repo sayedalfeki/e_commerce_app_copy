@@ -255,4 +255,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get termsandconditions => 'الشروط والأحكام';
+
+  @override
+  String get status => 'الحاله';
+
+  @override
+  String get allpricesincludetax => 'جميع الأسعار تشمل الضريبة';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get addtocart => 'أضف إلى السلة';
+
+  @override
+  String get outofstock => 'إنتهى من المخزن';
+
+  @override
+  String get instock => 'في المخزن';
+
+  @override
+  String get bouquetinclude => 'الباقه تحتوي على';
+
+  @override
+  String get egp => 'ج.م';
 }
