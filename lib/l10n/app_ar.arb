@@ -80,5 +80,11 @@
     "confirm":"تأكيد",
     "connectionFailed":"لا يوجد اتصال بالانترنت",
     "invalidOtp":"كود غير صحيح",
-    "continueAsGuest": "المتابعة كزائر"
+    "continueAsGuest": "المتابعة كزائر",
+    "current_password":"كلمة السر الحالية",
+     "new_password":"كلمة السر الجديدة",
+     "update":"تحديث",
+     "password_changed":"تم تغيير كلمة المرور بنجاح"
+
+
 }

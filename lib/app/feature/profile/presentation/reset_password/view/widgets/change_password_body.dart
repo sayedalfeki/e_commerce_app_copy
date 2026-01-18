@@ -45,8 +45,8 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
             TextFormField(
               controller: currentPasswordController,
               decoration: InputDecoration(
-                hintText: AppLocale(context).enterYourPassword,
-                labelText: AppLocale(context).password,
+                hintText: AppLocale(context).current_password,
+                labelText: AppLocale(context).current_password,
               ),
               validator: (value) =>
                   AppValidators.validatePassword(value, context),
@@ -55,8 +55,8 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
             TextFormField(
               controller: newPasswordController,
               decoration: InputDecoration(
-                hintText: AppLocale(context).enterYourPassword,
-                labelText: AppLocale(context).password,
+                hintText: AppLocale(context).new_password,
+                labelText: AppLocale(context).new_password,
               ),
               validator: (value) =>
                   AppValidators.validatePassword(value, context),
@@ -76,6 +76,9 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
             ),
             const SizedBox(height: 48),
             ElevatedButton(
+              style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                backgroundColor: WidgetStatePropertyAll(AppColors.grayColor),
+              ),
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   widget._changePasswordViewModel.doIntent(
@@ -89,7 +92,7 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                 }
               },
               child: Text(
-                AppLocale(context).confirm,
+                AppLocale(context).update,
                 style: Theme.of(
                   context,
                 ).textTheme.titleLarge?.copyWith(color: AppColors.whiteColor),

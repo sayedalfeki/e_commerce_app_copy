@@ -52,6 +52,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           );
         }
         if (state.changePasswordState.success != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(AppLocale(context).password_changed),
+            ),
+          );
           if (mounted) {
             Navigator.pushNamedAndRemoveUntil(
               context,
