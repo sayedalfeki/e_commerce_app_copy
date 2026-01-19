@@ -184,5 +184,99 @@ class AppLocalizationsAr extends AppLocalizations {
   String get successMessage => 'تم التسجيل بنجاح';
 
   @override
+  String get categories => 'الفئات';
+
+  @override
+  String get cart => 'عربة التسوق';
+
+  @override
+  String get connectionFailed => 'لا يوجد اتصال بالانترنت';
+
+  @override
+  String get flowery => 'مُزْهَر';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get deliveryLocation => 'التوصيل إلى 2XVP+XC - الشيخ زايد';
+
+  @override
+  String get empty_data => 'لا توجد منتجات لعرضها';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get egyptianLivre => 'ج.م';
+
+  @override
+  String get occasion => 'المناسبة';
+
+  @override
+  String get bestSeller => 'الأكثر مبيعاً';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
   String get loading => 'جاري التحميل...';
+
+  @override
+  String get cancel => 'الغاء';
+
+  @override
+  String get ok => 'موافق';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get invalidOtp => 'كود غير صحيح';
+
+  @override
+  String get continueAsGuest => 'المتابعة كزائر';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'انثى';
+
+  @override
+  String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get termsandconditions => 'الشروط والأحكام';
+
+  @override
+  String get status => 'الحاله';
+
+  @override
+  String get allpricesincludetax => 'جميع الأسعار تشمل الضريبة';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get addtocart => 'أضف إلى السلة';
+
+  @override
+  String get outofstock => 'إنتهى من المخزن';
+
+  @override
+  String get instock => 'في المخزن';
+
+  @override
+  String get bouquetinclude => 'الباقه تحتوي على';
+
+  @override
+  String get egp => 'ج.م';
 }
