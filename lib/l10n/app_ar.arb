@@ -61,12 +61,11 @@
 "male":"ذكر",
 "female":"انثى",
 "accountcreatedsuccessfully":"تم إنشاء الحساب بنجاح",
-"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا"
+"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا",
 "termsandconditions":"الشروط والأحكام",
 "categories": "الفئات",
   "cart": "عربة التسوق",
   "profile": "الملف الشخصي",
-  "connectionFailed":"لا يوجد اتصال بالانترنت",
   "flowery": "مُزْهَر",
   "search": "بحث",
   "deliveryLocation": "التوصيل إلى 2XVP+XC - الشيخ زايد",
@@ -89,5 +88,4 @@
   "instock":"في المخزن",
   "bouquetinclude":"الباقه تحتوي على",
   "egp":"ج.م"
-
 }
