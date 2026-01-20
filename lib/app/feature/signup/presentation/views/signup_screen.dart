@@ -92,7 +92,7 @@ class SignupScreen extends StatelessWidget {
                             hint: AppLocale(context).enterPasswordConfirm,
                             controller: signupViewModel.confirmPasswordController,
                             validator: (value) {
-                              AppValidators.validateConfirmPassword(value, signupViewModel.passwordController.text, context);
+                              return AppValidators.validateConfirmPassword(value, signupViewModel.passwordController.text, context);
                             },
                           ),
                         ),

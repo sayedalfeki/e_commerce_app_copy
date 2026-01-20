@@ -14,6 +14,7 @@ import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginViewModel viewModel = getIt<LoginViewModel>();
   LoginScreen({super.key});
