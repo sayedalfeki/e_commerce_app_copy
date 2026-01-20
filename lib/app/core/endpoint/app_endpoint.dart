@@ -13,4 +13,6 @@ abstract class AppEndPoint {
 
   // profile
   static const String profile = '/auth/profile-data';
+  static const String updateProfile = '/auth/editProfile';
+  static const String uploadPhoto = '/auth/upload-photo';
 }
