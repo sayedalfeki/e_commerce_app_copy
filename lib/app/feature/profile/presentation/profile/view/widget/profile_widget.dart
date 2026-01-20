@@ -52,14 +52,14 @@ class ProfileWidget extends StatelessWidget {
                       width: 15,
                       height: 15,
                       decoration: BoxDecoration(
-                        color: Colors.red,
+                        color: AppColors.primaryColor,
                         shape: BoxShape.circle,
                       ),
                       child: Text(
                         AppConsts.notificationNumber,
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontSize: 8,
-                          color: Colors.white,
+                          color: AppColors.whiteColor,
                         ),
                       ),
                     ),
