@@ -8,9 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsScreen extends StatelessWidget{
-  String? productId;
-  ProductDetailsScreen({this.productId});
-  ProductDetailsViewModel viewModel = getIt<ProductDetailsViewModel>();
+  final String? productId;
+
+  ProductDetailsScreen({super.key, this.productId});
+
+  final ProductDetailsViewModel viewModel = getIt<ProductDetailsViewModel>();
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;

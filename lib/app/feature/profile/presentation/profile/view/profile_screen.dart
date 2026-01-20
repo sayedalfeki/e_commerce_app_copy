@@ -19,7 +19,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     viewModel.doIntent(GetProfileAction());
   }
