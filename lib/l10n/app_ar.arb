@@ -60,9 +60,9 @@
 "gender":"الجنس",
 "male":"ذكر",
 "female":"انثى",
-"accountcreatedsuccessfully":"تم إنشاء الحساب بنجاح",
-"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا"
-"termsandconditions":"الشروط والأحكام",
+"account_created_successfully":"تم إنشاء الحساب بنجاح",
+"creating_an_account_you_agree_to_our":"بإنشاء حساب، فإنك توافق على شروطنا",
+"terms_and_conditions":"الشروط والأحكام",
 "categories": "الفئات",
   "cart": "عربة التسوق",
   "profile": "الملف الشخصي",
@@ -88,6 +88,14 @@
   "outofstock":"إنتهى من المخزن",
   "instock":"في المخزن",
   "bouquetinclude":"الباقه تحتوي على",
-  "egp":"ج.م"
+  "egp":"ج.م",
+  "my_orders":"hطلباتي",
+    "saved_addresses":"المواقع المحفوظة",
+    "notifications":"الاشعارات",
+    "language":"اللغة",
+    "english":"الانجليزية",
+    "arabic":"العربية",
+    "about_us":"عنا",
+    "logout":"خروج"
 
 }
