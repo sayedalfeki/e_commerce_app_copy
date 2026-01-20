@@ -23,6 +23,7 @@ void main() {
   late AuthDto authDto;
   late UpdateProfileRequest updateProfileRequest;
   late ProfilePhotoResponse profilePhotoResponse;
+  late File file;
   setUpAll(() {
     profileApiClient = MockProfileApiClient();
     profileRemoteDataSourceImpl = ProfileRemoteDataSourceImpl(profileApiClient);
@@ -38,6 +39,7 @@ void main() {
     profilePhotoResponse = ProfilePhotoResponse(
       message: 'success',
     );
+    file = File('test/resources/fake_image.png');
   });
   group('getProfile', () {
     test(
@@ -114,10 +116,10 @@ void main() {
     test(
       'when calling upload profile photo and api return success it should return data',
           () async {
-        when(profileApiClient.uploadPhoto(File(''))).thenAnswer((
+            when(profileApiClient.uploadPhoto(file)).thenAnswer((
             _) async => profilePhotoResponse);
         var result =
-        await profileRemoteDataSourceImpl.uploadPhoto(File(''))
+        await profileRemoteDataSourceImpl.uploadPhoto(file)
         as SuccessResponse<ProfilePhotoResponse>;
         expect(result, isA<SuccessResponse<ProfilePhotoResponse>>());
         expect(result.data, equals(profilePhotoResponse));
@@ -128,7 +130,7 @@ void main() {
       'when calling uploadProfilePhoto and api return error it should return exact error',
           () async {
         final ServerErrorResponse response = ServerErrorResponse(error: "Fail");
-        when(profileApiClient.uploadPhoto(File(''))).thenThrow(
+        when(profileApiClient.uploadPhoto(file)).thenThrow(
           DioException(
             requestOptions: RequestOptions(),
             type: DioExceptionType.badResponse,
@@ -139,7 +141,7 @@ void main() {
           ),
         );
         var result =
-        await profileRemoteDataSourceImpl.uploadPhoto(File(''))
+        await profileRemoteDataSourceImpl.uploadPhoto(file)
         as ErrorResponse<ProfilePhotoResponse>;
         expect(result, isA<ErrorResponse<ProfilePhotoResponse>>());
         expect(result.error, equals(ServerError(message: response.error)));

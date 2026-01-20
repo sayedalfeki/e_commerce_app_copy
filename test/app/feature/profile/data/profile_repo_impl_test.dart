@@ -12,6 +12,7 @@ import 'package:mockito/mockito.dart';
 
 import 'profile_repo_impl_test.mocks.dart';
 
+
 @GenerateMocks([ProfileDataSourceContract])
 void main() {
   late ProfileRepoImpl profileRepo;
@@ -19,7 +20,7 @@ void main() {
   late AuthDto authDto;
   late UpdateProfileRequest updateProfileRequest;
   late ProfilePhotoResponse profilePhotoResponse;
-
+  late File file;
   setUpAll(() {
     profileDataSourceContract = MockProfileDataSourceContract();
     profileRepo = ProfileRepoImpl(profileDataSourceContract);
@@ -30,7 +31,8 @@ void main() {
     );
     updateProfileRequest = UpdateProfileRequest(email: 's@yahoo.com');
     profilePhotoResponse = ProfilePhotoResponse(message: 'success');
-  })});
+    file = File('test/resources/fake_image.png');
+  });
 
   test('when calling getProfile it should get data from datasource', () async {
     provideDummy<BaseResponse<AuthDto>>(SuccessResponse(data: authDto));
@@ -42,21 +44,21 @@ void main() {
   });
   test(
       'when calling updateProfile it should get data from datasource', () async {
-    provideDummy<BaseResponse<String>>(SuccessResponse(data: 'success'));
+    provideDummy<BaseResponse<AuthDto>>(SuccessResponse(data: authDto));
     when(
       profileDataSourceContract.updateProfile(updateProfileRequest),
     ).thenAnswer((_) => Future.value(SuccessResponse(data: authDto)));
     await profileRepo.updateProfile(updateProfileRequest);
-    verify(profileDataSourceContract.getProfile());
+    verify(profileDataSourceContract.updateProfile(updateProfileRequest));
   });
   test('when calling uploadPhoto it should get data from datasource', () async {
     provideDummy<BaseResponse<ProfilePhotoResponse>>(
         SuccessResponse(data: profilePhotoResponse));
     when(
-      profileDataSourceContract.uploadPhoto(File('')),
+      profileDataSourceContract.uploadPhoto(file),
     ).thenAnswer((_) =>
         Future.value(SuccessResponse(data: profilePhotoResponse)));
-    await profileRepo.uploadPhoto(File(''));
-    verify(profileDataSourceContract.uploadPhoto(File('')));
+    await profileRepo.uploadPhoto(file);
+    verify(profileDataSourceContract.uploadPhoto(file));
   });
 }

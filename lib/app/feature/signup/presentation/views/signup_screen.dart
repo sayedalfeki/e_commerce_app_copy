@@ -243,7 +243,12 @@ class SignupScreen extends StatelessWidget {
         ShowDialogUtils.showMessage(context, title: getException(context, state.signupState?.error),nigActionName: "ok",nigAction: (){Navigator.pop(context);});
       }else if (state.signupState?.success!=null){
         ShowDialogUtils.hideLoading(context);
-        ShowDialogUtils.showMessage(context, title: AppLocale(context).accountcreatedsuccessfully,nigActionName: "ok",nigAction: (){Navigator.pop(context);});
+        ShowDialogUtils.showMessage(
+            context, title: AppLocale(context).account_created_successfully,
+            nigActionName: "ok",
+            nigAction: () {
+              Navigator.pop(context);
+            });
       }
         
     },
