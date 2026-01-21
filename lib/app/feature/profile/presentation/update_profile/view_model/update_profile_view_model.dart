@@ -76,10 +76,12 @@ class UpdateProfileViewModel
 
   void doIntent(UpdateProfileIntent intent) {
     switch (intent) {
-      case UploadProfilePhotoAction():
-        _uploadProfilePhoto(intent.file);
       case UpdateProfileAction():
         _updateProfile(intent.request);
+        break;
+      case UploadProfilePhotoAction():
+        _uploadProfilePhoto(intent.file);
+        break;
     }
   }
 }

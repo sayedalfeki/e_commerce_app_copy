@@ -9,7 +9,7 @@ abstract class Routes {
   static const String occasion = _Paths.occasionScreen;
   static const String bestSeller=_Paths.bestSellerScreen;
   static const String productDetails = _Paths.productDetails;
-
+  static const String updateProfile = 'update_profile';
 }
 
 abstract class _Paths {

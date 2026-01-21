@@ -1,4 +1,6 @@
+import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_widget.dart';
+import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_event.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_intent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +23,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     viewModel.doIntent(GetProfileAction());
+    viewModel.cubitStream.listen((event) {
+      switch (event) {
+        case NavigateToEditProfileEvent():
+          if (mounted) {
+            Navigator.pushNamed(
+              context,
+              Routes.updateProfile,
+              arguments: viewModel.state.profileState.success,
+            );
+          }
+      }
+    });
   }
 
   @override

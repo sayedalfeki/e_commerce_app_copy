@@ -3,6 +3,8 @@ import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_items_widget.dart';
+import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_photo_widget.dart';
+import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_intent.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/assets_manager.dart';
@@ -135,18 +137,19 @@ class ProfileWidget extends StatelessWidget {
   Widget _buildProfileSection(BuildContext context, UserEntity user) {
     return Column(
       children: [
-        CircleAvatar(
-          radius: 50,
-          backgroundImage: NetworkImage(user.photo ?? ''),
-          backgroundColor: Colors.transparent,
-        ),
+        ProfilePhotoWidget(photoUrl: user.photo ?? ''),
         const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(user.firstName ?? ''),
             const SizedBox(width: 10),
-            const Icon(Icons.edit),
+            IconButton(
+              icon: Icon(Icons.edit),
+              onPressed: () {
+                profileViewModel.doIntent(NavigateToEditProfileAction());
+              },
+            ),
           ],
         ),
         const SizedBox(height: 10),

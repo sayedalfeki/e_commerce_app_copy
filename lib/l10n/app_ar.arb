@@ -96,6 +96,9 @@
     "english":"الانجليزية",
     "arabic":"العربية",
     "about_us":"عنا",
-    "logout":"خروج"
+    "logout":"خروج",
+  "update":"تحديث",
+  "change":"تغيير"
+
 
 }

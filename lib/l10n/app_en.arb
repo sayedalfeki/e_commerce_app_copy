@@ -101,5 +101,7 @@
   "english":"English",
   "arabic":"Arabic",
   "about_us":"About Us",
-  "logout":"Logout"
+  "logout":"Logout",
+  "update":"update",
+  "change":"change"
 }
