@@ -106,7 +106,7 @@
                "current_password":"current password",
                "new_password":"new password",
                "update":"update",
-               "password_changed":"password changed successfully"
+               "password_changed":"password changed successfully",
   "logout":"Logout",
   "update":"update",
   "change":"change",

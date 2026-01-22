@@ -17,3 +17,5 @@ class UpdateProfileAction extends UpdateProfileIntent {
 }
 
 class NavigateToProfileAction extends UpdateProfileIntent {}
+
+class NavigateToChangePasswordAction extends UpdateProfileIntent {}

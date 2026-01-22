@@ -1,4 +1,5 @@
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/core/validation/app_validators.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
@@ -54,6 +55,11 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
             Navigator.pop(context);
           }
           break;
+        case NavigateToChangePasswordEvent():
+          if (mounted) {
+            Navigator.of(context, rootNavigator: true).pushNamed(
+                Routes.changePassword);
+          }
       }
     });
     firstNameController.text = widget.user.firstName ?? '';
@@ -61,13 +67,26 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
     emailController.text = widget.user.email ?? '';
     phoneController.text = widget.user.phone ?? '';
     genderController.changeGender(widget.user.gender ?? '');
+    stars = List.generate(6, (index) {
+      return Icon(Icons.star);
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    genderController.dispose();
+    photoController.dispose();
+    updateController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    stars = List.generate(6, (index) {
-      return Icon(Icons.star);
-    });
+
     return BlocListener<UpdateProfileViewModel, UpdateProfileState>(
       bloc: updateProfileViewModel,
       listener: (context, state) {
@@ -222,7 +241,11 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                     decoration: InputDecoration(
                       labelText: AppLocale(context).password,
                       suffix: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          updateProfileViewModel.doIntent(
+                            NavigateToChangePasswordAction(),
+                          );
+                        },
                         child: Text(
                           AppLocale(context).change,
                           style: Theme.of(context).textTheme.titleMedium

@@ -9,6 +9,7 @@ import 'package:flower_app/app/feature/profile/domain/profile_repo_contract.dart
 import 'package:flower_app/app/feature/profile/domain/request/update_profile_request.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../config/local_storage_processes/local_storage_processes.dart';
 import '../domain/request/change_password_request.dart';
 import 'model/change_password_response.dart';
 
@@ -59,6 +60,7 @@ class ProfileRepoImpl extends ProfileRepoContract {
     );
     switch (response) {
       case SuccessResponse<ChangePasswordResponse>():
+        await LocalStorageProcesses.clearToken();
         return SuccessResponse(data: response.data.message ?? '');
       case ErrorResponse<ChangePasswordResponse>():
         return ErrorResponse(error: response.error);

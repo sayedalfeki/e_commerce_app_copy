@@ -85,6 +85,9 @@ class UpdateProfileViewModel
       case NavigateToProfileAction():
         streamController.add(NavigateToProfileEvent());
         break;
+      case NavigateToChangePasswordAction():
+        streamController.add(NavigateToChangePasswordEvent());
+        break;
     }
   }
 }
