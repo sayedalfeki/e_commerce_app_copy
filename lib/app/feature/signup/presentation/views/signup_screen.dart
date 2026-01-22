@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class SignupScreen extends StatelessWidget {
    SignupScreen({super.key});
   SignupViewModel signupViewModel = getIt<SignupViewModel>();
