@@ -67,6 +67,12 @@
   "occasion":"Occasion",
   "bestSeller":"Best Seller",
   "loading": "Loading...",
+  "gender":"Gender",
+  "male":"Male",
+  "female":"Female",
+  "accountcreatedsuccessfully":"Account Created Successfully",
+  "creatinganaccountyouagreetoour":"Creating an account, you agree to our",
+  "termsandconditions":"Terms&Conditions",
   "cancel":"cancel",
         "ok":"ok",
         "confirm":"confirm",
@@ -86,5 +92,11 @@
   "outofstock":"Out of Stock",
   "instock":"In Stock",
   "bouquetinclude":"Bouquet include",
-  "egp":"EGP"
+  "egp":"EGP",
+             "profile":"Profile",
+             "current_password":"current password",
+             "new_password":"new password",
+             "update":"update",
+             "password_changed":"password changed successfully"
+
 }

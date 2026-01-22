@@ -4,6 +4,7 @@ abstract class Routes {
   static const String register = _Paths.registerScreen;
   static const String forgetPassword = _Paths.forgetPasswordScreen;
   static const String resetPassword = _Paths.resetPasswordScreen;
+  static const String changePassword = 'Change_Password_Screen';
   static const String verifyOtp = _Paths.verifyOtpScreen;
   static const String home = _Paths.homeScreen;
   static const String occasion = _Paths.occasionScreen;

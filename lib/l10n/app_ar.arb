@@ -66,6 +66,7 @@
 "categories": "الفئات",
   "cart": "عربة التسوق",
   "profile": "الملف الشخصي",
+  "connectionFailed":"لا يوجد اتصال بالانترنت",
   "flowery": "مُزْهَر",
   "search": "بحث",
   "deliveryLocation": "التوصيل إلى 2XVP+XC - الشيخ زايد",
@@ -87,5 +88,18 @@
   "outofstock":"إنتهى من المخزن",
   "instock":"في المخزن",
   "bouquetinclude":"الباقه تحتوي على",
+  "egp":"ج.م",
+
+    "ok":"موافق",
+    "confirm":"تأكيد",
+    "connectionFailed":"لا يوجد اتصال بالانترنت",
+    "invalidOtp":"كود غير صحيح",
+    "continueAsGuest": "المتابعة كزائر",
+    "current_password":"كلمة السر الحالية",
+     "new_password":"كلمة السر الجديدة",
+     "update":"تحديث",
+     "password_changed":"تم تغيير كلمة المرور بنجاح",
+
+
   "egp":"ج.م"
 }
