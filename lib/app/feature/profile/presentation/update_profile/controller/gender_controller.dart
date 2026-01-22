@@ -5,8 +5,7 @@ class GenderController extends ChangeNotifier {
 
   void changeGender(String val) {
     gender = val;
-    //todo
-    print('gender $gender');
+
     notifyListeners();
   }
 }
