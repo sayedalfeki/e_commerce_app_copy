@@ -87,5 +87,7 @@
   "outofstock":"إنتهى من المخزن",
   "instock":"في المخزن",
   "bouquetinclude":"الباقه تحتوي على",
-  "egp":"ج.م"
+  "egp":"ج.م",
+  "bloomWithOurExquisiteBestSellers": "تألق مع منتجاتنا الأكثر مبيعاً والراقية",
+  "addToCart": "أضف إلى عربة التسوق"
 }

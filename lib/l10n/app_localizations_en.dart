@@ -279,4 +279,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get egp => 'EGP';
+
+  @override
+  String get bloomWithOurExquisiteBestSellers =>
+      'Bloom with our exquisite best sellers';
+
+  @override
+  String get addToCart => 'Add to cart';
 }
