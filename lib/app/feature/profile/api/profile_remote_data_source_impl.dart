@@ -1,4 +1,8 @@
+import 'package:flower_app/app/config/api_utils/api_utils.dart';
 import 'package:flower_app/app/config/base_response/base_response.dart';
+import 'package:flower_app/app/feature/auth/data/model/auth_response.dart';
+import 'package:flower_app/app/feature/profile/api/profile_api_client.dart';
+import 'package:flower_app/app/feature/profile/data/profile_data_source_contract.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../config/api_utils/api_utils.dart';
@@ -14,6 +18,8 @@ class ProfileRemoteDataSourceImpl extends ProfileDataSourceContract {
   ProfileRemoteDataSourceImpl(this._profileApiClient);
 
   @override
+  Future<BaseResponse<AuthDto>> getProfile() =>
+      executeApi(() => _profileApiClient.getProfile());
   Future<BaseResponse<ChangePasswordResponse>> changePassword(
     ChangePasswordRequest request,
   ) {

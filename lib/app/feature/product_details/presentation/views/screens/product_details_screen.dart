@@ -8,9 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsScreen extends StatelessWidget{
-  String? productId;
-  ProductDetailsScreen({this.productId});
-  ProductDetailsViewModel viewModel = getIt<ProductDetailsViewModel>();
+  final String? productId;
+
+  ProductDetailsScreen({super.key, this.productId});
+
+  final ProductDetailsViewModel viewModel = getIt<ProductDetailsViewModel>();
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -68,7 +70,9 @@ class ProductDetailsScreen extends StatelessWidget{
                       Text("${AppLocale(context).egp} ${state.productDetailsState!.success!.price}",style: Theme.of(context).textTheme.headlineLarge,),
                       Spacer(),
                       Text("${AppLocale(context).status} :",style: Theme.of(context).textTheme.headlineLarge),
-                      Text(state.productDetailsState!.success!.quantity! <=0?AppLocale(context).outofstock:AppLocale(context).instock,
+                      Text(state.productDetailsState!.success!.quantity! <= 0
+                          ? AppLocale(context).out_of_stock
+                          : AppLocale(context).in_stock,
                       style: Theme.of(context).textTheme.headlineMedium)
                     ],
                   ),
@@ -77,7 +81,7 @@ class ProductDetailsScreen extends StatelessWidget{
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16),
-                  child: Text(AppLocale(context).allpricesincludetax),
+                  child: Text(AppLocale(context).all_prices_include_tax),
                 ),
               ),
               SliverToBoxAdapter(
@@ -110,7 +114,10 @@ class ProductDetailsScreen extends StatelessWidget{
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(AppLocale(context).bouquetinclude,style:Theme.of(context).textTheme.headlineLarge ,),
+                  child: Text(AppLocale(context).bouquet_include, style: Theme
+                      .of(context)
+                      .textTheme
+                      .headlineLarge,),
                 ),
               ),
               SliverToBoxAdapter(
@@ -125,7 +132,8 @@ class ProductDetailsScreen extends StatelessWidget{
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: ElevatedButton(onPressed: (){}, child: Text(AppLocale(context).addtocart,style: TextStyle(fontSize: 20),)),
+                  child: ElevatedButton(onPressed: () {}, child: Text(AppLocale(
+                      context).add_to_cart, style: TextStyle(fontSize: 20),)),
                 ),
               ),
               ],
