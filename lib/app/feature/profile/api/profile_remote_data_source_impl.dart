@@ -9,6 +9,12 @@ import 'package:flower_app/app/feature/profile/data/profile_data_source_contract
 import 'package:flower_app/app/feature/profile/domain/request/update_profile_request.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../config/api_utils/api_utils.dart';
+import '../data/model/change_password_response.dart';
+import '../data/profile_data_source_contract.dart';
+import '../domain/request/change_password_request.dart';
+import 'profile_api_client.dart';
+
 @Injectable(as: ProfileDataSourceContract)
 class ProfileRemoteDataSourceImpl extends ProfileDataSourceContract {
   final ProfileApiClient _profileApiClient;
@@ -26,4 +32,9 @@ class ProfileRemoteDataSourceImpl extends ProfileDataSourceContract {
   @override
   Future<BaseResponse<AuthDto>> updateProfile(UpdateProfileRequest request) =>
       executeApi(() => _profileApiClient.updateProfile(request),);
+  Future<BaseResponse<ChangePasswordResponse>> changePassword(
+    ChangePasswordRequest request,
+  ) {
+    return executeApi(() => _profileApiClient.changePassword(request));
+  }
 }

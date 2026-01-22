@@ -102,6 +102,12 @@
   "arabic":"Arabic",
   "about_us":"About Us",
   "logout":"Logout",
+   "profile":"Profile",
+               "current_password":"current password",
+               "new_password":"new password",
+               "update":"update",
+               "password_changed":"password changed successfully"
+  "logout":"Logout",
   "update":"update",
   "change":"change",
   "edit_profile":"edit profile",
