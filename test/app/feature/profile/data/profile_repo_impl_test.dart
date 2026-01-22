@@ -10,6 +10,7 @@ import 'package:mockito/mockito.dart';
 
 import 'profile_repo_impl_test.mocks.dart';
 
+
 @GenerateMocks([ProfileDataSourceContract])
 void main() {
   late ProfileRepoImpl profileRepo;
@@ -23,7 +24,7 @@ void main() {
 
     authDto = AuthDto(
       message: 'success',
-      user: User(email: 's@yahoo.com'),
+        user: User(email: 's@yahoo.com'));
     changePasswordRequest = ChangePasswordRequest(
       newPassword: 'password',
       password: '123',
