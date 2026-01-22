@@ -82,6 +82,9 @@ class UpdateProfileViewModel
       case UploadProfilePhotoAction():
         _uploadProfilePhoto(intent.file);
         break;
+      case NavigateToProfileAction():
+        streamController.add(NavigateToProfileEvent());
+        break;
     }
   }
 }

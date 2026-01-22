@@ -2,6 +2,7 @@ import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/core/validation/app_validators.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
+import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/notification_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/controller/update_controller.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view/widget/gender_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view/widget/photo_widget.dart';
@@ -16,6 +17,7 @@ import '../../../../../core/utils/helper_function.dart';
 import '../../../domain/request/update_profile_request.dart';
 import '../controller/gender_controller.dart';
 import '../controller/photo_controller.dart';
+import '../view_model/update_profile_event.dart';
 import '../view_model/update_profile_state.dart';
 
 class UpdateProfileWidget extends StatefulWidget {
@@ -33,6 +35,7 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+
   final GenderController genderController = GenderController();
   final PhotoController photoController = PhotoController();
   final UpdateProfileViewModel updateProfileViewModel =
@@ -44,11 +47,20 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
   @override
   void initState() {
     super.initState();
+    updateProfileViewModel.cubitStream.listen((event) {
+      switch (event) {
+        case NavigateToProfileEvent():
+          if (mounted) {
+            Navigator.pop(context);
+          }
+          break;
+      }
+    });
     firstNameController.text = widget.user.firstName ?? '';
     lastNameController.text = widget.user.lastName ?? '';
     emailController.text = widget.user.email ?? '';
     phoneController.text = widget.user.phone ?? '';
-    genderController.initGender(widget.user.gender ?? '');
+    genderController.changeGender(widget.user.gender ?? '');
   }
 
   @override
@@ -60,25 +72,39 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
       bloc: updateProfileViewModel,
       listener: (context, state) {
         if (state.profileState.success != null) {
-          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                '${AppLocale(context).update_profile} ${state.profileState.success!}',
+              ),
+            ),
+          );
+          updateProfileViewModel.doIntent(NavigateToProfileAction());
         }
         if (state.profileState.error != null) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(getException(context, state.profileState.error!)),
+              content: Text(
+                '${AppLocale(context).update_profile_error} ${getException(context, state.profileState.error!)}',
+              ),
             ),
           );
         }
         if (state.profilePhotoState.success != null) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.profilePhotoState.success!)),
+            SnackBar(
+              content: Text(
+                '${AppLocale(context).uploading_photo} ${state.profilePhotoState.success!}',
+              ),
+            ),
           );
+          updateProfileViewModel.doIntent(NavigateToProfileAction());
         }
         if (state.profilePhotoState.error != null) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                getException(context, state.profilePhotoState.error!),
+                '${AppLocale(context).uploading_photo_error} ${getException(context, state.profilePhotoState.error!)}',
               ),
             ),
           );
@@ -92,8 +118,23 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
               key: formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                spacing: 10,
+                spacing: 25,
                 children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          updateProfileViewModel.doIntent(
+                            NavigateToProfileAction(),
+                          );
+                        },
+                        icon: const Icon(Icons.arrow_back_ios),
+                      ),
+                      Text(AppLocale(context).edit_profile),
+                      Spacer(),
+                      NotificationWidget(),
+                    ],
+                  ),
                   Center(
                     child: PhotoWidget(
                       photoController: photoController,
@@ -176,21 +217,19 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                     validator: (value) =>
                         AppValidators.validateNumberPhone(value, context),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.grayColor),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      children: [
-                        Row(children: stars),
-                        Spacer(),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(AppLocale(context).change),
+                  TextFormField(
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      labelText: AppLocale(context).password,
+                      suffix: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          AppLocale(context).change,
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(color: AppColors.primaryColor),
                         ),
-                      ],
+                      ),
+                      prefix: Row(children: stars),
                     ),
                   ),
                   GenderWidget(
@@ -203,6 +242,7 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                       }
                     },
                   ),
+                  const SizedBox(height: 50),
                   UpdateButtonWidget(
                     updateController: updateController,
                     onPressed: () {

@@ -6,9 +6,10 @@ import 'package:image_picker/image_picker.dart';
 class PhotoController extends ChangeNotifier {
   File? photoFile;
 
-  void changePhoto() async {
+  Future<void> changePhoto() async {
     XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (file != null) {
+      print(file.path);
       photoFile = File(file.path);
     }
     notifyListeners();

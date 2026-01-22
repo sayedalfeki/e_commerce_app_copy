@@ -1,3 +1,4 @@
+import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/app_locale.dart';
@@ -20,10 +21,11 @@ class GenderWidget extends StatefulWidget {
 class _GenderWidgetState extends State<GenderWidget> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     widget.genderController.addListener(() {
-      setState(() {});
+      setState(() {
+
+      });
     });
   }
 
@@ -34,9 +36,18 @@ class _GenderWidgetState extends State<GenderWidget> {
         Expanded(child: Text(AppLocale(context).gender)),
         Expanded(
           child: RadioListTile<String>(
-            title: Text(AppLocale(context).female),
-            value: 'female',
-            groupValue: widget.genderController.gender,
+            title: Text(AppLocale(context).female,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .titleSmall
+                    ?.copyWith(
+                    color: AppColors.blackColor,
+                    fontSize: 16
+                )
+            ),
+            value: AppLocale(context).female.toLowerCase(),
+            groupValue: widget.genderController.gender.toLowerCase(),
             onChanged: (value) {
               widget.genderController.changeGender(value!);
               widget.onChanged?.call();
@@ -46,10 +57,11 @@ class _GenderWidgetState extends State<GenderWidget> {
         Expanded(
           child: RadioListTile<String>(
             title: Text(AppLocale(context).male),
-            value: 'male',
-            groupValue: widget.genderController.gender,
+            value: AppLocale(context).male.toLowerCase(),
+            groupValue: widget.genderController.gender.toLowerCase(),
             onChanged: (value) {
               widget.genderController.changeGender(value!);
+              widget.onChanged?.call();
             },
           ),
         ),

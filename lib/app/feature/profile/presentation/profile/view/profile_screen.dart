@@ -31,12 +31,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               context,
               Routes.updateProfile,
               arguments: viewModel.state.profileState.success,
-            );
+            ).then((value) => viewModel.doIntent(GetProfileAction(),));
           }
       }
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileViewModel, ProfileState>(

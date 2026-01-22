@@ -15,3 +15,5 @@ class UpdateProfileAction extends UpdateProfileIntent {
 
   UpdateProfileAction(this.request);
 }
+
+class NavigateToProfileAction extends UpdateProfileIntent {}

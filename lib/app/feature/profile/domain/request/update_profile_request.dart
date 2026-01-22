@@ -12,14 +12,12 @@ class UpdateProfileRequest {
     this.gender,
     this.phone,
   });
-
   Map<String, dynamic> toJson() {
     return {
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
       'phone': phone,
-      'gender': gender,
     };
   }
 }

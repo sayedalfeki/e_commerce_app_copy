@@ -38,8 +38,8 @@ class _PhotoWidgetState extends State<PhotoWidget> {
           photoFile: widget.photoController.photoFile,
         ),
         IconButton(
-          onPressed: () {
-            widget.photoController.changePhoto();
+          onPressed: () async {
+            await widget.photoController.changePhoto();
             widget.onChanged?.call();
           },
           icon: Icon(Icons.camera_alt_outlined),

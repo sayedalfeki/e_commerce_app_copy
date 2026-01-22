@@ -21,20 +21,36 @@ class UpdateButtonWidget extends StatefulWidget {
 class _UpdateButtonWidgetState extends State<UpdateButtonWidget> {
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
+    widget.updateController.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: widget.updateController.isUpdate ? widget.onPressed : null,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: widget.updateController.isUpdate
+      style: Theme
+          .of(context)
+          .elevatedButtonTheme
+          .style
+          ?.copyWith(
+          backgroundColor: WidgetStatePropertyAll(
+            widget.updateController.isUpdate
             ? AppColors.primaryColor
             : AppColors.grayColor,
+          )),
+      child: Text(AppLocale(context).update,
+        style: Theme
+            .of(context)
+            .textTheme
+            .titleLarge
+            ?.copyWith(
+          color: AppColors.whiteColor,
       ),
-      child: Text(AppLocale(context).update),
+      ),
     );
   }
 }

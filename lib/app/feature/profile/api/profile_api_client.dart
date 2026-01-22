@@ -20,6 +20,6 @@ abstract class ProfileApiClient {
   @PUT(AppEndPoint.uploadPhoto)
   Future<ProfilePhotoResponse> uploadPhoto(@Part(name: 'photo') File file);
 
-  @PUT(AppEndPoint.uploadPhoto)
+  @PUT(AppEndPoint.updateProfile)
   Future<AuthDto> updateProfile(@Body() UpdateProfileRequest request);
 }

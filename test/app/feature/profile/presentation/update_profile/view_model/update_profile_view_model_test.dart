@@ -7,6 +7,7 @@ import 'package:flower_app/app/config/base_state/base_state.dart';
 import 'package:flower_app/app/feature/profile/domain/request/update_profile_request.dart';
 import 'package:flower_app/app/feature/profile/domain/use_case/update_profile_use_case.dart';
 import 'package:flower_app/app/feature/profile/domain/use_case/upload_profile_photo_use_case.dart';
+import 'package:flower_app/app/feature/profile/presentation/update_profile/view_model/update_profile_event.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view_model/update_profile_intent.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view_model/update_profile_state.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view_model/update_profile_view_model.dart';
@@ -154,4 +155,17 @@ void main() {
       },
     );
   });
+  test(
+    'when calling do intent with navigate to profile action it must emit event',
+    () async {
+      final future = expectLater(
+        updateProfileViewModel.streamController.stream,
+        emits(isA<NavigateToProfileEvent>()),
+      );
+
+      updateProfileViewModel.doIntent(NavigateToProfileAction());
+
+      await future;
+    },
+  );
 }

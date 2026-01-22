@@ -103,5 +103,10 @@
   "about_us":"About Us",
   "logout":"Logout",
   "update":"update",
-  "change":"change"
+  "change":"change",
+  "edit_profile":"edit profile",
+  "update_profile":"update profile",
+  "update_profile_error":"error in update profile",
+  "uploading_photo":"uploading photo",
+  "uploading_photo_error":"error in uploading photo"
 }
