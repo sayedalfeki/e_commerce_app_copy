@@ -101,5 +101,10 @@
   "english":"English",
   "arabic":"Arabic",
   "about_us":"About Us",
-  "logout":"Logout"
+  "logout":"Logout",
+   "profile":"Profile",
+               "current_password":"current password",
+               "new_password":"new password",
+               "update":"update",
+               "password_changed":"password changed successfully"
 }
