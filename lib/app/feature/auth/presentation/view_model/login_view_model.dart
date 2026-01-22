@@ -1,5 +1,6 @@
 import 'package:flower_app/app/config/base_response/base_response.dart';
 import 'package:flower_app/app/config/base_state/base_state.dart';
+import 'package:flower_app/app/config/local_storage_processes/local_storage_processes.dart';
 import 'package:flower_app/app/feature/auth/domain/model/auth_model.dart';
 import 'package:flower_app/app/feature/auth/domain/use_case/get_auth_use_case.dart';
 import 'package:flower_app/app/feature/auth/presentation/view_model/login_events.dart';
@@ -42,6 +43,7 @@ class LoginViewModel extends Cubit<LoginStates> {
             ),
           ),
         );
+        LocalStorageProcesses.writeTokin(loginResponse.data.tokin!);
         return;
 
       case ErrorResponse<AuthModel>():
