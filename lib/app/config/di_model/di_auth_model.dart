@@ -30,17 +30,13 @@ abstract class DiAuthModel {
     InterceptorsWrapper(
       onRequest: (options, handler) async {
         String? token = await LocalStorageProcesses.readToken();
-
-      //String? token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjk0ZDZlMDhlMzY0ZWY2MTQwNDJjZTYxIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3Njg4Mjc0NTB9.Ju-7nFiZPw4gysXDLbvc6nfxF4_TPXiSxEX0QYVML4g";
-       if (token != null && token.isNotEmpty) {
+        if (token != null && token.isNotEmpty) {
         options.headers["Authorization"] = "Bearer $token";
        }
-
-       return handler.next(options);
+        return handler.next(options);
       },
     ),
   );
-
     return dio;
   }
 

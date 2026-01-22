@@ -5,7 +5,7 @@ class UpdateProfileState extends Equatable {
   final BaseState<String> profileState;
   final BaseState<String> profilePhotoState;
 
-  const UpdateProfileState({
+  UpdateProfileState({
     required this.profileState,
     required this.profilePhotoState,
   });

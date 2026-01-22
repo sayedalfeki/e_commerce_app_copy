@@ -9,15 +9,14 @@ import 'package:flower_app/app/feature/auth/data/model/auth_response.dart';
 import 'package:flower_app/app/feature/profile/api/profile_api_client.dart';
 import 'package:flower_app/app/feature/profile/api/profile_remote_data_source_impl.dart';
 import 'package:flower_app/app/feature/profile/data/model/change_password_response.dart';
-import 'package:flower_app/app/feature/profile/domain/request/change_password_request.dart';
 import 'package:flower_app/app/feature/profile/data/model/profile_photo_response.dart';
+import 'package:flower_app/app/feature/profile/domain/request/change_password_request.dart';
 import 'package:flower_app/app/feature/profile/domain/request/update_profile_request.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'profile_remote_data_source_impl_test.mocks.dart';
-
 
 @GenerateMocks([ProfileApiClient])
 void main() {
@@ -34,29 +33,25 @@ void main() {
     profileRemoteDataSourceImpl = ProfileRemoteDataSourceImpl(profileApiClient);
     changePasswordRequest = ChangePasswordRequest(
       password: '123',
-      newPassword: '123',);
+      newPassword: '123',
+    );
     authDto = AuthDto(
       message: 'success',
       user: User(email: 's@yahoo.com'),
     );
-    updateProfileRequest = UpdateProfileRequest(
-      email: 's@yahoo.com',
-
-    );
-    profilePhotoResponse = ProfilePhotoResponse(
-      message: 'success',
-    );
+    updateProfileRequest = UpdateProfileRequest(email: 's@yahoo.com');
+    profilePhotoResponse = ProfilePhotoResponse(message: 'success');
     file = File('test/resources/fake_image.png');
     changePasswordResponse = ChangePasswordResponse();
   });
   group('getProfile', () {
     test(
       'when calling get profile and api return success it should return data',
-          () async {
+      () async {
         when(profileApiClient.getProfile()).thenAnswer((_) async => authDto);
         var result =
-        await profileRemoteDataSourceImpl.getProfile()
-        as SuccessResponse<AuthDto>;
+            await profileRemoteDataSourceImpl.getProfile()
+                as SuccessResponse<AuthDto>;
         expect(result, isA<SuccessResponse<AuthDto>>());
         expect(result.data, equals(authDto));
         expect(result.data.user?.email, equals('s@yahoo.com'));
@@ -64,7 +59,7 @@ void main() {
     );
     test(
       'when calling getProfile and api return error it should return exact error',
-          () async {
+      () async {
         final ServerErrorResponse response = ServerErrorResponse(error: "Fail");
         when(profileApiClient.getProfile()).thenThrow(
           DioException(
@@ -77,8 +72,8 @@ void main() {
           ),
         );
         var result =
-        await profileRemoteDataSourceImpl.getProfile()
-        as ErrorResponse<AuthDto>;
+            await profileRemoteDataSourceImpl.getProfile()
+                as ErrorResponse<AuthDto>;
         expect(result, isA<ErrorResponse<AuthDto>>());
         expect(result.error, equals(ServerError(message: response.error)));
       },
@@ -87,12 +82,15 @@ void main() {
   group('updateProfile', () {
     test(
       'when calling update profile and api return success it should return data',
-          () async {
-        when(profileApiClient.updateProfile(updateProfileRequest)).thenAnswer((
-            _) async => authDto);
+      () async {
+        when(
+          profileApiClient.updateProfile(updateProfileRequest),
+        ).thenAnswer((_) async => authDto);
         var result =
-        await profileRemoteDataSourceImpl.updateProfile(updateProfileRequest)
-        as SuccessResponse<AuthDto>;
+            await profileRemoteDataSourceImpl.updateProfile(
+                  updateProfileRequest,
+                )
+                as SuccessResponse<AuthDto>;
         expect(result, isA<SuccessResponse<AuthDto>>());
         expect(result.data, equals(authDto));
         expect(result.data.user?.email, equals('s@yahoo.com'));
@@ -100,7 +98,7 @@ void main() {
     );
     test(
       'when calling updateProfile and api return error it should return exact error',
-          () async {
+      () async {
         final ServerErrorResponse response = ServerErrorResponse(error: "Fail");
         when(profileApiClient.updateProfile(updateProfileRequest)).thenThrow(
           DioException(
@@ -113,8 +111,10 @@ void main() {
           ),
         );
         var result =
-        await profileRemoteDataSourceImpl.updateProfile(updateProfileRequest)
-        as ErrorResponse<AuthDto>;
+            await profileRemoteDataSourceImpl.updateProfile(
+                  updateProfileRequest,
+                )
+                as ErrorResponse<AuthDto>;
         expect(result, isA<ErrorResponse<AuthDto>>());
         expect(result.error, equals(ServerError(message: response.error)));
       },
@@ -123,12 +123,13 @@ void main() {
   group('Profile photo', () {
     test(
       'when calling upload profile photo and api return success it should return data',
-          () async {
-            when(profileApiClient.uploadPhoto(file)).thenAnswer((
-            _) async => profilePhotoResponse);
+      () async {
+        when(
+          profileApiClient.uploadPhoto(file),
+        ).thenAnswer((_) async => profilePhotoResponse);
         var result =
-        await profileRemoteDataSourceImpl.uploadPhoto(file)
-        as SuccessResponse<ProfilePhotoResponse>;
+            await profileRemoteDataSourceImpl.uploadPhoto(file)
+                as SuccessResponse<ProfilePhotoResponse>;
         expect(result, isA<SuccessResponse<ProfilePhotoResponse>>());
         expect(result.data, equals(profilePhotoResponse));
         expect(result.data.message, equals('success'));
@@ -136,7 +137,7 @@ void main() {
     );
     test(
       'when calling uploadProfilePhoto and api return error it should return exact error',
-          () async {
+      () async {
         final ServerErrorResponse response = ServerErrorResponse(error: "Fail");
         when(profileApiClient.uploadPhoto(file)).thenThrow(
           DioException(
@@ -149,32 +150,31 @@ void main() {
           ),
         );
         var result =
-        await profileRemoteDataSourceImpl.uploadPhoto(file)
-        as ErrorResponse<ProfilePhotoResponse>;
+            await profileRemoteDataSourceImpl.uploadPhoto(file)
+                as ErrorResponse<ProfilePhotoResponse>;
         expect(result, isA<ErrorResponse<ProfilePhotoResponse>>());
         expect(result.error, equals(ServerError(message: response.error)));
       },
     );
   });
 
-
   group('change password section ', () {
     test(
       'when calling change password and api return success it should return data',
-          () async {
+      () async {
         when(
           profileApiClient.changePassword(changePasswordRequest),
         ).thenAnswer((_) async => changePasswordResponse);
 
         var result =
-        await profileRemoteDataSourceImpl.changePassword(
-          changePasswordRequest,
-        )
-        as SuccessResponse<ChangePasswordResponse>;
+            await profileRemoteDataSourceImpl.changePassword(
+                  changePasswordRequest,
+                )
+                as SuccessResponse<ChangePasswordResponse>;
         expect(result, isA<SuccessResponse<ChangePasswordResponse>>());
         expect(result.data, equals(changePasswordResponse));
         await profileRemoteDataSourceImpl.getProfile()
-        as SuccessResponse<AuthDto>;
+            as SuccessResponse<AuthDto>;
         expect(result, isA<SuccessResponse<AuthDto>>());
         expect(result.data, equals(authDto));
       },
@@ -182,10 +182,9 @@ void main() {
     test(
       'when calling reset password and api return error it should return exact error',
 
-          () async {
+      () async {
         final ServerErrorResponse response = ServerErrorResponse(error: "Fail");
         when(profileApiClient.changePassword(changePasswordRequest)).thenThrow(
-
           DioException(
             requestOptions: RequestOptions(),
             type: DioExceptionType.badResponse,
@@ -197,27 +196,27 @@ void main() {
         );
 
         var result =
-        await profileRemoteDataSourceImpl.changePassword(
-          changePasswordRequest,
-        )
-        as ErrorResponse<ChangePasswordResponse>;
+            await profileRemoteDataSourceImpl.changePassword(
+                  changePasswordRequest,
+                )
+                as ErrorResponse<ChangePasswordResponse>;
         expect(result, isA<ErrorResponse<ChangePasswordResponse>>());
         await profileRemoteDataSourceImpl.getProfile()
-        as ErrorResponse<AuthDto>;
+            as ErrorResponse<AuthDto>;
         expect(result, isA<ErrorResponse<AuthDto>>());
         expect(result.error, equals(ServerError(message: response.error)));
       },
     );
-  },);
+  });
 
   group('get profile section', () {
     test(
       'when calling get profile and api return success it should return data',
-          () async {
+      () async {
         when(profileApiClient.getProfile()).thenAnswer((_) async => authDto);
         var result =
-        await profileRemoteDataSourceImpl.getProfile()
-        as SuccessResponse<AuthDto>;
+            await profileRemoteDataSourceImpl.getProfile()
+                as SuccessResponse<AuthDto>;
         expect(result, isA<SuccessResponse<AuthDto>>());
         expect(result.data, equals(authDto));
         expect(result.data.user?.email, equals('s@yahoo.com'));
@@ -225,7 +224,7 @@ void main() {
     );
     test(
       'when calling getProfile and api return error it should return exact error',
-          () async {
+      () async {
         final ServerErrorResponse response = ServerErrorResponse(error: "Fail");
         when(profileApiClient.getProfile()).thenThrow(
           DioException(
@@ -238,11 +237,11 @@ void main() {
           ),
         );
         var result =
-        await profileRemoteDataSourceImpl.getProfile()
-        as ErrorResponse<AuthDto>;
+            await profileRemoteDataSourceImpl.getProfile()
+                as ErrorResponse<AuthDto>;
         expect(result, isA<ErrorResponse<AuthDto>>());
         expect(result.error, equals(ServerError(message: response.error)));
       },
     );
-  },);
+  });
 }

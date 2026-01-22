@@ -9,7 +9,6 @@ class PhotoController extends ChangeNotifier {
   Future<void> changePhoto() async {
     XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (file != null) {
-      print(file.path);
       photoFile = File(file.path);
     }
     notifyListeners();
