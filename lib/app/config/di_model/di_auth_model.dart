@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flower_app/app/core/consts/app_consts.dart';
+import 'package:flower_app/app/config/local_storage_processes/local_storage_processes.dart';
 import 'package:flower_app/app/core/endpoint/app_endpoint.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
@@ -22,16 +22,29 @@ abstract class DiAuthModel {
   Dio provideDio(
       BaseOptions baseOptions,
       PrettyDioLogger logger,
-
       ) {
-    final Dio dio = Dio(baseOptions);
+    final Dio dio = Dio(BaseOptions(baseUrl: AppEndPoint.baseUrl));
     dio.interceptors.add(logger);
+    dio.interceptors.add(
+    InterceptorsWrapper(
+      onRequest: (options, handler) async {
+      String? token = await LocalStorageProcesses.readTokin();
+
+      //String? token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjk0ZDZlMDhlMzY0ZWY2MTQwNDJjZTYxIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3Njg4Mjc0NTB9.Ju-7nFiZPw4gysXDLbvc6nfxF4_TPXiSxEX0QYVML4g";
+       if (token != null && token.isNotEmpty) {
+        options.headers["Authorization"] = "Bearer $token";
+       }
+
+       return handler.next(options);
+      },
+    ),
+  );
+
     return dio;
   }
 
   @lazySingleton
   BaseOptions provideBaseOptions() => BaseOptions(
-    headers: {'authorization': 'Bearer ${AppConsts.token}'},
     sendTimeout: Duration(seconds: 60),
     receiveTimeout: Duration(seconds: 60),
     connectTimeout: Duration(seconds: 60),
@@ -45,3 +58,23 @@ abstract class DiAuthModel {
     responseHeader: kDebugMode,
   );
 }
+
+/*
+dio.interceptors.add(
+    InterceptorsWrapper(
+      onRequest: (options, handler) async {
+      String? token = await LocalStorageProcesses.readTokin();
+
+      //String? token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjk0ZDZlMDhlMzY0ZWY2MTQwNDJjZTYxIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3Njg4Mjc0NTB9.Ju-7nFiZPw4gysXDLbvc6nfxF4_TPXiSxEX0QYVML4g";
+       if (token != null && token.isNotEmpty) {
+        options.headers["Authorization"] = "Bearer $token";
+       }
+
+       return handler.next(options);
+      },
+    ),
+  );
+*/
+
+
+//"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjk0ZDZlMDhlMzY0ZWY2MTQwNDJjZTYxIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3Njg4Mjc0NTB9.Ju-7nFiZPw4gysXDLbvc6nfxF4_TPXiSxEX0QYVML4g"
