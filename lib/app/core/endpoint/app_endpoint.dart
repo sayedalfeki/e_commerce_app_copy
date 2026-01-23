@@ -1,7 +1,7 @@
 abstract class AppEndPoint {
   static const String baseUrl = "https://flower.elevateegy.com/api/v1";
   // Authentication Endpoints
-  static const String changePassword = '/auth/changePassword';
+  static const String changePassword = '/auth/change-password';
   static const String login = "/auth/signin";
   static const String signUp = '/auth/signup';
   //tabs end points
@@ -9,4 +9,17 @@ abstract class AppEndPoint {
   static const String forgetPassword='/auth/forgotPassword';
   static const String verifyOtp='/auth/verifyResetCode';
   static const String resetPassword='/auth/resetPassword';
+  static const String products = "/products/{productId}";
+
+  // profile
+  static const String profile = '/auth/profile-data';
+  //cart end points
+
+  // this end point used for adding products to cart AND to get logged user cart
+  static const String cart = "/cart";
+
+  //this end point used for updateing cart quantity (letting the server know that the quantity is increased)
+  //and to delete item cart
+  static const String updateCart = "/cart/{productId}";
+
 }

@@ -217,25 +217,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bestSeller => 'Best Seller';
 
   @override
-  String get profile => 'Profile';
-
-  @override
   String get loading => 'Loading...';
-
-  @override
-  String get cancel => 'cancel';
-
-  @override
-  String get ok => 'ok';
-
-  @override
-  String get confirm => 'confirm';
-
-  @override
-  String get invalidOtp => 'invalid code';
-
-  @override
-  String get continueAsGuest => 'Continue as guest';
 
   @override
   String get gender => 'Gender';
@@ -255,4 +237,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsandconditions => 'Terms&Conditions';
+
+  @override
+  String get cancel => 'cancel';
+
+  @override
+  String get ok => 'ok';
+
+  @override
+  String get confirm => 'confirm';
+
+  @override
+  String get invalidOtp => 'invalid code';
+
+  @override
+  String get continueAsGuest => 'Continue as guest';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get status => 'status';
+
+  @override
+  String get allpricesincludetax => 'All prices include tax';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get addtocart => 'Add to cart';
+
+  @override
+  String get outofstock => 'Out of Stock';
+
+  @override
+  String get instock => 'In Stock';
+
+  @override
+  String get bouquetinclude => 'Bouquet include';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get items => 'items';
+
+  @override
+  String get clearall => 'Clear All';
+
+  @override
+  String get noitemsincart => 'no items in cart';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get checkout => 'Checkout';
 }

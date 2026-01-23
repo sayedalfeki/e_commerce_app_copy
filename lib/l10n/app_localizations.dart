@@ -500,47 +500,11 @@ abstract class AppLocalizations {
   /// **'Best Seller'**
   String get bestSeller;
 
-  /// No description provided for @profile.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile'**
-  String get profile;
-
   /// No description provided for @loading.
   ///
   /// In en, this message translates to:
   /// **'Loading...'**
   String get loading;
-
-  /// No description provided for @cancel.
-  ///
-  /// In en, this message translates to:
-  /// **'cancel'**
-  String get cancel;
-
-  /// No description provided for @ok.
-  ///
-  /// In en, this message translates to:
-  /// **'ok'**
-  String get ok;
-
-  /// No description provided for @confirm.
-  ///
-  /// In en, this message translates to:
-  /// **'confirm'**
-  String get confirm;
-
-  /// No description provided for @invalidOtp.
-  ///
-  /// In en, this message translates to:
-  /// **'invalid code'**
-  String get invalidOtp;
-
-  /// No description provided for @continueAsGuest.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue as guest'**
-  String get continueAsGuest;
 
   /// No description provided for @gender.
   ///
@@ -577,6 +541,119 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Terms&Conditions'**
   String get termsandconditions;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'cancel'**
+  String get cancel;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'ok'**
+  String get ok;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'confirm'**
+  String get confirm;
+
+  /// No description provided for @invalidOtp.
+  ///
+  /// In en, this message translates to:
+  /// **'invalid code'**
+  String get invalidOtp;
+
+  /// No description provided for @continueAsGuest.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue as guest'**
+  String get continueAsGuest;
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'status'**
+  String get status;
+
+  /// No description provided for @allpricesincludetax.
+  ///
+  /// In en, this message translates to:
+  /// **'All prices include tax'**
+  String get allpricesincludetax;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @addtocart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addtocart;
+
+  /// No description provided for @outofstock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Stock'**
+  String get outofstock;
+
+  /// No description provided for @instock.
+  ///
+  /// In en, this message translates to:
+  /// **'In Stock'**
+  String get instock;
+
+  /// No description provided for @bouquetinclude.
+  ///
+  /// In en, this message translates to:
+  /// **'Bouquet include'**
+  String get bouquetinclude;
+
+  /// No description provided for @egp.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get egp;
+
+  /// No description provided for @items.
+  ///
+  /// In en, this message translates to:
+  /// **'items'**
+  String get items;
+
+  /// No description provided for @clearall.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear All'**
+  String get clearall;
+
+  /// No description provided for @noitemsincart.
+  ///
+  /// In en, this message translates to:
+  /// **'no items in cart'**
+  String get noitemsincart;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @checkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get checkout;
 }
 
 class _AppLocalizationsDelegate

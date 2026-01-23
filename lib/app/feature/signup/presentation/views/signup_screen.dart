@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class SignupScreen extends StatelessWidget {
    SignupScreen({super.key});
   SignupViewModel signupViewModel = getIt<SignupViewModel>();
@@ -239,10 +240,15 @@ class SignupScreen extends StatelessWidget {
         ShowDialogUtils.showLoading(context);
       }else if (state.signupState?.error!=null){
         ShowDialogUtils.hideLoading(context);
-        ShowDialogUtils.showMessage(context, Title: getException(context, state.signupState?.error),NigActionName: "ok",NigAction: (){Navigator.pop(context);});
+        ShowDialogUtils.showMessage(context, title: getException(context, state.signupState?.error),nigActionName: "ok",nigAction: (){Navigator.pop(context);});
       }else if (state.signupState?.success!=null){
         ShowDialogUtils.hideLoading(context);
-        ShowDialogUtils.showMessage(context, Title: AppLocale(context).accountcreatedsuccessfully,NigActionName: "ok",NigAction: (){Navigator.pop(context);});
+        ShowDialogUtils.showMessage(
+            context, title: AppLocale(context).account_created_successfully,
+            nigActionName: "ok",
+            nigAction: () {
+              Navigator.pop(context);
+            });
       }
         
     },

@@ -217,25 +217,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bestSeller => 'الأكثر مبيعاً';
 
   @override
-  String get profile => 'الملف الشخصي';
-
-  @override
   String get loading => 'جاري التحميل...';
-
-  @override
-  String get cancel => 'الغاء';
-
-  @override
-  String get ok => 'موافق';
-
-  @override
-  String get confirm => 'تأكيد';
-
-  @override
-  String get invalidOtp => 'كود غير صحيح';
-
-  @override
-  String get continueAsGuest => 'المتابعة كزائر';
 
   @override
   String get gender => 'الجنس';
@@ -255,4 +237,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get termsandconditions => 'الشروط والأحكام';
+
+  @override
+  String get cancel => 'الغاء';
+
+  @override
+  String get ok => 'موافق';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get invalidOtp => 'كود غير صحيح';
+
+  @override
+  String get continueAsGuest => 'المتابعة كزائر';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get status => 'الحاله';
+
+  @override
+  String get allpricesincludetax => 'جميع الأسعار تشمل الضريبة';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get addtocart => 'أضف إلى السلة';
+
+  @override
+  String get outofstock => 'إنتهى من المخزن';
+
+  @override
+  String get instock => 'في المخزن';
+
+  @override
+  String get bouquetinclude => 'الباقه تحتوي على';
+
+  @override
+  String get egp => 'ج.م';
+
+  @override
+  String get items => 'أغراض';
+
+  @override
+  String get clearall => 'حذف الكل';
+
+  @override
+  String get noitemsincart => 'لا توجد عناصر في سلة التسوق';
+
+  @override
+  String get total => 'المجموع';
+
+  @override
+  String get checkout => 'الدفع';
 }
