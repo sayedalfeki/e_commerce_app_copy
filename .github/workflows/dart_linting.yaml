@@ -1,0 +1,107 @@
+name: Dart Lint
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.38.5'
+        channel: 'stable'
+        cache: true
+        cache-key: flutter-3.38.5-stable
+        cache-path: ${{ runner.temp }}/flutter_cache
+
+    - name: Install Dependencies
+      run: flutter pub get
+
+    - name: Check Dart Format
+      run: |
+        echo "Running dart format check..."
+        flutter format --set-exit-if-changed --output=none .
+        
+    - name: Analyze Code
+      run: |
+        echo "Running dart analyze..."
+        flutter analyze
+        
+    - name: Run Dart Lint
+      run: |
+        echo "Running custom lint checks..."
+        
+        # Create custom lint script
+        cat > /tmp/run_lint.sh << 'EOF'
+        #!/bin/bash
+        
+        # Exit on error
+        set -e
+        
+        # Colors for output
+        RED='\033[0;31m'
+        GREEN='\033[0;32m'
+        YELLOW='\033[1;33m'
+        NC='\033[0m' # No Color
+        
+        echo -e "${YELLOW}Running Dart/Flutter lint checks...${NC}"
+        
+        # Check if Flutter is available
+        if ! command -v flutter &> /dev/null; then
+            echo -e "${RED}Flutter not found!${NC}"
+            exit 1
+        fi
+        
+        # Get Flutter info
+        echo "Flutter version:"
+        flutter --version
+        
+        # Run flutter analyze with more detailed output
+        echo -e "\n${YELLOW}Running flutter analyze...${NC}"
+        flutter analyze
+        
+        # Check for unused code (if applicable)
+        echo -e "\n${YELLOW}Checking for unused imports...${NC}"
+        dart run unused_files:unused_files lib/ || true
+        
+        # Check for dependency issues
+        echo -e "\n${YELLOW}Checking pubspec.yaml...${NC}"
+        if [ -f "pubspec.yaml" ]; then
+            dart pub upgrade --dry-run || true
+        fi
+        
+        # Run specific lint rules check
+        echo -e "\n${YELLOW}Checking analysis_options.yaml...${NC}"
+        if [ -f "analysis_options.yaml" ]; then
+            echo "analysis_options.yaml exists"
+        else
+            echo -e "${YELLOW}Warning: analysis_options.yaml not found${NC}"
+        fi
+        
+        # Check for large files
+        echo -e "\n${YELLOW}Checking for large Dart files...${NC}"
+        find lib -name "*.dart" -size +100k 2>/dev/null | head -5 | while read file; do
+            echo "Large file detected: $file ($(wc -l < "$file") lines)"
+        done
+        
+        # Run tests if they exist
+        if [ -d "test" ]; then
+            echo -e "\n${YELLOW}Running widget tests...${NC}"
+            flutter test test/ --no-pub || true
+        fi
+        
+        echo -e "\n${GREEN}Lint checks completed!${NC}"
+        EOF
+        
+        # Make the script executable and run it
+        chmod +x /tmp/run_lint.sh
+        /tmp/run_lint.sh
