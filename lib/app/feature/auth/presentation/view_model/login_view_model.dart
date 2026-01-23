@@ -12,12 +12,12 @@ import 'package:injectable/injectable.dart';
 class LoginViewModel extends Cubit<LoginStates> {
   LoginViewModel(this._authUseCase) : super(LoginStates());
 
-  final GetAuthUseCase _authUseCase;
+  final LoginUserUseCase _authUseCase;
 
-  void doIntent(LoginEvents event, {String email = "", String password = ""}) {
+  void doIntent(LoginEvents event) {
     switch (event) {
       case LoginEvent():
-        _login(email, password);
+        _login(event.email, event.password, event.rememberMe);
         return;
       case RememberMeEvent():
         _rememberMeChickBox();
@@ -25,12 +25,13 @@ class LoginViewModel extends Cubit<LoginStates> {
     }
   }
 
-  Future<void> _login(String email, String password) async {
+  Future<void> _login(String email, String password, bool rememberMe) async {
     emit(
       state.copyWith(loginStateParam: BaseState<AuthModel>(isLoading: true)),
     );
 
-    final loginResponse = await _authUseCase.login(email, password);
+    final loginResponse = await _authUseCase.invoke(
+        email, password, rememberMe: rememberMe);
     if (isClosed) return;
 
     switch (loginResponse) {
@@ -43,7 +44,6 @@ class LoginViewModel extends Cubit<LoginStates> {
             ),
           ),
         );
-        LocalStorageProcesses.writeTokin(loginResponse.data.tokin!);
         return;
 
       case ErrorResponse<AuthModel>():

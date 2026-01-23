@@ -15,12 +15,12 @@ void main() {
     SuccessResponse<AuthModel>(data: AuthModel(massage: 'dummy')),
   );
 
-  late GetAuthUseCase useCase;
+  late LoginUserUseCase useCase;
   late MockAuthRepoContract mockAuthRepo;
 
   setUp(() {
     mockAuthRepo = MockAuthRepoContract();
-    useCase = GetAuthUseCase(mockAuthRepo);
+    useCase = LoginUserUseCase(mockAuthRepo);
   });
 
   test('returns SuccessResponse when repo succeeds', () async {
