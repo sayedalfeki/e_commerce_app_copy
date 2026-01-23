@@ -1,17 +1,23 @@
-nname: Dart Lint
+name: Dart Lint CI
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches: [main, master, develop]
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+
+  # Also run on push to main branches (optional)
+  push:
+    branches: [main, master, develop]
 
 jobs:
-  dart-lint:
+  lint:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
+        # Fetch all history for all branches
         fetch-depth: 0
 
     - name: Setup Flutter
@@ -20,168 +26,35 @@ jobs:
         flutter-version: '3.38.5'
         channel: 'stable'
         cache: true
-        cache-key: flutter-3.38.5-stable
+        cache-key: ${{ runner.os }}-flutter-${{ hashFiles('pubspec.lock') }}
         cache-path: ${{ runner.temp }}/flutter_cache
 
     - name: Install Dependencies
       run: flutter pub get
 
-    - name: Run Pre-commit Hook (Same as Local)
+    - name: Check Formatting
       run: |
-        echo "Running the same checks as local pre-commit hook..."
-        
-        # Create and run the exact same script as your pre-commit hook
-        cat > /tmp/ci_lint.sh << 'EOF'
-        #!/bin/bash
-        
-        set -e
-        
-        # Colors
-        RED='\033[0;31m'
-        GREEN='\033[0;32m'
-        YELLOW='\033[1;33m'
-        BLUE='\033[0;34m'
-        NC='\033[0m'
-        
-        echo -e "${BLUE}🚀 Running Dart/Flutter CI linting checks...${NC}"
-        echo ""
-        
-        # Check Flutter
-        if ! command -v flutter &> /dev/null; then
-            echo -e "${RED}❌ Flutter not found!${NC}"
-            exit 1
-        fi
-        
-        echo -e "${GREEN}✓ Flutter detected${NC}"
-        echo "Version: $(flutter --version | grep -oP 'Flutter \K[\d.]+' | head -1)"
-        echo ""
-        
-        # Get changed files in PR (all files, not just staged)
-        echo -e "${BLUE}📁 Checking changed Dart files...${NC}"
-        
-        # For PRs, get files changed in this PR
-        if [ -n "${{ github.event.pull_request.number }}" ]; then
-            # Get files changed in the PR
-            CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.dart$' || true)
-        else
-            # Fallback: get all Dart files
-            CHANGED_FILES=$(find . -name "*.dart" -not -path "./.dart_tool/*" -not -path "./build/*")
-        fi
-        
-        if [ -z "$CHANGED_FILES" ]; then
-            echo -e "${YELLOW}⚠ No Dart files changed in this PR${NC}"
-            exit 0
-        fi
-        
-        echo "Found $(echo "$CHANGED_FILES" | wc -l) changed Dart file(s):"
-        echo "$CHANGED_FILES" | sed 's/^/  - /'
-        echo ""
-        
-        # 1. FORMAT CHECK (dart format - same as your local hook)
-        echo -e "${BLUE}🔍 1. Checking code formatting (dart format)...${NC}"
-        
-        FORMAT_ISSUES=0
-        FILES_NEEDING_FORMAT=()
-        
-        for file in $CHANGED_FILES; do
-            if [ ! -f "$file" ]; then
-                continue
-            fi
-            
-            # Create backup
-            cp "$file" "${file}.backup"
-            
-            # Format with dart format (same as your local hook)
-            dart format "$file" > /dev/null 2>&1
-            
-            # Check if file changed
-            if ! diff -q "$file" "${file}.backup" > /dev/null; then
-                echo -e "${RED}  ✗ $file - Needs formatting${NC}"
-                FORMAT_ISSUES=$((FORMAT_ISSUES + 1))
-                FILES_NEEDING_FORMAT+=("$file")
-            else
-                echo -e "${GREEN}  ✓ $file - OK${NC}"
-            fi
-            
-            # Restore original
-            mv "${file}.backup" "$file"
-        done
-        
-        if [ $FORMAT_ISSUES -gt 0 ]; then
-            echo ""
-            echo -e "${RED}❌ Found $FORMAT_ISSUES file(s) with formatting issues${NC}"
-            echo ""
-            echo "To fix formatting issues, run locally:"
-            echo "  dart format ${FILES_NEEDING_FORMAT[*]}"
-            echo ""
-            exit 1
-        else
-            echo -e "${GREEN}✓ All files are properly formatted!${NC}"
-        fi
-        echo ""
-        
-        # 2. ANALYSIS CHECK (flutter analyze - same as your local hook)
-        echo -e "${BLUE}🔍 2. Running static analysis (flutter analyze)...${NC}"
-        
-        ANALYSIS_OUTPUT=$(flutter analyze $CHANGED_FILES 2>&1)
-        ANALYSIS_STATUS=$?
-        
-        if [ $ANALYSIS_STATUS -eq 0 ]; then
-            echo -e "${GREEN}✓ No analysis issues found!${NC}"
-        else
-            echo -e "${RED}❌ Analysis issues found:${NC}"
-            echo ""
-            echo "$ANALYSIS_OUTPUT"
-            
-            # Count issues
-            ERRORS=$(echo "$ANALYSIS_OUTPUT" | grep -c "error •" || true)
-            WARNINGS=$(echo "$ANALYSIS_OUTPUT" | grep -c "warning •" || true)
-            
-            echo ""
-            echo -e "${BLUE}Summary:${NC}"
-            echo "  Errors: $ERRORS"
-            echo "  Warnings: $WARNINGS"
-            
-            if [ $ERRORS -gt 0 ]; then
-                echo ""
-                echo -e "${RED}❌ Please fix all errors before merging.${NC}"
-                exit 1
-            else
-                echo ""
-                echo -e "${YELLOW}⚠ Only warnings found. PR can be merged, but consider fixing warnings.${NC}"
-                # In CI, we don't block on warnings, just errors
-            fi
-        fi
-        echo ""
-        
-        # 3. ADDITIONAL CHECKS (optional)
-        echo -e "${BLUE}🔍 3. Running additional checks...${NC}"
-        
-        # Check analysis_options.yaml
+        echo "🔍 Checking Dart formatting..."
+        dart format --set-exit-if-changed --output=none .
+
+    - name: Analyze Code
+      run: |
+        echo "🔍 Running Dart analysis..."
+        flutter analyze
+
+    - name: Verify Analysis Options
+      run: |
+        echo "📋 Checking analysis configuration..."
         if [ -f "analysis_options.yaml" ]; then
-            echo -e "${GREEN}  ✓ analysis_options.yaml exists${NC}"
+          echo "✅ analysis_options.yaml exists"
         else
-            echo -e "${YELLOW}  ⚠ analysis_options.yaml not found${NC}"
+          echo "⚠️  analysis_options.yaml not found"
         fi
-        
-        # Check for large files
-        echo "  Checking file sizes..."
-        for file in $CHANGED_FILES; do
-            if [ -f "$file" ]; then
-                LINES=$(wc -l < "$file")
-                if [ $LINES -gt 500 ]; then
-                    echo -e "${YELLOW}    ⚠ $file is large ($LINES lines)${NC}"
-                fi
-            fi
-        done
-        
-        echo ""
-        echo -e "${GREEN}=========================================${NC}"
-        echo -e "${GREEN}     ✅ All CI linting checks passed!     ${NC}"
-        echo -e "${GREEN}=========================================${NC}"
-        echo ""
-        
-        EOF
-        
-        chmod +x /tmp/ci_lint.sh
-        /tmp/ci_lint.sh
+
+    - name: Check for Large Files
+      run: |
+        echo "📏 Checking for large Dart files..."
+        find lib -name "*.dart" -size +100k 2>/dev/null | while read file; do
+          lines=$(wc -l < "$file")
+          echo "⚠️  Large file: $file ($lines lines)"
+        done || true
