@@ -78,7 +78,6 @@
   "cancel":"الغاء",
   "ok":"موافق",
   "confirm":"تأكيد",
-  "connectionFailed":"لا يوجد اتصال بالانترنت",
   "invalidOtp":"كود غير صحيح",
   "continueAsGuest": "المتابعة كزائر",
   "status":"الحاله",
@@ -90,13 +89,11 @@
   "bouquetinclude":"الباقه تحتوي على",
   "egp":"ج.م",
   "bloomWithOurExquisiteBestSellers": "تألق مع منتجاتنا الأكثر مبيعاً والراقية",
-  "addToCart": "أضف إلى عربة التسوق"
-  "egp":"ج.م",
+  "addToCart": "أضف إلى عربة التسوق",
  "current_password":"كلمة السر الحالية",
      "new_password":"كلمة السر الجديدة",
      "update":"تحديث",
      "password_changed":"تم تغيير كلمة المرور بنجاح",
-     "egp":"ج.م",
    "my_orders":"hطلباتي",
     "saved_addresses":"المواقع المحفوظة",
     "notifications":"الاشعارات",
@@ -105,13 +102,15 @@
     "arabic":"العربية",
     "about_us":"عنا",
     "logout":"خروج",
-  "update":"تحديث",
   "change":"تغيير",
   "edit_profile":"تحديث الملف الشخصي",
   "update_profile":"تحديث الملف الشخصي",
     "update_profile_error":"خطأ في تحديث الملف الشخصي",
     "uploading_photo":"تحديث الصورة",
-    "uploading_photo_error":"خطأ في تحديث الصورة"
-
-
+    "uploading_photo_error":"خطأ في تحديث الصورة",
+    "add_to_cart": "أضف إلى السلة",
+  "out_of_stock": "إنتهى من المخزن",
+  "in_stock": "في المخزن",
+  "bouquet_include": "الباقة تحتوي على",
+  "all_prices_include_tax": "جميع الأسعار تشمل الضريبة"
 }
