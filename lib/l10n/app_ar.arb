@@ -110,6 +110,14 @@
     "english":"الانجليزية",
     "arabic":"العربية",
     "about_us":"عنا",
-    "logout":"خروج"
+    "logout":"خروج",
+  "update":"تحديث",
+  "change":"تغيير",
+  "edit_profile":"تحديث الملف الشخصي",
+  "update_profile":"تحديث الملف الشخصي",
+    "update_profile_error":"خطأ في تحديث الملف الشخصي",
+    "uploading_photo":"تحديث الصورة",
+    "uploading_photo_error":"خطأ في تحديث الصورة"
+
 
 }
