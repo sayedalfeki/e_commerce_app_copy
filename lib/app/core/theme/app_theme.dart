@@ -74,6 +74,12 @@ class AppTheme {
         fontSize: FontSize.s16,
         fontWeight: FontWeights.medium,
         color: AppColors.blackColor
+      ),
+        bodyLarge: TextStyle(
+            fontFamily: FontsFamily.inter,
+            fontSize: FontSize.s16,
+            fontWeight: FontWeight.normal,
+            color: AppColors.blackColor
       )
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
