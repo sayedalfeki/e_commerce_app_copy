@@ -22,6 +22,9 @@ class AuthDto {
       firstName: user?.firstName,
       email: user?.email,
       photo: user?.photo,
+      gender: user?.gender,
+      phone: user?.phone,
+      lastName: user?.lastName,
     );
   }
 }

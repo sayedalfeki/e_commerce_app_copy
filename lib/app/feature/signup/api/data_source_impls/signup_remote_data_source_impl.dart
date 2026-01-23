@@ -23,10 +23,5 @@ class SignupRemoteDataSourceImpl implements SignupRemoteDataSourceContract {
           "gender": gender
         })
     );
-    try {
-
-    } catch (e) {
-      return ErrorResponse<SignupDto>(error: e as Exception);
-    }
   }
 }

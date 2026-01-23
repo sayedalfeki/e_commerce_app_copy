@@ -43,7 +43,7 @@ class LoginViewModel extends Cubit<LoginStates> {
             ),
           ),
         );
-        LocalStorageProcesses.writeTokin(loginResponse.data.tokin!);
+        LocalStorageProcesses.writeToken(loginResponse.data.tokin!);
         return;
 
       case ErrorResponse<AuthModel>():

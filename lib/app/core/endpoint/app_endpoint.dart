@@ -13,6 +13,8 @@ abstract class AppEndPoint {
 
   // profile
   static const String profile = '/auth/profile-data';
+  static const String updateProfile = '/auth/editProfile';
+  static const String uploadPhoto = '/auth/upload-photo';
   //cart end points
 
   // this end point used for adding products to cart AND to get logged user cart
