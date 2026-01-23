@@ -223,21 +223,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loading => 'جاري التحميل...';
 
   @override
-  String get cancel => 'الغاء';
-
-  @override
-  String get ok => 'موافق';
-
-  @override
-  String get confirm => 'تأكيد';
-
-  @override
-  String get invalidOtp => 'كود غير صحيح';
-
-  @override
-  String get continueAsGuest => 'المتابعة كزائر';
-
-  @override
   String get gender => 'الجنس';
 
   @override
@@ -255,6 +240,21 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get termsandconditions => 'الشروط والأحكام';
+
+  @override
+  String get cancel => 'الغاء';
+
+  @override
+  String get ok => 'موافق';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get invalidOtp => 'كود غير صحيح';
+
+  @override
+  String get continueAsGuest => 'المتابعة كزائر';
 
   @override
   String get status => 'الحاله';
@@ -279,4 +279,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get egp => 'ج.م';
+
+  @override
+  String get items => 'أغراض';
+
+  @override
+  String get clearall => 'حذف الكل';
+
+  @override
+  String get noitemsincart => 'لا توجد عناصر في سلة التسوق';
+
+  @override
+  String get total => 'المجموع';
+
+  @override
+  String get checkout => 'الدفع';
 }

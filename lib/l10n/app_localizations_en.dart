@@ -223,21 +223,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loading => 'Loading...';
 
   @override
-  String get cancel => 'cancel';
-
-  @override
-  String get ok => 'ok';
-
-  @override
-  String get confirm => 'confirm';
-
-  @override
-  String get invalidOtp => 'invalid code';
-
-  @override
-  String get continueAsGuest => 'Continue as guest';
-
-  @override
   String get gender => 'Gender';
 
   @override
@@ -255,6 +240,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsandconditions => 'Terms&Conditions';
+
+  @override
+  String get cancel => 'cancel';
+
+  @override
+  String get ok => 'ok';
+
+  @override
+  String get confirm => 'confirm';
+
+  @override
+  String get invalidOtp => 'invalid code';
+
+  @override
+  String get continueAsGuest => 'Continue as guest';
 
   @override
   String get status => 'status';
@@ -279,4 +279,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get egp => 'EGP';
+
+  @override
+  String get items => 'items';
+
+  @override
+  String get clearall => 'Clear All';
+
+  @override
+  String get noitemsincart => 'no items in cart';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get checkout => 'Checkout';
 }

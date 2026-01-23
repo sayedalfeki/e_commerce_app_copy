@@ -61,7 +61,7 @@
 "male":"ذكر",
 "female":"انثى",
 "accountcreatedsuccessfully":"تم إنشاء الحساب بنجاح",
-"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا"
+"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا",
 "termsandconditions":"الشروط والأحكام",
 "categories": "الفئات",
   "cart": "عربة التسوق",
@@ -88,6 +88,11 @@
   "outofstock":"إنتهى من المخزن",
   "instock":"في المخزن",
   "bouquetinclude":"الباقه تحتوي على",
-  "egp":"ج.م"
-
+  "egp":"ج.م",
+  "cart":"عربة التسوق",
+  "items":"أغراض",
+  "clearall":"حذف الكل",
+  "noitemsincart":"لا توجد عناصر في سلة التسوق",
+  "total":"المجموع",
+  "checkout":"الدفع"
 }
