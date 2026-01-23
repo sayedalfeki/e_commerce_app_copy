@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flower_app/app/core/resources/assets_manager.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flutter/material.dart';
