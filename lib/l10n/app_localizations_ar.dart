@@ -217,9 +217,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bestSeller => 'الأكثر مبيعاً';
 
   @override
-  String get profile => 'الملف الشخصي';
-
-  @override
   String get loading => 'جاري التحميل...';
 
   @override
@@ -255,6 +252,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get continueAsGuest => 'المتابعة كزائر';
+
+  @override
+  String get profile => 'الملف الشخصي';
 
   @override
   String get status => 'الحاله';

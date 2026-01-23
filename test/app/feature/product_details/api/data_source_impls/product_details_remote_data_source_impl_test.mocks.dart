@@ -28,6 +28,7 @@ import 'package:mockito/src/dummies.dart' as _i7;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
+// ignore_for_file: invalid_use_of_internal_member
 
 class _FakeProductDetailsApiClient_0 extends _i1.SmartFake
     implements _i2.ProductDetailsApiClient {
@@ -56,8 +57,8 @@ class MockProductDetailsRemoteDataSourceImpl extends _i1.Mock
           as _i2.ProductDetailsApiClient);
 
   @override
-  set apiClient(_i2.ProductDetailsApiClient? _apiClient) => super.noSuchMethod(
-    Invocation.setter(#apiClient, _apiClient),
+  set apiClient(_i2.ProductDetailsApiClient? value) => super.noSuchMethod(
+    Invocation.setter(#apiClient, value),
     returnValueForMissingStub: null,
   );
 
