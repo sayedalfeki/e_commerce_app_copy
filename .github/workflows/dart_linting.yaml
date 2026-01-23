@@ -1,29 +1,30 @@
-name: Dart Analysis CI
+name: Dart CI
 
 on:
   pull_request:
     branches: [main, master, develop]
     types: [opened, synchronize, reopened, edited, ready_for_review]
+    
   push:
     branches: [main, master, develop]
 
 jobs:
-  analyze:
+  check:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v4
-    
-    - uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '3.38.5'
-        channel: 'stable'
-    
-    - run: flutter pub get
-    
-    - name: Generate Build Files
-      run: |
-        echo "Generating required build files..."
-        flutter pub run build_runner build --delete-conflicting-outputs
-    
-    - run: flutter analyze
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - uses: subosito/flutter-action@v2
+        with: {flutter-version: '3.38.5'}
+        
+      - run: |
+          flutter clean
+          rm -rf .dart_tool
+          
+      - run: flutter pub get
+      
+      - run: flutter pub run build_runner build --delete-conflicting-outputs
+      
+      - run: flutter analyze
