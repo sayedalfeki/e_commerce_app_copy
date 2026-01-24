@@ -1,5 +1,6 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/core/reusable_widgets/show_dialog_utils.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/product_details/presentation/view_model/product_details_events.dart';
 import 'package:flower_app/app/feature/product_details/presentation/view_model/product_details_states.dart';
@@ -23,7 +24,7 @@ class ProductDetailsScreen extends StatelessWidget{
       
       child:Scaffold(
       
-      body:BlocBuilder<ProductDetailsViewModel,ProductDetailsStates>(
+      body:BlocConsumer<ProductDetailsViewModel,ProductDetailsStates>(
         builder: (context, state) {
           if(state.productDetailsState?.isLoading==true){
             return Center(child: CircularProgressIndicator(),);
@@ -127,7 +128,9 @@ class ProductDetailsScreen extends StatelessWidget{
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: ElevatedButton(onPressed: () {}, child: Text(AppLocale(
+                  child: ElevatedButton(onPressed: () {
+                    viewModel.doIntent(AddProductToCartEvent(productId,1));
+                  }, child: Text(AppLocale(
                       context).add_to_cart, style: TextStyle(fontSize: 20),)),
                 ),
               ),
@@ -144,10 +147,27 @@ class ProductDetailsScreen extends StatelessWidget{
 
           }
         },
-      )
+      
+        listener: (context, state){
+          if(state.addProductToCartState?.isLoading==true){
+            ShowDialogUtils.showLoading(context);
+          }else if(state.addProductToCartState?.isLoading==false){
+            ShowDialogUtils.hideLoading(context);
+            if(state.addProductToCartState?.success!=null){
+              ShowDialogUtils.showMessage(context, title: AppLocale(context).success, content: state.addProductToCartState!.success?.message??"",
+              posActionName: AppLocale(context).ok,
+              );
+            }else if(state.addProductToCartState?.error!=null){
+              ShowDialogUtils.showMessage(context, title: AppLocale(context).error, content: state.addProductToCartState!.error.toString(),
+              posActionName: AppLocale(context).ok,
+              );
+            }
+        }
+      }
        
     ) ,
-   ) ;
+    )
+  );
       
   }
 

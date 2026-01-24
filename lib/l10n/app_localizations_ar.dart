@@ -187,52 +187,32 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loading => 'جاري التحميل...';
 
   @override
-  String get welcome => 'مرحباً';
-
-  @override
-  String get occasion => 'المناسبات';
-
-  @override
-  String get occasionSubtitle => 'ازدهر مع أفضل المبيعات الرائعة لدينا';
-
-  @override
-  String get wedding => 'زفاف';
-
-  @override
-  String get graduation => 'تخرج';
-
-  @override
-  String get birthday => 'عيد ميلاد';
-
-  @override
-  String get katbKetab => 'كتب كتاب';
-
-  @override
-  String get addToCart => 'أضف إلى السلة';
-
-  @override
-  String get egp => 'جنيه';
-
-  @override
-  String get viewAll => 'عرض الكل';
-
-  @override
-  String get networkError => 'لا يوجد اتصال بالإنترنت';
-
-  @override
-  String get serverError => 'حدث خطأ ما. يرجى المحاولة مرة أخرى';
-
-  @override
-  String get retry => 'إعادة المحاولة';
-
-  @override
-  String get noProductsForOccasion => 'لا توجد منتجات متاحة لهذه المناسبة';
-
-  @override
   String get categories => 'الفئات';
 
   @override
   String get cart => 'عربة التسوق';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'انثى';
+
+  @override
+  String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get termsandconditions => 'الشروط والأحكام';
 
   @override
   String get connectionFailed => 'لا يوجد اتصال بالانترنت';
@@ -256,29 +236,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get egyptianLivre => 'ج.م';
 
   @override
+  String get occasion => 'المناسبة';
+
+  @override
   String get bestSeller => 'الأكثر مبيعاً';
-
-  @override
-  String get profile => 'الملف الشخصي';
-
-  @override
-  String get gender => 'الجنس';
-
-  @override
-  String get male => 'ذكر';
-
-  @override
-  String get female => 'انثى';
-
-  @override
-  String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
-
-  @override
-  String get creatinganaccountyouagreetoour =>
-      'بإنشاء حساب، فإنك توافق على شروطنا';
-
-  @override
-  String get termsandconditions => 'الشروط والأحكام';
 
   @override
   String get cancel => 'الغاء';
@@ -327,6 +288,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bouquetinclude => 'الباقه تحتوي على';
 
   @override
+  String get egp => 'ج.م';
+
+  @override
   String get items => 'أغراض';
 
   @override
@@ -354,7 +318,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bouquet_include => 'Bouquet include';
 
   @override
-  String get my_orders => 'طلباتي';
+  String get my_orders => 'hطلباتي';
 
   @override
   String get saved_addresses => 'المواقع المحفوظة';
@@ -388,4 +352,46 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get password_changed => 'تم تغيير كلمة المرور بنجاح';
+
+  @override
+  String get welcome => 'Welcome';
+
+  @override
+  String get occasionSubtitle => 'Bloom with our exquisite best sellers';
+
+  @override
+  String get wedding => 'Wedding';
+
+  @override
+  String get graduation => 'Graduation';
+
+  @override
+  String get birthday => 'Birthday';
+
+  @override
+  String get katbKetab => 'Katb Ketab';
+
+  @override
+  String get addToCart => 'Add to cart';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get networkError => 'No internet connection';
+
+  @override
+  String get serverError => 'Something went wrong. Please try again';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get noProductsForOccasion => 'No products available for this occasion';
+
+  @override
+  String get success => 'تم بنجاح';
+
+  @override
+  String get error => 'حدث خطاء';
 }
