@@ -184,6 +184,51 @@ class AppLocalizationsAr extends AppLocalizations {
   String get successMessage => 'تم التسجيل بنجاح';
 
   @override
+  String get loading => 'جاري التحميل...';
+
+  @override
+  String get welcome => 'مرحباً';
+
+  @override
+  String get occasion => 'المناسبات';
+
+  @override
+  String get occasionSubtitle => 'ازدهر مع أفضل المبيعات الرائعة لدينا';
+
+  @override
+  String get wedding => 'زفاف';
+
+  @override
+  String get graduation => 'تخرج';
+
+  @override
+  String get birthday => 'عيد ميلاد';
+
+  @override
+  String get katbKetab => 'كتب كتاب';
+
+  @override
+  String get addToCart => 'أضف إلى السلة';
+
+  @override
+  String get egp => 'جنيه';
+
+  @override
+  String get viewAll => 'عرض الكل';
+
+  @override
+  String get networkError => 'لا يوجد اتصال بالإنترنت';
+
+  @override
+  String get serverError => 'حدث خطأ ما. يرجى المحاولة مرة أخرى';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get noProductsForOccasion => 'لا توجد منتجات متاحة لهذه المناسبة';
+
+  @override
   String get categories => 'الفئات';
 
   @override
@@ -211,16 +256,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get egyptianLivre => 'ج.م';
 
   @override
-  String get occasion => 'المناسبة';
-
-  @override
   String get bestSeller => 'الأكثر مبيعاً';
 
   @override
   String get profile => 'الملف الشخصي';
-
-  @override
-  String get loading => 'جاري التحميل...';
 
   @override
   String get gender => 'الجنس';
@@ -288,9 +327,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bouquetinclude => 'الباقه تحتوي على';
 
   @override
-  String get egp => 'ج.م';
-
-  @override
   String get items => 'أغراض';
 
   @override
@@ -318,7 +354,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bouquet_include => 'Bouquet include';
 
   @override
-  String get my_orders => 'hطلباتي';
+  String get my_orders => 'طلباتي';
 
   @override
   String get saved_addresses => 'المواقع المحفوظة';

@@ -184,6 +184,51 @@ class AppLocalizationsEn extends AppLocalizations {
   String get successMessage => 'Sign up is successful';
 
   @override
+  String get loading => 'Loading...';
+
+  @override
+  String get welcome => 'Welcome';
+
+  @override
+  String get occasion => 'Occasion';
+
+  @override
+  String get occasionSubtitle => 'Bloom with our exquisite best sellers';
+
+  @override
+  String get wedding => 'Wedding';
+
+  @override
+  String get graduation => 'Graduation';
+
+  @override
+  String get birthday => 'Birthday';
+
+  @override
+  String get katbKetab => 'Katb Ketab';
+
+  @override
+  String get addToCart => 'Add to cart';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get networkError => 'No internet connection';
+
+  @override
+  String get serverError => 'Something went wrong. Please try again';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get noProductsForOccasion => 'No products available for this occasion';
+
+  @override
   String get categories => 'Categories';
 
   @override
@@ -210,8 +255,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get egyptianLivre => 'EGP';
 
-  @override
-  String get occasion => 'Occasion';
+ 
 
   @override
   String get bestSeller => 'Best Seller';
@@ -219,9 +263,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get profile => 'Profile';
 
-  @override
-  String get loading => 'Loading...';
-
+  
   @override
   String get gender => 'Gender';
 
@@ -286,9 +328,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bouquetinclude => 'Bouquet include';
-
-  @override
-  String get egp => 'EGP';
 
   @override
   String get items => 'items';

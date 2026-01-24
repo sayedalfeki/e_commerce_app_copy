@@ -57,6 +57,10 @@
       "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
       "successMessage": "تم التسجيل بنجاح",
 "loading": "جاري التحميل...",
+"categories": "الفئات",
+  "cart": "عربة التسوق",
+  "profile": "الملف الشخصي",
+"loading": "جاري التحميل...",
 "gender":"الجنس",
 "male":"ذكر",
 "female":"انثى",
@@ -111,5 +115,4 @@
     "arabic":"العربية",
     "about_us":"عنا",
     "logout":"خروج"
-
 }
