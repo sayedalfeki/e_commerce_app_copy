@@ -2,7 +2,10 @@ import 'package:flower_app/app/core/consts/app_consts.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
+import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/notification_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_items_widget.dart';
+import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_photo_widget.dart';
+import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_intent.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/assets_manager.dart';
@@ -42,29 +45,7 @@ class ProfileWidget extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                Stack(
-                  alignment: AlignmentGeometry.topRight,
-                  children: [
-                    Icon(Icons.notifications_none),
-                    Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(2),
-                      width: 15,
-                      height: 15,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Text(
-                        AppConsts.notificationNumber,
-                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          fontSize: 8,
-                          color: AppColors.whiteColor,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                NotificationWidget()
               ],
             ),
             const SizedBox(height: 20),
@@ -135,18 +116,19 @@ class ProfileWidget extends StatelessWidget {
   Widget _buildProfileSection(BuildContext context, UserEntity user) {
     return Column(
       children: [
-        CircleAvatar(
-          radius: 50,
-          backgroundImage: NetworkImage(user.photo ?? ''),
-          backgroundColor: Colors.transparent,
-        ),
+        ProfilePhotoWidget(photoUrl: user.photo ?? ''),
         const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(user.firstName ?? ''),
             const SizedBox(width: 10),
-            const Icon(Icons.edit),
+            IconButton(
+              icon: Icon(Icons.edit),
+              onPressed: () {
+                profileViewModel.doIntent(NavigateToEditProfileAction());
+              },
+            ),
           ],
         ),
         const SizedBox(height: 10),
