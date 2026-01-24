@@ -8,16 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsScreen extends StatelessWidget{
-  final String? productId;
+  String productId;
 
-  ProductDetailsScreen({super.key, this.productId});
+  ProductDetailsScreen({super.key, required this.productId});
 
   final ProductDetailsViewModel viewModel = getIt<ProductDetailsViewModel>();
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    viewModel.doIntent(GetProductDetailsEvent(productId??"673e1cd711599201718280fb"));
+    viewModel.doIntent(GetProductDetailsEvent(productId));
     return BlocProvider<ProductDetailsViewModel>(
       create: (context) => viewModel,
       
@@ -29,13 +29,13 @@ class ProductDetailsScreen extends StatelessWidget{
             return Center(child: CircularProgressIndicator(),);
           }else if (state.productDetailsState?.isLoading==false && state.productDetailsState?.success!=null)
           {
-
            return CustomScrollView(
               slivers: [
               SliverAppBar(
                 pinned: true,
-                
-                leading: Icon(Icons.arrow_back_ios_rounded),
+                leading: InkWell(child: Icon(Icons.arrow_back_ios_rounded),onTap: (){
+                  Navigator.of(context).pop();
+                },),
                 expandedHeight: height*0.50,
                 flexibleSpace: FlexibleSpaceBar(
                   
@@ -123,12 +123,7 @@ class ProductDetailsScreen extends StatelessWidget{
               SliverToBoxAdapter(
                 child: SizedBox(height: height*0.01,),
               ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(state.productDetailsState!.success!.description??"",style:Theme.of(context).textTheme.headlineMedium ,),
-                ),
-              ),
+              
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),

@@ -217,6 +217,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bestSeller => 'الأكثر مبيعاً';
 
   @override
+  String get profile => 'الملف الشخصي';
+
+  @override
   String get loading => 'جاري التحميل...';
 
   @override
@@ -254,13 +257,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get continueAsGuest => 'المتابعة كزائر';
 
   @override
-  String get profile => 'الملف الشخصي';
+  String get account_created_successfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creating_an_account_you_agree_to_our =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get terms_and_conditions => 'الشروط والأحكام';
 
   @override
   String get status => 'الحاله';
 
   @override
-  String get allpricesincludetax => 'جميع الأسعار تشمل الضريبة';
+  String get all_prices_include_tax => 'All prices include tax';
 
   @override
   String get description => 'الوصف';
@@ -294,4 +304,52 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get checkout => 'الدفع';
+
+  @override
+  String get add_to_cart => 'Add to cart';
+
+  @override
+  String get out_of_stock => 'Out of Stock';
+
+  @override
+  String get in_stock => 'In Stock';
+
+  @override
+  String get bouquet_include => 'Bouquet include';
+
+  @override
+  String get my_orders => 'hطلباتي';
+
+  @override
+  String get saved_addresses => 'المواقع المحفوظة';
+
+  @override
+  String get notifications => 'الاشعارات';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get english => 'الانجليزية';
+
+  @override
+  String get arabic => 'العربية';
+
+  @override
+  String get about_us => 'عنا';
+
+  @override
+  String get logout => 'خروج';
+
+  @override
+  String get current_password => 'كلمة السر الحالية';
+
+  @override
+  String get new_password => 'كلمة السر الجديدة';
+
+  @override
+  String get update => 'تحديث';
+
+  @override
+  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
 }
