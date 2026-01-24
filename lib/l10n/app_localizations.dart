@@ -500,12 +500,6 @@ abstract class AppLocalizations {
   /// **'Best Seller'**
   String get bestSeller;
 
-  /// No description provided for @profile.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile'**
-  String get profile;
-
   /// No description provided for @loading.
   ///
   /// In en, this message translates to:
@@ -577,6 +571,11 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue as guest'**
   String get continueAsGuest;
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
 
   /// No description provided for @status.
   ///

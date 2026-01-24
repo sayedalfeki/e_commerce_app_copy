@@ -217,9 +217,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bestSeller => 'Best Seller';
 
   @override
-  String get profile => 'Profile';
-
-  @override
   String get loading => 'Loading...';
 
   @override
@@ -255,6 +252,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueAsGuest => 'Continue as guest';
+
+  @override
+  String get profile => 'Profile';
 
   @override
   String get status => 'status';

@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../profile/domain/model/user_entity.dart';
+
 part 'auth_response.g.dart';
 
 @JsonSerializable()
@@ -14,6 +16,17 @@ class AuthDto {
       _$AuthDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthDtoToJson(this);
+
+  UserEntity toUserEntity() {
+    return UserEntity(
+      firstName: user?.firstName,
+      email: user?.email,
+      photo: user?.photo,
+      gender: user?.gender,
+      phone: user?.phone,
+      lastName: user?.lastName,
+    );
+  }
 }
 
 @JsonSerializable()
