@@ -184,10 +184,35 @@ class AppLocalizationsAr extends AppLocalizations {
   String get successMessage => 'تم التسجيل بنجاح';
 
   @override
+  String get loading => 'جاري التحميل...';
+
+  @override
   String get categories => 'الفئات';
 
   @override
   String get cart => 'عربة التسوق';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'انثى';
+
+  @override
+  String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get termsandconditions => 'الشروط والأحكام';
 
   @override
   String get connectionFailed => 'لا يوجد اتصال بالانترنت';
@@ -215,31 +240,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get bestSeller => 'الأكثر مبيعاً';
-
-  @override
-  String get profile => 'الملف الشخصي';
-
-  @override
-  String get loading => 'جاري التحميل...';
-
-  @override
-  String get gender => 'الجنس';
-
-  @override
-  String get male => 'ذكر';
-
-  @override
-  String get female => 'انثى';
-
-  @override
-  String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
-
-  @override
-  String get creatinganaccountyouagreetoour =>
-      'بإنشاء حساب، فإنك توافق على شروطنا';
-
-  @override
-  String get termsandconditions => 'الشروط والأحكام';
 
   @override
   String get cancel => 'الغاء';
@@ -352,6 +352,48 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get password_changed => 'تم تغيير كلمة المرور بنجاح';
+
+  @override
+  String get welcome => 'Welcome';
+
+  @override
+  String get occasionSubtitle => 'Bloom with our exquisite best sellers';
+
+  @override
+  String get wedding => 'Wedding';
+
+  @override
+  String get graduation => 'Graduation';
+
+  @override
+  String get birthday => 'Birthday';
+
+  @override
+  String get katbKetab => 'Katb Ketab';
+
+  @override
+  String get addToCart => 'Add to cart';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get networkError => 'No internet connection';
+
+  @override
+  String get serverError => 'Something went wrong. Please try again';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get noProductsForOccasion => 'No products available for this occasion';
+
+  @override
+  String get success => 'تم بنجاح';
+
+  @override
+  String get error => 'Error';
 
   @override
   String get change => 'تغيير';

@@ -57,6 +57,10 @@
       "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
       "successMessage": "تم التسجيل بنجاح",
 "loading": "جاري التحميل...",
+"categories": "الفئات",
+  "cart": "عربة التسوق",
+  "profile": "الملف الشخصي",
+"loading": "جاري التحميل...",
 "gender":"الجنس",
 "male":"ذكر",
 "female":"انثى",
@@ -117,7 +121,6 @@
   "update_profile":"تحديث الملف الشخصي",
     "update_profile_error":"خطأ في تحديث الملف الشخصي",
     "uploading_photo":"تحديث الصورة",
-    "uploading_photo_error":"خطأ في تحديث الصورة"
-
-
+    "uploading_photo_error":"خطأ في تحديث الصورة",
+    "success":"تم بنجاح"
 }

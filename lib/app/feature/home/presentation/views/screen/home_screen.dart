@@ -6,6 +6,8 @@ import 'package:flower_app/app/feature/home/presentation/view_model/home_view_mo
 import 'package:flower_app/app/feature/home/presentation/views/tabs/cart/presentation/views/screens/cart_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/categories_tab/presentation/views/screen/categories_tab.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/home_tab/presentation/views/screen/home_tab.dart';
+import 'package:flower_app/app/feature/home/presentation/views/tabs/profile_tab/presentation/views/screen/profile_tab.dart';
+import 'package:flower_app/app/feature/profile/presentation/profile/view/profile_screen.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_navigator_widget.dart';
 import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeTab(),
     CategoriesTab(),
     CartScreen(),
-    ProfileTab()
+    ProfileNavigatorWidget()
   ];
 
   @override
