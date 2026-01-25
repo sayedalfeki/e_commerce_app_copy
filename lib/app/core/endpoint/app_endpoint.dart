@@ -24,4 +24,12 @@ abstract class AppEndPoint {
   //and to delete item cart
   static const String updateCart = "/cart/{productId}";
 
+  // Occasion Endpoints
+  static const String occasions = '/occasions';
+  static String occasionById(String id) => '/occasions/$id';
+  // Product Endpoints
+  //static const String products = '/products';
+
+  static String productsByOccasion(String occasionId) =>
+      '/products?occasion=$occasionId';
 }

@@ -57,9 +57,16 @@
       "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
       "successMessage": "تم التسجيل بنجاح",
 "loading": "جاري التحميل...",
+"categories": "الفئات",
+  "cart": "عربة التسوق",
+  "profile": "الملف الشخصي",
+"loading": "جاري التحميل...",
 "gender":"الجنس",
 "male":"ذكر",
 "female":"انثى",
+"accountcreatedsuccessfully":"تم إنشاء الحساب بنجاح",
+"creatinganaccountyouagreetoour":"بإنشاء حساب، فإنك توافق على شروطنا",
+"termsandconditions":"الشروط والأحكام",
 "account_created_successfully":"تم إنشاء الحساب بنجاح",
 "creating_an_account_you_agree_to_our":"بإنشاء حساب، فإنك توافق على شروطنا",
 "terms_and_conditions":"الشروط والأحكام",
@@ -89,6 +96,12 @@
   "instock":"في المخزن",
   "bouquetinclude":"الباقه تحتوي على",
   "egp":"ج.م",
+  "cart":"عربة التسوق",
+  "items":"أغراض",
+  "clearall":"حذف الكل",
+  "noitemsincart":"لا توجد عناصر في سلة التسوق",
+  "total":"المجموع",
+  "checkout":"الدفع",
  "current_password":"كلمة السر الحالية",
      "new_password":"كلمة السر الجديدة",
      "update":"تحديث",
@@ -108,7 +121,6 @@
   "update_profile":"تحديث الملف الشخصي",
     "update_profile_error":"خطأ في تحديث الملف الشخصي",
     "uploading_photo":"تحديث الصورة",
-    "uploading_photo_error":"خطأ في تحديث الصورة"
-
-
+    "uploading_photo_error":"خطأ في تحديث الصورة",
+    "success":"تم بنجاح"
 }

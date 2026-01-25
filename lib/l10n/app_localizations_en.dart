@@ -184,10 +184,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String get successMessage => 'Sign up is successful';
 
   @override
+  String get loading => 'Loading...';
+
+  @override
   String get categories => 'Categories';
 
   @override
   String get cart => 'Cart';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get accountcreatedsuccessfully => 'Account Created Successfully';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'Creating an account, you agree to our';
+
+  @override
+  String get termsandconditions => 'Terms&Conditions';
 
   @override
   String get connectionFailed => 'No Internet Connection';
@@ -217,9 +242,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bestSeller => 'Best Seller';
 
   @override
-  String get loading => 'Loading...';
-
-  @override
   String get cancel => 'cancel';
 
   @override
@@ -235,32 +257,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get continueAsGuest => 'Continue as guest';
 
   @override
-  String get gender => 'Gender';
+  String get account_created_successfully => 'Account Created Successfully';
 
   @override
-  String get male => 'Male';
-
-  @override
-  String get female => 'Female';
-
-  @override
-  String get accountcreatedsuccessfully => 'Account Created Successfully';
-
-  @override
-  String get creatinganaccountyouagreetoour =>
+  String get creating_an_account_you_agree_to_our =>
       'Creating an account, you agree to our';
 
   @override
-  String get termsandconditions => 'Terms&Conditions';
-
-  @override
-  String get profile => 'Profile';
+  String get terms_and_conditions => 'Terms & Conditions';
 
   @override
   String get status => 'status';
 
   @override
-  String get allpricesincludetax => 'All prices include tax';
+  String get all_prices_include_tax => 'All prices include tax';
 
   @override
   String get description => 'Description';
@@ -279,4 +289,127 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get egp => 'EGP';
+
+  @override
+  String get items => 'items';
+
+  @override
+  String get clearall => 'Clear All';
+
+  @override
+  String get noitemsincart => 'no items in cart';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get add_to_cart => 'Add to cart';
+
+  @override
+  String get out_of_stock => 'Out of Stock';
+
+  @override
+  String get in_stock => 'In Stock';
+
+  @override
+  String get bouquet_include => 'Bouquet include';
+
+  @override
+  String get my_orders => 'My Orders';
+
+  @override
+  String get saved_addresses => 'Saved Addresses';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get about_us => 'About Us';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get current_password => 'current password';
+
+  @override
+  String get new_password => 'new password';
+
+  @override
+  String get update => 'update';
+
+  @override
+  String get password_changed => 'password changed successfully';
+
+  @override
+  String get welcome => 'Welcome';
+
+  @override
+  String get occasionSubtitle => 'Bloom with our exquisite best sellers';
+
+  @override
+  String get wedding => 'Wedding';
+
+  @override
+  String get graduation => 'Graduation';
+
+  @override
+  String get birthday => 'Birthday';
+
+  @override
+  String get katbKetab => 'Katb Ketab';
+
+  @override
+  String get addToCart => 'Add to cart';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get networkError => 'No internet connection';
+
+  @override
+  String get serverError => 'Something went wrong. Please try again';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get noProductsForOccasion => 'No products available for this occasion';
+
+  @override
+  String get success => 'Success';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get change => 'change';
+
+  @override
+  String get edit_profile => 'edit profile';
+
+  @override
+  String get update_profile => 'update profile';
+
+  @override
+  String get update_profile_error => 'error in update profile';
+
+  @override
+  String get uploading_photo => 'uploading photo';
+
+  @override
+  String get uploading_photo_error => 'error in uploading photo';
 }
