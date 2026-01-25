@@ -1,5 +1,8 @@
+import 'package:flower_app/app/config/local_storage_processes/local_storage_processes.dart';
 import 'package:flower_app/app/core/consts/app_consts.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/core/reusable_widgets/show_dialog_utils.dart';
+import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/notification_widget.dart';
@@ -96,6 +99,27 @@ class ProfileWidget extends StatelessWidget {
             ProfileItemsWidget(data: AppLocale(context).terms_and_conditions),
             Divider(thickness: 1),
             ProfileItemsWidget(
+              onTap: () {
+                ShowDialogUtils.showMessage(
+                  context,
+                  content: AppLocale(context).logout,
+                  title: AppLocale(context).confirmlogout,
+                  nigActionName: AppLocale(context).cancel,
+                  posActionName: AppLocale(context).logout,
+                  nigAction: () {
+                    Navigator.of(context).pop();
+                  },
+                  posAction: () {
+                    
+                    profileViewModel.doIntent(LogoutAction());
+                    LocalStorageProcesses.clearToken();
+                    Navigator.of(context).pop(context);
+                    Navigator.of(context).pushReplacementNamed(Routes.login);
+                  },  
+                );
+                //profileViewModel.doIntent(LogoutAction());
+                
+              },
               data: AppLocale(context).logout,
               leading: Icon(Icons.logout),
               trailing: Icon(Icons.logout),

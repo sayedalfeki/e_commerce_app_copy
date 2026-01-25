@@ -743,7 +743,7 @@ abstract class AppLocalizations {
   /// No description provided for @logout.
   ///
   /// In en, this message translates to:
-  /// **'Logout'**
+  /// **'LOGOUT'**
   String get logout;
 
   /// No description provided for @current_password.
@@ -889,6 +889,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'error in uploading photo'**
   String get uploading_photo_error;
+
+  /// No description provided for @confirmlogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm logout'**
+  String get confirmlogout;
 }
 
 class _AppLocalizationsDelegate

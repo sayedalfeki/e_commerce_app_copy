@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flower_app/app/config/base_response/base_response.dart';
 import 'package:flower_app/app/feature/auth/data/model/auth_response.dart';
+import 'package:flower_app/app/feature/profile/data/model/logout_dto.dart';
 import 'package:flower_app/app/feature/profile/data/model/profile_photo_response.dart';
 import 'package:flower_app/app/feature/profile/data/profile_data_source_contract.dart';
+import 'package:flower_app/app/feature/profile/domain/model/logout_model.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/domain/profile_repo_contract.dart';
 import 'package:flower_app/app/feature/profile/domain/request/update_profile_request.dart';
@@ -65,5 +67,22 @@ class ProfileRepoImpl extends ProfileRepoContract {
       case ErrorResponse<ChangePasswordResponse>():
         return ErrorResponse(error: response.error);
     }
+  }
+
+  @override
+  Future<BaseResponse<LogoutModel>> logout() {
+    return _profileDataSourceContract.logout().then((response) {
+      switch (response) {
+        case SuccessResponse<LogoutDto>():
+          final dto = response.data;
+          final model = LogoutModel(
+            message: dto.message,
+            error: dto.error,
+          );
+          return SuccessResponse(data: model);
+        case ErrorResponse<LogoutDto>():
+          return ErrorResponse(error: response.error);
+      }
+    });
   }
 }

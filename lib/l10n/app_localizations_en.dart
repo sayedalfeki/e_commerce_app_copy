@@ -339,7 +339,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get about_us => 'About Us';
 
   @override
-  String get logout => 'Logout';
+  String get logout => 'LOGOUT';
 
   @override
   String get current_password => 'current password';
@@ -412,4 +412,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'error in uploading photo';
+
+  @override
+  String get confirmlogout => 'Confirm logout';
 }

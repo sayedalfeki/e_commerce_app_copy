@@ -32,4 +32,6 @@ abstract class AppEndPoint {
 
   static String productsByOccasion(String occasionId) =>
       '/products?occasion=$occasionId';
+  
+  static const String logout = '/auth/logout';
 }

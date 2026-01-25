@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flower_app/app/feature/profile/data/model/logout_dto.dart';
 import 'package:flower_app/app/feature/profile/domain/request/update_profile_request.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -30,4 +31,7 @@ abstract class ProfileApiClient {
 
   @PUT(AppEndPoint.updateProfile)
   Future<AuthDto> updateProfile(@Body() UpdateProfileRequest request);
+
+  @GET(AppEndPoint.logout)
+  Future<LogoutDto> logout();
 }

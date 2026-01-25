@@ -339,7 +339,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get about_us => 'عنا';
 
   @override
-  String get logout => 'خروج';
+  String get logout => 'تسجيل الخروج';
 
   @override
   String get current_password => 'كلمة السر الحالية';
@@ -412,4 +412,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'خطأ في تحديث الصورة';
+
+  @override
+  String get confirmlogout => 'تأكيد تسجيل الخروج';
 }

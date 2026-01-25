@@ -145,5 +145,7 @@
   "update_profile":"update profile",
   "update_profile_error":"error in update profile",
   "uploading_photo":"uploading photo",
-  "uploading_photo_error":"error in uploading photo"
+  "uploading_photo_error":"error in uploading photo",
+  "logout":"LOGOUT",
+  "confirmlogout":"Confirm logout"
 }
