@@ -393,5 +393,23 @@ class AppLocalizationsAr extends AppLocalizations {
   String get success => 'تم بنجاح';
 
   @override
-  String get error => 'حدث خطاء';
+  String get error => 'Error';
+
+  @override
+  String get change => 'تغيير';
+
+  @override
+  String get edit_profile => 'تحديث الملف الشخصي';
+
+  @override
+  String get update_profile => 'تحديث الملف الشخصي';
+
+  @override
+  String get update_profile_error => 'خطأ في تحديث الملف الشخصي';
+
+  @override
+  String get uploading_photo => 'تحديث الصورة';
+
+  @override
+  String get uploading_photo_error => 'خطأ في تحديث الصورة';
 }

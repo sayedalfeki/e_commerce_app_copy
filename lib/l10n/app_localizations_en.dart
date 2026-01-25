@@ -394,4 +394,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error => 'Error';
+
+  @override
+  String get change => 'change';
+
+  @override
+  String get edit_profile => 'edit profile';
+
+  @override
+  String get update_profile => 'update profile';
+
+  @override
+  String get update_profile_error => 'error in update profile';
+
+  @override
+  String get uploading_photo => 'uploading photo';
+
+  @override
+  String get uploading_photo_error => 'error in uploading photo';
 }

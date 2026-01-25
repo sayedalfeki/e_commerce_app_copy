@@ -853,6 +853,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error'**
   String get error;
+
+  /// No description provided for @change.
+  ///
+  /// In en, this message translates to:
+  /// **'change'**
+  String get change;
+
+  /// No description provided for @edit_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'edit profile'**
+  String get edit_profile;
+
+  /// No description provided for @update_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'update profile'**
+  String get update_profile;
+
+  /// No description provided for @update_profile_error.
+  ///
+  /// In en, this message translates to:
+  /// **'error in update profile'**
+  String get update_profile_error;
+
+  /// No description provided for @uploading_photo.
+  ///
+  /// In en, this message translates to:
+  /// **'uploading photo'**
+  String get uploading_photo;
+
+  /// No description provided for @uploading_photo_error.
+  ///
+  /// In en, this message translates to:
+  /// **'error in uploading photo'**
+  String get uploading_photo_error;
 }
 
 class _AppLocalizationsDelegate
