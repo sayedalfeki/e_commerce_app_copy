@@ -217,7 +217,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bestSeller => 'Best Seller';
 
   @override
+  String get profile => 'Profile';
+
+  @override
   String get loading => 'Loading...';
+
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
 
   @override
   String get cancel => 'cancel';
@@ -235,48 +247,90 @@ class AppLocalizationsEn extends AppLocalizations {
   String get continueAsGuest => 'Continue as guest';
 
   @override
-  String get gender => 'Gender';
+  String get account_created_successfully => 'Account Created Successfully';
 
   @override
-  String get male => 'Male';
-
-  @override
-  String get female => 'Female';
-
-  @override
-  String get accountcreatedsuccessfully => 'Account Created Successfully';
-
-  @override
-  String get creatinganaccountyouagreetoour =>
+  String get creating_an_account_you_agree_to_our =>
       'Creating an account, you agree to our';
 
   @override
-  String get termsandconditions => 'Terms&Conditions';
-
-  @override
-  String get profile => 'Profile';
+  String get terms_and_conditions => 'Terms & Conditions';
 
   @override
   String get status => 'status';
 
   @override
-  String get allpricesincludetax => 'All prices include tax';
+  String get all_prices_include_tax => 'All prices include tax';
 
   @override
   String get description => 'Description';
 
   @override
-  String get addtocart => 'Add to cart';
+  String get add_to_cart => 'Add to cart';
 
   @override
-  String get outofstock => 'Out of Stock';
+  String get out_of_stock => 'Out of Stock';
 
   @override
-  String get instock => 'In Stock';
+  String get in_stock => 'In Stock';
 
   @override
-  String get bouquetinclude => 'Bouquet include';
+  String get bouquet_include => 'Bouquet include';
 
   @override
   String get egp => 'EGP';
+
+  @override
+  String get my_orders => 'My Orders';
+
+  @override
+  String get saved_addresses => 'Saved Addresses';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get about_us => 'About Us';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get current_password => 'current password';
+
+  @override
+  String get new_password => 'new password';
+
+  @override
+  String get update => 'update';
+
+  @override
+  String get password_changed => 'password changed successfully';
+
+  @override
+  String get change => 'change';
+
+  @override
+  String get edit_profile => 'edit profile';
+
+  @override
+  String get update_profile => 'update profile';
+
+  @override
+  String get update_profile_error => 'error in update profile';
+
+  @override
+  String get uploading_photo => 'uploading photo';
+
+  @override
+  String get uploading_photo_error => 'error in uploading photo';
 }

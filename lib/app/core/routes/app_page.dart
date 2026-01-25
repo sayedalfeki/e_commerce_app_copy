@@ -7,7 +7,6 @@ import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.d
 import 'package:flower_app/app/feature/product_details/presentation/views/screens/product_details_screen.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view/update_profile_widget.dart';
-import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.dart';
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '../../feature/forget_password/presentation/forget_password/view/forget_password_screen.dart';
