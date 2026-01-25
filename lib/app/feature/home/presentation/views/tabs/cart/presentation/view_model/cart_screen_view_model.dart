@@ -56,9 +56,9 @@ class CartScreenViewModel extends Cubit<CartScreenStates>{
   void _getLoggedUserCart()async{
 
    emit(state.copyWith(
-   numOfCartItemsNew: BaseState(isLoading: true),
+   
    cartItemsNew: BaseState(isLoading: true),
-   totalPriceNew: BaseState(isLoading: true)
+   
    ));
 
    var response =await _getLoggedUserCartUseCase.cartRepoContract.getUserCart();
@@ -82,10 +82,7 @@ class CartScreenViewModel extends Cubit<CartScreenStates>{
 
   void _updateCartProductQuantity({String? productId,int? quantity})async{
     
-   emit(state.copyWith(
-      numOfCartItemsNew: BaseState(isLoading: true),
-      totalPriceNew: BaseState(isLoading: true )
-    ));
+   
    var response = await _updateCartProductQuantityUseCase.cartRepoContract.updatedCartProductQuantity(productId: productId,quantity: quantity);
    
    switch(response){
@@ -125,8 +122,8 @@ class CartScreenViewModel extends Cubit<CartScreenStates>{
 
   void _cleareCart()async{
     emit(state.copyWith(
-        numOfCartItemsNew: BaseState(isLoading: true),
-        totalPriceNew: BaseState(isLoading: true),
+        
+        cartItemsNew: BaseState(isLoading: true),
       ));
     var response =await _cleareCartUseCase.cartRepoContract.clearUserCart();
     switch(response){
