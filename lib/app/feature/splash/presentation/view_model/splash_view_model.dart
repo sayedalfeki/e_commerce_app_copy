@@ -29,30 +29,6 @@ class SplashViewModel extends CustomCubit<SplashEvent, SplashState> {
     } else {
       _navToLogin();
     }
-//     switch (result) {
-    //       case SuccessResponse<String?>():
-    //         if (result.data == null || result.data!.isEmpty) {
-    //           final rememberMeResult = await _getRememberMeUseCase.invoke();
-    //          switch(rememberMeResult){
-    //            case SuccessResponse<bool>():
-    //              if(rememberMeResult.data==true) {
-    //                _navToLogin();
-    //              }
-    //            case ErrorResponse<bool>():
-    //              // TODO: Handle this case.
-    //              throw UnimplementedError();
-    // }        } else {
-    //           _navToHome();
-    //         }
-    //       case ErrorResponse<String?>():
-    //         emit(state.copyWith(splashState: BaseState(error: result.error)));
-    //     }
-    //todo
-    // if (token == null || token.isEmpty) {
-    //   _navToLogin();
-    // } else {
-    //   _navToHome();
-    // }
   }
 
   void _navToLogin() {
