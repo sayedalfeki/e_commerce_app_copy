@@ -11,17 +11,12 @@ class TokenRepoImpl extends TokenRepoContract {
   TokenRepoImpl(this._contract);
 
   @override
-  Future<BaseResponse<String?>> getToken() {
-    return _contract.getToken();
-  }
-
-  @override
   Future<BaseResponse<bool>> clearToken() {
     return _contract.clearToken();
   }
 
   @override
-  Future<BaseResponse<bool>> getRememberMe() {
+  bool? getRememberMe() {
     return _contract.getRememberMe();
   }
 }

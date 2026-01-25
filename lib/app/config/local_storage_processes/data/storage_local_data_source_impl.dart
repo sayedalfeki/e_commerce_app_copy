@@ -4,6 +4,7 @@ import 'package:flower_app/app/core/consts/app_consts.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../domain/storage_data_source_contract.dart';
 
 @Injectable(as: StorageDataSourceContract)
@@ -25,18 +26,20 @@ class StorageLocalDataSourceImpl extends StorageDataSourceContract {
   });
 
   @override
-  Future<BaseResponse<bool>> getRememberMe() => executeApi(() async {
+  bool? getRememberMe() {
     final result = _sharedPreferences.getBool(AppConsts.rememberMeKey);
-    return Future.value(result);
-  });
+    return result;
+  }
 
   @override
-  Future<BaseResponse<String?>> getToken() =>
-      executeApi(() async => await _storage.read(key: AppConsts.tokenKey));
+  Future<String?> getToken() async {
+    final token = await _storage.read(key: AppConsts.tokenKey);
+    return token;
+  }
 
   @override
   Future<BaseResponse<bool>> clearToken() => executeApi(() async {
-    await _storage.delete(key: AppConsts.tokenKey);
+    await _storage.deleteAll();
     return true;
   });
 

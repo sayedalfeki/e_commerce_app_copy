@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/app/config/di_model/token_interceptors.dart';
-import 'package:flower_app/app/config/local_storage_processes/local_storage_processes.dart';
 import 'package:flower_app/app/core/endpoint/app_endpoint.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';

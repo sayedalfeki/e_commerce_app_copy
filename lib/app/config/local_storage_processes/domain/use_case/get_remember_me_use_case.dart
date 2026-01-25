@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
 
-import '../../../base_response/base_response.dart';
 import '../token_repo_contract.dart';
 
 @injectable
@@ -9,5 +8,5 @@ class GetRememberMeUseCase {
 
   GetRememberMeUseCase(this._tokenRepoContract);
 
-  Future<BaseResponse<bool>> invoke() => _tokenRepoContract.getRememberMe();
+  bool? invoke() => _tokenRepoContract.getRememberMe();
 }

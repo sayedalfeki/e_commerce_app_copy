@@ -2,7 +2,6 @@
 import 'package:flower_app/app/core/routes/app_page.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/theme/app_theme.dart';
- import 'package:flower_app/app/feature/start/view/start_screen.dart';
 import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
 
-  runApp(StartScreen());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
