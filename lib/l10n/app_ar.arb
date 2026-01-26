@@ -94,7 +94,7 @@
      "update":"تحديث",
      "password_changed":"تم تغيير كلمة المرور بنجاح",
      "egp":"ج.م",
-   "my_orders":"hطلباتي",
+   "my_orders":"طلباتي",
     "saved_addresses":"المواقع المحفوظة",
     "notifications":"الاشعارات",
     "language":"اللغة",
@@ -108,7 +108,9 @@
   "update_profile":"تحديث الملف الشخصي",
     "update_profile_error":"خطأ في تحديث الملف الشخصي",
     "uploading_photo":"تحديث الصورة",
-    "uploading_photo_error":"خطأ في تحديث الصورة"
+    "uploading_photo_error":"خطأ في تحديث الصورة",
+  "change_language":"تغيير اللغة"
+
 
 
 }

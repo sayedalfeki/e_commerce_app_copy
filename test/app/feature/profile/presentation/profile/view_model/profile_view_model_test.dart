@@ -40,11 +40,11 @@ void main() {
       profileViewModel.doIntent(GetProfileAction());
     },
     expect: () {
-      var state = ProfileState(profileState: BaseState());
+      var state = ProfileState(profileState: ProfileBaseState());
       return [
-        state.copyWith(profileState: BaseState(isLoading: true)),
+        state.copyWith(profileState: ProfileBaseState(isLoading: true)),
         state.copyWith(
-          profileState: BaseState(isLoading: false, success: userEntity),
+          profileState: ProfileBaseState(isLoading: false, success: userEntity),
         ),
       ];
     },
@@ -64,10 +64,25 @@ void main() {
       profileViewModel.doIntent(GetProfileAction());
     },
     expect: () {
-      var state = ProfileState(profileState: BaseState());
+      var state = ProfileState(profileState: ProfileBaseState());
       return [
-        state.copyWith(profileState: BaseState(isLoading: true)),
-        state.copyWith(profileState: BaseState(error: UnexpectedError())),
+        state.copyWith(profileState: ProfileBaseState(isLoading: true)),
+        state.copyWith(
+            profileState: ProfileBaseState(error: UnexpectedError())),
+      ];
+    },
+  );
+  blocTest(
+    'when calling dointent with Change Language  action  it should emit correct state',
+
+    build: () => profileViewModel,
+    act: (bloc) {
+      profileViewModel.doIntent(ChangeLanguageAction());
+    },
+    expect: () {
+      var state = ProfileState(profileState: ProfileBaseState());
+      return [
+        state.copyWith(profileState: ProfileBaseState(isLanguageShowed: true)),
       ];
     },
   );

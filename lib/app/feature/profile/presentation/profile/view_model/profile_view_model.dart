@@ -14,23 +14,25 @@ class ProfileViewModel extends CustomCubit<ProfileEvent, ProfileState> {
   final GetUserDataUseCase _getUserDataUseCase;
 
   ProfileViewModel(this._getUserDataUseCase)
-    : super(ProfileState(profileState: BaseState()));
+      : super(ProfileState(profileState: ProfileBaseState()));
 
   Future<void> _getUserData() async {
-    emit(state.copyWith(profileState: BaseState(isLoading: true)));
+    emit(state.copyWith(profileState: ProfileBaseState(isLoading: true)));
     final response = await _getUserDataUseCase.invoke();
     switch (response) {
       case SuccessResponse<UserEntity>():
         emit(
           state.copyWith(
-            profileState: BaseState(isLoading: false, success: response.data),
+            profileState: ProfileBaseState(
+                isLoading: false, success: response.data),
           ),
         );
         break;
       case ErrorResponse<UserEntity>():
         emit(
           state.copyWith(
-            profileState: BaseState(isLoading: false, error: response.error),
+            profileState: ProfileBaseState(
+                isLoading: false, error: response.error),
           ),
         );
         break;
@@ -44,6 +46,10 @@ class ProfileViewModel extends CustomCubit<ProfileEvent, ProfileState> {
         break;
       case NavigateToEditProfileAction():
         streamController.add(NavigateToEditProfileEvent());
+      case ChangeLanguageAction():
+        emit(state.copyWith(
+            profileState: ProfileBaseState(isLanguageShowed: true)));
+        break;
     }
   }
 }

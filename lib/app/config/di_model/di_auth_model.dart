@@ -4,6 +4,7 @@ import 'package:flower_app/app/core/endpoint/app_endpoint.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../feature/forget_password/api/forget_password_api_client.dart';
 import '../../feature/profile/api/profile_api_client.dart';
@@ -54,4 +55,8 @@ abstract class DiAuthModel {
     responseBody: kDebugMode,
     responseHeader: kDebugMode,
   );
+
+  @preResolve
+  Future<SharedPreferences> provideSharedPreferences() =>
+      SharedPreferences.getInstance();
 }
