@@ -35,16 +35,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               arguments: viewModel.state.profileState.success,
             ).then((value) => viewModel.doIntent(GetProfileAction(),));
           }
-      }
-    });
-  }
-  @override
-  Widget build(BuildContext context) {
-    return BlocConsumer<ProfileViewModel, ProfileState>(
-      bloc: viewModel,
-      listener: (context, state) {
-        if (state.profileState.isLanguageShowed != null) {
-          showModalBottomSheet(
+        case ChangeLanguageEvent():
+          if (mounted) {
+            showModalBottomSheet(
             isScrollControlled: true,
             enableDrag: true,
             showDragHandle: true,
@@ -53,8 +46,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             builder: (context) {
               return LanguageWidget();
             },);
-        }
-      },
+          }
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProfileViewModel, ProfileState>(
+      bloc: viewModel,
       builder: (context, state) =>
           ProfileWidget(profileViewModel: viewModel, profileState: state),
     );

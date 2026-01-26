@@ -6,6 +6,7 @@ import 'package:flower_app/app/feature/profile/presentation/profile/view_model/p
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_state.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../config/base_state/base_state.dart';
 import '../../../domain/use_case/get_user_data_use_case.dart';
 
 @injectable
@@ -13,25 +14,23 @@ class ProfileViewModel extends CustomCubit<ProfileEvent, ProfileState> {
   final GetUserDataUseCase _getUserDataUseCase;
 
   ProfileViewModel(this._getUserDataUseCase)
-      : super(ProfileState(profileState: ProfileBaseState()));
+    : super(ProfileState(profileState: BaseState()));
 
   Future<void> _getUserData() async {
-    emit(state.copyWith(profileState: ProfileBaseState(isLoading: true)));
+    emit(state.copyWith(profileState: BaseState(isLoading: true)));
     final response = await _getUserDataUseCase.invoke();
     switch (response) {
       case SuccessResponse<UserEntity>():
         emit(
           state.copyWith(
-            profileState: ProfileBaseState(
-                isLoading: false, success: response.data),
+            profileState: BaseState(isLoading: false, success: response.data),
           ),
         );
         break;
       case ErrorResponse<UserEntity>():
         emit(
           state.copyWith(
-            profileState: ProfileBaseState(
-                isLoading: false, error: response.error),
+            profileState: BaseState(isLoading: false, error: response.error),
           ),
         );
         break;
@@ -46,8 +45,7 @@ class ProfileViewModel extends CustomCubit<ProfileEvent, ProfileState> {
       case NavigateToEditProfileAction():
         streamController.add(NavigateToEditProfileEvent());
       case ChangeLanguageAction():
-        emit(state.copyWith(
-            profileState: ProfileBaseState(isLanguageShowed: true)));
+        streamController.add(ChangeLanguageEvent());
         break;
     }
   }

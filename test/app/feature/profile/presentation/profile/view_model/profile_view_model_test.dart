@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flower_app/app/config/base_error/custom_exceptions.dart';
 import 'package:flower_app/app/config/base_response/base_response.dart';
+import 'package:flower_app/app/config/base_state/base_state.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/domain/use_case/get_user_data_use_case.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_event.dart';
@@ -39,11 +40,11 @@ void main() {
       profileViewModel.doIntent(GetProfileAction());
     },
     expect: () {
-      var state = ProfileState(profileState: ProfileBaseState());
+      var state = ProfileState(profileState: BaseState());
       return [
-        state.copyWith(profileState: ProfileBaseState(isLoading: true)),
+        state.copyWith(profileState: BaseState(isLoading: true)),
         state.copyWith(
-          profileState: ProfileBaseState(isLoading: false, success: userEntity),
+          profileState: BaseState(isLoading: false, success: userEntity),
         ),
       ];
     },
@@ -63,28 +64,23 @@ void main() {
       profileViewModel.doIntent(GetProfileAction());
     },
     expect: () {
-      var state = ProfileState(profileState: ProfileBaseState());
+      var state = ProfileState(profileState: BaseState());
       return [
-        state.copyWith(profileState: ProfileBaseState(isLoading: true)),
-        state.copyWith(
-            profileState: ProfileBaseState(error: UnexpectedError())),
+        state.copyWith(profileState: BaseState(isLoading: true)),
+        state.copyWith(profileState: BaseState(error: UnexpectedError())),
       ];
     },
   );
-  blocTest(
-    'when calling dointent with Change Language  action  it should emit correct state',
+  test('change language emits event (broadcast)', () async {
+    final future = expectLater(
+      profileViewModel.streamController.stream,
+      emits(isA<ChangeLanguageEvent>()),
+    );
 
-    build: () => profileViewModel,
-    act: (bloc) {
-      profileViewModel.doIntent(ChangeLanguageAction());
-    },
-    expect: () {
-      var state = ProfileState(profileState: ProfileBaseState());
-      return [
-        state.copyWith(profileState: ProfileBaseState(isLanguageShowed: true)),
-      ];
-    },
-  );
+    profileViewModel.doIntent(ChangeLanguageAction());
+
+    await future;
+  });
   test('BackNavigation emits event (broadcast)', () async {
     final future = expectLater(
       profileViewModel.streamController.stream,
