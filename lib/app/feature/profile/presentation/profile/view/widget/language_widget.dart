@@ -1,11 +1,8 @@
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/language_container_widget.dart';
-import 'package:flower_app/app/feature/start/presentation/view_model/start_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../../../core/resources/app_colors.dart';
-import '../controller/language_controller.dart';
 
 class LanguageWidget extends StatefulWidget {
   const LanguageWidget({super.key});

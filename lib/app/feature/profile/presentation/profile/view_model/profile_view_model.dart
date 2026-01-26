@@ -6,7 +6,6 @@ import 'package:flower_app/app/feature/profile/presentation/profile/view_model/p
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_state.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../config/base_state/base_state.dart';
 import '../../../domain/use_case/get_user_data_use_case.dart';
 
 @injectable

@@ -6,7 +6,7 @@ import '../../../../config/di/di.dart';
 import '../view_model/start_view_model.dart';
 
 class StartScreen extends StatefulWidget {
-  StartScreen({super.key});
+  const StartScreen({super.key});
 
   @override
   State<StartScreen> createState() => _StartScreenState();
@@ -17,7 +17,6 @@ class _StartScreenState extends State<StartScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     startViewModel.initLanguage();
   }

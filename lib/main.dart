@@ -5,7 +5,7 @@ import 'package:flower_app/app/core/theme/app_theme.dart';
 import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
- import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
 import 'app/feature/start/presentation/view/start_screen.dart';
 import 'app/feature/start/presentation/view_model/start_view_model.dart';
@@ -13,11 +13,11 @@ import 'app/feature/start/presentation/view_model/start_view_model.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
-  runApp(StartScreen());
+  runApp(const StartScreen());
 }
 
  class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -25,15 +25,9 @@ void main() async {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final startViewModel = Provider.of<StartViewModel>(context);
-    print(startViewModel.language);
+
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,

@@ -1,7 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flower_app/app/config/base_error/custom_exceptions.dart';
 import 'package:flower_app/app/config/base_response/base_response.dart';
-import 'package:flower_app/app/config/base_state/base_state.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/domain/use_case/get_user_data_use_case.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_event.dart';

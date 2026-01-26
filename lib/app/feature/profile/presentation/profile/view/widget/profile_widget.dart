@@ -7,11 +7,9 @@ import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_photo_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_intent.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../../../core/resources/assets_manager.dart';
 import '../../../../../../core/utils/helper_function.dart';
-import '../../../../../start/presentation/view_model/start_view_model.dart';
 import '../../view_model/profile_state.dart';
 import '../../view_model/profile_view_model.dart';
 
@@ -28,7 +26,6 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final startViewmodel = Provider.of<StartViewModel>(context);
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
@@ -87,10 +84,7 @@ class ProfileWidget extends StatelessWidget {
               leading: Icon(Icons.translate),
               trailing: TextButton(
                 onPressed: () {
-                  //startViewmodel.changeLanguage(startViewmodel.language=='ar'?'en':'ar');
-
                   profileViewModel.doIntent(ChangeLanguageAction());
-                  print('button pressed');
                 },
                 child: Text(
                   AppLocale(context).english,
