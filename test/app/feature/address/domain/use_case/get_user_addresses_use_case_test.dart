@@ -1,5 +1,4 @@
 import 'package:flower_app/app/config/base_response/base_response.dart';
-
 import 'package:flower_app/app/feature/address/domain/address_repo_contract.dart';
 import 'package:flower_app/app/feature/address/domain/model/user_address_entity.dart';
 import 'package:flower_app/app/feature/address/domain/use_case/get_user_addresses_use_case.dart';
@@ -29,8 +28,7 @@ void main() {
     provideDummy<BaseResponse<List<UserAddressEntity>>>(
       SuccessResponse(data: [userAddressEntity]),
     );
-    when(
-      addressRepoImpl.getUserAddresses(),.thenAnswer(
+    when(addressRepoImpl.getUserAddresses()).thenAnswer(
       (_) => Future.value(SuccessResponse(data: [userAddressEntity])),
     );
     await getUserAddressesUseCase.invoke();
