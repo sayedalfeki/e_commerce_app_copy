@@ -6,7 +6,7 @@ import 'package:flower_app/app/feature/home/presentation/view_model/home_view_mo
 import 'package:flower_app/app/feature/home/presentation/views/tabs/cart_tab/presentation/views/screen/cart_tab.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/categories_tab/presentation/views/screen/categories_tab.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/home_tab/presentation/views/screen/home_tab.dart';
-import 'package:flower_app/app/feature/home/presentation/views/tabs/profile_tab/presentation/views/screen/profile_tab.dart';
+import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_navigator_widget.dart';
 import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,17 +25,20 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeTab(),
     CategoriesTab(),
     CartTab(),
-    ProfileTab()
+    ProfileNavigatorWidget()
   ];
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<HomeViewModel>(
-      create: (context) => viewModel,
+    return BlocProvider<HomeViewModel>.value(
+      value: viewModel,
       child: BlocBuilder<HomeViewModel,HomeStates>(
         builder: (context, state) {
           return Scaffold(
-            body: tabs[state.currAppTab.index],
+            body: IndexedStack(
+              index: state.currAppTab.index,
+              children: tabs,
+            ),
             bottomNavigationBar: Container(
               decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: AppColors.borderBottomNavBarColor,width: 1))
@@ -46,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 currentIndex: state.currAppTab.index,
                 onTap: (index) {
                   final tab=AppTab.values[index];
-                  viewModel.switchTab(tab);
+                  context.read<HomeViewModel>().switchTab(tab);
                 },
                 items: [
                   BottomNavigationBarItem(icon: Icon(Icons.home_outlined,),label: AppLocalizations.of(context)!.home),

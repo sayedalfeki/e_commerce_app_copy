@@ -1,17 +1,19 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/core/reusable_widgets/show_dialog_utils.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
+import 'package:flower_app/app/core/utils/helper_function.dart';
 import 'package:flower_app/app/core/validation/app_validators.dart';
 import 'package:flower_app/app/feature/signup/presentation/vie_model/signup_events.dart';
 import 'package:flower_app/app/feature/signup/presentation/vie_model/signup_states.dart';
 import 'package:flower_app/app/feature/signup/presentation/vie_model/signup_view_model.dart';
-import 'package:flower_app/app/reuseable_widgets/show_dialog_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class SignupScreen extends StatelessWidget {
    SignupScreen({super.key});
   SignupViewModel signupViewModel = getIt<SignupViewModel>();
@@ -90,7 +92,7 @@ class SignupScreen extends StatelessWidget {
                             hint: AppLocale(context).enterPasswordConfirm,
                             controller: signupViewModel.confirmPasswordController,
                             validator: (value) {
-                              AppValidators.validateConfirmPassword(value, signupViewModel.passwordController.text, context);
+                              return AppValidators.validateConfirmPassword(value, signupViewModel.passwordController.text, context);
                             },
                           ),
                         ),
@@ -236,12 +238,17 @@ class SignupScreen extends StatelessWidget {
         }, listener: (context, state) {
       if(state.signupState?.isLoading==true){
         ShowDialogUtils.showLoading(context);
-      }else if (state.signupState?.errorMessage!=null){
+      }else if (state.signupState?.error!=null){
         ShowDialogUtils.hideLoading(context);
-        ShowDialogUtils.showMessage(context, Title: state.signupState?.errorMessage,NigActionName: "ok",NigAction: (){Navigator.pop(context);});
-      }else if (state.signupState?.data!=null){
+        ShowDialogUtils.showMessage(context, title: getException(context, state.signupState?.error),nigActionName: "ok",nigAction: (){Navigator.pop(context);});
+      }else if (state.signupState?.success!=null){
         ShowDialogUtils.hideLoading(context);
-        ShowDialogUtils.showMessage(context, Title: AppLocale(context).accountcreatedsuccessfully,NigActionName: "ok",NigAction: (){Navigator.pop(context);});
+        ShowDialogUtils.showMessage(
+            context, title: AppLocale(context).account_created_successfully,
+            nigActionName: "ok",
+            nigAction: () {
+              Navigator.pop(context);
+            });
       }
         
     },

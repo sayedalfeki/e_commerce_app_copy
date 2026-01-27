@@ -1,3 +1,5 @@
 class AuthModel {
-  // auth data model -->
+  String massage;
+  String? tokin;
+  AuthModel({required this.massage, this.tokin});
 }

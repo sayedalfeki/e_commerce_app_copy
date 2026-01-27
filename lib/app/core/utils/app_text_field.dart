@@ -63,9 +63,9 @@ class _AppTextFieldState extends State<AppTextField> {
         labelText: widget.label,
         hintText: widget.hint,
         labelStyle: const TextStyle(fontSize: 16, color: AppColors.blackColor),
-        border: _border(AppColors.secondaryColor),
-        enabledBorder: _border(AppColors.secondaryColor),
-        focusedBorder: _border(AppColors.secondaryColor),
+        border: _border(AppColors.blackColor),
+        enabledBorder: _border(AppColors.blackColor),
+        focusedBorder: _border(AppColors.blackColor),
         errorBorder: _border(Colors.red),
         focusedErrorBorder: _border(Colors.red),
         suffixIcon: widget.isPassword

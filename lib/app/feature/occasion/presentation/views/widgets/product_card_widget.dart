@@ -108,7 +108,7 @@ class ProductCardWidget extends StatelessWidget {
                         fontFamily: FontsFamily.inter,
                         fontSize: FontSize.s12,
                         fontWeight: FontWeights.medium,
-                        color: AppColors.sccessColor,
+                        color: AppColors.successColor,
                       ),
                     ),
                   ],

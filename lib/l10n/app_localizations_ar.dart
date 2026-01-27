@@ -208,7 +208,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get katbKetab => 'كتب كتاب';
 
   @override
-  String get addToCart => 'أضف إلى السلة';
+  String get addToCart => 'Add to cart';
 
   @override
   String get egp => 'جنيه';
@@ -255,4 +255,128 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get termsandconditions => 'الشروط والأحكام';
+
+  @override
+  String get connectionFailed => 'لا يوجد اتصال بالانترنت';
+
+  @override
+  String get flowery => 'مُزْهَر';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get deliveryLocation => 'التوصيل إلى 2XVP+XC - الشيخ زايد';
+
+  @override
+  String get empty_data => 'لا توجد منتجات لعرضها';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get egyptianLivre => 'ج.م';
+
+  @override
+  String get bestSeller => 'الأكثر مبيعاً';
+
+  @override
+  String get cancel => 'الغاء';
+
+  @override
+  String get ok => 'موافق';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get invalidOtp => 'كود غير صحيح';
+
+  @override
+  String get continueAsGuest => 'المتابعة كزائر';
+
+  @override
+  String get account_created_successfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creating_an_account_you_agree_to_our =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get terms_and_conditions => 'الشروط والأحكام';
+
+  @override
+  String get status => 'الحاله';
+
+  @override
+  String get all_prices_include_tax => 'جميع الأسعار تشمل الضريبة';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get add_to_cart => 'أضف إلى السلة';
+
+  @override
+  String get out_of_stock => 'إنتهى من المخزن';
+
+  @override
+  String get in_stock => 'في المخزن';
+
+  @override
+  String get bouquet_include => 'الباقة تحتوي على';
+
+  @override
+  String get my_orders => 'طلباتي';
+
+  @override
+  String get saved_addresses => 'المواقع المحفوظة';
+
+  @override
+  String get notifications => 'الاشعارات';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get english => 'الانجليزية';
+
+  @override
+  String get arabic => 'العربية';
+
+  @override
+  String get about_us => 'عنا';
+
+  @override
+  String get logout => 'خروج';
+
+  @override
+  String get current_password => 'كلمة السر الحالية';
+
+  @override
+  String get new_password => 'كلمة السر الجديدة';
+
+  @override
+  String get update => 'تحديث';
+
+  @override
+  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
+
+  @override
+  String get change => 'تغيير';
+
+  @override
+  String get edit_profile => 'تحديث الملف الشخصي';
+
+  @override
+  String get update_profile => 'تحديث الملف الشخصي';
+
+  @override
+  String get update_profile_error => 'خطأ في تحديث الملف الشخصي';
+
+  @override
+  String get uploading_photo => 'تحديث الصورة';
+
+  @override
+  String get uploading_photo_error => 'خطأ في تحديث الصورة';
 }
