@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:flower_app/app/config/base_state/base_state.dart';
 import 'package:flower_app/app/feature/address/domain/model/user_address_entity.dart';
 
-class AddressState {
+class AddressState extends Equatable {
   final BaseState<List<UserAddressEntity>> addressState;
 
-  AddressState({required this.addressState});
+  const AddressState({required this.addressState});
 
   AddressState copyWith({BaseState<List<UserAddressEntity>>? addressState}) {
     return AddressState(
@@ -15,4 +16,8 @@ class AddressState {
       ),
     );
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [addressState];
 }

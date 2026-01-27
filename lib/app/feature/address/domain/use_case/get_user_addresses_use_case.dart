@@ -1,8 +1,10 @@
 import 'package:flower_app/app/feature/address/domain/address_repo_contract.dart';
 import 'package:flower_app/app/feature/address/domain/model/user_address_entity.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../config/base_response/base_response.dart';
 
+@injectable
 class GetUserAddressesUseCase {
   final AddressRepoContract _addressRepoContract;
 
