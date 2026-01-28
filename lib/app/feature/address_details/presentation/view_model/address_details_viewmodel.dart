@@ -18,7 +18,11 @@ class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
   UpdateAddressUsecase _updateAddressUsecase;
   GetCitiesUsecase _getCitiesUsecase;
   GetStatesUsecase _getStatesUsecase;
-  
+  String? address;
+  String? phone;
+  String? city;
+  String? area;
+  String? recipientName;
 
 
 
@@ -76,9 +80,9 @@ class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
     );
    switch (response){
       case SuccessResponse<String>():
-        emit(state.copyWith(addressDetailsStateNew: BaseState(success: response.data)));
+        emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false,success: response.data)));
       case ErrorResponse<String>():
-        emit(state.copyWith(addressDetailsStateNew: BaseState(error: response.error)));
+        emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false,error: response.error)));
     }
     
   }
@@ -96,9 +100,9 @@ class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
     );
    switch (response){
       case SuccessResponse<String>():
-        emit(state.copyWith(addressDetailsStateNew: BaseState(success: response.data)));
+        emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false,success: response.data)));
       case ErrorResponse<String>():
-        emit(state.copyWith(addressDetailsStateNew: BaseState(error: response.error)));
+        emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false,error: response.error)));
     }
     
   }
@@ -106,20 +110,20 @@ class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
   void _getAddressFromCoordinates({required double lat, required double lng}) async {
     emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: true)));
     List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
-    String address = '${placemarks[0].street}, ${placemarks[0].country}';
-    emit(state.copyWith(addressDetailsStateNew: BaseState(success: address)));
+    address = '${placemarks[0].street}, ${placemarks[0].country}';
+    emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false,)));
   }
 
   void _getStates({String? selectedCityId}) async {
     emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: true)));
     var response = await _getStatesUsecase.call(selectedCityId: selectedCityId);
-    emit(state.copyWith(statesStateNew: BaseState(success: response)));
+    emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false),statesStateNew: BaseState(success: response)));
   }
 
   void _getCities({String? selectedStateId}) async {
     emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: true)));
     var response = await _getCitiesUsecase.call(selectedStateId: selectedStateId);
-    emit(state.copyWith(citiesStateNew: BaseState(success: response)));
+    emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false),citiesStateNew: BaseState(success: response)));
   }
 
   void _getCitiesAndStates() async {
@@ -127,6 +131,7 @@ class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
     var statesResponse = await _getStatesUsecase.call();
     var citiesResponse = await _getCitiesUsecase.call();
     emit(state.copyWith(
+      addressDetailsStateNew: BaseState(isLoading: false),
       statesStateNew: BaseState(success: statesResponse),
       citiesStateNew: BaseState(success: citiesResponse)
     ));

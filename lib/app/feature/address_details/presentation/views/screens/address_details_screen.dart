@@ -1,5 +1,6 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
+import 'package:flower_app/app/feature/address/domain/model/user_address_entity.dart';
 import 'package:flower_app/app/feature/address_details/presentation/view_model/address_details_events.dart';
 import 'package:flower_app/app/feature/address_details/presentation/view_model/address_details_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -10,13 +11,19 @@ import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
 class AddressDetailsScreen extends StatelessWidget{
-  String? addressId;
-  AddressDetailsScreen({super.key, this.addressId});
+  UserAddressEntity? userAddressEntity;
+  AddressDetailsScreen({super.key, this.userAddressEntity});
 
   AddressDetailsViewmodel viewmodel = getIt<AddressDetailsViewmodel>();
 
   @override
   Widget build(BuildContext context) {
+    if (userAddressEntity != null) {
+      viewmodel.doIntent(getAddressFromCoordinatesEvent(
+        latitude: double.parse(userAddressEntity!.lat!),
+        longitude: double.parse(userAddressEntity!.long!)
+      ));
+    }
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
@@ -66,22 +73,50 @@ class AddressDetailsScreen extends StatelessWidget{
                       decoration: InputDecoration(
                         labelText: AppLocale(context).address,
                       ),
-                      initialValue: viewmodel.address,
-                      readOnly: true,
+                      initialValue: userAddressEntity==null?null: viewmodel.address,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return AppLocale(context).pleaseEnterYourAddress;
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        viewmodel.address = value;
+                        formKey.currentState?.validate();
+                      },
+                      
                     ),
                     TextFormField(
                       decoration: InputDecoration(
-                        labelText: AppLocale(context).address,
+                        labelText: AppLocale(context).phoneNumber,
                       ),
-                      initialValue: viewmodel.address,
-                      readOnly: true,
+                      initialValue: userAddressEntity?.phone??null ,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return AppLocale(context).pleaseEnterYourPhoneNumber;
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        viewmodel.phone = value;
+                        formKey.currentState?.validate();
+                      },
                     ),
                     TextFormField(
                       decoration: InputDecoration(
-                        labelText: AppLocale(context).address,
+                        labelText: AppLocale(context).recipientName,
                       ),
-                      initialValue: viewmodel.address,
-                      readOnly: true,
+                      initialValue: userAddressEntity?.recipientName??null ,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return AppLocale(context).pleaseEnterYourPhoneNumber;
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        viewmodel.phone = value;
+                        formKey.currentState?.validate();
+                      },
                     ),
                     Row(children: [
                       Expanded(

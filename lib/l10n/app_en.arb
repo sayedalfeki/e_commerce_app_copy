@@ -150,5 +150,14 @@
   "savedAddress":"saved address",
   "someThingWrong":"some thing wrong",
   "addressdetails":"Address Details",
-  "address":"Address"
+  "address":"Address",
+  "pleaseEnterYourAddress":"Please Enter Your Address",
+  "phoneNumber":"Phone Number",
+  "pleaseEnterYourPhoneNumber":"Please Enter Your PhoneNumber",
+  "recipientName":"Recipient name",
+  "pleaseEnterTheRecipientname":"Please Enter Recipient name",
+  "city":"City",
+  "pleaseSelectCity":"Please Select City",
+  "area":"Area",
+  "pleaseSelectArea":"Please Select Area"
 }

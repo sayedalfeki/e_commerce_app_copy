@@ -127,5 +127,14 @@
     "someThingWrong":"هناك خطأ ما",
     "success":"تم بنجاح",
     "addressdetails":"تفاصيل العنوان",
-    "address":"العنوان"
+    "address":"العنوان",
+    "pleaseEnterYourAddress":"الرجاء إدخال العنوان",
+    "phoneNumber":"رقم الهاتف",
+    "pleaseEnterYourPhoneNumber":"الرجاء ادخال رقم الهاتف",
+    "recipientName":"اسم المستلم",
+    "pleaseEnterTheRecipientname":"الرجاء إدخال اسم المستلم",
+    "city":"مدينة",
+    "pleaseSelectCity":"الرجاء اختيار المدينة",
+    "area":"منطقة",
+    "pleaseSelectArea":"الرجاء تحديد المنطقة"
 }

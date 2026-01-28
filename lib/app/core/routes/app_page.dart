@@ -1,4 +1,5 @@
 import 'package:flower_app/app/core/routes/app_route.dart';
+import 'package:flower_app/app/feature/address/domain/model/user_address_entity.dart';
 import 'package:flower_app/app/feature/address_details/presentation/views/screens/address_details_screen.dart';
 import 'package:flower_app/app/feature/auth/presentation/views/screen/login/login_Screen.dart';
 import 'package:flower_app/app/feature/best_seller/presentation/views/screen/best_seller_screen.dart';
@@ -46,8 +47,8 @@ class RouteGenerator {
       final args = settings.arguments as ProductDetailsArgs;
         return MaterialPageRoute(builder: (_) =>  ProductDetailsScreen(productId: args.productId));
       case Routes.addressDetails:
-        final args = settings.arguments as String?;  
-        return MaterialPageRoute(builder: (_) => AddressDetailsScreen(addressId: args));
+        final args = settings.arguments as UserAddressEntity?;  
+        return MaterialPageRoute(builder: (_) => AddressDetailsScreen(userAddressEntity: args));
       case Routes.updateProfile:
         final UserEntity userEntity = settings.arguments as UserEntity;
         return MaterialPageRoute(
