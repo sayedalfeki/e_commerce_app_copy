@@ -217,9 +217,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bestSeller => 'Best Seller';
 
   @override
-  String get profile => 'Profile';
-
-  @override
   String get loading => 'Loading...';
 
   @override
@@ -302,7 +299,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get about_us => 'About Us';
 
   @override
-  String get logout => 'Logout';
+  String get profile => 'Profile';
 
   @override
   String get current_password => 'current password';
@@ -311,10 +308,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get new_password => 'new password';
 
   @override
-  String get update => 'update';
+  String get password_changed => 'password changed successfully';
 
   @override
-  String get password_changed => 'password changed successfully';
+  String get logout => 'Logout';
+
+  @override
+  String get update => 'update';
 
   @override
   String get change => 'change';

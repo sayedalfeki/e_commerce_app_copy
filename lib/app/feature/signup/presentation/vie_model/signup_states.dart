@@ -8,6 +8,6 @@ class SignupStates {
   SignupStates({this.signupState});
   
   SignupStates copyWith({BaseState<SignupModel>? signupStateParam}){
-    return SignupStates(signupState: signupStateParam??this.signupState);
+    return SignupStates(signupState: signupStateParam??signupState);
   }
 }

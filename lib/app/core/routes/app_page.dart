@@ -8,6 +8,7 @@ import 'package:flower_app/app/feature/product_details/presentation/views/screen
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view/update_profile_widget.dart';
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
+import 'package:flower_app/app/feature/terms_and_conditions/presentation/views/screen/terms_and_conditions_screen.dart';
 import 'package:flutter/material.dart';
 import '../../feature/forget_password/presentation/forget_password/view/forget_password_screen.dart';
 import '../../feature/forget_password/presentation/reset_password/view/reset_password_screen.dart';
@@ -46,6 +47,9 @@ class RouteGenerator {
 
       case Routes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+      
+      case Routes.terms:
+        return MaterialPageRoute(builder: (_) => const TermsAndConditionsScreen());
 
       default:
         return unDefinedRoute();

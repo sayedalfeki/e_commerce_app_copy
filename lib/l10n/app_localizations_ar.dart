@@ -217,9 +217,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bestSeller => 'الأكثر مبيعاً';
 
   @override
-  String get profile => 'الملف الشخصي';
-
-  @override
   String get loading => 'جاري التحميل...';
 
   @override
@@ -281,7 +278,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get egp => 'ج.م';
 
   @override
-  String get my_orders => 'hطلباتي';
+  String get my_orders => 'طلباتي';
 
   @override
   String get saved_addresses => 'المواقع المحفوظة';
@@ -302,7 +299,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get about_us => 'عنا';
 
   @override
-  String get logout => 'خروج';
+  String get profile => 'الملف الشخصي';
 
   @override
   String get current_password => 'كلمة السر الحالية';
@@ -311,10 +308,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get new_password => 'كلمة السر الجديدة';
 
   @override
-  String get update => 'تحديث';
+  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
 
   @override
-  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
+  String get logout => 'خروج';
+
+  @override
+  String get update => 'تحديث';
 
   @override
   String get change => 'تغيير';
