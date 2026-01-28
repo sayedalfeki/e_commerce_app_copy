@@ -12,6 +12,7 @@ import '../../../../../../core/resources/assets_manager.dart';
 import '../../../../../../core/utils/helper_function.dart';
 import '../../view_model/profile_state.dart';
 import '../../view_model/profile_view_model.dart';
+import 'logout_widget.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({
@@ -99,6 +100,16 @@ class ProfileWidget extends StatelessWidget {
               data: AppLocale(context).logout,
               leading: Icon(Icons.logout),
               trailing: Icon(Icons.logout),
+              onTap: () {
+                showDialog(context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: LogoutWidget(),
+                      contentPadding: EdgeInsets.zero,
+                    );
+                  },);
+                // profileViewModel.doIntent(LogoutUserAction());
+              },
             ),
             Spacer(),
             Text(

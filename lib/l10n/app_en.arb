@@ -108,5 +108,8 @@
   "update_profile":"update profile",
   "update_profile_error":"error in update profile",
   "uploading_photo":"uploading photo",
-  "uploading_photo_error":"error in uploading photo"
+  "uploading_photo_error":"error in uploading photo",
+  "logOutAction":"do you want to log out",
+  "no":"no",
+  "yes":"yes"
 }

@@ -3,10 +3,10 @@ import 'package:flower_app/app/config/local_storage_processes/domain/token_repo_
 import 'package:injectable/injectable.dart';
 
 @injectable
-class ClearTokenUseCase {
+class LogoutUserUseCase {
   final TokenRepoContract _tokenRepoContract;
 
-  ClearTokenUseCase(this._tokenRepoContract);
+  LogoutUserUseCase(this._tokenRepoContract);
 
   Future<BaseResponse<bool>> invoke() => _tokenRepoContract.clearToken();
 }

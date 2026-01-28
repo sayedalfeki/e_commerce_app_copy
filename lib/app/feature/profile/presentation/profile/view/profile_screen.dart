@@ -1,4 +1,6 @@
+import 'package:flower_app/app/core/reusable_widgets/show_dialog_utils.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
+import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_event.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_intent.dart';
@@ -32,6 +34,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Routes.updateProfile,
               arguments: viewModel.state.profileState.success,
             ).then((value) => viewModel.doIntent(GetProfileAction(),));
+          }ase LogoutUserEvent():
+          if (mounted) {
+            ShowDialogUtils.showMessage(
+              context,
+              content: AppLocale(context).logOutAction,
+              nigActionName: AppLocale(context).no,
+              nigAction: () {
+                Navigator.pop(context);
+              },
+              posActionName: AppLocale(context).yes,
+              posAction: () {},
+            );
           }
       }
     });

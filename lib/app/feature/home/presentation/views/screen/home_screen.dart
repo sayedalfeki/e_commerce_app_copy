@@ -12,6 +12,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../view_model/home_intent.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -21,22 +23,28 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HomeViewModel viewModel=getIt<HomeViewModel>();
-  List<Widget> tabs=[
-    HomeTab(),
-    CategoriesTab(),
-    CartTab(),
-    ProfileNavigatorWidget()
-  ];
+
 
   @override
+  void initState() {
+    super.initState();
+    viewModel.doIntent(GetTokenAction());
+  }
+  @override
   Widget build(BuildContext context) {
+
     return BlocProvider<HomeViewModel>.value(
       value: viewModel,
       child: BlocBuilder<HomeViewModel,HomeStates>(
         builder: (context, state) {
+          List<Widget> tabs = buildTabs(viewModel.state);
+          List<BottomNavigationBarItem>bottomNavBarItems = buildNavItems(
+              context, viewModel.state);
+
+
           return Scaffold(
             body: IndexedStack(
-              index: state.currAppTab.index,
+              index: state.homeBaseState.currAppTab.index,
               children: tabs,
             ),
             bottomNavigationBar: Container(
@@ -46,17 +54,15 @@ class _HomeScreenState extends State<HomeScreen> {
               child: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
                 backgroundColor: AppColors.secondaryColor,
-                currentIndex: state.currAppTab.index,
+                currentIndex: state.homeBaseState.currAppTab.index,
                 onTap: (index) {
                   final tab=AppTab.values[index];
-                  context.read<HomeViewModel>().switchTab(tab);
+                  context.read<HomeViewModel>().doIntent(
+                      ChangeCurrentTabAction(tab));
+
                 },
-                items: [
-                  BottomNavigationBarItem(icon: Icon(Icons.home_outlined,),label: AppLocalizations.of(context)!.home),
-                  BottomNavigationBarItem(icon: Icon(Icons.category_outlined),label: AppLocalizations.of(context)!.categories),
-                  BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined),label: AppLocalizations.of(context)!.cart),
-                  BottomNavigationBarItem(icon: Icon(CupertinoIcons.person),label: AppLocalizations.of(context)!.profile)
-                ]
+                items: bottomNavBarItems,
+
               ),
             ),
           );
@@ -64,4 +70,43 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  List<Widget> buildTabs(HomeStates state) {
+    final baseTabs = [
+      const HomeTab(),
+      const CategoriesTab(),
+      const CartTab(),
+    ];
+
+    if (state.homeBaseState.success != null &&
+        state.homeBaseState.success!.isNotEmpty) {
+      baseTabs.add(const ProfileNavigatorWidget());
+    }
+
+    return baseTabs;
+  }
+
+  List<BottomNavigationBarItem> buildNavItems(BuildContext context,
+      HomeStates state) {
+    final items = [
+      const BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+      const BottomNavigationBarItem(
+          icon: Icon(Icons.category), label: "Categories"),
+      const BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart), label: "Cart"),
+    ];
+
+    if (state.homeBaseState.success != null &&
+        state.homeBaseState.success!.isNotEmpty) {
+      items.add(
+        BottomNavigationBarItem(
+          icon: const Icon(CupertinoIcons.person),
+          label: AppLocalizations.of(context)!.profile,
+        ),
+      );
+    }
+
+    return items;
+  }
+
 }

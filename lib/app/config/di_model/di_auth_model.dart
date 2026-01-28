@@ -31,17 +31,6 @@ abstract class DiAuthModel {
     final Dio dio = Dio(BaseOptions(baseUrl: AppEndPoint.baseUrl));
     dio.interceptors.add(tokenInterceptor);
     dio.interceptors.add(logger);
-    //   dio.interceptors.add(
-    //   InterceptorsWrapper(
-    //     onRequest: (options, handler) async {
-    //       String? token = await .readToken();
-    //       if (token != null && token.isNotEmpty) {
-    //       options.headers["Authorization"] = "Bearer $token";
-    //      }
-    //       return handler.next(options);
-    //     },
-    //   ),
-    // );
     return dio;
   }
 

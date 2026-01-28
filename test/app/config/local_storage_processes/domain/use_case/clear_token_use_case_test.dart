@@ -1,6 +1,6 @@
 import 'package:flower_app/app/config/base_response/base_response.dart';
 import 'package:flower_app/app/config/local_storage_processes/domain/token_repo_contract.dart';
-import 'package:flower_app/app/config/local_storage_processes/domain/use_case/clear_token_use_case.dart';
+import 'package:flower_app/app/config/local_storage_processes/domain/use_case/logout_user_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -10,11 +10,11 @@ import 'clear_token_use_case_test.mocks.dart';
 @GenerateMocks([TokenRepoContract])
 void main() {
   late TokenRepoContract mockRepo;
-  late ClearTokenUseCase useCase;
+  late LogoutUserUseCase useCase;
 
   setUp(() {
     mockRepo = MockTokenRepoContract();
-    useCase = ClearTokenUseCase(mockRepo);
+    useCase = LogoutUserUseCase(mockRepo);
   });
 
   test('invoke should call clearToken on repo', () async {
