@@ -276,16 +276,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get description => 'Description';
 
   @override
-  String get addtocart => 'Add to cart';
+  String get add_to_cart => 'Add to cart';
 
   @override
-  String get outofstock => 'Out of Stock';
+  String get out_of_stock => 'Out of Stock';
 
   @override
-  String get instock => 'In Stock';
+  String get in_stock => 'In Stock';
 
   @override
-  String get bouquetinclude => 'Bouquet include';
+  String get bouquet_include => 'Bouquet include';
 
   @override
   String get egp => 'EGP';

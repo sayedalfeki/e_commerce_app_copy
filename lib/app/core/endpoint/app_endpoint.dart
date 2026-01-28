@@ -34,4 +34,6 @@ abstract class AppEndPoint {
   // addresses end points
   static const String addAddresses = '/addresses';
   static const String updateAddresses = '/addresses/{addressId}';
+  //address
+  static const String address = "/addresses";
 }

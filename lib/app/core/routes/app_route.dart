@@ -11,6 +11,7 @@ abstract class Routes {
   static const String bestSeller=_Paths.bestSellerScreen;
   static const String productDetails = _Paths.productDetails;
   static const String updateProfile = 'update_profile';
+  static const String userAddress = 'user_address';
   static const String addressDetails = _Paths.addressDetails;
 }
 

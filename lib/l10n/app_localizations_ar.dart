@@ -276,16 +276,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get description => 'الوصف';
 
   @override
-  String get addtocart => 'أضف إلى السلة';
+  String get add_to_cart => 'Add to cart';
 
   @override
-  String get outofstock => 'إنتهى من المخزن';
+  String get out_of_stock => 'Out of Stock';
 
   @override
-  String get instock => 'في المخزن';
+  String get in_stock => 'In Stock';
 
   @override
-  String get bouquetinclude => 'الباقه تحتوي على';
+  String get bouquet_include => 'Bouquet include';
 
   @override
   String get egp => 'ج.م';
