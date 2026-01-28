@@ -889,6 +889,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'error in uploading photo'**
   String get uploading_photo_error;
+
+  /// No description provided for @addressdetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Address Details'**
+  String get addressdetails;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
 }
 
 class _AppLocalizationsDelegate

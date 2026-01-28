@@ -29,7 +29,9 @@ abstract class AppEndPoint {
   static String occasionById(String id) => '/occasions/$id';
   // Product Endpoints
   //static const String products = '/products';
-
   static String productsByOccasion(String occasionId) =>
       '/products?occasion=$occasionId';
+  // addresses end points
+  static const String addAddresses = '/addresses';
+  static const String updateAddresses = '/addresses/{addressId}';
 }
