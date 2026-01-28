@@ -26,6 +26,7 @@ class UserAddressResponse {
       lat: address.lat,
       long: address.long,
       addressId: address.Id,
+      phone: address.phone,
     );
   }
 }
