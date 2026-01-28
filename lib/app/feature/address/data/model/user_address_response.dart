@@ -27,6 +27,7 @@ class UserAddressResponse {
       long: address.long,
       addressId: address.Id,
       phone: address.phone,
+      userName: address.username,
     );
   }
 }
