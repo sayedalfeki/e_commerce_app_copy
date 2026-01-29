@@ -93,10 +93,10 @@ class ProfileWidget extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: AppColors.primaryColor,
                   ),
-                ),
-              ),,
-            )ProfileItemsWidget(data: AppLocale(context).about_us),
-            ProfileItemsWidget(data: AppLocale(context).terms_and_conditions),
+                ),,
+              ),
+            ),
+            ProfileItemsWidget(data: AppLocale(context).about_us)ProfileItemsWidget(data: AppLocale(context).terms_and_conditions),
             Divider(thickness: 1),
             ProfileItemsWidget(
               data: AppLocale(context).logout,
