@@ -136,5 +136,7 @@
     "city":"مدينة",
     "pleaseSelectCity":"الرجاء اختيار المدينة",
     "area":"منطقة",
-    "pleaseSelectArea":"الرجاء تحديد المنطقة"
+    "pleaseSelectArea":"الرجاء تحديد المنطقة",
+    "addAddress":"اضافه عنوان",
+    "updateAddress":"تحديث العنوان"
 }

@@ -11,7 +11,8 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration(milliseconds: 3500), () async{
-      Navigator.pushReplacementNamed(context,await LocalStorageProcesses.readToken()==null?  Routes.login:Routes.home);
+      //Navigator.pushReplacementNamed(context,await LocalStorageProcesses.readToken()==null?  Routes.login:Routes.home);
+      Navigator.pushReplacementNamed(context,Routes.addressDetails);
     });
     return Scaffold(
       body: Center(

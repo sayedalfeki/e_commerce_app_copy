@@ -47,16 +47,10 @@ class getAddressFromCoordinatesEvent extends AddressDetailsEvents {
   });
 }
 
-class GetStatesEvent extends AddressDetailsEvents {
+class GetFilteredStatesEvent extends AddressDetailsEvents {
   String? selectedCityId;
 
-  GetStatesEvent({this.selectedCityId});
-}
-
-class GetCitiesEvent extends AddressDetailsEvents {
-  String? selectedStateId;
-
-  GetCitiesEvent({this.selectedStateId});
+  GetFilteredStatesEvent({this.selectedCityId});
 }
 
 class GetCitiesAndStatesEvent extends AddressDetailsEvents {}

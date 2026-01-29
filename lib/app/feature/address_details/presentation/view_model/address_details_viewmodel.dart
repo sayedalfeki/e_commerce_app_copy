@@ -1,6 +1,8 @@
 
 import 'package:flower_app/app/config/base_response/base_response.dart';
 import 'package:flower_app/app/config/base_state/base_state.dart';
+import 'package:flower_app/app/feature/address_details/domain/models/cities_model.dart';
+import 'package:flower_app/app/feature/address_details/domain/models/states_model.dart';
 import 'package:flower_app/app/feature/address_details/domain/use_cases/add_address_usecase.dart';
 import 'package:flower_app/app/feature/address_details/domain/use_cases/get_cities_usecase.dart';
 import 'package:flower_app/app/feature/address_details/domain/use_cases/get_states_usecase.dart';
@@ -9,22 +11,29 @@ import 'package:flower_app/app/feature/address_details/presentation/view_model/a
 import 'package:flower_app/app/feature/address_details/presentation/view_model/address_details_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:injectable/injectable.dart';
 
-
+@injectable
 class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
   AddressDetailsViewmodel(this._addAddressUsecase,this._updateAddressUsecase,this._getCitiesUsecase,this._getStatesUsecase):super(AddressDetailsStates());
 
-  AddAddressUsecase _addAddressUsecase;
-  UpdateAddressUsecase _updateAddressUsecase;
-  GetCitiesUsecase _getCitiesUsecase;
-  GetStatesUsecase _getStatesUsecase;
+  final AddAddressUsecase _addAddressUsecase;
+  final UpdateAddressUsecase _updateAddressUsecase;
+  final GetCitiesUsecase _getCitiesUsecase;
+  final GetStatesUsecase _getStatesUsecase;
   String? address;
+  String? latitude;
+  String? longitude;
   String? phone;
   String? city;
   String? area;
+  String? selectedCityId;
+  String? selectedAreaId;
   String? recipientName;
-
-
+  List<StatesModel>? areasList ;
+  List<CitiesModel>? citiesList ;
+  List<StatesModel>? filteredAreasList ;
+  List<CitiesModel>? filteredCitiesList ;
 
   void doIntent(AddressDetailsEvents event){
     switch (event) {
@@ -53,16 +62,14 @@ class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
           lng: event.longitude
         );
 
-      case GetStatesEvent():
-        _getStates(
-          selectedCityId: event.selectedCityId
-        );
-      case GetCitiesEvent():
-        _getCities(
-          selectedStateId: event.selectedStateId
-        );
+      
       case GetCitiesAndStatesEvent():
         _getCitiesAndStates();
+
+      case GetFilteredStatesEvent():
+        _getFilteredStates(
+          selectedCityId: event.selectedCityId
+        );
     }
 
   }
@@ -110,33 +117,29 @@ class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
   void _getAddressFromCoordinates({required double lat, required double lng}) async {
     emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: true)));
     List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
-    address = '${placemarks[0].street}, ${placemarks[0].country}';
+    address = '${placemarks[0].street}';
+    latitude = lat.toString();
+    longitude = lng.toString();
     emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false,)));
   }
 
-  void _getStates({String? selectedCityId}) async {
-    emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: true)));
-    var response = await _getStatesUsecase.call(selectedCityId: selectedCityId);
-    emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false),statesStateNew: BaseState(success: response)));
-  }
-
-  void _getCities({String? selectedStateId}) async {
-    emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: true)));
-    var response = await _getCitiesUsecase.call(selectedStateId: selectedStateId);
-    emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false),citiesStateNew: BaseState(success: response)));
-  }
-
   void _getCitiesAndStates() async {
-    emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: true)));
-    var statesResponse = await _getStatesUsecase.call();
-    var citiesResponse = await _getCitiesUsecase.call();
+    emit(state.copyWith(firstBuildStateNew: BaseState(isLoading: true)));
+    areasList = await _getStatesUsecase.call();
+    citiesList = await _getCitiesUsecase.call();
     emit(state.copyWith(
-      addressDetailsStateNew: BaseState(isLoading: false),
-      statesStateNew: BaseState(success: statesResponse),
-      citiesStateNew: BaseState(success: citiesResponse)
+      firstBuildStateNew: BaseState(isLoading: false),
     ));
   }
 
+  void _getFilteredStates({String? selectedCityId}) async {
+    emit(state.copyWith(
+      addressDetailsStateNew: BaseState(isLoading: true),
+    ));
+    filteredAreasList = areasList?.where((area) => area.governorateId == selectedCityId).toList(); 
+    emit(state.copyWith(
+      addressDetailsStateNew: BaseState(isLoading: false),
+    ));
+  }
   
-
 }

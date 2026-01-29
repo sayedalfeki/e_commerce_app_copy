@@ -159,5 +159,7 @@
   "city":"City",
   "pleaseSelectCity":"Please Select City",
   "area":"Area",
-  "pleaseSelectArea":"Please Select Area"
+  "pleaseSelectArea":"Please Select Area",
+  "addAddress":"Add Address",
+  "updateAddress":"Update Address"
 }

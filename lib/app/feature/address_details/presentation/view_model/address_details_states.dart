@@ -1,19 +1,16 @@
 import 'package:flower_app/app/config/base_state/base_state.dart';
-import 'package:flower_app/app/feature/address_details/domain/models/cities_model.dart';
-import 'package:flower_app/app/feature/address_details/domain/models/states_model.dart';
+
 
 class AddressDetailsStates {
   BaseState<String>? addressDetailsState;
-  BaseState<List<CitiesModel>>? citiesState;
-  BaseState<List<StatesModel>>? statesState;
+  BaseState<String>? firstBuildState;
 
-  AddressDetailsStates({this.addressDetailsState,this.citiesState,this.statesState});
+  AddressDetailsStates({this.addressDetailsState,this.firstBuildState});
 
-  AddressDetailsStates copyWith({BaseState<String>? addressDetailsStateNew, BaseState<List<CitiesModel>>? citiesStateNew, BaseState<List<StatesModel>>? statesStateNew}) {
+  AddressDetailsStates copyWith({BaseState<String>? addressDetailsStateNew,BaseState<String>? firstBuildStateNew}) {
     return AddressDetailsStates(
-      addressDetailsState: addressDetailsStateNew ?? this.addressDetailsState,
-      citiesState: citiesStateNew ?? this.citiesState,
-      statesState: statesStateNew ?? this.statesState,
+      addressDetailsState: addressDetailsStateNew ?? addressDetailsState,
+      firstBuildState: firstBuildStateNew ?? firstBuildState,
     );
   }
 }

@@ -967,6 +967,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please Select Area'**
   String get pleaseSelectArea;
+
+  /// No description provided for @addAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Address'**
+  String get addAddress;
+
+  /// No description provided for @updateAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Address'**
+  String get updateAddress;
 }
 
 class _AppLocalizationsDelegate
