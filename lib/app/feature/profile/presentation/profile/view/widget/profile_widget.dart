@@ -97,11 +97,11 @@ class ProfileWidget extends StatelessWidget {
               ),
             ),
 
-            ProfileItemsWidget(data: AppLocale(context).about_us),
-            ProfileItemsWidget(data: AppLocale(context).terms_and_conditions),,
-            Divider(thickness: 1),
+            ProfileItemsWidget(data: AppLocale(context).about_us),,
+            ProfileItemsWidget(data: AppLocale(context).terms_and_conditions)Divider(thickness: 1),
             ProfileItemsWidget(
-              data: AppLocale(context).logoutleading: Icon(Icons.logout),
+              data: AppLocale(context).logout,
+              leading: Icon(Icons.logout),
               trailing: Icon(Icons.logout),
               onTap: () {
                 showDialog(context: context, builder: (context) {
