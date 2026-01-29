@@ -109,7 +109,7 @@
     "update_profile_error":"خطأ في تحديث الملف الشخصي",
     "uploading_photo":"تحديث الصورة",
     "uploading_photo_error":"خطأ في تحديث الصورة",
-  "logOutAction":"هل تريد تسجيل الخروج ",
+  "logOutAction":"هل تريد تسجيل الخروج؟ ",
   "no":"لا",
     "yes":"نعم"
 

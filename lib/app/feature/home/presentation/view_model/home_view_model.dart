@@ -9,16 +9,27 @@ import 'home_intent.dart';
 @injectable
 class HomeViewModel extends Cubit<HomeStates>{
   HomeViewModel(this._getTokenUseCase)
-    : super(HomeStates(homeBaseState: HomeBaseState()));
+    : super(HomeStates(isLoggedIn: false, currAppTab: AppTab.home));
   final GetTokenUseCase _getTokenUseCase;
 
   Future<void> _getUserToken() async {
     final token = await _getTokenUseCase.invoke();
-    emit(state.copyWith(homeBaseState: HomeBaseState(success: token)));
+    if (token != null && token.isNotEmpty) {
+      emit(state.copyWith(isLoggedIn: true));
+    } else {
+      emit(
+        state.copyWith(
+          isLoggedIn: false,
+          currAppTab: AppTab.home, // مهم جدًا
+        ),
+      );
+    }
+
+    //emit(state.copyWith(homeBaseState: HomeBaseState(success: token)));
   }
 
   void _switchTab(AppTab tab) {
-    emit(state.copyWith(homeBaseState: HomeBaseState(currAppTab: tab)));
+    emit(state.copyWith(currAppTab: tab));
   }
 
   void doIntent(HomeIntent intent) {

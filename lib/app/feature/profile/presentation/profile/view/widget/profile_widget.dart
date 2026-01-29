@@ -1,12 +1,15 @@
 import 'package:flower_app/app/core/consts/app_consts.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
+import 'package:flower_app/app/feature/home/presentation/view_model/home_intent.dart';
+import 'package:flower_app/app/feature/home/presentation/view_model/home_view_model.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/notification_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_items_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_photo_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_intent.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/resources/assets_manager.dart';
 import '../../../../../../core/utils/helper_function.dart';
@@ -26,6 +29,7 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final HomeViewModel homeViewModel = BlocProvider.of<HomeViewModel>(context);
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
@@ -103,10 +107,13 @@ class ProfileWidget extends StatelessWidget {
               onTap: () {
                 showDialog(context: context,
                   builder: (context) {
-                    return AlertDialog(
-                      content: LogoutWidget(),
+                    return AlertDialog((
+                      backgroundColor: AppColors.whiteColor,
+                      shape: OutlineInputBorder()content: LogoutWidget(),
                       contentPadding: EdgeInsets.zero,
                     );
+                  },).then((value) {
+                  homeViewModel.doIntent(GetTokenAction());
                   },);
                 // profileViewModel.doIntent(LogoutUserAction());
               },

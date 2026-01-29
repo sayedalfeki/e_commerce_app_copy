@@ -24,7 +24,9 @@ void main() {
     when(
       mockDataSource.clearToken(),
     ).thenAnswer((_) async => SuccessResponse(data: true));
-
+    when(
+      mockDataSource.clearRememberMe(),
+    ).thenAnswer((_) async => SuccessResponse(data: true));
     // act
     final result = await repo.clearToken() as SuccessResponse<bool>;
 
@@ -32,6 +34,7 @@ void main() {
     expect(result, isA<SuccessResponse<bool>>());
     expect(result.data, true);
     verify(mockDataSource.clearToken());
+    verify(mockDataSource.clearRememberMe());
   });
 
   // ---------------- getRememberMe ----------------
@@ -45,5 +48,19 @@ void main() {
     // assert
     verify(mockDataSource.getRememberMe());
     expect(result, true);
+  });
+  // ---------------- getToken ----------------
+  test('gettoken should delegate to data source', () async {
+    // arrange
+    when(
+      mockDataSource.getToken(),
+    ).thenAnswer((realInvocation) => Future.value('token'));
+
+    // act
+    final result = await repo.getToken();
+
+    // assert
+    verify(mockDataSource.getToken());
+    expect(result, 'token');
   });
 }

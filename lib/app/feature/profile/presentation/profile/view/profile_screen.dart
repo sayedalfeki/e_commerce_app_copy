@@ -34,7 +34,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Routes.updateProfile,
               arguments: viewModel.state.profileState.success,
             ).then((value) => viewModel.doIntent(GetProfileAction(),));
-          }ase LogoutUserEvent():
+          }
+        case LogoutUserEvent():
           if (mounted) {
             ShowDialogUtils.showMessage(
               context,
