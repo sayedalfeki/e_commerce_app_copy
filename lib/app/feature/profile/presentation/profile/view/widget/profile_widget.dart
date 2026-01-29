@@ -101,11 +101,10 @@ class ProfileWidget extends StatelessWidget {
             ProfileItemsWidget(data: AppLocale(context).terms_and_conditions),
             Divider(thickness: 1),
             ProfileItemsWidget(
-              data: AppLocale(context).logout,
-              leading: Icon(Icons.logout),,
-              trailing: Icon(Icons.logout),
+              data: AppLocale(context).logout,,
+              leading: Icon(Icons.logout)trailing: Icon(Icons.logout),
               onTap: () {
-                showDialogcontext: context, builder: (context) {
+                showDialog(context: context, builder: (context) {
                     return AlertDialog(
                       backgroundColor: AppColors.whiteColor,
                       shape: OutlineInputBorder(),
@@ -115,7 +114,6 @@ class ProfileWidget extends StatelessWidget {
                   },).then((value) {
                   homeViewModel.doIntent(GetTokenAction());
                   },);
-                // profileViewModel.doIntent(LogoutUserAction());
               },
             ),
             Spacer(),
