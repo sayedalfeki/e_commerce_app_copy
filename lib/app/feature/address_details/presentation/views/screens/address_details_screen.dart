@@ -126,7 +126,7 @@ class AddressDetailsScreen extends StatelessWidget{
                         decoration: InputDecoration(
                           labelText: AppLocale(context).recipientName,
                         ),
-                        initialValue: userAddressEntity?.userName ,
+                        initialValue: userAddressEntity?.userName,
                         validator: userAddressEntity ==null? (value) {
                           if (value == null || value.isEmpty) {
                             return AppLocale(context).pleaseEnterTheRecipientname;
