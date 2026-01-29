@@ -5,7 +5,7 @@ import 'package:flower_app/app/feature/address_details/domain/models/states_mode
 abstract class AddressDetailsRepoContract {
   Future<BaseResponse<String>> addAddress({String? street,String? phone,String? city,String? lat,String? long,String? username});
   Future<BaseResponse<String>> updateAddress({String? addressId, String? street, String? phone, String? city, String? lat, String? long, String? username});
-  Future<List<CitiesModel>> getCities({String? selectedStateId});
-  Future<List<StatesModel>> getStates({String? selectedCityId});
+  Future<List<CitiesModel>> getCities();
+  Future<List<StatesModel>> getStates();
   //Future<CountriesModel> getCountry({});
 }

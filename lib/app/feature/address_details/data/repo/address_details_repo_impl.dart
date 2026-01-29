@@ -67,27 +67,21 @@ class AddressDetailsRepoImpl extends AddressDetailsRepoContract {
     }
     
   @override
-  Future<List<CitiesModel>> getCities({String? selectedStateId})async {
+  Future<List<CitiesModel>> getCities()async {
     var response = await _addressDetailsLocalDataSourceContract.getCities();
-    if (selectedStateId == null) {
+    
       var cities = response.data!.map((e) => e.toDomain()).toList();
       return cities;
-    } else {
-      var cities = response.data!.map((e) => e.toDomain()).toList();
-      return cities.where((city) => city.id == selectedStateId).toList();
-    }
+    
   }
     
   @override
-  Future<List<StatesModel>> getStates({String? selectedCityId})async {
+  Future<List<StatesModel>> getStates()async {
     var response = await _addressDetailsLocalDataSourceContract.getStates();
-    if (selectedCityId == null) {
+    
       var states = response.data!.map((e) => e.toDomain()).toList();
       return states;
-    } else {
-      var states = response.data!.map((e) => e.toDomain()).toList();
-      return states.where((state) => state.id == selectedCityId).toList();
-    }
+    
   }
   
 }

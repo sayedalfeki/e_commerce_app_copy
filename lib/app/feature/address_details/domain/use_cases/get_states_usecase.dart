@@ -7,9 +7,7 @@ class GetStatesUsecase {
   AddressDetailsRepoContract addressDetailsRepoContract;
   GetStatesUsecase(this.addressDetailsRepoContract);
 
-  Future<List<StatesModel>> call({String? selectedCityId}) {
-    return addressDetailsRepoContract.getStates(
-      selectedCityId: selectedCityId,
-    );
+  Future<List<StatesModel>> call() {
+    return addressDetailsRepoContract.getStates();
   }
 }
