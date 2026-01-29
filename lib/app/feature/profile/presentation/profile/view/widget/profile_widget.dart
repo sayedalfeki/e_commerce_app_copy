@@ -102,10 +102,10 @@ class ProfileWidget extends StatelessWidget {
             Divider(thickness: 1),
             ProfileItemsWidget(
               data: AppLocale(context).logout,
-              leading: Icon(Icons.logout),
-              trailing: Icon(Icons.logout),,
-              onTap: () showDialog(
-                  context: context, builder: (context) {
+              leading: Icon(Icons.logout),,
+              trailing: Icon(Icons.logout),
+              onTap: () {
+                showDialogcontext: context, builder: (context) {
                     return AlertDialog(
                       backgroundColor: AppColors.whiteColor,
                       shape: OutlineInputBorder(),
