@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class TermsSectionWidget extends StatelessWidget {
   final TermsSection section;
   final String language;
-  const TermsSectionWidget({super.key,required this.section,required this.language});
+  const TermsSectionWidget({super.key, required this.section, required this.language});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class TermsSectionWidget extends StatelessWidget {
     );
   }
   Map<String,dynamic> _getContentStyle(){
-    if(section.style.containsKey('style')){
+    if(section.style.containsKey('content')){
       return section.style['content'] as Map<String, dynamic>;
     }else{
       return section.style;

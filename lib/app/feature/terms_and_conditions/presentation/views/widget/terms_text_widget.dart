@@ -5,7 +5,7 @@ class TermsTextWidget extends StatelessWidget {
   final String text;
   final Map<String, dynamic> style;
   final String language;
-  const TermsTextWidget({super.key,required this.text,required this.style,required this.language});
+  const TermsTextWidget({super.key, required this.text, required this.style, required this.language});
 
   @override
   Widget build(BuildContext context) {

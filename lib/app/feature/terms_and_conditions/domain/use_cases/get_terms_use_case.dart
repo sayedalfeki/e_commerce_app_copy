@@ -4,9 +4,9 @@ import 'package:flower_app/app/feature/terms_and_conditions/domain/repos/terms_r
 import 'package:injectable/injectable.dart';
 @injectable
 class GetTermsUseCase {
-  TermsRepoContract termsRepoContract;
-  GetTermsUseCase(this.termsRepoContract);
+  final TermsRepoContract _termsRepoContract;
+  GetTermsUseCase(this._termsRepoContract);
   Future<BaseResponse<List<TermsSection>>> call() async{
-    return termsRepoContract.getTermsAndConditions();
+    return _termsRepoContract.getTermsAndConditions();
   }
 }

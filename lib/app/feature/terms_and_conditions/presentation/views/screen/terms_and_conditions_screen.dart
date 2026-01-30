@@ -47,7 +47,7 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
                 itemBuilder: (context, index) {
                   return TermsSectionWidget(
                     section: termsState.success![index],
-                    language:'en',
+                    language:Localizations.localeOf(context).languageCode,
                   );
                 }, 
                 separatorBuilder: (context, index) {

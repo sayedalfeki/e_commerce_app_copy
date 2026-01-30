@@ -6,11 +6,11 @@ import 'package:flower_app/app/feature/terms_and_conditions/domain/repos/terms_r
 import 'package:injectable/injectable.dart';
 @Injectable(as: TermsRepoContract)
 class TermsRepoImpl implements TermsRepoContract{
-  LocalTermsDataSourceContract localTermsDataSourceContract;
-  TermsRepoImpl(this.localTermsDataSourceContract);
+  final LocalTermsDataSourceContract _localTermsDataSourceContract;
+  TermsRepoImpl(this._localTermsDataSourceContract);
   @override
   Future<BaseResponse<List<TermsSection>>> getTermsAndConditions() async{
-    final response=await localTermsDataSourceContract.getTermsAndConditions();
+    final response=await _localTermsDataSourceContract.getTermsAndConditions();
     switch(response){
       
       case SuccessResponse<TermsContent>():
