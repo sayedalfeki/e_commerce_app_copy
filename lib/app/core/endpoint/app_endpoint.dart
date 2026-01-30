@@ -23,5 +23,6 @@ abstract class AppEndPoint {
   //this end point used for updateing cart quantity (letting the server know that the quantity is increased)
   //and to delete item cart
   static const String updateCart = "/cart/{productId}";
-
+  //addresses
+  static const String addresses='/addresses';
 }
