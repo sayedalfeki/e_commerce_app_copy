@@ -67,6 +67,9 @@ class ProfileWidget extends StatelessWidget {
             ProfileItemsWidget(
               data: AppLocale(context).saved_addresses,
               leading: Icon(Icons.location_on_outlined),
+              onTap: () =>
+                  profileViewModel.doIntent(NavigateToAddressScreenAction()),
+
             ),
             Divider(thickness: 1),
             ProfileItemsWidget(
