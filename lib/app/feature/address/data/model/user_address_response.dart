@@ -25,7 +25,7 @@ class UserAddressResponse {
       city: address.city,
       lat: address.lat,
       long: address.long,
-      addressId: address.Id,
+      addressId: address.id,
       phone: address.phone,
       userName: address.username,
     );
@@ -47,7 +47,7 @@ class AddressesDto {
   @JsonKey(name: "username")
   final String? username;
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
 
   AddressesDto({
     this.street,
@@ -56,7 +56,7 @@ class AddressesDto {
     this.lat,
     this.long,
     this.username,
-    this.Id,
+    this.id,
   });
 
   factory AddressesDto.fromJson(Map<String, dynamic> json) {

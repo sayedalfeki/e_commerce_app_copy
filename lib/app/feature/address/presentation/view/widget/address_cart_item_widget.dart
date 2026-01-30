@@ -49,7 +49,11 @@ class _AddressCartItemWidgetState extends State<AddressCartItemWidget> {
                 const SizedBox(width: 10),
                 Text(
                   widget.address.city ?? '',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: AppColors.blackColor,
                   ),
@@ -71,9 +75,13 @@ class _AddressCartItemWidgetState extends State<AddressCartItemWidget> {
             const SizedBox(height: 5),
             Text(
               addressDetails,
-              style: Theme.of(
+              style: Theme
+                  .of(
                 context,
-              ).textTheme.titleMedium?.copyWith(color: AppColors.grayColor),
+              )
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(color: AppColors.grayColor),
             ),
           ],
         ),
@@ -82,12 +90,37 @@ class _AddressCartItemWidgetState extends State<AddressCartItemWidget> {
   }
 
   Future<void> getLocationDetails() async {
-    double lat = double.parse(widget.address.lat ?? '0');
-    double lng = double.parse(widget.address.long ?? '0');
-    List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
-    Placemark place = placemarks.first;
-    addressDetails = ' ${place.locality}-${place.name}';
-
-    setState(() {});
+    final String? latString = widget.address.lat;
+    final String? lngString = widget.address.long;
+    final double? lat = latString != null ? double.tryParse(latString) : null;
+    final double? lng = lngString != null ? double.tryParse(lngString) : null;
+    // Fallback text if we can't resolve a meaningful address
+    const String fallbackDetails = 'Location details unavailable';
+    // Validate that coordinates are present, numeric, and in valid ranges
+    if (lat == null ||
+        lng == null ||
+        lat < -90.0 ||
+        lat > 90.0 ||
+        lng < -180.0 ||
+        lng > 180.0) {
+      addressDetails = fallbackDetails;
+      if (!mounted) return;
+      setState(() {});
+      return;
+    }
+    try {
+      final List<Placemark> placemarks =
+      await placemarkFromCoordinates(lat, lng);
+      if (placemarks.isEmpty) {
+        addressDetails = fallbackDetails;
+      } else {
+        final Placemark place = placemarks.first;
+        addressDetails = ' ${place.locality}-${place.name}';
+      }
+    } catch (_) {
+      // Any error while fetching location details results in a safe fallback
+      addressDetails = fallbackDetails;
+    }
+    if (!mounted) return;
   }
 }

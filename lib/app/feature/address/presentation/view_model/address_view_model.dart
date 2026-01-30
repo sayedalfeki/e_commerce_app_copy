@@ -58,7 +58,7 @@ class AddressViewModel extends CustomCubit<AddressEvent, AddressState> {
         );
         break;
       case BackToProfileScreenAction():
-        streamController.add(NavigateToAddressScreenEvent());
+        streamController.add(NavigateBackToProfileEvent());
         break;
     }
   }

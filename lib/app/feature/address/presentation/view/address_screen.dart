@@ -1,3 +1,4 @@
+import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/address/presentation/view/widget/address_body_widget.dart';
 import 'package:flower_app/app/feature/address/presentation/view_model/address_view_model.dart';
@@ -30,10 +31,10 @@ class _AddressScreenState extends State<AddressScreen> {
             Navigator.of(
               context,
               rootNavigator: true,
-            ).pushNamed('update_address', arguments: event.address);
+            ).pushNamed(Routes.updateAddress, arguments: event.address);
           }
           break;
-        case NavigateToAddressScreenEvent():
+        case NavigateBackToProfileEvent():
           if (mounted) {
             Navigator.pop(context);
           }
