@@ -1,3 +1,4 @@
+import 'package:flower_app/app/core/keys/local_json_keys.dart';
 import 'package:flower_app/app/core/resources/font_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +14,9 @@ class TermsTextWidget extends StatelessWidget {
   }
   TextStyle? _parseTextStyle(){
     return TextStyle(
-      fontSize: (style['fontSize'] as num?)?.toDouble() ?? 16,
-      fontWeight: _parseFontWeight(style['fontWeight'] as String?),
-      color: _parseColor(style['color'] as String?)
+      fontSize: (style[LocalJsonKeys.fontSize] as num?)?.toDouble() ?? 16,
+      fontWeight: _parseFontWeight(style[LocalJsonKeys.fontWeight] as String?),
+      color: _parseColor(style[LocalJsonKeys.color] as String?)
     );
   }
   FontWeight? _parseFontWeight(String? fontWeight){
@@ -26,7 +27,7 @@ class TermsTextWidget extends StatelessWidget {
     }
   }
   TextAlign? _parseTextAlign(){
-    final alignMap = style['textAlign'];
+    final alignMap = style[LocalJsonKeys.textAlign];
     if(alignMap is Map && alignMap.containsKey(language)){
       final align=alignMap[language];
       switch (align) {

@@ -1,3 +1,4 @@
+import 'package:flower_app/app/core/keys/local_json_keys.dart';
 import 'package:flower_app/app/feature/terms_and_conditions/data/models/terms_section.dart';
 import 'package:flower_app/app/feature/terms_and_conditions/presentation/views/widget/terms_content_widget.dart';
 import 'package:flower_app/app/feature/terms_and_conditions/presentation/views/widget/terms_text_widget.dart';
@@ -15,7 +16,7 @@ class TermsSectionWidget extends StatelessWidget {
       children.add(
         TermsTextWidget(
           text: section.title![language]!, 
-          style: section.style['title'] ?? section.style, 
+          style: section.style[LocalJsonKeys.title] ?? section.style, 
           language: language
         )
       );
@@ -35,8 +36,8 @@ class TermsSectionWidget extends StatelessWidget {
     );
   }
   Map<String,dynamic> _getContentStyle(){
-    if(section.style.containsKey('content')){
-      return section.style['content'] as Map<String, dynamic>;
+    if(section.style.containsKey(LocalJsonKeys.content)){
+      return section.style[LocalJsonKeys.content] as Map<String, dynamic>;
     }else{
       return section.style;
     }
