@@ -6,11 +6,11 @@ import 'package:flower_app/app/feature/about_app/domain/repos/about_app_repo_con
 import 'package:injectable/injectable.dart';
 @Injectable(as: AboutAppRepoContract)
 class AboutAppRepoImpl implements AboutAppRepoContract{
-  AboutAppLocalDataSourceContract aboutAppLocalDataSourceContract;
-  AboutAppRepoImpl(this.aboutAppLocalDataSourceContract);
+  final AboutAppLocalDataSourceContract _aboutAppLocalDataSourceContract;
+  AboutAppRepoImpl(this._aboutAppLocalDataSourceContract);
   @override
   Future<BaseResponse<List<AboutSection>>> getAboutAppInfo() async{
-    final response=await aboutAppLocalDataSourceContract.getAboutAppContent();
+    final response=await _aboutAppLocalDataSourceContract.getAboutAppContent();
     switch(response){
       
       case SuccessResponse<AboutContent>():

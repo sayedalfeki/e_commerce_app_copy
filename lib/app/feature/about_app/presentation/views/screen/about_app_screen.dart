@@ -47,7 +47,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
                 itemBuilder: (context, index) {
                   return AboutAppSectionWidget(
                     section: aboutAppState.success![index], 
-                    language: "en"
+                    language: Localizations.localeOf(context).languageCode
                   );
                 }, 
                 separatorBuilder: (context, index) {

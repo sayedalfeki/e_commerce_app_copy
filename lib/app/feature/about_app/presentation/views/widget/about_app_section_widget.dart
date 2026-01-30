@@ -1,3 +1,4 @@
+import 'package:flower_app/app/core/keys/local_json_keys.dart';
 import 'package:flower_app/app/feature/about_app/data/models/about_section.dart';
 import 'package:flower_app/app/feature/about_app/presentation/views/widget/about_app_content_widget.dart';
 import 'package:flower_app/app/feature/about_app/presentation/views/widget/about_app_text_widget.dart';
@@ -15,7 +16,7 @@ class AboutAppSectionWidget extends StatelessWidget {
       children.add(
         AboutAppTextWidget(
           text: section.title![language], 
-          style: section.style['title'] ?? section.style, 
+          style: section.style[LocalJsonKeys.title] ?? section.style, 
           language: language
         )
       );
@@ -36,8 +37,8 @@ class AboutAppSectionWidget extends StatelessWidget {
     );
   }
   Map<String,dynamic> _getContentStyle(){
-    if(section.style.containsKey('content')){
-      return section.style['content'] as Map<String, dynamic>;
+    if(section.style.containsKey(LocalJsonKeys.content)){
+      return section.style[LocalJsonKeys.content] as Map<String, dynamic>;
     }else{
       return section.style;
     }

@@ -4,9 +4,9 @@ import 'package:flower_app/app/feature/about_app/domain/repos/about_app_repo_con
 import 'package:injectable/injectable.dart';
 @injectable
 class AboutAppUseCase {
-  AboutAppRepoContract aboutAppRepoContract;
-  AboutAppUseCase(this.aboutAppRepoContract);
+  final AboutAppRepoContract _aboutAppRepoContract;
+  AboutAppUseCase(this._aboutAppRepoContract);
   Future<BaseResponse<List<AboutSection>>> call()async{
-    return aboutAppRepoContract.getAboutAppInfo();
+    return _aboutAppRepoContract.getAboutAppInfo();
   }
 }
