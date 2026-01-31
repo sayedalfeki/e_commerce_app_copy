@@ -7,6 +7,7 @@ import 'package:flower_app/app/feature/product_details/presentation/view_model/p
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// ignore: must_be_immutable
 class ProductDetailsScreen extends StatelessWidget{
   final String? productId;
 

@@ -24,6 +24,7 @@ abstract class AppEndPoint {
   //and to delete item cart
   static const String updateCart = "/cart/{productId}";
 
+  static const String bestSeller="/best-seller";
   //address
   static const String address = "/addresses";
 }
