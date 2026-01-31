@@ -31,12 +31,14 @@ class _ProfileNavigatorWidgetState extends State<ProfileNavigatorWidget> {
             return MaterialPageRoute(
               builder: (_) {
                 return TermsAndConditionsScreen();
+              },
+            );
           case Routes.userAddress:
             return MaterialPageRoute(
               builder: (_) {
                 return const AddressScreen();
               },
-            );
+            );  
           default:
             return MaterialPageRoute(builder: (_) => const ProfileScreen());
         }
