@@ -9,7 +9,11 @@ class ServerErrorResponse {
   @JsonKey(name: "message")
   final String? message;
 
-  ServerErrorResponse ({this.error, this.message});
+
+  ServerErrorResponse ({
+    this.error,
+    this.message
+  });
 
   factory ServerErrorResponse.fromJson(Map<String, dynamic> json) {
     return _$ServerErrorResponseFromJson(json);
@@ -19,5 +23,3 @@ class ServerErrorResponse {
     return _$ServerErrorResponseToJson(this);
   }
 }
-
-

@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class SignupScreen extends StatelessWidget {
    SignupScreen({super.key});
   SignupViewModel signupViewModel = getIt<SignupViewModel>();
@@ -91,7 +92,7 @@ class SignupScreen extends StatelessWidget {
                             hint: AppLocale(context).enterPasswordConfirm,
                             controller: signupViewModel.confirmPasswordController,
                             validator: (value) {
-                              AppValidators.validateConfirmPassword(value, signupViewModel.passwordController.text, context);
+                              return AppValidators.validateConfirmPassword(value, signupViewModel.passwordController.text, context);
                             },
                           ),
                         ),
@@ -113,7 +114,8 @@ class SignupScreen extends StatelessWidget {
                           child: FormBuilderRadioGroup<String>(name: "",
                           focusColor: AppColors.primaryColor,
                           activeColor: AppColors.primaryColor,
-                              onSaved: (newValue) {
+
+                          onSaved: (newValue) {
                             signupViewModel.gender=newValue;
                           },
                           hoverColor: Colors.transparent,
@@ -172,7 +174,7 @@ class SignupScreen extends StatelessWidget {
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 signupViewModel.doIntent(
-                                  SignupEvent(),
+                                  SignupEvent(
                                   firstName:
                                       signupViewModel.firstNameController.text,
                                   lastName:
@@ -185,6 +187,8 @@ class SignupScreen extends StatelessWidget {
                                       .text,
                                   phone: signupViewModel.phoneController.text,
                                   gender: signupViewModel.gender??"female"
+                                  ),
+                                  
                                 );
                               }
                             },
@@ -234,22 +238,16 @@ class SignupScreen extends StatelessWidget {
         }, listener: (context, state) {
       if(state.signupState?.isLoading==true){
         ShowDialogUtils.showLoading(context);
-      } else if (state.signupState?.error != null) {
+      }else if (state.signupState?.error!=null){
+        ShowDialogUtils.hideLoading(context);
+        ShowDialogUtils.showMessage(context, title: getException(context, state.signupState?.error),nigActionName: "ok",nigAction: (){Navigator.pop(context);});
+      }else if (state.signupState?.success!=null){
         ShowDialogUtils.hideLoading(context);
         ShowDialogUtils.showMessage(
-            context, Title: getException(context, state.signupState?.error),
-            NigActionName: "ok",
-            NigAction: () {
+            context, title: AppLocale(context).account_created_successfully,
+            nigActionName: "ok",
+            nigAction: () {
               Navigator.pop(context);
-            });
-      } else if (state.signupState?.success != null) {
-        ShowDialogUtils.hideLoading(context);
-        ShowDialogUtils.showMessage(
-            context, Title: AppLocale(context).accountcreatedsuccessfully,
-            NigActionName: "ok",
-            NigAction: () {
-              Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, Routes.login);
             });
       }
         

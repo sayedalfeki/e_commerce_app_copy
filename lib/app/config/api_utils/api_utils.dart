@@ -1,10 +1,9 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flower_app/app/config/base_error/custom_exceptions.dart';
+import 'package:flower_app/app/config/base_error/server_error_response.dart';
 import 'package:flower_app/app/config/base_response/base_response.dart';
-
-import '../base_error/custom_exceptions.dart';
-import '../base_error/server_error_response.dart';
 
 Future<BaseResponse<T>> executeApi<T>(Future<T> Function() apiCall) async {
   try {
@@ -42,7 +41,7 @@ Future<BaseResponse<T>> executeApi<T>(Future<T> Function() apiCall) async {
             return ErrorResponse(error: UnexpectedError());
           }
           final response = ServerErrorResponse.fromJson(json);
-          return ErrorResponse(error: ServerError(message: response.error));
+          return ErrorResponse(error: ServerError(message: response.error ?? response.message));
         }
     }
   } catch (exception) {

@@ -184,10 +184,53 @@ class AppLocalizationsAr extends AppLocalizations {
   String get successMessage => 'تم التسجيل بنجاح';
 
   @override
+  String get categories => 'الفئات';
+
+  @override
+  String get cart => 'عربة التسوق';
+
+  @override
+  String get connectionFailed => 'لا يوجد اتصال بالانترنت';
+
+  @override
+  String get flowery => 'مُزْهَر';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get deliveryLocation => 'التوصيل إلى 2XVP+XC - الشيخ زايد';
+
+  @override
+  String get empty_data => 'لا توجد منتجات لعرضها';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get egyptianLivre => 'ج.م';
+
+  @override
+  String get occasion => 'المناسبة';
+
+  @override
+  String get bestSeller => 'الأكثر مبيعاً';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
   String get loading => 'جاري التحميل...';
 
   @override
-  String get welcome => 'مرحباً';
+  String get gender => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'انثى';
+
   @override
   String get cancel => 'الغاء';
 
@@ -198,10 +241,96 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirm => 'تأكيد';
 
   @override
-  String get connectionFailed => 'لا يوجد اتصال بالانترنت';
+  String get invalidOtp => 'كود غير صحيح';
 
   @override
-  String get invalidOtp => 'كود غير صحيح';
-  @override
   String get continueAsGuest => 'المتابعة كزائر';
+
+  @override
+  String get account_created_successfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creating_an_account_you_agree_to_our =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get terms_and_conditions => 'الشروط والأحكام';
+
+  @override
+  String get status => 'الحاله';
+
+  @override
+  String get all_prices_include_tax => 'All prices include tax';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get add_to_cart => 'Add to cart';
+
+  @override
+  String get out_of_stock => 'Out of Stock';
+
+  @override
+  String get in_stock => 'In Stock';
+
+  @override
+  String get bouquet_include => 'Bouquet include';
+
+  @override
+  String get egp => 'ج.م';
+
+  @override
+  String get my_orders => 'hطلباتي';
+
+  @override
+  String get saved_addresses => 'المواقع المحفوظة';
+
+  @override
+  String get notifications => 'الاشعارات';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get english => 'الانجليزية';
+
+  @override
+  String get arabic => 'العربية';
+
+  @override
+  String get about_us => 'عنا';
+
+  @override
+  String get logout => 'خروج';
+
+  @override
+  String get current_password => 'كلمة السر الحالية';
+
+  @override
+  String get new_password => 'كلمة السر الجديدة';
+
+  @override
+  String get update => 'تحديث';
+
+  @override
+  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
+
+  @override
+  String get change => 'تغيير';
+
+  @override
+  String get edit_profile => 'تحديث الملف الشخصي';
+
+  @override
+  String get update_profile => 'تحديث الملف الشخصي';
+
+  @override
+  String get update_profile_error => 'خطأ في تحديث الملف الشخصي';
+
+  @override
+  String get uploading_photo => 'تحديث الصورة';
+
+  @override
+  String get uploading_photo_error => 'خطأ في تحديث الصورة';
 }

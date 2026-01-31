@@ -22,19 +22,10 @@ class SignupViewModel extends Cubit<SignupStates>{
 
   SignupViewModel(this._signup):super(SignupStates());
 
-  void doIntent(SignupEvents event, {
-    String username = "",
-    String firstName = "",
-    String lastName = "",
-    String email = "",
-    String password = "",
-    String rePassword = "",
-    String phone = "",
-    String gender ="male"
-  }){
+  void doIntent(SignupEvents event){
     switch (event){
       case SignupEvent():
-        _signUp(gender, firstName, lastName, email, password, rePassword, phone);
+        _signUp(event.gender, event.firstName, event.lastName, event.email, event.password, event.rePassword, event.phone);
     }
   }
 
@@ -44,11 +35,9 @@ class SignupViewModel extends Cubit<SignupStates>{
 
     switch(signupResponse){
       case SuccessResponse():
-        emit(state.copyWith(signupStateParam: BaseState(
-            success: signupResponse.data, isLoading: false)));
+        emit(state.copyWith(signupStateParam: BaseState(success: signupResponse.data,isLoading: false)));
       case ErrorResponse():
-        emit(state.copyWith(signupStateParam: BaseState(
-            error: signupResponse.error, isLoading: false)));
+        emit(state.copyWith(signupStateParam: BaseState(error: signupResponse.error ,isLoading: false)));
     }
   }
 
