@@ -548,6 +548,36 @@ abstract class AppLocalizations {
   /// **'Best Seller'**
   String get bestSeller;
 
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
+
+  /// No description provided for @gender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
   /// No description provided for @cancel.
   ///
   /// In en, this message translates to:
@@ -614,29 +644,29 @@ abstract class AppLocalizations {
   /// **'Description'**
   String get description;
 
-  /// No description provided for @addtocart.
+  /// No description provided for @add_to_cart.
   ///
   /// In en, this message translates to:
   /// **'Add to cart'**
-  String get addtocart;
+  String get add_to_cart;
 
-  /// No description provided for @outofstock.
+  /// No description provided for @out_of_stock.
   ///
   /// In en, this message translates to:
   /// **'Out of Stock'**
-  String get outofstock;
+  String get out_of_stock;
 
-  /// No description provided for @instock.
+  /// No description provided for @in_stock.
   ///
   /// In en, this message translates to:
   /// **'In Stock'**
-  String get instock;
+  String get in_stock;
 
-  /// No description provided for @bouquetinclude.
+  /// No description provided for @bouquet_include.
   ///
   /// In en, this message translates to:
   /// **'Bouquet include'**
-  String get bouquetinclude;
+  String get bouquet_include;
 
   /// No description provided for @egp.
   ///

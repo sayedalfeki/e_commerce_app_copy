@@ -122,5 +122,8 @@
     "update_profile_error":"خطأ في تحديث الملف الشخصي",
     "uploading_photo":"تحديث الصورة",
     "uploading_photo_error":"خطأ في تحديث الصورة",
-    "success":"تم بنجاح"
+    "success":"تم بنجاح",
+    "addNewAddress":"اضف موقعا جديدا",
+    "savedAddress":"الاماكن المسجلة",
+    "someThingWrong":"هناك خطأ ما"
 }

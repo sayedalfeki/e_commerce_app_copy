@@ -12,6 +12,8 @@ import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.d
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
 import 'package:flower_app/app/feature/occasion/presentation/views/screen/occasion_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../../feature/address/presentation/view/address_screen.dart';
 import '../../feature/forget_password/presentation/forget_password/view/forget_password_screen.dart';
 import '../../feature/forget_password/presentation/reset_password/view/reset_password_screen.dart';
 import '../../feature/forget_password/presentation/verify_otp/view/verify_otp_screen.dart';
@@ -50,6 +52,8 @@ class RouteGenerator {
 
       case Routes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+      case Routes.userAddress:
+        return MaterialPageRoute(builder: (_) => const AddressScreen());
 
       default:
         return unDefinedRoute();
