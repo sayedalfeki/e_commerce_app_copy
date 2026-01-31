@@ -333,4 +333,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'خطأ في تحديث الصورة';
+
+  @override
+  String get addNewAddress => 'اضف موقعا جديدا';
+
+  @override
+  String get savedAddress => 'الاماكن المسجلة';
+
+  @override
+  String get someThingWrong => 'هناك خطأ ما';
 }

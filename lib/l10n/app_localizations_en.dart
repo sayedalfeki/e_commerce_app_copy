@@ -333,4 +333,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'error in uploading photo';
+
+  @override
+  String get addNewAddress => 'add new address';
+
+  @override
+  String get savedAddress => 'saved address';
+
+  @override
+  String get someThingWrong => 'some thing wrong';
 }

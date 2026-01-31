@@ -733,6 +733,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'error in uploading photo'**
   String get uploading_photo_error;
+
+  /// No description provided for @addNewAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'add new address'**
+  String get addNewAddress;
+
+  /// No description provided for @savedAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'saved address'**
+  String get savedAddress;
+
+  /// No description provided for @someThingWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'some thing wrong'**
+  String get someThingWrong;
 }
 
 class _AppLocalizationsDelegate
