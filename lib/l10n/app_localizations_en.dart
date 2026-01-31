@@ -217,20 +217,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bestSeller => 'Best Seller';
 
   @override
-  String get profile => 'Profile';
-
-  @override
   String get loading => 'Loading...';
-  String get gender => 'Gender';
-
-  @override
-  String get male => 'Male';
-
-  @override
-  String get female => 'Female';
-
-  @override
-  String get cancel => 'cancel';
 
   @override
   String get gender => 'Gender';
@@ -262,11 +249,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get creating_an_account_you_agree_to_our =>
       'Creating an account, you agree to our';
-  String get account_created_successfully => 'Account Created Successfully';
-
-  @override
-  String get creating_an_account_you_agree_to_our =>
-      'Creating an account, you agree to our';
 
   @override
   String get terms_and_conditions => 'Terms & Conditions';
@@ -281,65 +263,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get description => 'Description';
 
   @override
-  String get add_to_cart => 'Add to cart';
+  String get addtocart => 'Add to cart';
 
   @override
-  String get out_of_stock => 'Out of Stock';
+  String get outofstock => 'Out of Stock';
 
   @override
-  String get in_stock => 'In Stock';
+  String get instock => 'In Stock';
 
   @override
-  String get bouquet_include => 'Bouquet include';
-
-  @override
-  String get egp => 'EGP';
-
-  @override
-  String get my_orders => 'My Orders';
-
-  @override
-  String get saved_addresses => 'Saved Addresses';
-
-  @override
-  String get notifications => 'Notifications';
-
-  @override
-  String get language => 'Language';
-
-  @override
-  String get english => 'English';
-
-  @override
-  String get arabic => 'Arabic';
-
-  @override
-  String get about_us => 'About Us';
-
-  @override
-  String get terms_and_conditions => 'Terms & Conditions';
-
-  @override
-  String get current_password => 'current password';
-
-  @override
-  String get all_prices_include_tax => 'All prices include tax';
-  String get new_password => 'new password';
-
-  @override
-  String get password_changed => 'password changed successfully';
-
-  @override
-  String get logout => 'Logout';
-
-  @override
-  String get update => 'update';
-
-  @override
-  String get change => 'change';
-
-  @override
-  String get edit_profile => 'edit profile';
+  String get bouquetinclude => 'Bouquet include';
 
   @override
   String get bloomWithOurExquisiteBestSellers =>
@@ -385,6 +318,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get about_us => 'About Us';
 
   @override
+  String get profile => 'Profile';
+
+  @override
   String get current_password => 'current password';
 
   @override
@@ -416,4 +352,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'error in uploading photo';
+
+  @override
+  String get addNewAddress => 'add new address';
+
+  @override
+  String get savedAddress => 'saved address';
+
+  @override
+  String get someThingWrong => 'some thing wrong';
 }
