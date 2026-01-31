@@ -596,29 +596,29 @@ abstract class AppLocalizations {
   /// **'Description'**
   String get description;
 
-  /// No description provided for @addtocart.
+  /// No description provided for @add_to_cart.
   ///
   /// In en, this message translates to:
   /// **'Add to cart'**
-  String get addtocart;
+  String get add_to_cart;
 
-  /// No description provided for @outofstock.
+  /// No description provided for @out_of_stock.
   ///
   /// In en, this message translates to:
   /// **'Out of Stock'**
-  String get outofstock;
+  String get out_of_stock;
 
-  /// No description provided for @instock.
+  /// No description provided for @in_stock.
   ///
   /// In en, this message translates to:
   /// **'In Stock'**
-  String get instock;
+  String get in_stock;
 
-  /// No description provided for @bouquetinclude.
+  /// No description provided for @bouquet_include.
   ///
   /// In en, this message translates to:
   /// **'Bouquet include'**
-  String get bouquetinclude;
+  String get bouquet_include;
 
   /// No description provided for @bloomWithOurExquisiteBestSellers.
   ///
@@ -703,6 +703,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'About Us'**
   String get about_us;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
 
   /// No description provided for @current_password.
   ///

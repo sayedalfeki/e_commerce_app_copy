@@ -66,7 +66,6 @@
 "categories": "الفئات",
   "cart": "عربة التسوق",
   "profile": "الملف الشخصي",
-  "connectionFailed":"لا يوجد اتصال بالانترنت",
   "flowery": "مُزْهَر",
   "search": "بحث",
   "deliveryLocation": "التوصيل إلى 2XVP+XC - الشيخ زايد",
@@ -92,7 +91,6 @@
   "addToCart": "أضف إلى عربة التسوق",
  "current_password":"كلمة السر الحالية",
      "new_password":"كلمة السر الجديدة",
-     "update":"تحديث",
      "password_changed":"تم تغيير كلمة المرور بنجاح",
    "my_orders":"طلباتي",
     "saved_addresses":"المواقع المحفوظة",
@@ -113,4 +111,9 @@
   "in_stock": "في المخزن",
   "bouquet_include": "الباقة تحتوي على",
   "all_prices_include_tax": "جميع الأسعار تشمل الضريبة"
+    "addNewAddress":"اضف موقعا جديدا",
+    "savedAddress":"الاماكن المسجلة",
+    "someThingWrong":"هناك خطأ ما"
+
+
 }

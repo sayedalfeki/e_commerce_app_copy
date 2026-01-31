@@ -25,4 +25,6 @@ abstract class AppEndPoint {
   static const String updateCart = "/cart/{productId}";
 
   static const String bestSeller="/best-seller";
+  //address
+  static const String address = "/addresses";
 }

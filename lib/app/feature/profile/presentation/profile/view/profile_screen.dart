@@ -33,6 +33,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               arguments: viewModel.state.profileState.success,
             ).then((value) => viewModel.doIntent(GetProfileAction(),));
           }
+          break;
+        case NavigateToAddressScreenEvent():
+          if (mounted) {
+            Navigator.pushNamed(context, Routes.userAddress);
+          }
+          break;
       }
     });
   }
