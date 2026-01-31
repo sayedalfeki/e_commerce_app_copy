@@ -8,4 +8,4 @@ class NavigateToUpdateAddressEvent extends AddressEvent {
   NavigateToUpdateAddressEvent({this.address});
 }
 
-class NavigateToAddressScreenEvent extends AddressEvent {}
+class NavigateBackToProfileEvent extends AddressEvent {}

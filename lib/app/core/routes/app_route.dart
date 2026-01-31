@@ -13,6 +13,7 @@ abstract class Routes {
   static const String updateProfile = 'update_profile';
   static const String userAddress = 'user_address';
   static const String addressDetails = _Paths.addressDetails;
+  static const String updateAddress = 'update_address';
 }
 
 abstract class _Paths {
