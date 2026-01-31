@@ -260,7 +260,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get status => 'الحاله';
 
   @override
-  String get all_prices_include_tax => 'All prices include tax';
+  String get all_prices_include_tax => 'جميع الأسعار تشمل الضريبة';
 
   @override
   String get description => 'الوصف';
@@ -285,22 +285,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get addToCart => 'أضف إلى عربة التسوق';
 
   @override
-  String get add_to_cart => 'Add to cart';
+  String get add_to_cart => 'أضف إلى السلة';
 
   @override
-  String get out_of_stock => 'Out of Stock';
+  String get out_of_stock => 'إنتهى من المخزن';
 
   @override
-  String get in_stock => 'In Stock';
+  String get in_stock => 'في المخزن';
 
   @override
-  String get bouquet_include => 'Bouquet include';
+  String get bouquet_include => 'الباقة تحتوي على';
 
   @override
   String get egp => 'ج.م';
 
   @override
-  String get my_orders => 'hطلباتي';
+  String get my_orders => 'طلباتي';
 
   @override
   String get saved_addresses => 'المواقع المحفوظة';
