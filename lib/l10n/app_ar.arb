@@ -110,10 +110,8 @@
   "out_of_stock": "إنتهى من المخزن",
   "in_stock": "في المخزن",
   "bouquet_include": "الباقة تحتوي على",
-  "all_prices_include_tax": "جميع الأسعار تشمل الضريبة"
+  "all_prices_include_tax": "جميع الأسعار تشمل الضريبة",
     "addNewAddress":"اضف موقعا جديدا",
     "savedAddress":"الاماكن المسجلة",
     "someThingWrong":"هناك خطأ ما"
-
-
 }
