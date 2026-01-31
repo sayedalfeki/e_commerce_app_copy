@@ -1,3 +1,4 @@
+import 'package:flower_app/app/feature/address/presentation/view/address_screen.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view/update_profile_widget.dart';
 import 'package:flower_app/app/feature/terms_and_conditions/presentation/views/screen/terms_and_conditions_screen.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,10 @@ class _ProfileNavigatorWidgetState extends State<ProfileNavigatorWidget> {
             return MaterialPageRoute(
               builder: (_) {
                 return TermsAndConditionsScreen();
+          case Routes.userAddress:
+            return MaterialPageRoute(
+              builder: (_) {
+                return const AddressScreen();
               },
             );
           default:
