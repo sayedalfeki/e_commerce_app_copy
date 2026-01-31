@@ -1,9 +1,8 @@
 name: Unit Testing Check
 on:
   pull_request:
-    - opened
-    - synchronize
-    - edited
+    types: [opened, synchronize, edited]
+
 jobs:
   unit-testing-check:
     runs-on: ubuntu-latest
