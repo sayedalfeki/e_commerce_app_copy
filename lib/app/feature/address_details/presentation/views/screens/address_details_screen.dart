@@ -15,20 +15,37 @@ import 'package:url_launcher/url_launcher.dart';
 
 
 // ignore: must_be_immutable
-class AddressDetailsScreen extends StatelessWidget{
+class AddressDetailsScreen extends StatefulWidget{
   UserAddressEntity? userAddressEntity;
   AddressDetailsScreen({super.key, this.userAddressEntity});
 
+  @override
+  State<AddressDetailsScreen> createState() => _AddressDetailsScreenState();
+}
+
+class _AddressDetailsScreenState extends State<AddressDetailsScreen> {
+
+  
   AddressDetailsViewmodel viewmodel = getIt<AddressDetailsViewmodel>();
+
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+
+  @override
+  void dispose() {
+    viewmodel.addressController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    if (userAddressEntity != null) {
+    if (widget.userAddressEntity != null) {
       viewmodel.doIntent(getAddressFromCoordinatesEvent(
-        latitude: double.parse(userAddressEntity!.lat!),
-        longitude: double.parse(userAddressEntity!.long!)
+        latitude: double.parse(widget.userAddressEntity!.lat!),
+        longitude: double.parse(widget.userAddressEntity!.long!)
       ));
     }
     
@@ -91,8 +108,8 @@ class AddressDetailsScreen extends StatelessWidget{
                         decoration: InputDecoration(
                           labelText: AppLocale(context).address,
                         ),
-                        initialValue: userAddressEntity==null?null: viewmodel.address,
-                        controller: TextEditingController(text: viewmodel.address),
+                        initialValue: widget.userAddressEntity==null?null: viewmodel.address,
+                        controller: viewmodel.addressController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return AppLocale(context).pleaseEnterYourAddress;
@@ -112,8 +129,8 @@ class AddressDetailsScreen extends StatelessWidget{
                         decoration: InputDecoration(
                           labelText: AppLocale(context).phoneNumber,
                         ),
-                        initialValue: userAddressEntity?.phone,
-                        validator: userAddressEntity ==null? (value) =>  AppValidators.validateNumberPhone(value,context):null,
+                        initialValue: widget.userAddressEntity?.phone,
+                        validator: widget.userAddressEntity ==null? (value) =>  AppValidators.validateNumberPhone(value,context):null,
                         onChanged: (value) {
                           viewmodel.phone = value;
                           formKey.currentState?.validate();
@@ -126,8 +143,8 @@ class AddressDetailsScreen extends StatelessWidget{
                         decoration: InputDecoration(
                           labelText: AppLocale(context).recipientName,
                         ),
-                        initialValue: userAddressEntity?.userName,
-                        validator: userAddressEntity ==null? (value) {
+                        initialValue: widget.userAddressEntity?.userName,
+                        validator: widget.userAddressEntity ==null? (value) {
                           if (value == null || value.isEmpty) {
                             return AppLocale(context).pleaseEnterTheRecipientname;
                           }
@@ -176,7 +193,7 @@ class AddressDetailsScreen extends StatelessWidget{
                         child: ElevatedButton(
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              if(userAddressEntity == null){
+                              if(widget.userAddressEntity == null){
                                 print(viewmodel.address??"no address");
                                 print(viewmodel.phone??"no phone");
                                 print(viewmodel.area??"no area");
@@ -194,18 +211,18 @@ class AddressDetailsScreen extends StatelessWidget{
                                
                               }else{
                                 viewmodel.doIntent(UpdateAddressEvent(
-                                  addressId:  userAddressEntity!.addressId!,
+                                  addressId:  widget.userAddressEntity!.addressId!,
                                   street: viewmodel.address!,
-                                  phone: userAddressEntity!.phone ?? viewmodel.phone!,
-                                  city: userAddressEntity!.city ?? viewmodel.area!,
-                                  lat: userAddressEntity!.lat ?? viewmodel.latitude!.toString(),
-                                  long: userAddressEntity!.long ?? viewmodel.longitude!.toString(),
-                                  username: userAddressEntity!.userName ?? viewmodel.recipientName!
+                                  phone: widget.userAddressEntity!.phone ?? viewmodel.phone!,
+                                  city: widget.userAddressEntity!.city ?? viewmodel.area!,
+                                  lat: widget.userAddressEntity!.lat ?? viewmodel.latitude!.toString(),
+                                  long: widget.userAddressEntity!.long ?? viewmodel.longitude!.toString(),
+                                  username: widget.userAddressEntity!.userName ?? viewmodel.recipientName!
                                 ));
                               }
                             }
                           },
-                          child: Text(userAddressEntity==null?AppLocale(context).addAddress:AppLocale(context).updateAddress),
+                          child: Text(widget.userAddressEntity==null?AppLocale(context).addAddress:AppLocale(context).updateAddress),
                         ),
                       ),
                       SizedBox(height: height*0.04,),
@@ -244,5 +261,4 @@ class AddressDetailsScreen extends StatelessWidget{
       ),
     );
   }
-
 }

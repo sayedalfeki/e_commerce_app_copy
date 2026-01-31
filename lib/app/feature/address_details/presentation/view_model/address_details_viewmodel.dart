@@ -9,6 +9,7 @@ import 'package:flower_app/app/feature/address_details/domain/use_cases/get_stat
 import 'package:flower_app/app/feature/address_details/domain/use_cases/update_address_usecase.dart';
 import 'package:flower_app/app/feature/address_details/presentation/view_model/address_details_events.dart';
 import 'package:flower_app/app/feature/address_details/presentation/view_model/address_details_states.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
@@ -30,6 +31,7 @@ class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
   String? selectedCityId;
   String? selectedAreaId;
   String? recipientName;
+  TextEditingController addressController = TextEditingController() ;
   List<StatesModel>? areasList ;
   List<CitiesModel>? citiesList ;
   List<StatesModel>? filteredAreasList ;
@@ -116,11 +118,18 @@ class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
 
   void _getAddressFromCoordinates({required double lat, required double lng}) async {
     emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: true)));
+    try{
     List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
     address = '${placemarks[0].street}';
+    addressController.text=address??"";
     latitude = lat.toString();
     longitude = lng.toString();
     emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false,)));
+
+    }catch(e){
+      emit(state.copyWith(addressDetailsStateNew: BaseState(isLoading: false,error: e as Exception)));
+    }
+    
   }
 
   void _getCitiesAndStates() async {
