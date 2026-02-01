@@ -1,6 +1,7 @@
 import 'package:flower_app/app/config/base_state/custom_cubit.dart';
 import 'package:flower_app/app/feature/categories/domain/use_case/get_all_categories_use_case.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../config/base_response/base_response.dart';
 import '../../../../config/base_state/base_state.dart';
 import '../../../product/domain/models/products_entity.dart';
@@ -116,10 +117,7 @@ class CategoriesViewModel
         break;
       case GetProductsCategoryIntent():
         _getProductsCategory(intent.categoryId);
-      case NavigateToProductDetailsIntent():
-        streamController.add(
-          NavigateToProductDetailsEvent(productId: intent.productId),
-        );
+        break;
     }
   }
 }

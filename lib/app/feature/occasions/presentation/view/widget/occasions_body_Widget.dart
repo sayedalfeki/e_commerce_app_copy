@@ -4,8 +4,9 @@ import 'package:flower_app/app/core/utils/helper_function.dart';
 import 'package:flower_app/app/feature/occasions/presentation/view/widget/all_occasions_item_widget.dart';
 import 'package:flower_app/app/feature/occasions/presentation/view_model/occasions_state.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../../core/reusable_widgets/custom_error_widget.dart';
-import '../../../../../core/reusable_widgets/product_cart_item.dart';
+import '../../../../product/presentation/views/widget/product_cart_item.dart';
 import '../../view_model/occasions_intent.dart';
 import '../../view_model/occasions_view_model.dart';
 class OccasionsBodyWidget extends StatelessWidget {

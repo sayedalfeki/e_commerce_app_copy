@@ -1,31 +1,60 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
-
+import 'package:flower_app/app/feature/product/presentation/view_model/product_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../view_model/product_details_events.dart';
-import '../../view_model/product_details_states.dart';
-import '../../view_model/product_details_view_model.dart';
+import '../../view_model/product_intent.dart';
+import '../../view_model/product_states.dart';
+import '../../view_model/product_view_model.dart';
 
-class ProductDetailsScreen extends StatelessWidget{
+class ProductDetailsScreen extends StatefulWidget {
   final String? productId;
 
   ProductDetailsScreen({super.key, this.productId});
 
+  @override
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final ProductDetailsViewModel viewModel = getIt<ProductDetailsViewModel>();
+
+  @override
+  void initState() {
+    super.initState();
+    viewModel.doIntent(GetProductDetailsAction(widget.productId ?? ""));
+    viewModel.cubitStream.listen((event) {
+      switch (event) {
+        case NavigateToProductDetailsEvent():
+          return;
+        case BackNavigationFromProductEvent():
+          if (mounted) {
+            Navigator.pop(context);
+          }
+        case AddToCartEvent():
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('${event.name} added to cart'),
+              ),
+            );
+          }
+      }
+    },);
+  }
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    viewModel.doIntent(GetProductDetailsEvent(productId ?? ""));
+
     return BlocProvider<ProductDetailsViewModel>(
       create: (context) => viewModel,
-      
+
       child:Scaffold(
-      
-      body:BlocBuilder<ProductDetailsViewModel,ProductDetailsStates>(
+
+          body:BlocBuilder<ProductDetailsViewModel,ProductDetailsStates>(
         builder: (context, state) {
           if(state.productDetailsState?.isLoading==true){
             return Center(child: CircularProgressIndicator(),);
@@ -36,27 +65,27 @@ class ProductDetailsScreen extends StatelessWidget{
               slivers: [
               SliverAppBar(
                 pinned: true,
-                
+
                 leading: Icon(Icons.arrow_back_ios_rounded),
                 expandedHeight: height*0.50,
                 flexibleSpace: FlexibleSpaceBar(
-                  
+
                   collapseMode: CollapseMode.parallax,
                   background: Container(
                     color: AppColors.secondaryColor,
                     child: SizedBox(
                       height: height*0.50,
                       child: CarouselView(itemExtent: width,
-                       
-                       itemSnapping: true,
+
+                        itemSnapping: true,
                        children: state.productDetailsState!.success!.images!.map((e) {
                          return Image.network(e!,
                          fit: BoxFit.fill,
 
                          );
                        },).toList(),
-                      
-                       ),
+
+                      ),
                     ),
                   ),
                 ),
@@ -134,13 +163,16 @@ class ProductDetailsScreen extends StatelessWidget{
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: ElevatedButton(onPressed: () {}, child: Text(AppLocale(
+                  child: ElevatedButton(onPressed: () {
+                    viewModel.doIntent(AddToCartAction(
+                        productId: state.productDetailsState!.success!.id
+                        , name: state.productDetailsState!.success!.title));
+                  }, child: Text(AppLocale(
                       context).add_to_cart, style: TextStyle(fontSize: 20),)),
                 ),
               ),
               ],
             );
-         
           }else if (state.productDetailsState?.isLoading==false && state.productDetailsState?.error!=null){
 
             return Center(child: Text(state.productDetailsState!.error!.toString()),);
@@ -152,10 +184,8 @@ class ProductDetailsScreen extends StatelessWidget{
           }
         },
       )
-       
-    ) ,
-   ) ;
-      
-  }
 
+      ) ,
+   ) ;
+  }
 }

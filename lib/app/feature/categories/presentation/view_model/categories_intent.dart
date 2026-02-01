@@ -14,8 +14,4 @@ class GetProductsCategoryIntent extends CategoriesIntent {
   GetProductsCategoryIntent({required this.categoryId});
 }
 
-class NavigateToProductDetailsIntent extends CategoriesIntent {
-  final String productId;
 
-  NavigateToProductDetailsIntent({required this.productId});
-}

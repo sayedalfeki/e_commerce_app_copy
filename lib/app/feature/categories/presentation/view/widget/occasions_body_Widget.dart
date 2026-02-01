@@ -3,11 +3,10 @@ import 'package:flower_app/app/core/reusable_widgets/loading_widget.dart';
 import 'package:flower_app/app/core/utils/helper_function.dart';
 import 'package:flower_app/app/feature/categories/presentation/view_model/categories_intent.dart';
 import 'package:flower_app/app/feature/categories/presentation/view_model/categories_view_model.dart';
-
 import 'package:flutter/material.dart';
 
 import '../../../../../core/reusable_widgets/custom_error_widget.dart';
-import '../../../../../core/reusable_widgets/product_cart_item.dart';
+import '../../../../product/presentation/views/widget/product_cart_item.dart';
 import '../../view_model/categories_state.dart';
 import 'categories_item_widget.dart';
 
@@ -99,19 +98,6 @@ class CategoriesBodyWidget extends StatelessWidget {
                                   .productsCategoryState
                                   .success!
                                   .product![index],
-                              onTap: () {
-                                categoriesViewModel.doIntent(
-                                  NavigateToProductDetailsIntent(
-                                    productId:
-                                        state
-                                            .productsCategoryState
-                                            .success!
-                                            .product![index]
-                                            .id ??
-                                        '',
-                                  ),
-                                );
-                              },
                             );
                           },
                         ),
