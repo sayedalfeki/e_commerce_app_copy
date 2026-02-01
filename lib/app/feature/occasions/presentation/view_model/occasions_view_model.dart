@@ -1,5 +1,5 @@
 import 'package:flower_app/app/config/base_state/custom_cubit.dart';
-import 'package:flower_app/app/feature/occasions/domain/model/products_occasion_entity.dart';
+
 import 'package:flower_app/app/feature/occasions/domain/use_case/get_all_occasions_use_case.dart';
 import 'package:flower_app/app/feature/occasions/presentation/view_model/occasions_event.dart';
 import 'package:flower_app/app/feature/occasions/presentation/view_model/occasions_intent.dart';
@@ -7,7 +7,10 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../config/base_response/base_response.dart';
 import '../../../../config/base_state/base_state.dart';
-import '../../domain/use_case/get_products_occasion_use_case.dart';
+
+import '../../../product/domain/models/products_entity.dart';
+import '../../../product/domain/request/query_product_request.dart';
+import '../../../product/domain/use_cases/get_products_occasion_use_case.dart';
 import 'occasions_state.dart';
 
 @injectable
@@ -71,9 +74,13 @@ class OccasionsViewModel extends CustomCubit<OccasionsEvent, OccasionsState> {
         clearSuccess: true,
         clearError: true
     ));
-    final response = await _productsOccasionUseCase.invoke(occasionId);
+    final response = await _productsOccasionUseCase.invoke(
+      QueryProductRequest(
+          occasion: occasionId
+      ),
+    );
     switch (response) {
-      case SuccessResponse<ProductsOccasionEntity>():
+      case SuccessResponse<ProductsEntity>():
         emit(state.copyWith(
           productsOccasionState: BaseState(
             isLoading: false,
@@ -83,7 +90,7 @@ class OccasionsViewModel extends CustomCubit<OccasionsEvent, OccasionsState> {
         ));
         // emit(baseState);
         break;
-      case ErrorResponse<ProductsOccasionEntity>():
+      case ErrorResponse<ProductsEntity>():
         emit(state.copyWith(
           productsOccasionState: BaseState(
             isLoading: false,

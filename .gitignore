@@ -48,7 +48,7 @@ app.*.map.json
 lib/app/config/di/di.config.dart
 *.g.dart
 *.mocks.dart
-lib/app/feature/product_details/api/api_client/api_client.g.dart
-lib/app/feature/product_details/data/models/product_details_dto.g.dart
+lib/app/feature/product/api/api_client/api_client.g.dart
+lib/app/feature/product/data/models/product_details_dto.g.dart
 lib/app/config/di/di.config.dart
 pubspec.lock

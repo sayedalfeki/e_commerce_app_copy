@@ -1,7 +1,7 @@
-class AllOccasionsEntity {
+class OccasionsEntity {
   final List<OccasionEntity>? occasionsEntity;
 
-  AllOccasionsEntity({this.occasionsEntity});
+  OccasionsEntity({this.occasionsEntity});
 }
 
 class OccasionEntity {

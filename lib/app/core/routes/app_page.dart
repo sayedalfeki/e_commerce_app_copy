@@ -2,20 +2,18 @@ import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/feature/auth/presentation/views/screen/login/login_Screen.dart';
 import 'package:flower_app/app/feature/best_seller/presentation/views/screen/best_seller_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/screen/home_screen.dart';
-import 'package:flower_app/app/feature/occasion/presentation/views/screen/occasion_screen.dart';
-import 'package:flower_app/app/feature/product_details/presentation/views/screens/product_details_screen.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view/update_profile_widget.dart';
 import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.dart';
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../../feature/address/presentation/view/address_screen.dart';
 import '../../feature/forget_password/presentation/forget_password/view/forget_password_screen.dart';
 import '../../feature/forget_password/presentation/reset_password/view/reset_password_screen.dart';
 import '../../feature/forget_password/presentation/verify_otp/view/verify_otp_screen.dart';
+import '../../feature/occasions/presentation/view/occasions_screen.dart';
+import '../../feature/product/presentation/views/screens/product_details_screen.dart';
 import '../../feature/profile/presentation/reset_password/view/change_password_screen.dart';
-
 class RouteGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {
     switch (settings.name) {
@@ -36,11 +34,14 @@ class RouteGenerator {
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case Routes.occasion:
-        return MaterialPageRoute(builder: (_) => const OccasionScreen());
+        return MaterialPageRoute(builder: (_) => const OccasionsScreen());
       case Routes.bestSeller:
         return MaterialPageRoute(builder: (_) => const BestSellerScreen());
       case Routes.productDetails:
-        return MaterialPageRoute(builder: (_) => ProductDetailsScreen());
+        return MaterialPageRoute(builder: (_) {
+          String productId = settings.arguments as String;
+          return ProductDetailsScreen(productId: productId,);
+        });
       case Routes.updateProfile:
         final UserEntity userEntity = settings.arguments as UserEntity;
         return MaterialPageRoute(

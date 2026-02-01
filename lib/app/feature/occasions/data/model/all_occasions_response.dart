@@ -23,13 +23,13 @@ class AllOccasionResponse {
     return _$AllOccasionResponseToJson(this);
   }
 
-  AllOccasionsEntity toAllOccasionsEntity() {
+  OccasionsEntity toAllOccasionsEntity() {
     List<OccasionEntity>? allOccasions = [];
     allOccasions = List.generate(occasions!.length, (index) {
       return OccasionEntity(
           id: occasions?[index].Id ?? '', title: occasions?[index].name ?? '');
     });
-    return AllOccasionsEntity(occasionsEntity: allOccasions);
+    return OccasionsEntity(occasionsEntity: allOccasions);
   }
 }
 

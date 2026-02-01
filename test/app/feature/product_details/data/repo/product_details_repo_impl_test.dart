@@ -1,5 +1,5 @@
 import 'package:flower_app/app/config/base_response/base_response.dart';
-import 'package:flower_app/app/feature/product_details/data/repo/product_details_repo_impl.dart';
+import 'package:flower_app/app/feature/product_details/data/repo/product_repo_impl.dart';
 import 'package:flower_app/app/feature/product_details/domain/models/product_details_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

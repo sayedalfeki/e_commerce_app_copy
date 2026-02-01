@@ -2,14 +2,12 @@ import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/reusable_widgets/loading_widget.dart';
 import 'package:flower_app/app/core/utils/helper_function.dart';
 import 'package:flower_app/app/feature/occasions/presentation/view/widget/all_occasions_item_widget.dart';
-import 'package:flower_app/app/feature/occasions/presentation/view/widget/product_cart_item.dart';
 import 'package:flower_app/app/feature/occasions/presentation/view_model/occasions_state.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../core/reusable_widgets/custom_error_widget.dart';
+import '../../../../../core/reusable_widgets/product_cart_item.dart';
 import '../../view_model/occasions_intent.dart';
 import '../../view_model/occasions_view_model.dart';
-
 class OccasionsBodyWidget extends StatelessWidget {
   const OccasionsBodyWidget({
     super.key,
@@ -87,7 +85,7 @@ class OccasionsBodyWidget extends StatelessWidget {
               height: MediaQuery
                   .sizeOf(context)
                   .height * .25,
-              child: ProductCartItem(productOccasionEntity: null)) :
+              child: ProductCartItem(productEntity: null)) :
           Expanded(
             child:
             GridView.builder(
@@ -99,7 +97,7 @@ class OccasionsBodyWidget extends StatelessWidget {
                     ),
                     itemBuilder: (context, index) {
                       return ProductCartItem(
-                        productOccasionEntity: state
+                        productEntity: state
                             .productsOccasionState
                             .success!
                             .product![index],

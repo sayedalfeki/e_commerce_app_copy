@@ -1,5 +1,5 @@
 abstract class AppEndPoint {
-  static const String baseUrl = "https://flower.elevateegy.com/api/v1/";
+  static const String baseUrl = "https://flower.elevateegy.com/api/v1";
   // Authentication Endpoints
   static const String changePassword = '/auth/change-password';
   static const String login = "/auth/signin";
@@ -9,7 +9,7 @@ abstract class AppEndPoint {
   static const String forgetPassword='/auth/forgotPassword';
   static const String verifyOtp='/auth/verifyResetCode';
   static const String resetPassword='/auth/resetPassword';
-  static const String products = "/products/{productId}";
+  static const String products = "/products";
 
   // profile
   static const String profile = '/auth/profile-data';
@@ -26,6 +26,6 @@ abstract class AppEndPoint {
 
   //address
   static const String address = "/addresses";
-  static const String allOccasions = 'occasions';
-
+  static const String allOccasions = '/occasions';
+  static const String allCategories = '/categories';
 }

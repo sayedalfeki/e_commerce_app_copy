@@ -10,7 +10,7 @@ class GetAllOccasionsUseCase {
   GetAllOccasionsUseCase({required OccasionsRepoContract occasionsRepoContract})
     : _occasionsRepoContract = occasionsRepoContract;
 
-  Future<BaseResponse<AllOccasionsEntity>> invoke() {
+  Future<BaseResponse<OccasionsEntity>> invoke() {
     return _occasionsRepoContract.getAllOccasions();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/feature/categories/presentation/view/categories_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/app_tab.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_states.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_view_model.dart';
@@ -23,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   HomeViewModel viewModel=getIt<HomeViewModel>();
   List<Widget> tabs=[
     HomeTab(),
-    CategoriesTab(),
+    CategoriesScreen(),
     CartTab(),
     ProfileNavigatorWidget()
   ];
