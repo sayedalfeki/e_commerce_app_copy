@@ -26,7 +26,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     splashViewModel.doIntent(NavigateAction());
     splashViewModel.cubitStream.listen((event) {

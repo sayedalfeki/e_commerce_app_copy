@@ -22,7 +22,7 @@ void main() {
       mockSharedPreferences,
     );
   });
-  setUp(() {});
+
   test('addRememberMe should save value in SharedPreferences', () async {
     // arrange
     when(
@@ -69,7 +69,6 @@ void main() {
     final result = await dataSource.getToken();
 
     // assert
-
     expect(result, 'ABC123');
   });
   test('clearToken should delete all secure storage', () async {
