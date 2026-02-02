@@ -1,6 +1,5 @@
 import 'package:flower_app/app/config/base_response/base_response.dart';
 import 'package:flower_app/app/config/base_state/base_state.dart';
-import 'package:flower_app/app/config/local_storage_processes/local_storage_processes.dart';
 import 'package:flower_app/app/feature/auth/domain/model/auth_model.dart';
 import 'package:flower_app/app/feature/auth/domain/use_case/get_auth_use_case.dart';
 import 'package:flower_app/app/feature/auth/presentation/view_model/login_events.dart';
@@ -12,25 +11,23 @@ import 'package:injectable/injectable.dart';
 class LoginViewModel extends Cubit<LoginStates> {
   LoginViewModel(this._authUseCase) : super(LoginStates());
 
-  final GetAuthUseCase _authUseCase;
+  final LoginUserUseCase _authUseCase;
 
-  void doIntent(LoginEvents event, {String email = "", String password = ""}) {
+  void doIntent(LoginEvents event) {
     switch (event) {
       case LoginEvent():
-        _login(email, password);
-        return;
-      case RememberMeEvent():
-        _rememberMeChickBox();
+        _login(event.email, event.password, event.rememberMe);
         return;
     }
   }
 
-  Future<void> _login(String email, String password) async {
+  Future<void> _login(String email, String password, bool rememberMe) async {
     emit(
       state.copyWith(loginState: BaseState<AuthModel>(isLoading: true)),
     );
 
-    final loginResponse = await _authUseCase.login(email, password);
+    final loginResponse = await _authUseCase.invoke(
+        email, password, rememberMe: rememberMe);
     if (isClosed) return;
 
     switch (loginResponse) {
@@ -43,7 +40,6 @@ class LoginViewModel extends Cubit<LoginStates> {
             ),
           ),
         );
-        LocalStorageProcesses.writeToken(loginResponse.data.tokin!);
         return;
 
       case ErrorResponse<AuthModel>():
@@ -57,10 +53,5 @@ class LoginViewModel extends Cubit<LoginStates> {
         );
         return;
     }
-  }
-
-  void _rememberMeChickBox() {
-    final newValue = state.rememberMeChickBox == 0 ? 1 : 0;
-    emit(state.copyWith(rememberMeChickBox: newValue));
   }
 }

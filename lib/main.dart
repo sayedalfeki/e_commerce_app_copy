@@ -6,8 +6,10 @@ import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
-  configureDependencies();
+ void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
+
   runApp(const MyApp());
 }
 
