@@ -8,11 +8,11 @@ class LoginStates {
   LoginStates({this.loginState, this.rememberMeChickBox = 0});
 
   LoginStates copyWith({
-    BaseState<AuthModel>? loginStateParam,
+    BaseState<AuthModel>? loginState,
     int? rememberMeChickBox,
   }) {
     return LoginStates(
-      loginState: loginStateParam ?? this.loginState,
+      loginState: loginState ?? this.loginState,
       rememberMeChickBox: rememberMeChickBox ?? this.rememberMeChickBox,
     );
   }

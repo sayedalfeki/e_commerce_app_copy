@@ -33,14 +33,8 @@ class AuthRepoImpl implements AuthRepoContract {
           massage: successResponse.data.message!,
           tokin: successResponse.data.token,
         );
-        if (rememberMe) {
-          await storageDataSourceContract.addRememberMe(true);
-          await storageDataSourceContract.addToken(authModel.tokin!);
-        }
-        else {
-          await storageDataSourceContract.addRememberMe(false);
-          await storageDataSourceContract.addToken(authModel.tokin!);
-        }
+        await storageDataSourceContract.addRememberMe(rememberMe);
+        await storageDataSourceContract.addToken(authModel.tokin!);
         return SuccessResponse(data: authModel);
       case ErrorResponse<AuthDto> errorResponse:
         return ErrorResponse(error: errorResponse.error);

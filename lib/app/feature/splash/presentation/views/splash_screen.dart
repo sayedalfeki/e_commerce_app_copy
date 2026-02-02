@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flower_app/app/core/resources/assets_manager.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/feature/splash/presentation/view_model/splash_view_model.dart';
@@ -24,7 +26,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     splashViewModel.doIntent(NavigateAction());
     splashViewModel.cubitStream.listen((event) {

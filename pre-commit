@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+# Core Flutter pre-commit hook
+export PATH="/c/Users/ENG.Islam/flutter/bin:$PATH"
+
+echo "🚀 Running Dart linting checks..."
+
+# Check Flutter
+if ! command -v flutter &> /dev/null; then
+    echo "❌ Flutter not found!"
+    exit 1
+fi
+
+# Get staged files
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.dart$')
+[ -z "$STAGED_FILES" ] && exit 0
+
+echo "Checking ${#STAGED_FILES[@]} file(s)"
+
+# 1. Formatting check
+echo "🔍 Formatting check..."
+for file in $STAGED_FILES; do
+    if [ -f "$file" ]; then
+        cp "$file" "${file}.tmp"
+        flutter format "$file" > /dev/null 2>&1
+        if ! diff -q "$file" "${file}.tmp" > /dev/null; then
+            echo "❌ $file needs formatting"
+            mv "${file}.tmp" "$file"
+            echo "Fix: flutter format $file"
+            exit 1
+        fi
+        rm "${file}.tmp"
+    fi
+done
+echo "✅ Formatting OK"
+
+# 2. Linting check (MAIN LINTING CHECK)
+echo "🔍 Linting check..."
+LINT_OUTPUT=$(flutter analyze $STAGED_FILES 2>&1)
+if [ $? -ne 0 ]; then
+    echo "❌ Linting issues found:"
+    echo "$LINT_OUTPUT"
+    
+    # Check for errors vs warnings
+    if echo "$LINT_OUTPUT" | grep -q "error •"; then
+        echo "❌ Please fix errors"
+        exit 1
+    else
+        echo "⚠️  Only warnings"
+        read -p "Continue? (y/N): " -n 1 -r
+        echo
+        [[ $REPLY =~ ^[Yy]$ ]] || exit 1
+    fi
+fi
+echo "✅ Linting OK"
+
+echo "🎉 All checks passed!"
+exit 0

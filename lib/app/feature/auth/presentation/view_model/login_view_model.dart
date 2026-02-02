@@ -18,15 +18,12 @@ class LoginViewModel extends Cubit<LoginStates> {
       case LoginEvent():
         _login(event.email, event.password, event.rememberMe);
         return;
-      case RememberMeEvent():
-        _rememberMeChickBox();
-        return;
     }
   }
 
   Future<void> _login(String email, String password, bool rememberMe) async {
     emit(
-      state.copyWith(loginStateParam: BaseState<AuthModel>(isLoading: true)),
+      state.copyWith(loginState: BaseState<AuthModel>(isLoading: true)),
     );
 
     final loginResponse = await _authUseCase.invoke(
@@ -37,7 +34,7 @@ class LoginViewModel extends Cubit<LoginStates> {
       case SuccessResponse<AuthModel>():
         emit(
           state.copyWith(
-            loginStateParam: BaseState<AuthModel>(
+            loginState: BaseState<AuthModel>(
               success: loginResponse.data,
               isLoading: false,
             ),
@@ -48,7 +45,7 @@ class LoginViewModel extends Cubit<LoginStates> {
       case ErrorResponse<AuthModel>():
         emit(
           state.copyWith(
-            loginStateParam: BaseState<AuthModel>(
+            loginState: BaseState<AuthModel>(
               error: loginResponse.error,
               isLoading: false,
             ),
@@ -56,10 +53,5 @@ class LoginViewModel extends Cubit<LoginStates> {
         );
         return;
     }
-  }
-
-  void _rememberMeChickBox() {
-    final newValue = state.rememberMeChickBox == 0 ? 1 : 0;
-    emit(state.copyWith(rememberMeChickBox: newValue));
   }
 }

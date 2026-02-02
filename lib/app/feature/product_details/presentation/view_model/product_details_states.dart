@@ -7,7 +7,7 @@ class ProductDetailsStates {
 
   ProductDetailsStates copyWith({BaseState<ProductDetailsModel>? productDetailsStateParam}){
     
-    return ProductDetailsStates(productDetailsState: productDetailsStateParam??this.productDetailsState);
+    return ProductDetailsStates(productDetailsState: productDetailsStateParam??productDetailsState);
     
   }
 }

@@ -92,7 +92,7 @@ class SignupScreen extends StatelessWidget {
                             hint: AppLocale(context).enterPasswordConfirm,
                             controller: signupViewModel.confirmPasswordController,
                             validator: (value) {
-                              AppValidators.validateConfirmPassword(value, signupViewModel.passwordController.text, context);
+                              return AppValidators.validateConfirmPassword(value, signupViewModel.passwordController.text, context);
                             },
                           ),
                         ),
@@ -151,6 +151,7 @@ class SignupScreen extends StatelessWidget {
                         SizedBox(width: 3.w),
                         InkWell(
                           onTap: () {
+                            Navigator.pushNamed(context, Routes.terms);
                           },
                           child: Text(
                             "Terms&Conditions",
