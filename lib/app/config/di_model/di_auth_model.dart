@@ -52,6 +52,7 @@ abstract class DiAuthModel {
 
   @lazySingleton
   BaseOptions provideBaseOptions() => BaseOptions(
+    baseUrl: AppEndPoint.baseUrl,
     sendTimeout: Duration(seconds: 60),
     receiveTimeout: Duration(seconds: 60),
     connectTimeout: Duration(seconds: 60),
