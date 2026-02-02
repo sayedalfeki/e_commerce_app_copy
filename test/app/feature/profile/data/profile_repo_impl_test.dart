@@ -43,15 +43,15 @@ void main() {
   });
 
   test(
-    'when calling change password it should get data from datasource',
+    'when calling change password it should get error from datasource',
     () async {
       provideDummy<BaseResponse<ChangePasswordResponse>>(
-        SuccessResponse(data: changePasswordResponse),
+        ErrorResponse(error: Exception('error')),
       );
       when(
         profileDataSourceContract.changePassword(changePasswordRequest),
       ).thenAnswer(
-        (_) => Future.value(SuccessResponse(data: changePasswordResponse)),
+        (_) => Future.value(ErrorResponse(error: Exception('error'))),
       );
       await profileRepo.changePassword(changePasswordRequest);
       verify(profileDataSourceContract.changePassword(changePasswordRequest));

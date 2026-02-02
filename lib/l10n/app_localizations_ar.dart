@@ -184,10 +184,90 @@ class AppLocalizationsAr extends AppLocalizations {
   String get successMessage => 'تم التسجيل بنجاح';
 
   @override
+  String get loading => 'جاري التحميل...';
+
+  @override
+  String get welcome => 'مرحباً';
+
+  @override
+  String get occasion => 'المناسبات';
+
+  @override
+  String get occasionSubtitle => 'ازدهر مع أفضل المبيعات الرائعة لدينا';
+
+  @override
+  String get bloomWithOurExquisiteBestSellers =>
+      'تألق مع منتجاتنا الأكثر مبيعاً والراقية';
+
+  @override
+  String get wedding => 'زفاف';
+
+  @override
+  String get graduation => 'تخرج';
+
+  @override
+  String get birthday => 'عيد ميلاد';
+
+  @override
+  String get katbKetab => 'كتب كتاب';
+
+  @override
+  String get addToCart => 'أضف إلى عربة التسوق';
+
+  @override
+  String get add_to_cart => 'أضف إلى السلة';
+
+  @override
+  String get addtocart => 'أضف إلى السلة';
+
+  @override
+  String get egp => 'ج.م';
+
+  @override
+  String get viewAll => 'عرض الكل';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get networkError => 'لا يوجد اتصال بالإنترنت';
+
+  @override
+  String get serverError => 'حدث خطأ ما. يرجى المحاولة مرة أخرى';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get noProductsForOccasion => 'لا توجد منتجات متاحة لهذه المناسبة';
+
+  @override
   String get categories => 'الفئات';
 
   @override
   String get cart => 'عربة التسوق';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'انثى';
+
+  @override
+  String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creatinganaccountyouagreetoour =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get termsandconditions => 'الشروط والأحكام';
 
   @override
   String get connectionFailed => 'لا يوجد اتصال بالانترنت';
@@ -205,41 +285,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get empty_data => 'لا توجد منتجات لعرضها';
 
   @override
-  String get view_all => 'عرض الكل';
-
-  @override
   String get egyptianLivre => 'ج.م';
 
   @override
-  String get occasion => 'المناسبة';
-
-  @override
   String get bestSeller => 'الأكثر مبيعاً';
-
-  @override
-  String get profile => 'الملف الشخصي';
-
-  @override
-  String get loading => 'جاري التحميل...';
-  String get gender => 'الجنس';
-
-  @override
-  String get male => 'ذكر';
-
-  @override
-  String get female => 'انثى';
-
-  @override
-  String get cancel => 'الغاء';
-
-  @override
-  String get gender => 'الجنس';
-
-  @override
-  String get male => 'ذكر';
-
-  @override
-  String get female => 'انثى';
 
   @override
   String get cancel => 'الغاء';
@@ -262,11 +311,6 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get creating_an_account_you_agree_to_our =>
       'بإنشاء حساب، فإنك توافق على شروطنا';
-  String get account_created_successfully => 'تم إنشاء الحساب بنجاح';
-
-  @override
-  String get creating_an_account_you_agree_to_our =>
-      'بإنشاء حساب، فإنك توافق على شروطنا';
 
   @override
   String get terms_and_conditions => 'الشروط والأحكام';
@@ -275,93 +319,28 @@ class AppLocalizationsAr extends AppLocalizations {
   String get status => 'الحاله';
 
   @override
-  String get all_prices_include_tax => 'All prices include tax';
+  String get all_prices_include_tax => 'جميع الأسعار تشمل الضريبة';
 
   @override
   String get description => 'الوصف';
 
   @override
-  String get add_to_cart => 'Add to cart';
-
-  @override
-  String get out_of_stock => 'Out of Stock';
-
-  @override
-  String get in_stock => 'In Stock';
-
-  @override
-  String get bouquet_include => 'Bouquet include';
-
-  @override
-  String get egp => 'ج.م';
-
-  @override
-  String get my_orders => 'طلباتي';
-
-  @override
-  String get saved_addresses => 'المواقع المحفوظة';
-
-  @override
-  String get notifications => 'الاشعارات';
-
-  @override
-  String get language => 'اللغة';
-
-  @override
-  String get english => 'الانجليزية';
-
-  @override
-  String get arabic => 'العربية';
-
-  @override
-  String get about_us => 'عنا';
-
-  @override
-  String get terms_and_conditions => 'الشروط والأحكام';
-
-  @override
-  String get current_password => 'كلمة السر الحالية';
-
-  @override
-  String get all_prices_include_tax => 'جميع الأسعار تشمل الضريبة';
-  String get new_password => 'كلمة السر الجديدة';
-
-  @override
-  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
-
-  @override
-  String get logout => 'خروج';
-
-  @override
-  String get update => 'تحديث';
-
-  @override
-  String get change => 'تغيير';
-
-  @override
-  String get edit_profile => 'تحديث الملف الشخصي';
-
-  @override
-  String get bloomWithOurExquisiteBestSellers =>
-      'تألق مع منتجاتنا الأكثر مبيعاً والراقية';
-
-  @override
-  String get addToCart => 'أضف إلى عربة التسوق';
-
-  @override
-  String get add_to_cart => 'أضف إلى السلة';
-
-  @override
   String get out_of_stock => 'إنتهى من المخزن';
+
+  @override
+  String get outofstock => 'إنتهى من المخزن';
 
   @override
   String get in_stock => 'في المخزن';
 
   @override
+  String get instock => 'في المخزن';
+
+  @override
   String get bouquet_include => 'الباقة تحتوي على';
 
   @override
-  String get egp => 'ج.م';
+  String get bouquetinclude => 'الباقه تحتوي على';
 
   @override
   String get my_orders => 'طلباتي';
@@ -385,19 +364,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get about_us => 'عنا';
 
   @override
+  String get logout => 'خروج';
+
+  @override
   String get current_password => 'كلمة السر الحالية';
 
   @override
   String get new_password => 'كلمة السر الجديدة';
 
   @override
-  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
-
-  @override
-  String get logout => 'خروج';
-
-  @override
   String get update => 'تحديث';
+
+  @override
+  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
 
   @override
   String get change => 'تغيير';
@@ -416,4 +395,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'خطأ في تحديث الصورة';
+
+  @override
+  String get addNewAddress => 'اضف موقعا جديدا';
+
+  @override
+  String get savedAddress => 'الاماكن المسجلة';
+
+  @override
+  String get someThingWrong => 'هناك خطأ ما';
 }

@@ -173,10 +173,6 @@ void main() {
                 as SuccessResponse<ChangePasswordResponse>;
         expect(result, isA<SuccessResponse<ChangePasswordResponse>>());
         expect(result.data, equals(changePasswordResponse));
-        await profileRemoteDataSourceImpl.getProfile()
-            as SuccessResponse<AuthDto>;
-        expect(result, isA<SuccessResponse<AuthDto>>());
-        expect(result.data, equals(authDto));
       },
     );
     test(
@@ -201,9 +197,6 @@ void main() {
                 )
                 as ErrorResponse<ChangePasswordResponse>;
         expect(result, isA<ErrorResponse<ChangePasswordResponse>>());
-        await profileRemoteDataSourceImpl.getProfile()
-            as ErrorResponse<AuthDto>;
-        expect(result, isA<ErrorResponse<AuthDto>>());
         expect(result.error, equals(ServerError(message: response.error)));
       },
     );

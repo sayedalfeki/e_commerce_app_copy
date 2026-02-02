@@ -22,17 +22,17 @@ class RouteGenerator {
       case Routes.splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.login:
-        return MaterialPageRoute(builder: (_) =>  LoginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       case Routes.register:
-        return MaterialPageRoute(builder: (_) =>  SignupScreen());
+        return MaterialPageRoute(builder: (_) => SignupScreen());
       case Routes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
-        case Routes.verifyOtp:
-          String email = settings.arguments as String;
-        return MaterialPageRoute(builder: (_) =>  VerifyOtpScreen(email));
+      case Routes.verifyOtp:
+        String email = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => VerifyOtpScreen(email));
       case Routes.resetPassword:
         String email = settings.arguments as String;
-        return MaterialPageRoute(builder: (_) =>  ResetPasswordScreen(email));
+        return MaterialPageRoute(builder: (_) => ResetPasswordScreen(email));
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case Routes.occasion:
@@ -44,7 +44,8 @@ class RouteGenerator {
       case Routes.updateProfile:
         final UserEntity userEntity = settings.arguments as UserEntity;
         return MaterialPageRoute(
-            builder: (_) => UpdateProfileWidget(user: userEntity));
+          builder: (_) => UpdateProfileWidget(user: userEntity),
+        );
 
       case Routes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
