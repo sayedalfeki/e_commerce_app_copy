@@ -58,9 +58,6 @@ abstract class DiAuthModel {
   @lazySingleton
   FlutterSecureStorage provideFlutterSecureStorage() => FlutterSecureStorage();
 
-  @preResolve
-  Future<SharedPreferences> providePref() => SharedPreferences.getInstance();
-
   @lazySingleton
   TokenInterceptor provideTokenInterceptor(
       StorageDataSourceContract storageDataSourceContract) =>
