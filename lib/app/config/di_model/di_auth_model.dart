@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../../feature/address/api/address_client.dart';
 import '../../feature/forget_password/api/forget_password_api_client.dart';
 import '../../feature/profile/api/profile_api_client.dart';
 
@@ -18,6 +19,10 @@ abstract class DiAuthModel {
   @lazySingleton
   ProfileApiClient provideProfileApiClient(Dio dio) =>
       ProfileApiClient(dio, baseUrl: AppEndPoint.baseUrl);
+
+  @lazySingleton
+  AddressApiClient provideAddressApiClient(Dio dio) =>
+      AddressApiClient(dio, baseUrl: AppEndPoint.baseUrl);
 
   @lazySingleton
   Dio provideDio(
@@ -42,6 +47,7 @@ abstract class DiAuthModel {
 
   @lazySingleton
   BaseOptions provideBaseOptions() => BaseOptions(
+    baseUrl: AppEndPoint.baseUrl,
     sendTimeout: Duration(seconds: 60),
     receiveTimeout: Duration(seconds: 60),
     connectTimeout: Duration(seconds: 60),

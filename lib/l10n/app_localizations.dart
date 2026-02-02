@@ -458,6 +458,12 @@ abstract class AppLocalizations {
   /// **'Bloom with our exquisite best sellers'**
   String get occasionSubtitle;
 
+  /// No description provided for @bloomWithOurExquisiteBestSellers.
+  ///
+  /// In en, this message translates to:
+  /// **'Bloom with our exquisite best sellers'**
+  String get bloomWithOurExquisiteBestSellers;
+
   /// No description provided for @wedding.
   ///
   /// In en, this message translates to:
@@ -488,6 +494,18 @@ abstract class AppLocalizations {
   /// **'Add to cart'**
   String get addToCart;
 
+  /// No description provided for @add_to_cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get add_to_cart;
+
+  /// No description provided for @addtocart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addtocart;
+
   /// No description provided for @egp.
   ///
   /// In en, this message translates to:
@@ -499,6 +517,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'View All'**
   String get viewAll;
+
+  /// No description provided for @view_all.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get view_all;
 
   /// No description provided for @networkError.
   ///
@@ -608,12 +632,6 @@ abstract class AppLocalizations {
   /// **'No products to be shown'**
   String get empty_data;
 
-  /// No description provided for @view_all.
-  ///
-  /// In en, this message translates to:
-  /// **'View All'**
-  String get view_all;
-
   /// No description provided for @egyptianLivre.
   ///
   /// In en, this message translates to:
@@ -692,17 +710,17 @@ abstract class AppLocalizations {
   /// **'Description'**
   String get description;
 
-  /// No description provided for @add_to_cart.
-  ///
-  /// In en, this message translates to:
-  /// **'Add to cart'**
-  String get add_to_cart;
-
   /// No description provided for @out_of_stock.
   ///
   /// In en, this message translates to:
   /// **'Out of Stock'**
   String get out_of_stock;
+
+  /// No description provided for @outofstock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Stock'**
+  String get outofstock;
 
   /// No description provided for @in_stock.
   ///
@@ -710,11 +728,23 @@ abstract class AppLocalizations {
   /// **'In Stock'**
   String get in_stock;
 
+  /// No description provided for @instock.
+  ///
+  /// In en, this message translates to:
+  /// **'In Stock'**
+  String get instock;
+
   /// No description provided for @bouquet_include.
   ///
   /// In en, this message translates to:
   /// **'Bouquet include'**
   String get bouquet_include;
+
+  /// No description provided for @bouquetinclude.
+  ///
+  /// In en, this message translates to:
+  /// **'Bouquet include'**
+  String get bouquetinclude;
 
   /// No description provided for @my_orders.
   ///
@@ -823,6 +853,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'error in uploading photo'**
   String get uploading_photo_error;
+
+  /// No description provided for @addNewAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'add new address'**
+  String get addNewAddress;
+
+  /// No description provided for @savedAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'saved address'**
+  String get savedAddress;
+
+  /// No description provided for @someThingWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'some thing wrong'**
+  String get someThingWrong;
 }
 
 class _AppLocalizationsDelegate

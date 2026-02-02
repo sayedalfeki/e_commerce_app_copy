@@ -196,6 +196,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get occasionSubtitle => 'Bloom with our exquisite best sellers';
 
   @override
+  String get bloomWithOurExquisiteBestSellers =>
+      'Bloom with our exquisite best sellers';
+
+  @override
   String get wedding => 'Wedding';
 
   @override
@@ -211,10 +215,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addToCart => 'Add to cart';
 
   @override
+  String get add_to_cart => 'Add to cart';
+
+  @override
+  String get addtocart => 'Add to cart';
+
+  @override
   String get egp => 'EGP';
 
   @override
   String get viewAll => 'View All';
+
+  @override
+  String get view_all => 'View All';
 
   @override
   String get networkError => 'No internet connection';
@@ -272,9 +285,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get empty_data => 'No products to be shown';
 
   @override
-  String get view_all => 'View All';
-
-  @override
   String get egyptianLivre => 'EGP';
 
   @override
@@ -315,16 +325,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get description => 'Description';
 
   @override
-  String get add_to_cart => 'Add to cart';
+  String get out_of_stock => 'Out of Stock';
 
   @override
-  String get out_of_stock => 'Out of Stock';
+  String get outofstock => 'Out of Stock';
 
   @override
   String get in_stock => 'In Stock';
 
   @override
+  String get instock => 'In Stock';
+
+  @override
   String get bouquet_include => 'Bouquet include';
+
+  @override
+  String get bouquetinclude => 'Bouquet include';
 
   @override
   String get my_orders => 'My Orders';
@@ -379,4 +395,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'error in uploading photo';
+
+  @override
+  String get addNewAddress => 'add new address';
+
+  @override
+  String get savedAddress => 'saved address';
+
+  @override
+  String get someThingWrong => 'some thing wrong';
 }

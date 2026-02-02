@@ -27,7 +27,7 @@ class LoginViewModel extends Cubit<LoginStates> {
 
   Future<void> _login(String email, String password) async {
     emit(
-      state.copyWith(loginStateParam: BaseState<AuthModel>(isLoading: true)),
+      state.copyWith(loginState: BaseState<AuthModel>(isLoading: true)),
     );
 
     final loginResponse = await _authUseCase.login(email, password);
@@ -37,7 +37,7 @@ class LoginViewModel extends Cubit<LoginStates> {
       case SuccessResponse<AuthModel>():
         emit(
           state.copyWith(
-            loginStateParam: BaseState<AuthModel>(
+            loginState: BaseState<AuthModel>(
               success: loginResponse.data,
               isLoading: false,
             ),
@@ -49,7 +49,7 @@ class LoginViewModel extends Cubit<LoginStates> {
       case ErrorResponse<AuthModel>():
         emit(
           state.copyWith(
-            loginStateParam: BaseState<AuthModel>(
+            loginState: BaseState<AuthModel>(
               error: loginResponse.error,
               isLoading: false,
             ),

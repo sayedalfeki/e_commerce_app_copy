@@ -196,6 +196,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get occasionSubtitle => 'ازدهر مع أفضل المبيعات الرائعة لدينا';
 
   @override
+  String get bloomWithOurExquisiteBestSellers =>
+      'تألق مع منتجاتنا الأكثر مبيعاً والراقية';
+
+  @override
   String get wedding => 'زفاف';
 
   @override
@@ -208,13 +212,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get katbKetab => 'كتب كتاب';
 
   @override
-  String get addToCart => 'Add to cart';
+  String get addToCart => 'أضف إلى عربة التسوق';
 
   @override
-  String get egp => 'جنيه';
+  String get add_to_cart => 'أضف إلى السلة';
+
+  @override
+  String get addtocart => 'أضف إلى السلة';
+
+  @override
+  String get egp => 'ج.م';
 
   @override
   String get viewAll => 'عرض الكل';
+
+  @override
+  String get view_all => 'عرض الكل';
 
   @override
   String get networkError => 'لا يوجد اتصال بالإنترنت';
@@ -272,9 +285,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get empty_data => 'لا توجد منتجات لعرضها';
 
   @override
-  String get view_all => 'عرض الكل';
-
-  @override
   String get egyptianLivre => 'ج.م';
 
   @override
@@ -315,16 +325,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get description => 'الوصف';
 
   @override
-  String get add_to_cart => 'أضف إلى السلة';
+  String get out_of_stock => 'إنتهى من المخزن';
 
   @override
-  String get out_of_stock => 'إنتهى من المخزن';
+  String get outofstock => 'إنتهى من المخزن';
 
   @override
   String get in_stock => 'في المخزن';
 
   @override
+  String get instock => 'في المخزن';
+
+  @override
   String get bouquet_include => 'الباقة تحتوي على';
+
+  @override
+  String get bouquetinclude => 'الباقه تحتوي على';
 
   @override
   String get my_orders => 'طلباتي';
@@ -379,4 +395,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'خطأ في تحديث الصورة';
+
+  @override
+  String get addNewAddress => 'اضف موقعا جديدا';
+
+  @override
+  String get savedAddress => 'الاماكن المسجلة';
+
+  @override
+  String get someThingWrong => 'هناك خطأ ما';
 }
