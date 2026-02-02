@@ -221,6 +221,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get loading => 'جاري التحميل...';
+  String get gender => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'انثى';
+
+  @override
+  String get cancel => 'الغاء';
 
   @override
   String get gender => 'الجنس';
@@ -247,6 +257,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get continueAsGuest => 'المتابعة كزائر';
 
   @override
+  String get account_created_successfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creating_an_account_you_agree_to_our =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
   String get account_created_successfully => 'تم إنشاء الحساب بنجاح';
 
   @override
@@ -281,7 +296,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get egp => 'ج.م';
 
   @override
-  String get my_orders => 'hطلباتي';
+  String get my_orders => 'طلباتي';
 
   @override
   String get saved_addresses => 'المواقع المحفوظة';
@@ -302,7 +317,72 @@ class AppLocalizationsAr extends AppLocalizations {
   String get about_us => 'عنا';
 
   @override
+  String get terms_and_conditions => 'الشروط والأحكام';
+
+  @override
+  String get current_password => 'كلمة السر الحالية';
+
+  @override
+  String get all_prices_include_tax => 'جميع الأسعار تشمل الضريبة';
+  String get new_password => 'كلمة السر الجديدة';
+
+  @override
+  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
+
+  @override
   String get logout => 'خروج';
+
+  @override
+  String get update => 'تحديث';
+
+  @override
+  String get change => 'تغيير';
+
+  @override
+  String get edit_profile => 'تحديث الملف الشخصي';
+
+  @override
+  String get bloomWithOurExquisiteBestSellers =>
+      'تألق مع منتجاتنا الأكثر مبيعاً والراقية';
+
+  @override
+  String get addToCart => 'أضف إلى عربة التسوق';
+
+  @override
+  String get add_to_cart => 'أضف إلى السلة';
+
+  @override
+  String get out_of_stock => 'إنتهى من المخزن';
+
+  @override
+  String get in_stock => 'في المخزن';
+
+  @override
+  String get bouquet_include => 'الباقة تحتوي على';
+
+  @override
+  String get egp => 'ج.م';
+
+  @override
+  String get my_orders => 'طلباتي';
+
+  @override
+  String get saved_addresses => 'المواقع المحفوظة';
+
+  @override
+  String get notifications => 'الاشعارات';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get english => 'الانجليزية';
+
+  @override
+  String get arabic => 'العربية';
+
+  @override
+  String get about_us => 'عنا';
 
   @override
   String get current_password => 'كلمة السر الحالية';
@@ -311,10 +391,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get new_password => 'كلمة السر الجديدة';
 
   @override
-  String get update => 'تحديث';
+  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
 
   @override
-  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
+  String get logout => 'خروج';
+
+  @override
+  String get update => 'تحديث';
 
   @override
   String get change => 'تغيير';

@@ -47,6 +47,9 @@ class ProfileViewModel extends CustomCubit<ProfileEvent, ProfileState> {
       case ChangeLanguageAction():
         streamController.add(ChangeLanguageEvent());
         break;
+      case NavigateToAddressScreenAction():
+        streamController.add(NavigateToAddressScreenEvent());
+        break;
     }
   }
 }

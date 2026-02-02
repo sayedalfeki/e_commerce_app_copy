@@ -620,6 +620,42 @@ abstract class AppLocalizations {
   /// **'Bouquet include'**
   String get bouquet_include;
 
+  /// No description provided for @bloomWithOurExquisiteBestSellers.
+  ///
+  /// In en, this message translates to:
+  /// **'Bloom with our exquisite best sellers'**
+  String get bloomWithOurExquisiteBestSellers;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addToCart;
+
+  /// No description provided for @add_to_cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get add_to_cart;
+
+  /// No description provided for @out_of_stock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Stock'**
+  String get out_of_stock;
+
+  /// No description provided for @in_stock.
+  ///
+  /// In en, this message translates to:
+  /// **'In Stock'**
+  String get in_stock;
+
+  /// No description provided for @bouquet_include.
+  ///
+  /// In en, this message translates to:
+  /// **'Bouquet include'**
+  String get bouquet_include;
+
   /// No description provided for @egp.
   ///
   /// In en, this message translates to:
@@ -668,11 +704,11 @@ abstract class AppLocalizations {
   /// **'About Us'**
   String get about_us;
 
-  /// No description provided for @logout.
+  /// No description provided for @profile.
   ///
   /// In en, this message translates to:
-  /// **'Logout'**
-  String get logout;
+  /// **'Profile'**
+  String get profile;
 
   /// No description provided for @current_password.
   ///
@@ -686,17 +722,23 @@ abstract class AppLocalizations {
   /// **'new password'**
   String get new_password;
 
-  /// No description provided for @update.
-  ///
-  /// In en, this message translates to:
-  /// **'update'**
-  String get update;
-
   /// No description provided for @password_changed.
   ///
   /// In en, this message translates to:
   /// **'password changed successfully'**
   String get password_changed;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @update.
+  ///
+  /// In en, this message translates to:
+  /// **'update'**
+  String get update;
 
   /// No description provided for @change.
   ///

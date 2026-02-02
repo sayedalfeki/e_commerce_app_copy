@@ -11,6 +11,9 @@ abstract class Routes {
   static const String bestSeller=_Paths.bestSellerScreen;
   static const String productDetails = _Paths.productDetails;
   static const String updateProfile = 'update_profile';
+  static const String terms=_Paths.termsAndConditions;
+  static const String userAddress = 'user_address';
+  static const String updateAddress = 'update_address';
 }
 
 abstract class _Paths {
@@ -24,5 +27,5 @@ abstract class _Paths {
   static const String occasionScreen = 'Occasion';
   static const String bestSellerScreen='Best_Seller';
   static const String productDetails = 'productDetails';
-
+  static const String termsAndConditions='terms_and_conditions';
 }
