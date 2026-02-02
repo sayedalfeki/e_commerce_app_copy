@@ -18,9 +18,6 @@ class LoginViewModel extends Cubit<LoginStates> {
       case LoginEvent():
         _login(event.email, event.password, event.rememberMe);
         return;
-      case RememberMeEvent():
-        _rememberMeChickBox();
-        return;
     }
   }
 
@@ -56,10 +53,5 @@ class LoginViewModel extends Cubit<LoginStates> {
         );
         return;
     }
-  }
-
-  void _rememberMeChickBox() {
-    final newValue = state.rememberMeChickBox == 0 ? 1 : 0;
-    emit(state.copyWith(rememberMeChickBox: newValue));
   }
 }
