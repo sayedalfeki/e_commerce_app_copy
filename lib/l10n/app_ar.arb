@@ -100,18 +100,13 @@
   "invalidOtp": "كود غير صحيح",
   "continueAsGuest": "المتابعة كزائر",
   "status": "الحاله",
-  "all_prices_include_tax": "جميع الأسعار تشمل الضريبة",
   "allpricesincludetax": "جميع الأسعار تشمل الضريبة",
   "description": "الوصف",
-  "out_of_stock": "إنتهى من المخزن",
   "outofstock": "إنتهى من المخزن",
-  "in_stock": "في المخزن",
   "instock": "في المخزن",
-  "bouquet_include": "الباقة تحتوي على",
   "bouquetinclude": "الباقه تحتوي على",
   "current_password": "كلمة السر الحالية",
   "new_password": "كلمة السر الجديدة",
-  "update": "تحديث",
   "password_changed": "تم تغيير كلمة المرور بنجاح",
   "my_orders": "طلباتي",
   "saved_addresses": "المواقع المحفوظة",
@@ -129,5 +124,7 @@
   "uploading_photo_error": "خطأ في تحديث الصورة",
   "addNewAddress": "اضف موقعا جديدا",
   "savedAddress": "الاماكن المسجلة",
-  "someThingWrong": "هناك خطأ ما"
+  "someThingWrong": "هناك خطأ ما",
+  "update": "تحديث",
+  "changeLanguage":"تغيير اللغة"
 }
