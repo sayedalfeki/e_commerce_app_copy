@@ -15,5 +15,5 @@ abstract class AppColors {
   static const Color lightBlack=Color(0xFF35383C);
   static const Color lightPinkColor=Color(0xFFF9ECF0);
   static const Color transparentColor = Colors.transparent;
-  static const Color white = Color(0xffFFFFFF);
+  static const Color baseWhiteColor = Color(0xffFFFFFF);
 }

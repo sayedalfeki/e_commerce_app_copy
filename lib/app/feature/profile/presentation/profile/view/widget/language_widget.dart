@@ -63,7 +63,7 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               RadioGroup<String>(
                 groupValue: startViewModel.language,
                 onChanged: (val) {
