@@ -1,6 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:flower_app/app/config/base_response/base_response.dart';
-import 'package:flower_app/app/core/endpoint/app_endpoint.dart';
+import 'package:flower_app/app/feature/occasion/data/api_client/occasion_api_client.dart';
 import 'package:flower_app/app/feature/occasion/data/models/occasion_model.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,24 +10,20 @@ abstract class OccasionRemoteDataSource {
 
 @Injectable(as: OccasionRemoteDataSource)
 class OccasionRemoteDataSourceImpl implements OccasionRemoteDataSource {
-  final Dio _dio;
+  final OccasionApiClient _apiClient;
 
-  OccasionRemoteDataSourceImpl(this._dio);
+  OccasionRemoteDataSourceImpl(this._apiClient);
 
   @override
   Future<BaseResponse<List<OccasionModel>>> getAllOccasions() async {
     try {
-      final response = await _dio.get(AppEndPoint.occasions);
+      final response = await _apiClient.getAllOccasions();
 
-      if (response.statusCode == 200) {
-        final List<dynamic> data = response.data['occasions'] ?? [];
-        final occasions = data
-            .map((json) => OccasionModel.fromJson(json))
-            .toList();
-        return SuccessResponse(data: occasions);
-      } else {
-        return ErrorResponse(error: Exception('Failed to load occasions'));
-      }
+      final List<dynamic> data = response['occasions'] ?? [];
+      final occasions = data
+          .map((json) => OccasionModel.fromJson(json))
+          .toList();
+      return SuccessResponse(data: occasions);
     } catch (e) {
       return ErrorResponse(error: Exception(e.toString()));
     }
@@ -37,14 +32,10 @@ class OccasionRemoteDataSourceImpl implements OccasionRemoteDataSource {
   @override
   Future<BaseResponse<OccasionModel>> getOccasionById(String id) async {
     try {
-      final response = await _dio.get(AppEndPoint.occasionById(id));
+      final response = await _apiClient.getOccasionById(id);
 
-      if (response.statusCode == 200) {
-        final occasion = OccasionModel.fromJson(response.data['data']);
-        return SuccessResponse(data: occasion);
-      } else {
-        return ErrorResponse(error: Exception('Failed to load occasion'));
-      }
+      final occasion = OccasionModel.fromJson(response['data']);
+      return SuccessResponse(data: occasion);
     } catch (e) {
       return ErrorResponse(error: Exception(e.toString()));
     }

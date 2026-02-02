@@ -62,6 +62,12 @@ import '../../feature/home/presentation/views/tabs/home_tab/domain/use_cases/hom
     as _i709;
 import '../../feature/home/presentation/views/tabs/home_tab/presentation/view_model/home_tab_view_model.dart'
     as _i927;
+import '../../feature/occasion/data/api_client/occasion_api_client.dart'
+    as _i1069;
+import '../../feature/occasion/data/api_client/occasion_api_module.dart'
+    as _i359;
+import '../../feature/occasion/data/api_client/product_api_client.dart'
+    as _i392;
 import '../../feature/occasion/data/data_sources/occasion_remote_data_source.dart'
     as _i387;
 import '../../feature/occasion/data/data_sources/product_remote_data_source.dart'
@@ -80,6 +86,8 @@ import '../../feature/occasion/domain/use_cases/get_occasion_by_id_use_case.dart
     as _i34;
 import '../../feature/occasion/domain/use_cases/get_products_by_occasion_use_case.dart'
     as _i121;
+import '../../feature/occasion/presentation/view_model/occasion_products_view_model.dart'
+    as _i477;
 import '../../feature/occasion/presentation/view_model/occasion_view_model.dart'
     as _i146;
 import '../../feature/product_details/api/api_client/api_client.dart' as _i340;
@@ -135,6 +143,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final diAuthModel = _$DiAuthModel();
+    final occasionApiModule = _$OccasionApiModule();
     gh.factory<_i60.HomeViewModel>(() => _i60.HomeViewModel());
     gh.lazySingleton<_i361.BaseOptions>(() => diAuthModel.provideBaseOptions());
     gh.lazySingleton<_i528.PrettyDioLogger>(
@@ -146,9 +155,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i528.PrettyDioLogger>(),
       ),
     );
-    gh.factory<_i50.ProductRemoteDataSource>(
-      () => _i50.ProductRemoteDataSourceImpl(gh<_i361.Dio>()),
-    );
     gh.lazySingleton<_i532.ForgetPasswordApiClient>(
       () => diAuthModel.provideForgetPasswordApiClient(gh<_i361.Dio>()),
     );
@@ -159,20 +165,35 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i423.HomeTabApiClient>(
       () => _i423.HomeTabApiClient(gh<_i361.Dio>()),
     );
+    gh.factory<_i1069.OccasionApiClient>(
+      () => occasionApiModule.occasionApiClient(gh<_i361.Dio>()),
+    );
+    gh.factory<_i392.ProductApiClient>(
+      () => occasionApiModule.productApiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i340.ProductDetailsApiClient>(
       () => _i340.ProductDetailsApiClient(gh<_i361.Dio>()),
     );
     gh.factory<_i544.SignupApiClient>(
       () => _i544.SignupApiClient(gh<_i361.Dio>()),
     );
-    gh.factory<_i629.ProductRepository>(
-      () => _i229.ProductRepositoryImpl(gh<_i50.ProductRemoteDataSource>()),
+    gh.factory<_i387.OccasionRemoteDataSource>(
+      () => _i387.OccasionRemoteDataSourceImpl(gh<_i1069.OccasionApiClient>()),
     );
-    gh.factory<_i121.GetProductsByOccasionUseCase>(
-      () => _i121.GetProductsByOccasionUseCase(gh<_i629.ProductRepository>()),
+    gh.factory<_i252.OccasionRepository>(
+      () => _i979.OccasionRepositoryImpl(gh<_i387.OccasionRemoteDataSource>()),
+    );
+    gh.factory<_i112.GetAllOccasionsUseCase>(
+      () => _i112.GetAllOccasionsUseCase(gh<_i252.OccasionRepository>()),
+    );
+    gh.factory<_i34.GetOccasionByIdUseCase>(
+      () => _i34.GetOccasionByIdUseCase(gh<_i252.OccasionRepository>()),
     );
     gh.factory<_i1047.HomeTabRemoteDataSourceContract>(
       () => _i215.HomeTabRemoteDataSourceImpl(gh<_i423.HomeTabApiClient>()),
+    );
+    gh.factory<_i50.ProductRemoteDataSource>(
+      () => _i50.ProductRemoteDataSourceImpl(gh<_i392.ProductApiClient>()),
     );
     gh.factory<_i466.ForgetPasswordDataSourceContract>(
       () => _i313.ForgetPasswordRemoteDataSourceImpl(
@@ -186,9 +207,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i705.ForgetPasswordRepoImpl(
         gh<_i466.ForgetPasswordDataSourceContract>(),
       ),
-    );
-    gh.factory<_i387.OccasionRemoteDataSource>(
-      () => _i387.OccasionRemoteDataSourceImpl(gh<_i361.Dio>()),
     );
     gh.factory<_i275.HomeTabRepoContract>(
       () => _i647.HomeTabRepoImpl(gh<_i1047.HomeTabRemoteDataSourceContract>()),
@@ -204,6 +222,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i985.ProfileDataSourceContract>(
       () => _i986.ProfileRemoteDataSourceImpl(gh<_i865.ProfileApiClient>()),
+    );
+    gh.factory<_i146.OccasionViewModel>(
+      () => _i146.OccasionViewModel(gh<_i112.GetAllOccasionsUseCase>()),
     );
     gh.factory<_i895.ProductDetailsRemoteDataSourceContract>(
       () => _i312.ProductDetailsRemoteDataSourceImpl(
@@ -236,14 +257,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i343.VerifyOtpViewModel>(
       () => _i343.VerifyOtpViewModel(gh<_i639.VerifyOtpUseCase>()),
     );
-    gh.factory<_i252.OccasionRepository>(
-      () => _i979.OccasionRepositoryImpl(gh<_i387.OccasionRemoteDataSource>()),
+    gh.factory<_i629.ProductRepository>(
+      () => _i229.ProductRepositoryImpl(gh<_i50.ProductRemoteDataSource>()),
     );
-    gh.factory<_i112.GetAllOccasionsUseCase>(
-      () => _i112.GetAllOccasionsUseCase(gh<_i252.OccasionRepository>()),
+    gh.factory<_i121.GetProductsByOccasionUseCase>(
+      () => _i121.GetProductsByOccasionUseCase(gh<_i629.ProductRepository>()),
     );
-    gh.factory<_i34.GetOccasionByIdUseCase>(
-      () => _i34.GetOccasionByIdUseCase(gh<_i252.OccasionRepository>()),
+    gh.factory<_i477.OccasionProductsViewModel>(
+      () => _i477.OccasionProductsViewModel(
+        gh<_i121.GetProductsByOccasionUseCase>(),
+      ),
     );
     gh.factory<_i158.AuthRepoContract>(
       () => _i945.AuthRepoImpl(gh<_i52.AuthRemoteDatasourceContract>()),
@@ -280,9 +303,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i16.UploadProfilePhotoUseCase>(),
       ),
     );
-    gh.factory<_i146.OccasionViewModel>(
-      () => _i146.OccasionViewModel(gh<_i112.GetAllOccasionsUseCase>()),
-    );
     gh.factory<_i927.HomeTabViewModel>(
       () => _i927.HomeTabViewModel(gh<_i709.HomeTabUseCase>()),
     );
@@ -304,3 +324,5 @@ extension GetItInjectableX on _i174.GetIt {
 }
 
 class _$DiAuthModel extends _i347.DiAuthModel {}
+
+class _$OccasionApiModule extends _i359.OccasionApiModule {}

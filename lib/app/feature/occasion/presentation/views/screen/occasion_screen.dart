@@ -3,11 +3,13 @@ import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/resources/font_manager.dart';
 import 'package:flower_app/app/core/resources/values_manager.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
+import 'package:flower_app/app/feature/occasion/presentation/view_model/occasion_events.dart';
+import 'package:flower_app/app/feature/occasion/presentation/view_model/occasion_states.dart';
 import 'package:flower_app/app/feature/occasion/presentation/view_model/occasion_view_model.dart';
 import 'package:flower_app/app/feature/occasion/presentation/views/widgets/occasion_tab_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 class OccasionScreen extends StatefulWidget {
   const OccasionScreen({super.key});
@@ -22,12 +24,12 @@ class _OccasionScreenState extends State<OccasionScreen> {
   @override
   void initState() {
     super.initState();
-    viewModel.getAllOccasions();
+    viewModel.doIntent(GetAllOccasionsEvent());
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
+    return BlocProvider.value(
       value: viewModel,
       child: Scaffold(
         backgroundColor: AppColors.whiteColor,
@@ -48,21 +50,24 @@ class _OccasionScreenState extends State<OccasionScreen> {
             ),
           ),
         ),
-        body: Consumer<OccasionViewModel>(
-          builder: (context, viewModel, child) {
-            if (viewModel.isLoading) {
+        body: BlocConsumer<OccasionViewModel, OccasionStates>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            final occasionsState = state.occasionsState;
+
+            if (occasionsState == null || occasionsState.isLoading == true) {
               return const Center(
                 child: CircularProgressIndicator(color: AppColors.primaryColor),
               );
             }
 
-            if (viewModel.errorMessage != null) {
+            if (occasionsState.error != null) {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      viewModel.errorMessage!,
+                      occasionsState.error.toString(),
                       style: TextStyle(
                         fontFamily: FontsFamily.inter,
                         fontSize: FontSize.s16,
@@ -72,7 +77,8 @@ class _OccasionScreenState extends State<OccasionScreen> {
                     ),
                     SizedBox(height: AppSize.s20.h),
                     ElevatedButton(
-                      onPressed: () => viewModel.getAllOccasions(),
+                      onPressed: () =>
+                          viewModel.doIntent(GetAllOccasionsEvent()),
                       child: Text(
                         AppLocale(context).retry,
                         style: TextStyle(
@@ -86,7 +92,9 @@ class _OccasionScreenState extends State<OccasionScreen> {
               );
             }
 
-            if (viewModel.occasions.isEmpty) {
+            final occasions = occasionsState.success ?? [];
+
+            if (occasions.isEmpty) {
               return Center(
                 child: Text(
                   'No occasions found',
@@ -122,13 +130,13 @@ class _OccasionScreenState extends State<OccasionScreen> {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     padding: EdgeInsets.symmetric(horizontal: AppPadding.p16.w),
-                    itemCount: viewModel.occasions.length,
+                    itemCount: occasions.length,
                     itemBuilder: (context, index) {
-                      final occasion = viewModel.occasions[index];
-                      final isSelected = viewModel.selectedTabIndex == index;
+                      final occasion = occasions[index];
+                      final isSelected = state.selectedTabIndex == index;
 
                       return GestureDetector(
-                        onTap: () => viewModel.selectTab(index),
+                        onTap: () => viewModel.doIntent(SelectTabEvent(index)),
                         child: Container(
                           margin: EdgeInsets.only(right: AppMargin.m12.w),
                           padding: EdgeInsets.symmetric(
@@ -175,10 +183,5 @@ class _OccasionScreenState extends State<OccasionScreen> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }
