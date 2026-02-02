@@ -4,5 +4,7 @@ import 'package:flower_app/app/feature/auth/domain/model/auth_model.dart';
 abstract class AuthRepoContract {
   // get auth data
   Future<void> getAuthData();
-  Future<BaseResponse<AuthModel>> login(String email, String password);
+
+  Future<BaseResponse<AuthModel>> login(String email, String password,
+      {bool rememberMe = false});
 }

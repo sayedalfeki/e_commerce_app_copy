@@ -434,6 +434,120 @@ abstract class AppLocalizations {
   /// **'Sign up is successful'**
   String get successMessage;
 
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
+
+  /// No description provided for @welcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome'**
+  String get welcome;
+
+  /// No description provided for @occasion.
+  ///
+  /// In en, this message translates to:
+  /// **'Occasion'**
+  String get occasion;
+
+  /// No description provided for @occasionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bloom with our exquisite best sellers'**
+  String get occasionSubtitle;
+
+  /// No description provided for @bloomWithOurExquisiteBestSellers.
+  ///
+  /// In en, this message translates to:
+  /// **'Bloom with our exquisite best sellers'**
+  String get bloomWithOurExquisiteBestSellers;
+
+  /// No description provided for @wedding.
+  ///
+  /// In en, this message translates to:
+  /// **'Wedding'**
+  String get wedding;
+
+  /// No description provided for @graduation.
+  ///
+  /// In en, this message translates to:
+  /// **'Graduation'**
+  String get graduation;
+
+  /// No description provided for @birthday.
+  ///
+  /// In en, this message translates to:
+  /// **'Birthday'**
+  String get birthday;
+
+  /// No description provided for @katbKetab.
+  ///
+  /// In en, this message translates to:
+  /// **'Katb Ketab'**
+  String get katbKetab;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addToCart;
+
+  /// No description provided for @add_to_cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get add_to_cart;
+
+  /// No description provided for @addtocart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addtocart;
+
+  /// No description provided for @egp.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get egp;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// No description provided for @view_all.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get view_all;
+
+  /// No description provided for @networkError.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get networkError;
+
+  /// No description provided for @serverError.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again'**
+  String get serverError;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @noProductsForOccasion.
+  ///
+  /// In en, this message translates to:
+  /// **'No products available for this occasion'**
+  String get noProductsForOccasion;
+
   /// No description provided for @categories.
   ///
   /// In en, this message translates to:
@@ -445,6 +559,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cart'**
   String get cart;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @gender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
+  /// No description provided for @accountcreatedsuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Created Successfully'**
+  String get accountcreatedsuccessfully;
+
+  /// No description provided for @creatinganaccountyouagreetoour.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating an account, you agree to our'**
+  String get creatinganaccountyouagreetoour;
+
+  /// No description provided for @termsandconditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms&Conditions'**
+  String get termsandconditions;
 
   /// No description provided for @connectionFailed.
   ///
@@ -476,59 +632,17 @@ abstract class AppLocalizations {
   /// **'No products to be shown'**
   String get empty_data;
 
-  /// No description provided for @view_all.
-  ///
-  /// In en, this message translates to:
-  /// **'View All'**
-  String get view_all;
-
   /// No description provided for @egyptianLivre.
   ///
   /// In en, this message translates to:
   /// **'EGP'**
   String get egyptianLivre;
 
-  /// No description provided for @occasion.
-  ///
-  /// In en, this message translates to:
-  /// **'Occasion'**
-  String get occasion;
-
   /// No description provided for @bestSeller.
   ///
   /// In en, this message translates to:
   /// **'Best Seller'**
   String get bestSeller;
-
-  /// No description provided for @profile.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile'**
-  String get profile;
-
-  /// No description provided for @loading.
-  ///
-  /// In en, this message translates to:
-  /// **'Loading...'**
-  String get loading;
-
-  /// No description provided for @gender.
-  ///
-  /// In en, this message translates to:
-  /// **'Gender'**
-  String get gender;
-
-  /// No description provided for @male.
-  ///
-  /// In en, this message translates to:
-  /// **'Male'**
-  String get male;
-
-  /// No description provided for @female.
-  ///
-  /// In en, this message translates to:
-  /// **'Female'**
-  String get female;
 
   /// No description provided for @cancel.
   ///
@@ -596,17 +710,17 @@ abstract class AppLocalizations {
   /// **'Description'**
   String get description;
 
-  /// No description provided for @add_to_cart.
-  ///
-  /// In en, this message translates to:
-  /// **'Add to cart'**
-  String get add_to_cart;
-
   /// No description provided for @out_of_stock.
   ///
   /// In en, this message translates to:
   /// **'Out of Stock'**
   String get out_of_stock;
+
+  /// No description provided for @outofstock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Stock'**
+  String get outofstock;
 
   /// No description provided for @in_stock.
   ///
@@ -614,41 +728,11 @@ abstract class AppLocalizations {
   /// **'In Stock'**
   String get in_stock;
 
-  /// No description provided for @bouquet_include.
-  ///
-  /// In en, this message translates to:
-  /// **'Bouquet include'**
-  String get bouquet_include;
-
-  /// No description provided for @bloomWithOurExquisiteBestSellers.
-  ///
-  /// In en, this message translates to:
-  /// **'Bloom with our exquisite best sellers'**
-  String get bloomWithOurExquisiteBestSellers;
-
-  /// No description provided for @addToCart.
-  ///
-  /// In en, this message translates to:
-  /// **'Add to cart'**
-  String get addToCart;
-
-  /// No description provided for @add_to_cart.
-  ///
-  /// In en, this message translates to:
-  /// **'Add to cart'**
-  String get add_to_cart;
-
-  /// No description provided for @out_of_stock.
-  ///
-  /// In en, this message translates to:
-  /// **'Out of Stock'**
-  String get out_of_stock;
-
-  /// No description provided for @in_stock.
+  /// No description provided for @instock.
   ///
   /// In en, this message translates to:
   /// **'In Stock'**
-  String get in_stock;
+  String get instock;
 
   /// No description provided for @bouquet_include.
   ///
@@ -656,11 +740,11 @@ abstract class AppLocalizations {
   /// **'Bouquet include'**
   String get bouquet_include;
 
-  /// No description provided for @egp.
+  /// No description provided for @bouquetinclude.
   ///
   /// In en, this message translates to:
-  /// **'EGP'**
-  String get egp;
+  /// **'Bouquet include'**
+  String get bouquetinclude;
 
   /// No description provided for @my_orders.
   ///
@@ -704,11 +788,11 @@ abstract class AppLocalizations {
   /// **'About Us'**
   String get about_us;
 
-  /// No description provided for @profile.
+  /// No description provided for @logout.
   ///
   /// In en, this message translates to:
-  /// **'Profile'**
-  String get profile;
+  /// **'Logout'**
+  String get logout;
 
   /// No description provided for @current_password.
   ///
@@ -722,23 +806,17 @@ abstract class AppLocalizations {
   /// **'new password'**
   String get new_password;
 
-  /// No description provided for @password_changed.
-  ///
-  /// In en, this message translates to:
-  /// **'password changed successfully'**
-  String get password_changed;
-
-  /// No description provided for @logout.
-  ///
-  /// In en, this message translates to:
-  /// **'Logout'**
-  String get logout;
-
   /// No description provided for @update.
   ///
   /// In en, this message translates to:
   /// **'update'**
   String get update;
+
+  /// No description provided for @password_changed.
+  ///
+  /// In en, this message translates to:
+  /// **'password changed successfully'**
+  String get password_changed;
 
   /// No description provided for @change.
   ///
@@ -775,6 +853,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'error in uploading photo'**
   String get uploading_photo_error;
+
+  /// No description provided for @addNewAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'add new address'**
+  String get addNewAddress;
+
+  /// No description provided for @savedAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'saved address'**
+  String get savedAddress;
+
+  /// No description provided for @someThingWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'some thing wrong'**
+  String get someThingWrong;
 }
 
 class _AppLocalizationsDelegate
