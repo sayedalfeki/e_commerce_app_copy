@@ -125,10 +125,8 @@
   "savedAddress": "Saved addresses",
   "someThingWrong": "Something went wrong",
   "update": "Update",
-  "changeLanguage":"change language"
-}
-
-  "successMessage": "Sign up is successful",
+  "changeLanguage":"change language",
+"successMessage": "Sign up is successful",
   "loading": "Loading...",
   "connectionFailed": "No Internet Connection",
   "invalidOtp": "Invalid code",

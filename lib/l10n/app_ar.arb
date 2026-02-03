@@ -153,10 +153,8 @@
   "savedAddress": "الاماكن المسجلة",
   "someThingWrong": "هناك خطأ ما",
   "update": "تحديث",
-  "changeLanguage":"تغيير اللغة"
-}
-
-  "status": "الحالة",
+  "changeLanguage":"تغيير اللغة",
+"status": "الحالة",
   "all_prices_include_tax": "جميع الأسعار تشمل الضريبة",
   "description": "الوصف",
   "add_to_cart": "أضف إلى السلة",

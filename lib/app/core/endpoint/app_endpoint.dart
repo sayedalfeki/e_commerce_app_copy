@@ -9,7 +9,7 @@ abstract class AppEndPoint {
   static const String forgetPassword='/auth/forgotPassword';
   static const String verifyOtp='/auth/verifyResetCode';
   static const String resetPassword='/auth/resetPassword';
-  static const String products = "/products/{productId}";
+  static const String products = "/products";
 
   // profile
   static const String profile = '/auth/profile-data';
