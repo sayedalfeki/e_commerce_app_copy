@@ -1,13 +1,14 @@
+import 'package:equatable/equatable.dart';
 import 'package:flower_app/app/config/base_state/base_state.dart';
 
 import '../../../product/domain/models/products_entity.dart';
 import '../../domain/model/categories_entity.dart';
 
-class CategoriesState {
+class CategoriesState extends Equatable {
   final CategoryBaseState categoriesState;
   final BaseState<ProductsEntity> productsCategoryState;
 
-  CategoriesState({
+  const CategoriesState({
     required this.categoriesState,
     required this.productsCategoryState,
   });
@@ -40,6 +41,10 @@ class CategoriesState {
       ),
     );
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [categoriesState, productsCategoryState];
 }
 
 class CategoryBaseState extends BaseState<CategoriesEntity> {

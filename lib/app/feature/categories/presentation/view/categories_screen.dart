@@ -1,7 +1,5 @@
-import 'package:flower_app/app/core/reusable_widgets/custom_app_bar.dart';
-import 'package:flower_app/app/feature/categories/presentation/view/widget/occasions_body_Widget.dart';
+import 'package:flower_app/app/feature/categories/presentation/view/widget/categories_body_Widget.dart';
 import 'package:flower_app/app/feature/categories/presentation/view_model/categories_intent.dart';
-import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,15 +28,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     return BlocBuilder<CategoriesViewModel, CategoriesState>(
       bloc: categoriesViewModel,
       builder: (context, state) {
-        return Scaffold(
-          appBar: CustomAppBar(
-            onLeadingIconClicked: () {},
-            text: AppLocalizations.of(context)?.categories ?? '',
-            title: AppLocalizations.of(context)?.categoriesTitle ?? '',
-          ),
-          body: CategoriesBodyWidget(
-            state: state,
-            categoriesViewModel: categoriesViewModel,
+        return SafeArea(
+          child: Scaffold(
+            body: CategoriesBodyWidget(
+              state: state,
+              categoriesViewModel: categoriesViewModel,
+            ),
           ),
         );
       },

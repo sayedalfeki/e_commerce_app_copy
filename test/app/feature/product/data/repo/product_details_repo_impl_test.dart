@@ -1,5 +1,4 @@
 import 'package:flower_app/app/config/base_response/base_response.dart';
-import 'package:flower_app/app/feature/product/api/data_source_impls/product_details_remote_data_source_impl.dart';
 import 'package:flower_app/app/feature/product/data/data_sources/product_remote_data_source_contract.dart';
 import 'package:flower_app/app/feature/product/data/models/product/product_dto.dart';
 import 'package:flower_app/app/feature/product/data/models/product/product_response.dart';
@@ -10,10 +9,11 @@ import 'package:flower_app/app/feature/product/domain/request/query_product_requ
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+
 import 'product_details_repo_impl_test.mocks.dart';
 @GenerateMocks([ProductRemoteDataSourceContract])
 void main() {
-  late ProductRemoteDataSourceImpl productRemoteDataSource;
+  late ProductRemoteDataSourceContract productRemoteDataSource;
   late ProductRepoImpl productRepo;
   late ProductResponse productResponse;
   late ProductsResponse productsResponse;
@@ -28,7 +28,7 @@ void main() {
       products: [ProductDto(id: "1", title: "flower")],
     );
     queryProductRequest = QueryProductRequest(category: '1');
-  }},);
+  },);
 
 
   group("Test Get Product Details function test cases", () {

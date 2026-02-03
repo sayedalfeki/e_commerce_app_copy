@@ -1,6 +1,7 @@
 import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/reusable_widgets/loading_widget.dart';
 import 'package:flower_app/app/core/utils/helper_function.dart';
+import 'package:flower_app/app/feature/categories/presentation/view/widget/search_widget.dart';
 import 'package:flower_app/app/feature/categories/presentation/view_model/categories_intent.dart';
 import 'package:flower_app/app/feature/categories/presentation/view_model/categories_view_model.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,9 @@ class CategoriesBodyWidget extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
+          const SizedBox(height: 8),
+          SearchWidget(),
+          const SizedBox(height: 18),
           state.categoriesState.isLoading == true
               ? LoadingWidget()
               : state.categoriesState.success != null

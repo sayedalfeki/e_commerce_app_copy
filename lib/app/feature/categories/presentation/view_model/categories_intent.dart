@@ -10,7 +10,6 @@ class GetCategoryIntent extends CategoriesIntent {
 
 class GetProductsCategoryIntent extends CategoriesIntent {
   final String categoryId;
-
   GetProductsCategoryIntent({required this.categoryId});
 }
 
