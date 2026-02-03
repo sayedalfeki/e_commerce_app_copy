@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flower_app/app/config/base_response/base_response.dart';
+import 'package:flower_app/app/config/local_storage_processes/domain/storage_data_source_contract.dart';
 import 'package:flower_app/app/feature/auth/data/model/auth_response.dart';
 import 'package:flower_app/app/feature/profile/data/model/change_password_response.dart';
 import 'package:flower_app/app/feature/profile/data/model/profile_photo_response.dart';
@@ -14,10 +15,12 @@ import 'package:mockito/mockito.dart';
 
 import 'profile_repo_impl_test.mocks.dart';
 
-@GenerateMocks([ProfileDataSourceContract])
+@GenerateMocks([ProfileDataSourceContract, StorageDataSourceContract])
 void main() {
   late ProfileRepoImpl profileRepo;
   late ProfileDataSourceContract profileDataSourceContract;
+  late StorageDataSourceContract storageDataSourceContract;
+
   late ChangePasswordRequest changePasswordRequest;
   late ChangePasswordResponse changePasswordResponse;
   late AuthDto authDto;
@@ -26,7 +29,9 @@ void main() {
   late File file;
   setUpAll(() {
     profileDataSourceContract = MockProfileDataSourceContract();
-    profileRepo = ProfileRepoImpl(profileDataSourceContract);
+    storageDataSourceContract = MockStorageDataSourceContract();
+    profileRepo = ProfileRepoImpl(profileDataSourceContract,
+        storageDataSourceContract);
 
     authDto = AuthDto(
       message: 'success',
@@ -43,18 +48,26 @@ void main() {
   });
 
   test(
-    'when calling change password it should get data from datasource',
+    'when calling change password with success it should get data from datasource and clear token and remember me',
     () async {
       provideDummy<BaseResponse<ChangePasswordResponse>>(
         SuccessResponse(data: changePasswordResponse),
       );
+      provideDummy<BaseResponse<bool>>(SuccessResponse(data: true));
       when(
         profileDataSourceContract.changePassword(changePasswordRequest),
       ).thenAnswer(
         (_) => Future.value(SuccessResponse(data: changePasswordResponse)),
       );
+      when(storageDataSourceContract.clearToken()).thenAnswer(
+            (_) => Future.value(SuccessResponse(data: true)),
+      );
+      when(storageDataSourceContract.clearRememberMe()).thenAnswer(
+            (_) => Future.value(SuccessResponse(data: true)),);
       await profileRepo.changePassword(changePasswordRequest);
       verify(profileDataSourceContract.changePassword(changePasswordRequest));
+      verify(storageDataSourceContract.clearToken());
+      verify(storageDataSourceContract.clearRememberMe());
     },
   );
   test('when calling getProfile it should get data from datasource', () async {

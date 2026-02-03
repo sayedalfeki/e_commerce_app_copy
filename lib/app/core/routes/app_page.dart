@@ -2,37 +2,45 @@ import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/feature/auth/presentation/views/screen/login/login_Screen.dart';
 import 'package:flower_app/app/feature/best_seller/presentation/views/screen/best_seller_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/screen/home_screen.dart';
+import 'package:flower_app/app/feature/occasion/presentation/views/screen/occasion_screen.dart';
+import 'package:flower_app/app/feature/product_details/presentation/views/screens/product_details_screen.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view/update_profile_widget.dart';
 import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.dart';
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
+import 'package:flower_app/app/feature/terms_and_conditions/presentation/views/screen/terms_and_conditions_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../feature/address/presentation/view/address_screen.dart';
+import '../../feature/auth/presentation/views/screen/login/login_Screen.dart';
 import '../../feature/forget_password/presentation/forget_password/view/forget_password_screen.dart';
 import '../../feature/forget_password/presentation/reset_password/view/reset_password_screen.dart';
 import '../../feature/forget_password/presentation/verify_otp/view/verify_otp_screen.dart';
 import '../../feature/product/presentation/views/screens/product_details_screen.dart';
 import '../../feature/profile/presentation/reset_password/view/change_password_screen.dart';
+import '../../feature/signup/presentation/views/signup_screen.dart';
+
 class RouteGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {
     switch (settings.name) {
       case Routes.splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.login:
-        return MaterialPageRoute(builder: (_) =>  LoginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       case Routes.register:
-        return MaterialPageRoute(builder: (_) =>  SignupScreen());
+        return MaterialPageRoute(builder: (_) => SignupScreen());
       case Routes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
-        case Routes.verifyOtp:
-          String email = settings.arguments as String;
-        return MaterialPageRoute(builder: (_) =>  VerifyOtpScreen(email));
+      case Routes.verifyOtp:
+        String email = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => VerifyOtpScreen(email));
       case Routes.resetPassword:
         String email = settings.arguments as String;
-        return MaterialPageRoute(builder: (_) =>  ResetPasswordScreen(email));
+        return MaterialPageRoute(builder: (_) => ResetPasswordScreen(email));
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.occasion:
+        return MaterialPageRoute(builder: (_) => const OccasionScreen());
       case Routes.bestSeller:
         return MaterialPageRoute(builder: (_) => const BestSellerScreen());
       case Routes.productDetails:
@@ -43,10 +51,14 @@ class RouteGenerator {
       case Routes.updateProfile:
         final UserEntity userEntity = settings.arguments as UserEntity;
         return MaterialPageRoute(
-            builder: (_) => UpdateProfileWidget(user: userEntity));
+          builder: (_) => UpdateProfileWidget(user: userEntity),
+        );
 
       case Routes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+
+      case Routes.terms:
+        return MaterialPageRoute(builder: (_) => const TermsAndConditionsScreen());
       case Routes.userAddress:
         return MaterialPageRoute(builder: (_) => const AddressScreen());
 

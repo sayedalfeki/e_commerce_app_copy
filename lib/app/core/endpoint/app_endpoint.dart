@@ -9,7 +9,7 @@ abstract class AppEndPoint {
   static const String forgetPassword='/auth/forgotPassword';
   static const String verifyOtp='/auth/verifyResetCode';
   static const String resetPassword='/auth/resetPassword';
-  static const String products = "/products";
+  static const String products = "/products/{productId}";
 
   // profile
   static const String profile = '/auth/profile-data';
@@ -24,7 +24,10 @@ abstract class AppEndPoint {
   //and to delete item cart
   static const String updateCart = "/cart/{productId}";
 
-  //address
+  // Best Seller endpoint
+  static const String bestSeller = "/best-seller";
+
+  // Address endpoint
   static const String address = "/addresses";
   static const String allOccasions = '/occasions';
   static const String allCategories = '/categories';
