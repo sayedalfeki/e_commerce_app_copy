@@ -3,9 +3,9 @@ import 'package:flower_app/app/feature/check_out/domain/models/address_model.dar
 import 'package:flower_app/app/feature/check_out/domain/repos/check_out_repo_contract.dart';
 import 'package:injectable/injectable.dart';
 @injectable
-class CheckOutUseCase {
+class GetUserAddressesUseCase {
   final CheckOutRepoContract _checkOutRepoContract;
-  CheckOutUseCase(this._checkOutRepoContract);
+  GetUserAddressesUseCase(this._checkOutRepoContract);
   Future<BaseResponse<List<AddressModel>>> call()async{
     return _checkOutRepoContract.getUserAddresses();
   }

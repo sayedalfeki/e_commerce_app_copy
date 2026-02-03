@@ -78,7 +78,6 @@
   "cancel":"الغاء",
   "ok":"موافق",
   "confirm":"تأكيد",
-  "connectionFailed":"لا يوجد اتصال بالانترنت",
   "invalidOtp":"كود غير صحيح",
   "continueAsGuest": "المتابعة كزائر",
   "status":"الحاله",
@@ -93,8 +92,7 @@
      "new_password":"كلمة السر الجديدة",
      "update":"تحديث",
      "password_changed":"تم تغيير كلمة المرور بنجاح",
-     "egp":"ج.م",
-   "my_orders":"hطلباتي",
+   "my_orders":"طلباتي",
     "saved_addresses":"المواقع المحفوظة",
     "notifications":"الاشعارات",
     "language":"اللغة",
@@ -102,13 +100,15 @@
     "arabic":"العربية",
     "about_us":"عنا",
     "logout":"خروج",
-  "update":"تحديث",
   "change":"تغيير",
   "edit_profile":"تحديث الملف الشخصي",
   "update_profile":"تحديث الملف الشخصي",
     "update_profile_error":"خطأ في تحديث الملف الشخصي",
     "uploading_photo":"تحديث الصورة",
-    "uploading_photo_error":"خطأ في تحديث الصورة"
-
-
+    "uploading_photo_error":"خطأ في تحديث الصورة",
+    "checkout": "إتمام الشراء",
+    "delivery_time": "وقت التوصيل",
+  "schedule": "الجدولة",
+  "instant": "فوري",
+  "arrive_by": "يصل بحلول"
 }

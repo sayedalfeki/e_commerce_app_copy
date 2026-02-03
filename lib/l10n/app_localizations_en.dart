@@ -333,4 +333,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'error in uploading photo';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get delivery_time => 'Delivery time';
+
+  @override
+  String get schedule => 'Schedule';
+
+  @override
+  String get instant => 'Instant';
+
+  @override
+  String get arrive_by => 'Arrive by';
 }

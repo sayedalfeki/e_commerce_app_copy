@@ -281,7 +281,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get egp => 'ج.م';
 
   @override
-  String get my_orders => 'hطلباتي';
+  String get my_orders => 'طلباتي';
 
   @override
   String get saved_addresses => 'المواقع المحفوظة';
@@ -333,4 +333,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'خطأ في تحديث الصورة';
+
+  @override
+  String get checkout => 'إتمام الشراء';
+
+  @override
+  String get delivery_time => 'وقت التوصيل';
+
+  @override
+  String get schedule => 'الجدولة';
+
+  @override
+  String get instant => 'فوري';
+
+  @override
+  String get arrive_by => 'يصل بحلول';
 }

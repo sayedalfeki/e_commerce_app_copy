@@ -733,6 +733,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'error in uploading photo'**
   String get uploading_photo_error;
+
+  /// No description provided for @checkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get checkout;
+
+  /// No description provided for @delivery_time.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery time'**
+  String get delivery_time;
+
+  /// No description provided for @schedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule'**
+  String get schedule;
+
+  /// No description provided for @instant.
+  ///
+  /// In en, this message translates to:
+  /// **'Instant'**
+  String get instant;
+
+  /// No description provided for @arrive_by.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrive by'**
+  String get arrive_by;
 }
 
 class _AppLocalizationsDelegate
