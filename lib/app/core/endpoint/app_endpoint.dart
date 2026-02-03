@@ -26,6 +26,16 @@ abstract class AppEndPoint {
   //addresses
   static const String addresses='/addresses';
 
+  // Occasion Endpoints
+  static const String occasions = '/occasions';
+  static String occasionById(String id) => '/occasions/$id';
+  // Product Endpoints
+  //static const String products = '/products';
+
+  static String productsByOccasion(String occasionId) =>
+      '/products?occasion=$occasionId';
+  //address
+  static const String address = "/addresses";
   //this end point used for checkout page, ether cash on delivery or Credit card
   static const String cashOnDelivery='/orders';
   static const String creditCard ='/orders/checkout?url=http://localhost:3000';

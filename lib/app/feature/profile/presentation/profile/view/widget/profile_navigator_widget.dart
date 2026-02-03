@@ -1,3 +1,4 @@
+import 'package:flower_app/app/feature/address/presentation/view/address_screen.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view/update_profile_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +24,12 @@ class _ProfileNavigatorWidgetState extends State<ProfileNavigatorWidget> {
               builder: (_) {
                 final UserEntity user = settings.arguments as UserEntity;
                 return UpdateProfileWidget(user: user);
+              },
+            );
+          case Routes.userAddress:
+            return MaterialPageRoute(
+              builder: (_) {
+                return const AddressScreen();
               },
             );
           default:

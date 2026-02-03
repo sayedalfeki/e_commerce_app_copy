@@ -1,3 +1,4 @@
+import 'package:flower_app/app/config/local_storage_processes/local_storage_processes.dart';
 import 'package:flower_app/app/core/resources/assets_manager.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +10,8 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(milliseconds: 3500), () {
-      Navigator.pushReplacementNamed(context, Routes.login);
+    Future.delayed(Duration(milliseconds: 3500), () async{
+      Navigator.pushReplacementNamed(context,await LocalStorageProcesses.readToken()==null?  Routes.login:Routes.home);
     });
     return Scaffold(
       body: Center(
