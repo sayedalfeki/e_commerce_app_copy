@@ -1,6 +1,5 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
-import 'package:flower_app/app/core/theme/app_theme.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/cart/presentation/view_model/cart_screen_events.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/cart/presentation/view_model/cart_screen_states.dart';
@@ -9,6 +8,7 @@ import 'package:flower_app/app/feature/home/presentation/views/tabs/cart/present
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// ignore: must_be_immutable, use_key_in_widget_constructors
 class CartScreen extends StatelessWidget{
   CartScreenViewModel viewModel = getIt<CartScreenViewModel>();
   @override
@@ -51,7 +51,8 @@ class CartScreen extends StatelessWidget{
                 if(state.cartItems?.isLoading==true){
                   return CircularProgressIndicator(color: AppColors.primaryColor,);
                 }else if(state.cartItems?.isLoading==false && state.cartItems?.success != null){
-                  if(state.cartItems?.success?.length == 0){
+                  // ignore: prefer_is_empty
+                  if(state.cartItems!.success?.length == 0){
                     return Text(AppLocale(context).noitemsincart);
                   }else{
                   return ListView.builder(
@@ -101,9 +102,9 @@ class CartScreen extends StatelessWidget{
               ),
               SizedBox(height: height*0.05,),
               Visibility(child: Container(
-                child: ElevatedButton(onPressed: (){}, child: Text(AppLocale(context).checkout,style: Theme.of(context).textTheme.titleMedium,)),
                 width: double.infinity,
                 margin: EdgeInsets.symmetric(horizontal: 7),
+                child: ElevatedButton(onPressed: (){}, child: Text(AppLocale(context).checkout,style: Theme.of(context).textTheme.titleMedium,)),
                 ),
                 
                 )

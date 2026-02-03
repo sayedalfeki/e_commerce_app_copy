@@ -13,9 +13,9 @@ class CartScreenStates {
     BaseState<double>? totalPriceNew}){
 
       return CartScreenStates(
-        numOfCartItems: numOfCartItemsNew??this.numOfCartItems,
-        cartItems: cartItemsNew??this.cartItems,
-        totalPrice: totalPriceNew??this.totalPrice
+        numOfCartItems: numOfCartItemsNew??numOfCartItems,
+        cartItems: cartItemsNew??cartItems,
+        totalPrice: totalPriceNew??totalPrice
       );
 
   }

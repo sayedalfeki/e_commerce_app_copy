@@ -3,6 +3,7 @@ import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/cart/domain/models/cart_item_model.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CartItemCard extends StatefulWidget{
   CartItemModel? cartItem;
   VoidCallback removeItemFromCart;
@@ -31,8 +32,8 @@ class _CartItemCardState extends State<CartItemCard> {
           Expanded(
             flex: 1,
             child: ClipRRect(
-              child: Image.network(widget.cartItem?.product?.coverImage??""),
               borderRadius: BorderRadius.circular(12),
+              child: Image.network(widget.cartItem?.product?.coverImage??""),
             ),
           ),
           SizedBox(width: width*0.02,),

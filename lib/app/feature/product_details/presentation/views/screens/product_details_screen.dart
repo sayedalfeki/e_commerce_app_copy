@@ -8,17 +8,23 @@ import 'package:flower_app/app/feature/product_details/presentation/view_model/p
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductDetailsScreen extends StatelessWidget{
-  String productId;
+class ProductDetailsScreen extends StatefulWidget{
+  final String productId;
 
-  ProductDetailsScreen({super.key, required this.productId});
+  const ProductDetailsScreen({super.key, required this.productId});
 
+  @override
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final ProductDetailsViewModel viewModel = getIt<ProductDetailsViewModel>();
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    viewModel.doIntent(GetProductDetailsEvent(productId));
+    viewModel.doIntent(GetProductDetailsEvent(widget.productId));
     return BlocProvider<ProductDetailsViewModel>(
       create: (context) => viewModel,
       
@@ -129,7 +135,7 @@ class ProductDetailsScreen extends StatelessWidget{
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(onPressed: () {
-                    viewModel.doIntent(AddProductToCartEvent(productId,1));
+                    viewModel.doIntent(AddProductToCartEvent(widget.productId,1));
                   }, child: Text(AppLocale(
                       context).add_to_cart, style: TextStyle(fontSize: 20),)),
                 ),
@@ -170,5 +176,4 @@ class ProductDetailsScreen extends StatelessWidget{
   );
       
   }
-
 }

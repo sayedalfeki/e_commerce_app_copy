@@ -17,10 +17,10 @@ import 'package:injectable/injectable.dart';
 @injectable
 class CartScreenViewModel extends Cubit<CartScreenStates>{
   CartScreenViewModel(this._getLoggedUserCartUseCase,this._updateCartProductQuantityUseCase,this._cleareCartUseCase,this._removeSpecificItemFromCartUseCase):super(CartScreenStates());
-  GetLoggedUserCartUseCase _getLoggedUserCartUseCase;
-  UpdateCartProductQuantityUseCase _updateCartProductQuantityUseCase;
-  RemoveSpecificItemFromCartUseCase _removeSpecificItemFromCartUseCase;
-  CleareCartUseCase _cleareCartUseCase;
+  final GetLoggedUserCartUseCase _getLoggedUserCartUseCase;
+  final UpdateCartProductQuantityUseCase _updateCartProductQuantityUseCase;
+  final RemoveSpecificItemFromCartUseCase _removeSpecificItemFromCartUseCase;
+  final CleareCartUseCase _cleareCartUseCase;
   final StreamController<CartScreenUiEvents> _cartScreenUiEvents = StreamController.broadcast();
 
   Stream<CartScreenUiEvents> cartScreenUiEvents(){

@@ -548,36 +548,6 @@ abstract class AppLocalizations {
   /// **'Best Seller'**
   String get bestSeller;
 
-  /// No description provided for @profile.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile'**
-  String get profile;
-
-  /// No description provided for @loading.
-  ///
-  /// In en, this message translates to:
-  /// **'Loading...'**
-  String get loading;
-
-  /// No description provided for @gender.
-  ///
-  /// In en, this message translates to:
-  /// **'Gender'**
-  String get gender;
-
-  /// No description provided for @male.
-  ///
-  /// In en, this message translates to:
-  /// **'Male'**
-  String get male;
-
-  /// No description provided for @female.
-  ///
-  /// In en, this message translates to:
-  /// **'Female'**
-  String get female;
-
   /// No description provided for @cancel.
   ///
   /// In en, this message translates to:
@@ -644,29 +614,29 @@ abstract class AppLocalizations {
   /// **'Description'**
   String get description;
 
-  /// No description provided for @add_to_cart.
+  /// No description provided for @addtocart.
   ///
   /// In en, this message translates to:
   /// **'Add to cart'**
-  String get add_to_cart;
+  String get addtocart;
 
-  /// No description provided for @out_of_stock.
+  /// No description provided for @outofstock.
   ///
   /// In en, this message translates to:
   /// **'Out of Stock'**
-  String get out_of_stock;
+  String get outofstock;
 
-  /// No description provided for @in_stock.
+  /// No description provided for @instock.
   ///
   /// In en, this message translates to:
   /// **'In Stock'**
-  String get in_stock;
+  String get instock;
 
-  /// No description provided for @bouquet_include.
+  /// No description provided for @bouquetinclude.
   ///
   /// In en, this message translates to:
   /// **'Bouquet include'**
-  String get bouquet_include;
+  String get bouquetinclude;
 
   /// No description provided for @egp.
   ///
@@ -920,12 +890,6 @@ abstract class AppLocalizations {
   /// **'error in uploading photo'**
   String get uploading_photo_error;
 
-  /// No description provided for @checkout.
-  ///
-  /// In en, this message translates to:
-  /// **'Checkout'**
-  String get checkout;
-
   /// No description provided for @delivery_time.
   ///
   /// In en, this message translates to:
@@ -949,6 +913,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Arrive by'**
   String get arrive_by;
+
+  /// No description provided for @addNewAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'add new address'**
+  String get addNewAddress;
+
+  /// No description provided for @savedAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'saved address'**
+  String get savedAddress;
+
+  /// No description provided for @someThingWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'some thing wrong'**
+  String get someThingWrong;
 }
 
 class _AppLocalizationsDelegate

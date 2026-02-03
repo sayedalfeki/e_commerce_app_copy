@@ -11,9 +11,9 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class ProductDetailsViewModel extends Cubit<ProductDetailsStates>{
-  ProductDetailsViewModel(this._getProductDetailsUsecase, this.addProductToCartUsecase):super(ProductDetailsStates());
-  GetProductDetailsUsecase _getProductDetailsUsecase;
-  AddProductToCartUsecase addProductToCartUsecase;
+  ProductDetailsViewModel(this._getProductDetailsUsecase, this._addProductToCartUsecase):super(ProductDetailsStates());
+  final GetProductDetailsUsecase _getProductDetailsUsecase;
+  final AddProductToCartUsecase _addProductToCartUsecase;
 
   void doIntent(ProductDetailsEvents event){
     switch(event){
@@ -40,7 +40,7 @@ class ProductDetailsViewModel extends Cubit<ProductDetailsStates>{
 
   void _addProductToCart(String productId, int quantity) async {
     emit(state.copyWith(addProductToCartStateParam: BaseState(isLoading: true)));
-    var response = await addProductToCartUsecase.call(productId: productId, quantity: quantity);
+    var response = await _addProductToCartUsecase.call(productId: productId, quantity: quantity);
     switch (response) {
       case SuccessResponse<UpdateCartModel>():
         emit(state.copyWith(addProductToCartStateParam: BaseState(isLoading: false, success: response.data)));
