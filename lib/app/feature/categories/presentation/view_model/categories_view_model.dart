@@ -16,7 +16,6 @@ class CategoriesViewModel
     extends CustomCubit<CategoriesEvent, CategoriesState> {
   final GetAllCategoriesUseCase _categoriesUseCase;
   final GetProductsCategoryUseCase _productsCategoryUseCase;
-
   CategoriesViewModel(this._categoriesUseCase, this._productsCategoryUseCase)
     : super(
         CategoriesState(

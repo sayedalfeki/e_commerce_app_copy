@@ -7,11 +7,11 @@ import 'package:flower_app/app/feature/profile/presentation/update_profile/view/
 import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.dart';
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
 import 'package:flutter/material.dart';
+
 import '../../feature/address/presentation/view/address_screen.dart';
 import '../../feature/forget_password/presentation/forget_password/view/forget_password_screen.dart';
 import '../../feature/forget_password/presentation/reset_password/view/reset_password_screen.dart';
 import '../../feature/forget_password/presentation/verify_otp/view/verify_otp_screen.dart';
-import '../../feature/occasions/presentation/view/occasions_screen.dart';
 import '../../feature/product/presentation/views/screens/product_details_screen.dart';
 import '../../feature/profile/presentation/reset_password/view/change_password_screen.dart';
 class RouteGenerator {
@@ -33,8 +33,6 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) =>  ResetPasswordScreen(email));
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case Routes.occasion:
-        return MaterialPageRoute(builder: (_) => const OccasionsScreen());
       case Routes.bestSeller:
         return MaterialPageRoute(builder: (_) => const BestSellerScreen());
       case Routes.productDetails:
