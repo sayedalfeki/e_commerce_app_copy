@@ -71,6 +71,16 @@ void main() {
       ];
     },
   );
+  test('change language emits event (broadcast)', () async {
+    final future = expectLater(
+      profileViewModel.streamController.stream,
+      emits(isA<ChangeLanguageEvent>()),
+    );
+
+    profileViewModel.doIntent(ChangeLanguageAction());
+
+    await future;
+  });
   test('BackNavigation emits event (broadcast)', () async {
     final future = expectLater(
       profileViewModel.streamController.stream,

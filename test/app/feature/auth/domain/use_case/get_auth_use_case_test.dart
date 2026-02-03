@@ -1,11 +1,10 @@
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-
 import 'package:flower_app/app/config/base_response/base_response.dart';
 import 'package:flower_app/app/feature/auth/domain/model/auth_model.dart';
 import 'package:flower_app/app/feature/auth/domain/repo/auth_repo_contract.dart';
 import 'package:flower_app/app/feature/auth/domain/use_case/get_auth_use_case.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 
 import 'get_auth_use_case_test.mocks.dart';
 
@@ -15,12 +14,12 @@ void main() {
     SuccessResponse<AuthModel>(data: AuthModel(massage: 'dummy')),
   );
 
-  late GetAuthUseCase useCase;
+  late LoginUserUseCase useCase;
   late MockAuthRepoContract mockAuthRepo;
 
   setUp(() {
     mockAuthRepo = MockAuthRepoContract();
-    useCase = GetAuthUseCase(mockAuthRepo);
+    useCase = LoginUserUseCase(mockAuthRepo);
   });
 
   test('returns SuccessResponse when repo succeeds', () async {
@@ -32,7 +31,7 @@ void main() {
     );
 
     // Act
-    final result = await useCase.login('email', 'password');
+    final result = await useCase.invoke('email', 'password');
 
     // Assert
     expect(result, isA<SuccessResponse<AuthModel>>());
@@ -48,7 +47,7 @@ void main() {
     );
 
     // Act
-    final result = await useCase.login('email', 'password');
+    final result = await useCase.invoke('email', 'password');
 
     // Assert
     expect(result, isA<ErrorResponse<AuthModel>>());

@@ -10,7 +10,7 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class SignupViewModel extends Cubit<SignupStates>{
-  SignupUsecase _signup;
+  final SignupUsecase _signup;
 
     TextEditingController firstNameController = TextEditingController();
     TextEditingController lastNameController = TextEditingController();
