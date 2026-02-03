@@ -24,7 +24,6 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    var width=MediaQuery.sizeOf(context).width;
     var height=MediaQuery.sizeOf(context).height;
     return Scaffold(
       appBar: AppBar(
