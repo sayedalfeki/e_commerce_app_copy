@@ -69,7 +69,6 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         },
                         onAddressSelected: (value) {
                           _selectedAddressModel=value;
-                          print('Selected address: ${value?.city}');
                         },
                       )
                     ],
