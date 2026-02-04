@@ -931,6 +931,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'some thing wrong'**
   String get someThingWrong;
+
+  /// No description provided for @location_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Location details unavailable'**
+  String get location_error;
+
+  /// No description provided for @delivery_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery address'**
+  String get delivery_address;
+
+  /// No description provided for @no_addresses.
+  ///
+  /// In en, this message translates to:
+  /// **'No saved addresses found'**
+  String get no_addresses;
+
+  /// No description provided for @add_new.
+  ///
+  /// In en, this message translates to:
+  /// **'Add new'**
+  String get add_new;
 }
 
 class _AppLocalizationsDelegate

@@ -433,4 +433,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get someThingWrong => 'هناك خطأ ما';
+
+  @override
+  String get location_error => 'تفاصيل الموقع غير متوفرة';
+
+  @override
+  String get delivery_address => 'عنوان التوصيل';
+
+  @override
+  String get no_addresses => 'لم يتم العثور على عناوين محفوظة';
+
+  @override
+  String get add_new => 'إضافة جديد';
 }

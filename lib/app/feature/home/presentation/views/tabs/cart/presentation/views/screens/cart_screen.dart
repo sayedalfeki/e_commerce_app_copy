@@ -1,5 +1,6 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/cart/presentation/view_model/cart_screen_events.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/cart/presentation/view_model/cart_screen_states.dart';
@@ -104,7 +105,7 @@ class CartScreen extends StatelessWidget{
               Visibility(child: Container(
                 width: double.infinity,
                 margin: EdgeInsets.symmetric(horizontal: 7),
-                child: ElevatedButton(onPressed: (){}, child: Text(AppLocale(context).checkout,style: Theme.of(context).textTheme.titleMedium,)),
+                child: ElevatedButton(onPressed: (){Navigator.pushNamed(context, Routes.checkOut);}, child: Text(AppLocale(context).checkout,style: Theme.of(context).textTheme.titleMedium,)),
                 ),
                 
                 )

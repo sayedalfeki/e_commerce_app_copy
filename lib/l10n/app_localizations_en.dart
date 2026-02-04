@@ -433,4 +433,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get someThingWrong => 'some thing wrong';
+
+  @override
+  String get location_error => 'Location details unavailable';
+
+  @override
+  String get delivery_address => 'Delivery address';
+
+  @override
+  String get no_addresses => 'No saved addresses found';
+
+  @override
+  String get add_new => 'Add new';
 }

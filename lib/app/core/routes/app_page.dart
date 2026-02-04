@@ -1,6 +1,9 @@
 import 'package:flower_app/app/core/routes/app_route.dart';
+import 'package:flower_app/app/feature/address/domain/model/user_address_entity.dart';
+import 'package:flower_app/app/feature/address_details/presentation/views/screens/address_details_screen.dart';
 import 'package:flower_app/app/feature/auth/presentation/views/screen/login/login_Screen.dart';
 import 'package:flower_app/app/feature/best_seller/presentation/views/screen/best_seller_screen.dart';
+import 'package:flower_app/app/feature/check_out/presentation/views/screen/check_out_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/screen/home_screen.dart';
 import 'package:flower_app/app/feature/occasion/presentation/views/screen/occasion_screen.dart';
 import 'package:flower_app/app/feature/product_details/presentation/view_model/product_details_args.dart';
@@ -51,6 +54,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
       case Routes.userAddress:
         return MaterialPageRoute(builder: (_) => const AddressScreen());
+      case Routes.checkOut:
+        return MaterialPageRoute(builder: (_) => const CheckOutScreen());
+      case Routes.addressDetails:
+        final args = settings.arguments as UserAddressEntity?;  
+        return MaterialPageRoute(builder: (_) => AddressDetailsScreen(userAddressEntity: args));
 
       default:
         return unDefinedRoute();

@@ -137,5 +137,9 @@
   "arrive_by":"Arrive by",
   "addNewAddress":"add new address",
   "savedAddress":"saved address",
-  "someThingWrong":"some thing wrong"
+  "someThingWrong":"some thing wrong",
+  "location_error":"Location details unavailable",
+  "delivery_address":"Delivery address",
+  "no_addresses":"No saved addresses found",
+  "add_new":"Add new"
 }

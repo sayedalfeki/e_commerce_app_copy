@@ -121,5 +121,9 @@
     "success":"تم بنجاح",
     "addNewAddress":"اضف موقعا جديدا",
     "savedAddress":"الاماكن المسجلة",
-    "someThingWrong":"هناك خطأ ما"
+    "someThingWrong":"هناك خطأ ما",
+    "location_error": "تفاصيل الموقع غير متوفرة",
+    "delivery_address": "عنوان التوصيل",
+    "no_addresses": "لم يتم العثور على عناوين محفوظة",
+    "add_new": "إضافة جديد"
 }
