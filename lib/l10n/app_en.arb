@@ -190,6 +190,14 @@
   "occasions_title": "Bloom with our exquisite best sellers",
   "cancel":"cancel",
   "confirm":"confirm",
-  "categoriesTitle":"Categories Title"
+  "categoriesTitle":"Categories Title",
+  "sortBy":"sort by",
+  "lowestPrice":"lowest price",
+  "highestPrice":"highest price",
+  "newArrival":"new",
+  "old":"old",
+  "discount":"discount",
+    "filter":"filter"
+
 
 }

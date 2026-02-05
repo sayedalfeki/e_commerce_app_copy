@@ -190,5 +190,12 @@
   "occasions_title": "تزهر معنا مع أفضل منتجاتنا المميزة",
   "cancel":"الغاء",
   "confirm":"تأكيد",
-  "categoriesTitle":"الفئات"
+  "categoriesTitle":"الفئات",
+  "sortBy":"رتب بواسطة",
+    "lowestPrice":"الاقل سعرا",
+    "highestPrice":"الاعلى سعرا",
+    "newArrival":"جديد",
+    "old":"قديم",
+    "discount":"خصم",
+    "filter":"فلتر"
 }

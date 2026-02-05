@@ -87,15 +87,6 @@ class _LanguageWidgetState extends State<LanguageWidget> {
               )
             ],
           ),
-          // LanguageContainerWidget(
-          //   value: 'ar',
-          //   title: AppLocale(context).arabic,
-          // ),
-          // const SizedBox(height: 10),
-          // LanguageContainerWidget(
-          //   value: 'en',
-          //   title: AppLocale(context).english,
-          // ),
         ],
       ),
     );
