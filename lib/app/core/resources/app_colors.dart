@@ -16,4 +16,5 @@ abstract class AppColors {
   static const Color lightPinkColor=Color(0xFFF9ECF0);
   static const Color transparentColor = Colors.transparent;
   static const Color dividerLightGrayColor=Color(0XFFEAEAEA);
+  static const Color baseWhiteColor = Color(0xffFFFFFF);
 }

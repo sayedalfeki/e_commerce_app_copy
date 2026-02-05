@@ -196,6 +196,61 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profile => 'الملف الشخصي';
 
   @override
+  String get bloomWithOurExquisiteBestSellers =>
+      'تألق مع منتجاتنا الأكثر مبيعاً والراقية';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'انثى';
+
+  @override
+  String get accountcreatedsuccessfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get addToCart => 'أضف إلى عربة التسوق';
+
+  @override
+  String get add_to_cart => 'أضف إلى السلة';
+
+  @override
+  String get addtocart => 'أضف إلى السلة';
+
+  @override
+  String get egp => 'ج.م';
+
+  @override
+  String get viewAll => 'عرض الكل';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get networkError => 'لا يوجد اتصال بالإنترنت';
+
+  @override
+  String get serverError => 'حدث خطأ ما. يرجى المحاولة مرة أخرى';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get noProductsForOccasion => 'لا توجد منتجات متاحة لهذه المناسبة';
+
+  @override
+  String get categories => 'الفئات';
+
+  @override
+  String get cart => 'عربة التسوق';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
   String get gender => 'الجنس';
 
   @override
@@ -230,13 +285,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get empty_data => 'لا توجد منتجات لعرضها';
 
   @override
-  String get view_all => 'عرض الكل';
-
-  @override
   String get egyptianLivre => 'ج.م';
-
-  @override
-  String get occasion => 'المناسبة';
 
   @override
   String get bestSeller => 'الأكثر مبيعاً';
@@ -270,7 +319,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get status => 'الحاله';
 
   @override
-  String get all_prices_include_tax => 'All prices include tax';
+  String get all_prices_include_tax => 'جميع الأسعار تشمل الضريبة';
 
   @override
   String get description => 'الوصف';
@@ -306,16 +355,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get checkout => 'الدفع';
 
   @override
-  String get add_to_cart => 'Add to cart';
+  String get out_of_stock => 'إنتهى من المخزن';
 
   @override
-  String get out_of_stock => 'Out of Stock';
+  String get outofstock => 'إنتهى من المخزن';
 
   @override
-  String get in_stock => 'In Stock';
+  String get in_stock => 'في المخزن';
 
   @override
-  String get bouquet_include => 'Bouquet include';
+  String get instock => 'في المخزن';
+
+  @override
+  String get bouquet_include => 'الباقة تحتوي على';
+
+  @override
+  String get bouquetinclude => 'الباقه تحتوي على';
 
   @override
   String get my_orders => 'طلباتي';
@@ -445,4 +500,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get add_new => 'إضافة جديد';
+
+  @override
+  String get addNewAddress => 'اضف موقعا جديدا';
+
+  @override
+  String get savedAddress => 'الاماكن المسجلة';
+
+  @override
+  String get someThingWrong => 'هناك خطأ ما';
 }

@@ -8,8 +8,9 @@ import 'package:flower_app/app/feature/product_details/presentation/view_model/p
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductDetailsScreen extends StatefulWidget{
-  final String productId;
+// ignore: must_be_immutable
+class ProductDetailsScreen extends StatelessWidget{
+  final String? productId;
 
   const ProductDetailsScreen({super.key, required this.productId});
 
@@ -78,8 +79,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Spacer(),
                       Text("${AppLocale(context).status} :",style: Theme.of(context).textTheme.headlineLarge),
                       Text(state.productDetailsState!.success!.quantity! <= 0
-                          ? AppLocale(context).out_of_stock
-                          : AppLocale(context).in_stock,
+                          ? AppLocale(context).outofstock
+                          : AppLocale(context).instock,
                       style: Theme.of(context).textTheme.headlineMedium)
                     ],
                   ),
@@ -88,7 +89,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16),
-                  child: Text(AppLocale(context).all_prices_include_tax),
+                  child: Text(AppLocale(context).allpricesincludetax),
                 ),
               ),
               SliverToBoxAdapter(
@@ -121,7 +122,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(AppLocale(context).bouquet_include, style: Theme
+                  child: Text(AppLocale(context).bouquetinclude, style: Theme
                       .of(context)
                       .textTheme
                       .headlineLarge,),

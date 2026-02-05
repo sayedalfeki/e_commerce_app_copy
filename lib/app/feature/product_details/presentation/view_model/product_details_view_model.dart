@@ -11,9 +11,8 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class ProductDetailsViewModel extends Cubit<ProductDetailsStates>{
-  ProductDetailsViewModel(this._getProductDetailsUsecase, this._addProductToCartUsecase):super(ProductDetailsStates());
+  ProductDetailsViewModel(this._getProductDetailsUsecase):super(ProductDetailsStates());
   final GetProductDetailsUsecase _getProductDetailsUsecase;
-  final AddProductToCartUsecase _addProductToCartUsecase;
 
   void doIntent(ProductDetailsEvents event){
     switch(event){
