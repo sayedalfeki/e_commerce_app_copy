@@ -35,7 +35,7 @@ class CartScreen extends StatelessWidget{
                 children: [
                   Text(AppLocale(context).cart,style: Theme.of(context).textTheme.headlineLarge,),
                   BlocBuilder<CartScreenViewModel,CartScreenStates>(builder: (context, state) {
-                    if(state.numOfCartItems!.isLoading==true){
+                    if(state.numOfCartItems?.isLoading==true){
                       return CircularProgressIndicator(color: AppColors.primaryColor,);
                     }else {
                       return Text( " (${state.numOfCartItems?.success??0} ${AppLocale(context).items})",style:Theme.of(context).textTheme.headlineLarge ,);
@@ -91,10 +91,10 @@ class CartScreen extends StatelessWidget{
                   Text(AppLocale(context).total),
                   Spacer(),
                   BlocBuilder<CartScreenViewModel,CartScreenStates>(builder: (context, state) {
-                    if(state.totalPrice!.isLoading==true){
+                    if(state.totalPrice?.isLoading==true){
                       return CircularProgressIndicator(color: AppColors.primaryColor,);
-                    }else if (state.totalPrice!.isLoading==false && state.totalPrice!.success!=null ){
-                      return Text("${state.totalPrice!.success} ${AppLocale(context).egp}");
+                    }else if (state.totalPrice?.isLoading==false && state.totalPrice?.success!=null ){
+                      return Text("${state.totalPrice?.success} ${AppLocale(context).egp}");
                     }else {
                       return Text(0.toString());
                     }
