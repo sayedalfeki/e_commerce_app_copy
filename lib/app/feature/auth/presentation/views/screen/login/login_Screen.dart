@@ -10,9 +10,12 @@ import 'package:flower_app/app/core/validation/app_validators.dart';
 import 'package:flower_app/app/feature/auth/presentation/view_model/login_events.dart';
 import 'package:flower_app/app/feature/auth/presentation/view_model/login_states.dart';
 import 'package:flower_app/app/feature/auth/presentation/view_model/login_view_model.dart';
+import 'package:flower_app/app/feature/auth/presentation/views/screen/login/widget/remember_me_widget.dart';
 import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'controller/remember_controller.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
@@ -50,6 +53,7 @@ class LoginScreen extends StatelessWidget {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+    final RememberController rememberController = RememberController();
     return BlocProvider(
       create: (context) => viewModel,
       child: BlocConsumer<LoginViewModel, LoginStates>(
@@ -83,31 +87,9 @@ class LoginScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Flexible(
-                          child: Row(
-                            children: [
-                              Checkbox(
-                                value: state.rememberMeChickBox == 1,
-                                onChanged: (value) {
-                                  viewModel.doIntent(RememberMeEvent());
-                                },
-                              ),
-                              Flexible(
-                                child: Text(
-                                  AppLocalizations.of(context)!.rememberMe,
-                                  style: AppTheme
-                                      .lightTheme
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(
-                                        fontSize: AppSize.s14,
-                                        fontWeight: FontWeights.regular,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        RememberMeWidget(
+                            rememberController: rememberController),
+
                         InkWell(
                           onTap: () {
                             Navigator.pushNamed(context, Routes.forgetPassword);
@@ -137,9 +119,12 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () {
                         if (formKey.currentState?.validate() ?? false) {
                           viewModel.doIntent(
-                            LoginEvent(),
-                            email: emailController.text,
-                            password: passwordController.text,
+                            LoginEvent(
+                                emailController.text,
+                                passwordController.text,
+                                rememberController.rememberMe
+                            ),
+
                           );
                         }
                       },

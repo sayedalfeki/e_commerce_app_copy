@@ -14,7 +14,7 @@ abstract class CheckOutApiClient {
   @factoryMethod
   factory CheckOutApiClient(Dio dio)=_CheckOutApiClient;
 
-  @GET(AppEndPoint.addresses)
+  @GET(AppEndPoint.address)
   Future<UserAddressResponse> getUserAddresses();
 
   @POST(AppEndPoint.cashOnDelivery)

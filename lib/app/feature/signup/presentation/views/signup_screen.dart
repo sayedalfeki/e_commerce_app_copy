@@ -151,6 +151,7 @@ class SignupScreen extends StatelessWidget {
                         SizedBox(width: 3.w),
                         InkWell(
                           onTap: () {
+                            Navigator.pushNamed(context, Routes.terms);
                           },
                           child: Text(
                             "Terms&Conditions",
@@ -244,7 +245,7 @@ class SignupScreen extends StatelessWidget {
       }else if (state.signupState?.success!=null){
         ShowDialogUtils.hideLoading(context);
         ShowDialogUtils.showMessage(
-            context, title: AppLocale(context).account_created_successfully,
+            context, title: AppLocale(context).accountcreatedsuccessfully,
             nigActionName: "ok",
             nigAction: () {
               Navigator.pop(context);

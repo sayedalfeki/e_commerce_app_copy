@@ -1,7 +1,7 @@
 const String imagePath = "assets/images";
 const String iconsPath = "assets/icons";
 const String svgPath = "assets/svg";
-
+const String filesPath="assets/files";
 abstract class AssetsImage {
   static const String flower='$imagePath/Flower.png';
 }
@@ -13,4 +13,7 @@ abstract class AssetsIcons {
 
 abstract class AssetsSvg {
   static const String logoSvg = '$svgPath/flower_logo.svg';
+}
+abstract class AssetsFiles{
+  static const String termsFile='$filesPath/Flowery Terms and Conditions JSON with Arabic and English.json';
 }

@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 abstract class FontsFamily {
@@ -21,16 +20,16 @@ abstract class FontWeights {
 
 abstract class FontSize {
 
-  static double s2 = 2.0.sp;
-  static double s12 = 12.0.sp;
-  static double s13 = 13.0.sp;
-  static double s14 = 14.0.sp;
-  static double s16 = 16.0.sp;
-  static double s17 = 17.0.sp;
-  static double s18 = 18.0.sp;
-  static double s20 = 20.0.sp;
-  static double s22 = 22.0.sp;
-  static double s24 = 24.0.sp;
-  static double s28 = 28.0.sp;
-  static double s40 = 40.0.sp;
+  static double s2 = 2.0;
+  static double s12 = 12.0;
+  static double s13 = 13.0;
+  static double s14 = 14.0;
+  static double s16 = 16.0;
+  static double s17 = 17.0;
+  static double s18 = 18.0;
+  static double s20 = 20.0;
+  static double s22 = 22.0;
+  static double s24 = 24.0;
+  static double s28 = 28.0;
+  static double s40 = 40.0;
 }
