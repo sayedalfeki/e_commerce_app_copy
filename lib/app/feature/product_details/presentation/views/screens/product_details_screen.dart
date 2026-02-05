@@ -1,6 +1,5 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
-import 'package:flower_app/app/core/reusable_widgets/show_dialog_utils.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/product_details/presentation/view_model/product_details_events.dart';
 import 'package:flower_app/app/feature/product_details/presentation/view_model/product_details_states.dart';
@@ -8,42 +7,35 @@ import 'package:flower_app/app/feature/product_details/presentation/view_model/p
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// ignore: must_be_immutable
 class ProductDetailsScreen extends StatelessWidget{
   final String? productId;
 
-  const ProductDetailsScreen({super.key, required this.productId});
+  ProductDetailsScreen({super.key, this.productId});
 
-  @override
-  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
-}
-
-class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final ProductDetailsViewModel viewModel = getIt<ProductDetailsViewModel>();
-
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    viewModel.doIntent(GetProductDetailsEvent(widget.productId));
+    viewModel.doIntent(GetProductDetailsEvent(productId??"673e1cd711599201718280fb"));
     return BlocProvider<ProductDetailsViewModel>(
       create: (context) => viewModel,
       
       child:Scaffold(
       
-      body:BlocConsumer<ProductDetailsViewModel,ProductDetailsStates>(
+      body:BlocBuilder<ProductDetailsViewModel,ProductDetailsStates>(
         builder: (context, state) {
           if(state.productDetailsState?.isLoading==true){
             return Center(child: CircularProgressIndicator(),);
           }else if (state.productDetailsState?.isLoading==false && state.productDetailsState?.success!=null)
           {
+
            return CustomScrollView(
               slivers: [
               SliverAppBar(
                 pinned: true,
-                leading: InkWell(child: Icon(Icons.arrow_back_ios_rounded),onTap: (){
-                  Navigator.of(context).pop();
-                },),
+                
+                leading: Icon(Icons.arrow_back_ios_rounded),
                 expandedHeight: height*0.50,
                 flexibleSpace: FlexibleSpaceBar(
                   
@@ -131,13 +123,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               SliverToBoxAdapter(
                 child: SizedBox(height: height*0.01,),
               ),
-              
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(state.productDetailsState!.success!.description??"",style:Theme.of(context).textTheme.headlineMedium ,),
+                ),
+              ),
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: ElevatedButton(onPressed: () {
-                    viewModel.doIntent(AddProductToCartEvent(widget.productId,1));
-                  }, child: Text(AppLocale(
+                  child: ElevatedButton(onPressed: () {}, child: Text(AppLocale(
                       context).add_to_cart, style: TextStyle(fontSize: 20),)),
                 ),
               ),
@@ -154,27 +149,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
           }
         },
-      
-        listener: (context, state){
-          if(state.addProductToCartState?.isLoading==true){
-            ShowDialogUtils.showLoading(context);
-          }else if(state.addProductToCartState?.isLoading==false){
-            ShowDialogUtils.hideLoading(context);
-            if(state.addProductToCartState?.success!=null){
-              ShowDialogUtils.showMessage(context, title: AppLocale(context).success, content: state.addProductToCartState!.success?.message??"",
-              posActionName: AppLocale(context).ok,
-              );
-            }else if(state.addProductToCartState?.error!=null){
-              ShowDialogUtils.showMessage(context, title: AppLocale(context).error, content: state.addProductToCartState!.error.toString(),
-              posActionName: AppLocale(context).ok,
-              );
-            }
-        }
-      }
+      )
        
     ) ,
-    )
-  );
+   ) ;
       
   }
+
 }
