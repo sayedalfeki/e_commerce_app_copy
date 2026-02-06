@@ -1,9 +1,10 @@
 import 'package:flower_app/app/config/di/di.dart';
+import 'package:flower_app/app/core/consts/app_consts.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/resources/values_manager.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/helper_function.dart';
-import 'package:flower_app/app/feature/check_out/domain/models/address_model.dart';
+import 'package:flower_app/app/feature/check_out/domain/models/payment_method_model.dart';
 import 'package:flower_app/app/feature/check_out/presentation/view_model/check_out_events.dart';
 import 'package:flower_app/app/feature/check_out/presentation/view_model/check_out_states.dart';
 import 'package:flower_app/app/feature/check_out/presentation/view_model/check_out_view_model.dart';
@@ -11,6 +12,8 @@ import 'package:flower_app/app/feature/check_out/presentation/views/widget/addre
 import 'package:flower_app/app/feature/check_out/presentation/views/widget/delivery_date_and_time_estimation_widget.dart';
 import 'package:flower_app/app/feature/check_out/presentation/views/widget/delivery_time_section_header_widget.dart';
 import 'package:flower_app/app/feature/check_out/presentation/views/widget/divider_widget.dart';
+import 'package:flower_app/app/feature/check_out/presentation/views/widget/gift_section_widget.dart';
+import 'package:flower_app/app/feature/check_out/presentation/views/widget/payment_selection_section_widget.dart';
 import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,11 +27,23 @@ class CheckOutScreen extends StatefulWidget {
 
 class _CheckOutScreenState extends State<CheckOutScreen> {
   final CheckOutViewModel viewModel=getIt<CheckOutViewModel>();
-  AddressModel? _selectedAddressModel;
   final _formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    super.initState();
+    if (viewModel.state.getAddressesState?.success == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        viewModel.doIntent(GetUserAddressesEvent());
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     var height=MediaQuery.sizeOf(context).height;
+    List<PaymentMethodModel> paymentMethods=[
+      PaymentMethodModel(key: AppConsts.cashOptionKey,name: AppLocalizations.of(context)!.cash_method),
+      PaymentMethodModel(key: AppConsts.creditOptionKey,name: AppLocalizations.of(context)!.credit_method)
+    ];
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -46,10 +61,11 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
         child: BlocConsumer<CheckOutViewModel,CheckOutStates>(
           builder: (context, state) {
             final addressesState=state.getAddressesState;
+            final selectedAddress = state.selectedAddress;
+            final selectedPaymentMethod = state.selectedPaymentMethod;
             if(addressesState?.isLoading==false && addressesState?.error!=null){
               return Center(child: Text(getException(context, addressesState!.error!),style: Theme.of(context).textTheme.bodyMedium,),);
-            }else if(addressesState?.isLoading==false && addressesState?.success!=null && _selectedAddressModel==null && addressesState!.success!.isNotEmpty){
-              _selectedAddressModel=addressesState.success!.first;
+            }else if(addressesState?.isLoading==false && addressesState?.success!=null ){
               return SingleChildScrollView(
                 child: Form(
                   key: _formKey,
@@ -63,13 +79,36 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                       ),
                       DividerWidget(),
                       AddressSelectionSectionWidget(
-                        addresses: addressesState.success ??[], 
+                        addresses: addressesState?.success ??[],
+                        selectedAddressId: selectedAddress?.id, 
                         onAddNewAddress: () {
                           Navigator.pushNamed(context, Routes.addressDetails);
                         },
                         onAddressSelected: (value) {
-                          _selectedAddressModel=value;
+                          viewModel.doIntent(SelectAddressEvent(value));
                         },
+                      ),
+                      DividerWidget(),
+                      PaymentSelectionSectionWidget(
+                        paymentMethods: paymentMethods, 
+                        onPaymentSelected: (value) {
+                          if (value != null) {
+                            viewModel.doIntent(
+                              SelectPaymentMethodEvent(value.key!)
+                            );
+                          }
+                        }, 
+                        selectedPaymentMethod: selectedPaymentMethod ?? paymentMethods.first.key!,
+                      ),
+                      DividerWidget(),
+                      Visibility(
+                        visible: selectedPaymentMethod==paymentMethods.last.key,
+                        child: Column(
+                          children: [
+                            GiftSectionWidget(),
+                            DividerWidget()
+                          ],
+                        )
                       )
                     ],
                   ),

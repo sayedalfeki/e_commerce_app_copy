@@ -949,6 +949,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add new'**
   String get add_new;
+
+  /// No description provided for @payment_method.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get payment_method;
+
+  /// No description provided for @cash_method.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash on delivery'**
+  String get cash_method;
+
+  /// No description provided for @credit_method.
+  ///
+  /// In en, this message translates to:
+  /// **'Credit card'**
+  String get credit_method;
+
+  /// No description provided for @payment_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error in configuration of payment methods system! Try ordering later'**
+  String get payment_error;
+
+  /// No description provided for @gift.
+  ///
+  /// In en, this message translates to:
+  /// **'It is a gift'**
+  String get gift;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @enter_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the name'**
+  String get enter_name;
+
+  /// No description provided for @enter_phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the phone number'**
+  String get enter_phone_number;
 }
 
 class _AppLocalizationsDelegate

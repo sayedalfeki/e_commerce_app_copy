@@ -141,5 +141,13 @@
   "location_error": "Location details unavailable",
   "delivery_address": "Delivery address",
   "no_addresses": "No saved addresses found",
-  "add_new": "Add new"
+  "add_new": "Add new",
+  "payment_method":"Payment Method",
+  "cash_method":"Cash on delivery",
+  "credit_method":"Credit card",
+  "payment_error":"Error in configuration of payment methods system! Try ordering later",
+  "gift":"It is a gift",
+  "name":"Name",
+  "enter_name":"Enter the name",
+  "enter_phone_number":"Enter the phone number"
 }

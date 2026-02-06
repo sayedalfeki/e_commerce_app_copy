@@ -74,7 +74,7 @@ class ProfileWidget extends StatelessWidget {
               leading: Icon(Icons.location_on_outlined),
               onTap: () =>
                   profileViewModel.doIntent(NavigateToAddressScreenAction()),
-
+              
             ),
             Divider(thickness: 1),
             ProfileItemsWidget(
@@ -102,7 +102,7 @@ class ProfileWidget extends StatelessWidget {
                 ),
               ),
             ),
-
+              
             ProfileItemsWidget(data: AppLocale(context).about_us,),
             ProfileItemsWidget(data: AppLocale(context).terms_and_conditions,onTap: () {
               Navigator.pushNamed(context, Routes.terms);

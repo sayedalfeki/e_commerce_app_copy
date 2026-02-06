@@ -12,10 +12,11 @@ class AppTheme {
       primary: AppColors.primaryColor,
       secondary: AppColors.secondaryColor,
     ),
-    scaffoldBackgroundColor: AppColors.secondaryColor,
+    scaffoldBackgroundColor: AppColors.whiteColor,
 
     // appBarTheme
     appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.whiteColor,
       iconTheme: IconThemeData(color: AppColors.blackColor),
       leadingWidth: 20.w,
       titleTextStyle: TextStyle(

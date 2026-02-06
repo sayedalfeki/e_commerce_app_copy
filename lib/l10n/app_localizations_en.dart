@@ -443,4 +443,29 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get add_new => 'Add new';
+
+  @override
+  String get payment_method => 'Payment Method';
+
+  @override
+  String get cash_method => 'Cash on delivery';
+
+  @override
+  String get credit_method => 'Credit card';
+
+  @override
+  String get payment_error =>
+      'Error in configuration of payment methods system! Try ordering later';
+
+  @override
+  String get gift => 'It is a gift';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get enter_name => 'Enter the name';
+
+  @override
+  String get enter_phone_number => 'Enter the phone number';
 }

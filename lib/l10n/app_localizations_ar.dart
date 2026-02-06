@@ -443,4 +443,29 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get add_new => 'إضافة جديد';
+
+  @override
+  String get payment_method => 'طريقة الدفع';
+
+  @override
+  String get cash_method => 'الدفع عند الاستلام';
+
+  @override
+  String get credit_method => 'البطاقة الائتمانية';
+
+  @override
+  String get payment_error =>
+      'خطأ في إعداد نظام طرق الدفع! يُرجى المحاولة مرة أخرى لاحقاً';
+
+  @override
+  String get gift => 'هذه هدية';
+
+  @override
+  String get name => 'الاسم';
+
+  @override
+  String get enter_name => 'أدخل الاسم';
+
+  @override
+  String get enter_phone_number => 'أدخل رقم الهاتف';
 }
