@@ -38,9 +38,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ),
               showDragHandle: true,
               enableDrag: true,
-              context: context,
-              builder: (context) { {
-                return Container(
+              context: context,,
+              builder: (context) return Container(
                   decoration: const BoxDecoration(
                     color: AppColors.whiteColor,
                     borderRadius: BorderRadius.vertical(
@@ -48,7 +47,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                     ),
                   ),
                   child: SortWidget(sortController: sortController),
-                )},).then((value) {
+                );
+              },).then((value) {
               if (value == null || !value) return;
               categoriesViewModel.doIntent(GetSortedProducts(
                   index: categoriesViewModel.state.categoriesState.index,
