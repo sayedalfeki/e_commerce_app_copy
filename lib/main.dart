@@ -3,7 +3,6 @@ import 'package:flower_app/app/core/routes/app_page.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/theme/app_theme.dart';
 import 'package:flower_app/app/feature/start/presentation/view/start_screen.dart';
-import 'package:flower_app/app/feature/start/presentation/view/start_screen.dart';
 import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
