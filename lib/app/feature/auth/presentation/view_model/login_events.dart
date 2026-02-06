@@ -8,4 +8,3 @@ class LoginEvent extends LoginEvents {
   LoginEvent(this.email, this.password, this.rememberMe);
 }
 
-class RememberMeEvent extends LoginEvents {}

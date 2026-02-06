@@ -10,7 +10,7 @@ import 'package:injectable/injectable.dart';
 @injectable
 class ProductDetailsViewModel extends Cubit<ProductDetailsStates>{
   ProductDetailsViewModel(this._getProductDetailsUsecase):super(ProductDetailsStates());
-  GetProductDetailsUsecase _getProductDetailsUsecase;
+  final GetProductDetailsUsecase _getProductDetailsUsecase;
 
   void doIntent(ProductDetailsEvents event){
     switch(event){

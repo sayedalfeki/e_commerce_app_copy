@@ -6,6 +6,8 @@
 import 'dart:async' as _i3;
 
 import 'package:flower_app/app/config/base_response/base_response.dart' as _i4;
+import 'package:flower_app/app/config/local_storage_processes/domain/storage_data_source_contract.dart'
+    as _i7;
 import 'package:flower_app/app/feature/auth/data/datasource/remote/remote_datasource_contract.dart'
     as _i2;
 import 'package:flower_app/app/feature/auth/data/model/auth_response.dart'
@@ -52,4 +54,74 @@ class MockAuthRemoteDatasourceContract extends _i1.Mock
             ),
           )
           as _i3.Future<_i4.BaseResponse<_i5.AuthDto>>);
+}
+
+/// A class which mocks [StorageDataSourceContract].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockStorageDataSourceContract extends _i1.Mock
+    implements _i7.StorageDataSourceContract {
+  MockStorageDataSourceContract() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<String?> getToken() =>
+      (super.noSuchMethod(
+            Invocation.method(#getToken, []),
+            returnValue: _i3.Future<String?>.value(),
+          )
+          as _i3.Future<String?>);
+
+  @override
+  _i3.Future<_i4.BaseResponse<bool>> addToken(String? token) =>
+      (super.noSuchMethod(
+            Invocation.method(#addToken, [token]),
+            returnValue: _i3.Future<_i4.BaseResponse<bool>>.value(
+              _i6.dummyValue<_i4.BaseResponse<bool>>(
+                this,
+                Invocation.method(#addToken, [token]),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.BaseResponse<bool>>);
+
+  @override
+  _i3.Future<_i4.BaseResponse<bool>> addRememberMe(bool? rememberMe) =>
+      (super.noSuchMethod(
+            Invocation.method(#addRememberMe, [rememberMe]),
+            returnValue: _i3.Future<_i4.BaseResponse<bool>>.value(
+              _i6.dummyValue<_i4.BaseResponse<bool>>(
+                this,
+                Invocation.method(#addRememberMe, [rememberMe]),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.BaseResponse<bool>>);
+
+  @override
+  _i3.Future<_i4.BaseResponse<bool>> clearToken() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearToken, []),
+            returnValue: _i3.Future<_i4.BaseResponse<bool>>.value(
+              _i6.dummyValue<_i4.BaseResponse<bool>>(
+                this,
+                Invocation.method(#clearToken, []),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.BaseResponse<bool>>);
+
+  @override
+  _i3.Future<_i4.BaseResponse<bool>> clearRememberMe() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearRememberMe, []),
+            returnValue: _i3.Future<_i4.BaseResponse<bool>>.value(
+              _i6.dummyValue<_i4.BaseResponse<bool>>(
+                this,
+                Invocation.method(#clearRememberMe, []),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.BaseResponse<bool>>);
 }
