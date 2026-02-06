@@ -9,13 +9,16 @@ import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_photo_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_intent.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/resources/assets_manager.dart';
 import '../../../../../../core/utils/helper_function.dart';
+import '../../../../../start/presentation/view_model/start_view_model.dart';
 import '../../view_model/profile_state.dart';
 import '../../view_model/profile_view_model.dart';
 import 'logout_widget.dart';
+
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({
@@ -29,6 +32,7 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StartViewModel startViewModel = Provider.of<StartViewModel>(context);
     final HomeViewModel homeViewModel = BlocProvider.of<HomeViewModel>(context);
     return SafeArea(
       child: Padding(
@@ -72,6 +76,9 @@ class ProfileWidget extends StatelessWidget {
             ProfileItemsWidget(
               data: AppLocale(context).saved_addresses,
               leading: Icon(Icons.location_on_outlined),
+              onTap: () =>
+                  profileViewModel.doIntent(NavigateToAddressScreenAction()),
+
             ),
             Divider(thickness: 1),
             ProfileItemsWidget(
@@ -87,9 +94,12 @@ class ProfileWidget extends StatelessWidget {
               data: AppLocale(context).language,
               leading: Icon(Icons.translate),
               trailing: TextButton(
-                onPressed: null,
+                onPressed: () {
+                  profileViewModel.doIntent(ChangeLanguageAction());
+                },
                 child: Text(
-                  AppLocale(context).english,
+                  startViewModel.language == 'en' ?
+                  AppLocale(context).english : AppLocale(context).arabic,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: AppColors.primaryColor,
                   )),

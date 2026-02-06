@@ -74,6 +74,16 @@ void main() {
       ];
     },
   );
+  test('change language emits event (broadcast)', () async {
+    final future = expectLater(
+      profileViewModel.streamController.stream,
+      emits(isA<ChangeLanguageEvent>()),
+    );
+
+    profileViewModel.doIntent(ChangeLanguageAction());
+
+    await future;
+  });
   blocTest(
     'when calling dointent with logout action it should emit correct state',
     setUp: () {
