@@ -7,14 +7,12 @@ import '../../../../../../config/di/di.dart';
 import '../../../../../home/presentation/view_model/home_view_model.dart';
 import '../../view_model/profile_intent.dart';
 import '../../view_model/profile_state.dart';
-
 class LogoutWidget extends StatefulWidget {
   const LogoutWidget({super.key});
 
   @override
   State<LogoutWidget> createState() => _LogoutWidgetState();
 }
-
 class _LogoutWidgetState extends State<LogoutWidget> {
   final ProfileViewModel profileViewModel = getIt<ProfileViewModel>();
   final HomeViewModel homeViewModel = getIt<HomeViewModel>();

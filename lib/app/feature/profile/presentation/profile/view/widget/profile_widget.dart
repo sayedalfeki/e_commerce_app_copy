@@ -91,13 +91,13 @@ class ProfileWidget extends StatelessWidget {
                 child: Text(
                   AppLocale(context).english,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: AppColors.primaryColor,
-                  ),,
-                ),
+                    color: AppColors.primaryColor,,
+                  )),
               ),
             ),
             ProfileItemsWidget(data: AppLocale(context).about_us),
-            ProfileItemsWidget(data: AppLocale(context).terms_and_conditions)Divider(thickness: 1),
+            ProfileItemsWidget(data: AppLocale(context).terms_and_conditions),
+            Divider(thickness: 1),
             ProfileItemsWidget(
               data: AppLocale(context).logout,
               leading: Icon(Icons.logout),
