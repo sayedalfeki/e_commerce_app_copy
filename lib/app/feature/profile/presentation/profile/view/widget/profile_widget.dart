@@ -91,7 +91,7 @@ class ProfileWidget extends StatelessWidget {
                 child: Text(
                   AppLocale(context).english,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: AppColors.primaryColor,,
+                    color: AppColors.primaryColor,
                   )),
               ),
             ),
@@ -106,7 +106,9 @@ class ProfileWidget extends StatelessWidget {
                 showDialog(context: context, builder: (context) {
                     return AlertDialog(
                       backgroundColor: AppColors.whiteColor,
-                      shape: OutlineInputBorder(),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                       content: LogoutWidget(),
                       contentPadding: EdgeInsets.zero,
                     );
