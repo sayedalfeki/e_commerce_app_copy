@@ -1,4 +1,5 @@
 import 'package:flower_app/app/feature/address/presentation/view/address_screen.dart';
+import 'package:flower_app/app/feature/orders/presentation/views/screen/orders_screen.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view/update_profile_widget.dart';
 import 'package:flower_app/app/feature/terms_and_conditions/presentation/views/screen/terms_and_conditions_screen.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,13 @@ class _ProfileNavigatorWidgetState extends State<ProfileNavigatorWidget> {
               builder: (_) {
                 return const AddressScreen();
               },
-            );  
+            );
+          case Routes.orders:
+            return MaterialPageRoute(
+              builder: (_) {
+                return const OrdersScreen();
+              },
+            );
           default:
             return MaterialPageRoute(builder: (_) => const ProfileScreen());
         }

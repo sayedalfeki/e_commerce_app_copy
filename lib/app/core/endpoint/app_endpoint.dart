@@ -23,6 +23,11 @@ abstract class AppEndPoint {
   static const String productsList = '/products';
   static String productsByOccasion(String occasionId) =>
       '/products?occasion=$occasionId';
+  // Orders Endpoints
+
+  static const String orders = '/orders';
+  static const String createCashOrder = '/orders';
+  static const String checkoutSession = '/orders/checkout';
 
   // Profile
   static const String profile = '/auth/profile-data';
@@ -37,7 +42,7 @@ abstract class AppEndPoint {
 
   // Best Seller endpoint
   static const String bestSeller = "/best-seller";
-  
+
   // Address endpoint
   static const String address = "/addresses";
 }
