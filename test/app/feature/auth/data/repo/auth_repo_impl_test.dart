@@ -9,7 +9,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../config/local_storage_processes/data/token_repo_impl_test.mocks.dart';
-import 'auth_repo_impl_test.mocks.dart';
+import 'auth_repo_impl_test.mocks.dart' hide MockStorageDataSourceContract;
+
 
 @GenerateMocks([AuthRemoteDatasourceContract, StorageDataSourceContract])
 void main() {
@@ -18,8 +19,8 @@ void main() {
   );
 
   late AuthRepoImpl authRepoImpl;
-  late MockAuthRemoteDatasourceContract mockRemoteDatasource;
-  late MockStorageDataSourceContract mockStorageDataSource;
+  late AuthRemoteDatasourceContract mockRemoteDatasource;
+  late StorageDataSourceContract mockStorageDataSource;
 
 
   setUp(() {

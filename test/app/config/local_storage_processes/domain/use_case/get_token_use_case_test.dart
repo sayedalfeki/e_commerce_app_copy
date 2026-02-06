@@ -3,7 +3,7 @@ import 'package:flower_app/app/config/local_storage_processes/domain/use_case/ge
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import 'clear_token_use_case_test.mocks.dart';
+import 'get_remember_me_use_case_test.mocks.dart';
 
 void main() {
   late TokenRepoContract mockRepo;

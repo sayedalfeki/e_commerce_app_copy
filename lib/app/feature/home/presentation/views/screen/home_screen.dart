@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/app_locale.dart';
 import '../../view_model/home_intent.dart';
+import '../tabs/cart_tab/presentation/views/screen/cart_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -76,11 +77,11 @@ class _HomeScreenState extends State<HomeScreen> {
     final baseTabs = [
       const HomeTab(),
       const CategoriesTab(),
-      //const CartTab(),
+
     ];
 
     if (state.isLoggedIn) {
-      baseTabs.add(const ProfileNavigatorWidget());
+      baseTabs.add(const CartTab());
       baseTabs.add(const ProfileNavigatorWidget());
     }
 

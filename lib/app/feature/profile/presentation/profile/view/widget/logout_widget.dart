@@ -24,7 +24,7 @@ class _LogoutWidgetState extends State<LogoutWidget> {
     return BlocConsumer<ProfileViewModel, ProfileState>(
       bloc: profileViewModel,
       listener: (context, state) {
-        if (state.isLogout != null || state.isLogout == true) {
+        if (state.isLogout == true) {
           Navigator.of(context, rootNavigator: true).pop();
         }
       },
