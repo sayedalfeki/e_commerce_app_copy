@@ -15,6 +15,7 @@ class SortWidget extends StatefulWidget {
 }
 
 class _SortWidgetState extends State<SortWidget> {
+  Sort? savedSort;
   @override
   void initState() {
     super.initState();
@@ -22,59 +23,35 @@ class _SortWidgetState extends State<SortWidget> {
       if (!mounted) return;
       setState(() {});
     });
+    savedSort = widget.sortController.productSort;
   }
 
   @override
   Widget build(BuildContext context) {
+    List<String> sortLabels = [
+      AppLocale(context).lowestPrice,
+      AppLocale(context).highestPrice,
+      AppLocale(context).newArrival,
+      AppLocale(context).old,
+      AppLocale(context).discount,
+    ];
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.baseline,
-            textBaseline: TextBaseline.alphabetic,
-            children: [
-              Column(
-                children: [
-                  Text(AppLocale(context).lowestPrice),
-                  SizedBox(height: 15),
-                  Text(AppLocale(context).highestPrice),
-                  SizedBox(height: 15),
-                  Text(AppLocale(context).newArrival),
-                  SizedBox(height: 15),
-                  Text(AppLocale(context).old),
-                  SizedBox(height: 15),
-                  Text(AppLocale(context).discount),
-                ],
-              ),
-              const Spacer(),
-              Column(
-                children: [
-                  RadioGroup<Sort>(
-                    groupValue: widget.sortController.productSort,
-                    onChanged: (val) {
-                      setState(() {
-                        widget.sortController.changeProductSort(val!);
-                      });
-                    },
-                    child: Column(
-                      children: [
-                        Radio<Sort>(value: Sort.priceAsc),
-                        Radio<Sort>(value: Sort.priceDesc),
-                        Radio<Sort>(value: Sort.newSort),
-                        Radio<Sort>(value: Sort.old),
-                        Radio<Sort>(value: Sort.discount),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
+          Column(
+            children: Sort.values.map((e) =>
+                _buildRadioSort(sortLabels[Sort.values.indexOf(e)]
+                    , e)).toList(),
           ),
           Spacer(),
           ElevatedButton(
             onPressed: () {
+              if (savedSort == widget.sortController.productSort) {
+                Navigator.pop(context, false);
+                return;
+              }
               Navigator.pop(context, true);
             },
             child: Row(
@@ -97,4 +74,49 @@ class _SortWidgetState extends State<SortWidget> {
       ),
     );
   }
+
+  Widget _buildRadioSort(String data, Sort sort) {
+    return Card(
+      child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.baseWhiteColor,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+                color: AppColors.whiteColor
+            ),
+          ),
+          child: ListTile(
+              onTap: () {
+                widget.sortController.changeProductSort(sort);
+                setState(() {});
+              },
+              title: Text(data),
+              trailing: Container(
+                  padding: EdgeInsets.all(2),
+                  width: 20,
+                  height: 20,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                          width: 2,
+                          color: AppColors.primaryColor
+                      )
+                  ),
+                  child: Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      color: widget.sortController.productSort == sort ?
+                      AppColors.primaryColor : AppColors.whiteColor,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  )
+
+              )
+          )
+
+      ),
+    );
+  }
+
 }

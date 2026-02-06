@@ -21,8 +21,7 @@ enum Sort {
   newSort('new'),
   old('old'),
   discount('discount');
-
   final String value;
 
-  const Sort(this.value);
+  const Sort(this.value,);
 }

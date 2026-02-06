@@ -32,16 +32,23 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         case ShowSortBottomSheetEvent():
           if (mounted) {
             showModalBottomSheet(
+              backgroundColor: AppColors.whiteColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadiusGeometry.circular(10)
               ),
               showDragHandle: true,
               enableDrag: true,
-              //isScrollControlled: true,
               context: context,
-              builder: (context) {
-                return SortWidget(sortController: sortController,);
-              },).then((value) {
+              builder: (context) { {
+                return Container(
+                  decoration: const BoxDecoration(
+                    color: AppColors.whiteColor,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
+                  child: SortWidget(sortController: sortController),
+                )},).then((value) {
               if (value == null || !value) return;
               categoriesViewModel.doIntent(GetSortedProducts(
                   index: categoriesViewModel.state.categoriesState.index,
