@@ -9,10 +9,11 @@ import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_photo_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_intent.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../../core/resources/assets_manager.dart';
+import '../../../../../../core/routes/app_route.dart';
 import '../../../../../../core/utils/helper_function.dart';
 import '../../../../../start/presentation/view_model/start_view_model.dart';
 import '../../view_model/profile_state.dart';
@@ -106,7 +107,11 @@ class ProfileWidget extends StatelessWidget {
               ),
             ),
             ProfileItemsWidget(data: AppLocale(context).about_us),
-            ProfileItemsWidget(data: AppLocale(context).terms_and_conditions),
+            ProfileItemsWidget(data: AppLocale(context).terms_and_conditions,
+              onTap: () {
+                Navigator.pushNamed(context, Routes.terms);
+              },
+            ),
             Divider(thickness: 1),
             ProfileItemsWidget(
               data: AppLocale(context).logout,
