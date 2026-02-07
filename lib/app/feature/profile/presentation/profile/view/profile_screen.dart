@@ -1,4 +1,7 @@
+
+import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
+import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/language_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_widget.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_event.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_intent.dart';
@@ -33,9 +36,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
               arguments: viewModel.state.profileState.success,
             ).then((value) => viewModel.doIntent(GetProfileAction(),));
           }
+        case ChangeLanguageEvent():
+          if (mounted) {
+            showModalBottomSheet(
+            isScrollControlled: true,
+            enableDrag: true,
+            showDragHandle: true,
+            backgroundColor: AppColors.whiteColor,
+            context: context,
+            builder: (context) {
+              return LanguageWidget();
+            },);
+          }
+          break;
+        case NavigateToAddressScreenEvent():
+          if (mounted) {
+            Navigator.pushNamed(context, Routes.userAddress);
+          }
+          break;
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileViewModel, ProfileState>(

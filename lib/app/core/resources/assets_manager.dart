@@ -16,4 +16,5 @@ abstract class AssetsSvg {
 }
 abstract class AssetsFiles{
   static const String aboutAppFile='$filesPath/Flowery About Section JSON with Expanded Content.json';
+  static const String termsFile='$filesPath/Flowery Terms and Conditions JSON with Arabic and English.json';
 }
