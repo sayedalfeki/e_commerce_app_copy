@@ -468,4 +468,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get enter_phone_number => 'Enter the phone number';
+
+  @override
+  String get subtotal => 'Sub Total';
+
+  @override
+  String get delivery_fee => 'Delivery Fee';
+
+  @override
+  String get place_order => 'Place order';
+
+  @override
+  String get online_payment_window => 'Online payment window';
 }

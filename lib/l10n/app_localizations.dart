@@ -997,6 +997,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter the phone number'**
   String get enter_phone_number;
+
+  /// No description provided for @subtotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Sub Total'**
+  String get subtotal;
+
+  /// No description provided for @delivery_fee.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Fee'**
+  String get delivery_fee;
+
+  /// No description provided for @place_order.
+  ///
+  /// In en, this message translates to:
+  /// **'Place order'**
+  String get place_order;
+
+  /// No description provided for @online_payment_window.
+  ///
+  /// In en, this message translates to:
+  /// **'Online payment window'**
+  String get online_payment_window;
 }
 
 class _AppLocalizationsDelegate

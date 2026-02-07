@@ -229,7 +229,7 @@ class LoginScreen extends StatelessWidget {
             );
           } else if (state.loginState?.success != null) {
             Navigator.pop(context); // Close the loading dialog
-            Navigator.pushReplacementNamed(context, Routes.checkOut);
+            Navigator.pushReplacementNamed(context, Routes.home);
           } else if (state.loginState?.error != null) {
             Navigator.pop(context); // Close the loading dialog
             showDialog(

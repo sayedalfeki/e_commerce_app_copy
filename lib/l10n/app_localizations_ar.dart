@@ -468,4 +468,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get enter_phone_number => 'أدخل رقم الهاتف';
+
+  @override
+  String get subtotal => 'المجموع الفرعي';
+
+  @override
+  String get delivery_fee => 'رسوم التوصيل';
+
+  @override
+  String get place_order => 'تأكيد الطلب';
+
+  @override
+  String get online_payment_window => 'شاشة الدفع الإلكتروني';
 }

@@ -37,7 +37,8 @@ class AddressDTO {
         street: street,
         id: id,
         lat: lat,
-        long: long
+        long: long,
+        phone: phone
       );
     }
 }

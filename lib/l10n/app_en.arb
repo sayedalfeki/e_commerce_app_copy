@@ -149,5 +149,9 @@
   "gift":"It is a gift",
   "name":"Name",
   "enter_name":"Enter the name",
-  "enter_phone_number":"Enter the phone number"
+  "enter_phone_number":"Enter the phone number",
+  "subtotal":"Sub Total",
+  "delivery_fee":"Delivery Fee",
+  "place_order":"Place order",
+  "online_payment_window":"Online payment window"
 }

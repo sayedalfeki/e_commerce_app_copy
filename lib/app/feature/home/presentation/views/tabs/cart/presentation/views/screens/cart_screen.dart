@@ -105,7 +105,7 @@ class CartScreen extends StatelessWidget{
               Visibility(child: Container(
                 width: double.infinity,
                 margin: EdgeInsets.symmetric(horizontal: 7),
-                child: ElevatedButton(onPressed: (){Navigator.pushNamed(context, Routes.checkOut);}, child: Text(AppLocale(context).checkout,style: Theme.of(context).textTheme.titleMedium,)),
+                child: ElevatedButton(onPressed: (){Navigator.pushNamed(context, Routes.checkOut,arguments: viewModel.state.totalPrice?.success!);}, child: Text(AppLocale(context).checkout,style: Theme.of(context).textTheme.titleMedium,)),
                 ),
                 
                 )

@@ -48,6 +48,11 @@ class AppTheme {
         fontWeight: FontWeights.regular,
         color: AppColors.grayColor,
       ),
+      labelLarge: GoogleFonts.roboto(
+        fontSize: AppSize.s16,
+        fontWeight: FontWeights.regular,
+        color: AppColors.grayColor
+      ),
       headlineLarge: GoogleFonts.inter(
         fontSize: AppSize.s18,
         fontWeight: FontWeights.medium,

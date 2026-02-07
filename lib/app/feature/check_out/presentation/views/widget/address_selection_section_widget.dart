@@ -1,6 +1,5 @@
 import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/core/resources/values_manager.dart';
-import 'package:flower_app/app/feature/address/domain/model/user_address_entity.dart';
 import 'package:flower_app/app/feature/address_details/presentation/views/screens/address_details_screen.dart';
 import 'package:flower_app/app/feature/check_out/domain/models/address_model.dart';
 import 'package:flower_app/app/feature/check_out/presentation/views/widget/address_card_widget.dart';
@@ -44,7 +43,8 @@ class AddressSelectionSectionWidget extends StatelessWidget {
                     addressModel: address,
                     isSelected: isSelected, 
                     onEdit: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => AddressDetailsScreen(userAddressEntity: address as UserAddressEntity,),));
+                      final adressFinal=address.converter();
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => AddressDetailsScreen(userAddressEntity: adressFinal,),));
                     },
                     onTap: () {
                       onAddressSelected(address);

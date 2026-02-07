@@ -149,5 +149,9 @@
     "gift": "هذه هدية",
     "name": "الاسم",
    "enter_name": "أدخل الاسم",
-   "enter_phone_number": "أدخل رقم الهاتف"
+   "enter_phone_number": "أدخل رقم الهاتف",
+   "subtotal": "المجموع الفرعي",
+   "delivery_fee": "رسوم التوصيل",
+   "place_order": "تأكيد الطلب",
+   "online_payment_window": "شاشة الدفع الإلكتروني"
 }
