@@ -1,0 +1,32 @@
+name: PR Branch Validation
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  validate-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate branch name
+        uses: ./.github/actions/validate-branch
+        with:
+          max-length: 80
+          require-issue-number: false
+
+      - name: Check PR title matches branch (optional)
+        if: steps.validate-branch.outputs.is-valid == 'true'
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          BRANCH_DESC="${{ steps.validate-branch.outputs.branch-description }}"
+          
+          # Convert kebab-case to Title Case for comparison
+          EXPECTED_TITLE=$(echo "$BRANCH_DESC" | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)} 1')
+          
+          echo "PR Title: $PR_TITLE"
+          echo "Expected from branch: $EXPECTED_TITLE"
+          
+          # Suggest better PR title if needed
+          if [[ ! "$PR_TITLE" =~ $(echo "$BRANCH_DESC" | sed 's/-/ /g') ]]; then
+            echo "💡 Consider updating PR title to match branch: \"$EXPECTED_TITLE\""
+          fi
