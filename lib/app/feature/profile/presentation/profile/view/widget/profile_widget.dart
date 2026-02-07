@@ -1,5 +1,6 @@
 import 'package:flower_app/app/core/consts/app_consts.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_intent.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_view_model.dart';
@@ -106,7 +107,10 @@ class ProfileWidget extends StatelessWidget {
                   )),
               ),
             ),
-            ProfileItemsWidget(data: AppLocale(context).about_us),
+            ProfileItemsWidget(data: AppLocale(context).about_us,onTap: () {
+              Navigator.pushNamed(context, Routes.aboutApp);
+            },),
+            
             ProfileItemsWidget(data: AppLocale(context).terms_and_conditions,
               onTap: () {
                 Navigator.pushNamed(context, Routes.terms);

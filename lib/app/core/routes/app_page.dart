@@ -1,4 +1,6 @@
 import 'package:flower_app/app/core/routes/app_route.dart';
+import 'package:flower_app/app/feature/about_app/presentation/views/screen/about_app_screen.dart';
+import 'package:flower_app/app/feature/auth/presentation/views/screen/login/login_Screen.dart';
 import 'package:flower_app/app/feature/best_seller/presentation/views/screen/best_seller_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/screen/home_screen.dart';
 import 'package:flower_app/app/feature/occasion/presentation/views/screen/occasion_screen.dart';
@@ -50,6 +52,8 @@ class RouteGenerator {
 
       case Routes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+      case Routes.aboutApp:
+        return MaterialPageRoute(builder: (_) => const AboutAppScreen());  
       
       case Routes.terms:
         return MaterialPageRoute(builder: (_) => const TermsAndConditionsScreen());
