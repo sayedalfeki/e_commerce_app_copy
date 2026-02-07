@@ -23,7 +23,6 @@ class ProductDetailsRepoImpl implements ProductDetailsRepoContract{
     }
   }
 
-  @override
   Future<BaseResponse<UpdateCartModel>> addProductToCart({String? productId, int? quantity})async {
     var response = await productDetailsRemoteDataSourceContract.addProductToCart(productId: productId,quantity: quantity);
     switch(response){

@@ -185,5 +185,9 @@
   "location_error": "Location details unavailable",
   "delivery_address": "Delivery address",
   "no_addresses": "No saved addresses found",
-  "add_new": "Add new"
+  "add_new": "Add new",
+  "logOutAction":"Logout",
+  "yes":"Yes",
+  "no":"No",
+  "refresh":"ٌRefresh"
 }

@@ -46,7 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: BlocBuilder<HomeViewModel,HomeStates>(
         builder: (context, state) {
 
-          List<Widget> tabs = buildTabs(viewModel.state);
           List<BottomNavigationBarItem>bottomNavBarItems = buildNavItems(
               context, viewModel.state);
 
@@ -80,20 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<Widget> buildTabs(HomeStates state) {
-    final baseTabs = [
-      const HomeTab(),
-      const CategoriesTab(),
 
-    ];
-
-    if (state.isLoggedIn) {
-      baseTabs.add(const CartTab());
-      baseTabs.add(const ProfileNavigatorWidget());
-    }
-
-    return baseTabs;
-  }
 
   List<BottomNavigationBarItem> buildNavItems(BuildContext context,
       HomeStates state) {
