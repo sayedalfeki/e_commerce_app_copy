@@ -1,4 +1,5 @@
 {
+  "@@locale": "ar",
   "emailVerification": "تأكيد البريد الإلكتروني",
   "enterOtp": "من فضلك أدخل الرمز المرسل إلى عنوان بريدك الإلكتروني",
   "password": "كلمة المرور",
@@ -126,5 +127,23 @@
   "savedAddress": "الاماكن المسجلة",
   "someThingWrong": "هناك خطأ ما",
   "update": "تحديث",
-  "changeLanguage":"تغيير اللغة"
+  "changeLanguage":"تغيير اللغة",
+  "items":"أغراض",
+  "clearall":"حذف الكل",
+  "noitemsincart":"لا توجد عناصر في سلة التسوق",
+  "total":"المجموع",
+  "checkout":"الدفع",
+    "delivery_time": "وقت التوصيل",
+  "schedule": "الجدولة",
+  "instant": "فوري",
+  "arrive_by": "يصل بحلول",
+    "success":"تم بنجاح",
+    "location_error": "تفاصيل الموقع غير متوفرة",
+    "delivery_address": "عنوان التوصيل",
+    "no_addresses": "لم يتم العثور على عناوين محفوظة",
+    "add_new": "إضافة جديد",
+    "logOutAction":"تسجيل الخروج",
+    "yes":"نعم",
+    "no":"لا",
+    "refresh":"إعاده تحميل"
 }

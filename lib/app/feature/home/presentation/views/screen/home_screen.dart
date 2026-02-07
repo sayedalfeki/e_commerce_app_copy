@@ -3,6 +3,7 @@ import 'package:flower_app/app/core/resources/app_colors.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/app_tab.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_states.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_view_model.dart';
+import 'package:flower_app/app/feature/home/presentation/views/tabs/cart/presentation/views/screens/cart_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/categories_tab/presentation/views/screen/categories_tab.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/home_tab/presentation/views/screen/home_tab.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_navigator_widget.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/app_locale.dart';
 import '../../view_model/home_intent.dart';
-import '../tabs/cart_tab/presentation/views/screen/cart_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,13 +24,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HomeViewModel viewModel=getIt<HomeViewModel>();
-
+  
 
   @override
   void initState() {
     super.initState();
     viewModel.doIntent(GetTokenAction());
   }
+  List<Widget> tabs=[
+    HomeTab(),
+    CategoriesTab(),
+    CartScreen(),
+    ProfileNavigatorWidget()
+  ];
+
   @override
   Widget build(BuildContext context) {
 
@@ -39,7 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: BlocBuilder<HomeViewModel,HomeStates>(
         builder: (context, state) {
 
-          List<Widget> tabs = buildTabs(viewModel.state);
           List<BottomNavigationBarItem>bottomNavBarItems = buildNavItems(
               context, viewModel.state);
 
@@ -73,20 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<Widget> buildTabs(HomeStates state) {
-    final baseTabs = [
-      const HomeTab(),
-      const CategoriesTab(),
 
-    ];
-
-    if (state.isLoggedIn) {
-      baseTabs.add(const CartTab());
-      baseTabs.add(const ProfileNavigatorWidget());
-    }
-
-    return baseTabs;
-  }
 
   List<BottomNavigationBarItem> buildNavItems(BuildContext context,
       HomeStates state) {

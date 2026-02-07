@@ -40,4 +40,7 @@ abstract class AppEndPoint {
   
   // Address endpoint
   static const String address = "/addresses";
+  //this end point used for checkout page, ether cash on delivery or Credit card
+  static const String cashOnDelivery='/orders';
+  static const String creditCard ='/orders/checkout?url=http://localhost:3000';
 }

@@ -14,7 +14,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../core/resources/assets_manager.dart';
-import '../../../../../../core/routes/app_route.dart';
 import '../../../../../../core/utils/helper_function.dart';
 import '../../../../../start/presentation/view_model/start_view_model.dart';
 import '../../view_model/profile_state.dart';
