@@ -1,0 +1,173 @@
+name: Validate Branch Name
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+  push:
+    branches-ignore:
+      - main
+      - master
+      - develop
+
+# Define reusable validation patterns
+env:
+  # Flutter-specific branch naming patterns
+  FEATURE_PATTERN: '^(feature|feat)/([a-z0-9]+-?)+$'  # feature/login-system
+  BUGFIX_PATTERN: '^(bugfix|fix|hotfix)/([a-z0-9]+-?)+$'  # fix/login-crash
+  RELEASE_PATTERN: '^release/v?[0-9]+\.[0-9]+(\.[0-9]+)?$'  # release/1.2.0 or release/v1.2.0
+  HOTFIX_PATTERN: '^hotfix/[a-z0-9-]+$'  # hotfix/critical-bug
+  REFACTOR_PATTERN: '^refactor/[a-z0-9-]+$'  # refactor/auth-service
+  DOCS_PATTERN: '^docs/[a-z0-9-]+$'  # docs/readme-update
+  CHORE_PATTERN: '^chore/[a-z0-9-]+$'  # chore/deps-update
+  TEST_PATTERN: '^test/[a-z0-9-]+$'  # test/add-coverage
+  
+  # Flutter conventional commits prefixes (optional extension)
+  CONVENTIONAL_PREFIXES: '^(feat|fix|docs|style|refactor|test|chore|perf|build|ci|revert)'
+  
+  # Branch name max length (GitHub limit is 255)
+  MAX_LENGTH: 100
+
+jobs:
+  validate-branch-name:
+    runs-on: ubuntu-latest
+    name: Validate Branch Name Convention
+    
+    steps:
+      - name: Extract branch name
+        id: extract-branch
+        run: |
+          # For PR events, get the head branch (source branch)
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            BRANCH_NAME="${{ github.head_ref }}"
+          else
+            # For push events, extract branch from ref
+            BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+          fi
+          
+          # Clean branch name (remove special characters)
+          CLEAN_BRANCH_NAME=$(echo "$BRANCH_NAME" | tr -cd '[:alnum:]._-/')
+          
+          echo "Branch name: $BRANCH_NAME"
+          echo "Clean branch name: $CLEAN_BRANCH_NAME"
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          echo "clean_branch_name=$CLEAN_BRANCH_NAME" >> $GITHUB_OUTPUT
+
+      - name: Validate branch naming convention
+        id: validate
+        run: |
+          BRANCH_NAME="${{ steps.extract-branch.outputs.branch_name }}"
+          
+          echo "🔍 Validating branch name: $BRANCH_NAME"
+          echo "Event: ${{ github.event_name }}"
+          
+          # Skip validation for certain branches
+          if [[ "$BRANCH_NAME" == "main" || "$BRANCH_NAME" == "master" || "$BRANCH_NAME" == "develop" ]]; then
+            echo "✅ Protected branch detected, skipping validation"
+            exit 0
+          fi
+          
+          # Check branch name length
+          if [ ${#BRANCH_NAME} -gt ${{ env.MAX_LENGTH }} ]; then
+            echo "❌ Branch name is too long (max ${{ env.MAX_LENGTH }} characters)"
+            echo "Current length: ${#BRANCH_NAME}"
+            exit 1
+          fi
+          
+          # Validate against Flutter-specific patterns
+          if [[ "$BRANCH_NAME" =~ ${{ env.FEATURE_PATTERN }} ]]; then
+            echo "✅ Valid feature branch: $BRANCH_NAME"
+          elif [[ "$BRANCH_NAME" =~ ${{ env.BUGFIX_PATTERN }} ]]; then
+            echo "✅ Valid bugfix branch: $BRANCH_NAME"
+          elif [[ "$BRANCH_NAME" =~ ${{ env.RELEASE_PATTERN }} ]]; then
+            echo "✅ Valid release branch: $BRANCH_NAME"
+          elif [[ "$BRANCH_NAME" =~ ${{ env.HOTFIX_PATTERN }} ]]; then
+            echo "✅ Valid hotfix branch: $BRANCH_NAME"
+          elif [[ "$BRANCH_NAME" =~ ${{ env.REFACTOR_PATTERN }} ]]; then
+            echo "✅ Valid refactor branch: $BRANCH_NAME"
+          elif [[ "$BRANCH_NAME" =~ ${{ env.DOCS_PATTERN }} ]]; then
+            echo "✅ Valid docs branch: $BRANCH_NAME"
+          elif [[ "$BRANCH_NAME" =~ ${{ env.CHORE_PATTERN }} ]]; then
+            echo "✅ Valid chore branch: $BRANCH_NAME"
+          elif [[ "$BRANCH_NAME" =~ ${{ env.TEST_PATTERN }} ]]; then
+            echo "✅ Valid test branch: $BRANCH_NAME"
+          else
+            echo "❌ Invalid branch name: $BRANCH_NAME"
+            echo ""
+            echo "📋 Expected branch name formats for Flutter projects:"
+            echo ""
+            echo "🎯 Feature Development:"
+            echo "   feature/<description>      (e.g., feature/user-authentication)"
+            echo "   feat/<description>         (e.g., feat/add-login-screen)"
+            echo ""
+            echo "🐛 Bug Fixes:"
+            echo "   bugfix/<description>       (e.g., bugfix/login-crash)"
+            echo "   fix/<description>          (e.g., fix/api-timeout)"
+            echo "   hotfix/<description>       (e.g., hotfix/critical-security)"
+            echo ""
+            echo "🚀 Releases:"
+            echo "   release/<version>          (e.g., release/1.2.0)"
+            echo "   release/v<version>         (e.g., release/v1.2.0)"
+            echo ""
+            echo "🛠️  Other Types:"
+            echo "   refactor/<description>     (e.g., refactor/auth-service)"
+            echo "   docs/<description>         (e.g., docs/update-readme)"
+            echo "   chore/<description>        (e.g., chore/update-dependencies)"
+            echo "   test/<description>         (e.g., test/add-widget-tests)"
+            echo ""
+            echo "📝 Rules:"
+            echo "   • Use kebab-case (lowercase with hyphens)"
+            echo "   • Maximum ${{ env.MAX_LENGTH }} characters"
+            echo "   • Be descriptive but concise"
+            echo "   • Start with a valid prefix"
+            echo "   • Reference issues: feature/123-login-system"
+            echo ""
+            echo "💡 Tips for Flutter projects:"
+            echo "   • Include widget/feature name: feature/login-button"
+            echo "   • Reference related issue: fix/456-app-crash"
+            echo "   • Specify platform if needed: feature/ios-dark-mode"
+            echo ""
+            exit 1
+          fi
+
+      - name: Post validation result as PR comment (if PR)
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branchName = "${{ steps.extract-branch.outputs.branch_name }}";
+            const validationFailed = "${{ failure() }}" === "true";
+            
+            if (validationFailed) {
+              const message = `## ⚠️ Branch Name Validation Failed
+              
+              The branch name **\`${branchName}\`** doesn't follow our Flutter project naming conventions.
+              
+              ### 💡 How to Fix:
+              1. **Rename your branch locally:**
+                 \`\`\`bash
+                 git branch -m ${branchName} feature/your-descriptive-name
+                 \`\`\`
+              
+              2. **Push the renamed branch:**
+                 \`\`\`bash
+                 git push origin -u feature/your-descriptive-name
+                 \`\`\`
+              
+              3. **Update this PR:** Go to your PR and update the base branch
+              
+              ### 📋 Valid Patterns:
+              - \`feature/user-authentication\`
+              - \`fix/login-crash\`
+              - \`docs/update-readme\`
+              - \`chore/update-flutter-sdk\`
+              - \`test/add-widget-tests\`
+              
+              See the workflow logs for detailed validation rules.`;
+              
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: message
+              });
+            }
