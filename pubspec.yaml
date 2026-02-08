@@ -61,7 +61,6 @@ dependencies:
   flutter_map: ^8.2.2
   latlong2: ^0.9.1
   url_launcher: ^6.3.2
-  geocoding: ^4.0.0
   firebase_core: ^4.4.0
   shared_preferences: ^2.5.4
   get_it: ^9.2.0
