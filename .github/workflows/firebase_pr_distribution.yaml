@@ -1,4 +1,4 @@
-name: Firebase Distribution
+name: Flutter Firebase Distribution
 
 on:
   pull_request:
@@ -14,84 +14,41 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Find Existing APK
-        id: find-apk
-        run: |
-          # Check common APK locations
-          LOCATIONS=(
-            "app/build/outputs/apk/release/*.apk"
-            "android/app/build/outputs/apk/release/*.apk"
-            "build/app/outputs/flutter-apk/*.apk"
-            "build/app/outputs/apk/release/*.apk"
-            "*.apk"
-            "build/*.apk"
-          )
-          
-          for location in "${LOCATIONS[@]}"; do
-            if ls $location 1> /dev/null 2>&1; then
-              APK_FILE=$(ls $location | head -1)
-              echo "Found APK: $APK_FILE"
-              echo "apk-path=$APK_FILE" >> $GITHUB_OUTPUT
-              exit 0
-            fi
-          done
-          
-          echo "No APK found in common locations"
-          echo "apk-path=" >> $GITHUB_OUTPUT
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.5'
+          channel: 'stable'
       
-      - name: Build APK if not found
-        if: steps.find-apk.outputs.apk-path == ''
+      - name: Install Dependencies
         run: |
-          echo "Building APK..."
-          # Try different build commands
-          if [ -f "android/gradlew" ]; then
-            cd android
-            chmod +x ./gradlew
-            ./gradlew assembleRelease
-            cd ..
-          elif [ -f "./gradlew" ]; then
-            chmod +x ./gradlew
-            ./gradlew assembleRelease
-          elif [ -f "pubspec.yaml" ]; then
-            # Flutter project
-            flutter build apk --release
-          elif [ -f "package.json" ]; then
-            # React Native
-            npm install
-            cd android
-            ./gradlew assembleRelease
-            cd ..
-          else
-            echo "Error: Could not determine build system"
-            exit 1
-          fi
+          flutter pub get
+          flutter doctor -v
       
-      - name: Install Firebase CLI
+      - name: Setup Android
+        uses: android-actions/setup-android@v3
+      
+      - name: Accept Licenses
         run: |
-          # Install Node.js without cache
-          curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-          sudo npm install -g firebase-tools
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+      
+      - name: Build APK
+        run: |
+          flutter clean
+          flutter build apk --release
+          ls -la build/app/outputs/flutter-apk/
+      
+      - name: Setup Firebase CLI
+        run: |
+          npm install -g firebase-tools
+          firebase --version
       
       - name: Upload to Firebase
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: |
-          # Final attempt to find APK
-          APK_FILE=$(find . -name "*.apk" -type f | grep -i release | head -1)
-          
-          if [ -z "$APK_FILE" ]; then
-            APK_FILE=$(find . -name "*.apk" -type f | head -1)
-          fi
-          
-          if [ -z "$APK_FILE" ]; then
-            echo "Error: Could not find any APK file"
-            exit 1
-          fi
-          
-          echo "Uploading: $APK_FILE"
-          
-          firebase appdistribution:distribute "$APK_FILE" \
+          # Upload the APK
+          firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
             --app ${{ secrets.ANDROID_APP_ID }} \
-            --groups "qa-team,testers" \
-            --release-notes "PR#${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}"
+            --groups "testers" \
+            --release-notes "PR #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
