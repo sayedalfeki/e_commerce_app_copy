@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../feature/profile/data/profile_repo_impl_test.mocks.dart';
+import 'token_repo_impl_test.mocks.dart';
 
 @GenerateMocks([StorageDataSourceContract])
 void main() {
