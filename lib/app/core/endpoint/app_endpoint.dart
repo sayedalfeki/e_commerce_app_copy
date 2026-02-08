@@ -35,6 +35,16 @@ abstract class AppEndPoint {
   // Used for updating cart quantity and deleting cart items
   static const String updateCart = "/cart/{productId}";
 
+  // Occasion Endpoints
+  static const String occasions = '/occasions';
+  static String occasionById(String id) => '/occasions/$id';
+  // Product Endpoints
+  //static const String products = '/products';
+  static String productsByOccasion(String occasionId) =>
+      '/products?occasion=$occasionId';
+  // addresses end points
+  static const String addAddresses = '/addresses';
+  static const String updateAddresses = '/addresses/{addressId}';
   // Best Seller endpoint
   static const String bestSeller = "/best-seller";
   

@@ -292,6 +292,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get search => 'بحث';
 
   @override
+  String get add_to_cart => 'Add to cart';
+
+  @override
+  String get out_of_stock => 'Out of Stock';
+
+  @override
+  String get in_stock => 'In Stock';
+
+  @override
+  String get bouquet_include => 'Bouquet include';
+  
+  @override
   String get deliveryLocation => 'التوصيل إلى 2XVP+XC - الشيخ زايد';
 
   @override
