@@ -37,11 +37,11 @@ class UpdateAddressEvent extends AddressDetailsEvents {
   });
 }
 
-class getAddressFromCoordinatesEvent extends AddressDetailsEvents {
+class GetAddressFromCoordinatesEvent extends AddressDetailsEvents {
   double latitude;
   double longitude;
 
-  getAddressFromCoordinatesEvent({
+  GetAddressFromCoordinatesEvent({
     required this.latitude,
     required this.longitude,
   });
