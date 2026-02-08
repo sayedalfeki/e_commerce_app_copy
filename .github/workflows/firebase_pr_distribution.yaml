@@ -1,8 +1,8 @@
 name: Firebase PR Distribution
 
 on:
-  pull_request:
-    types: [labeled]
+  push:
+    branches: [ "feature/*" ]
 
 jobs:
   distribute:
