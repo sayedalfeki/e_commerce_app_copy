@@ -58,7 +58,7 @@ class AddressDetailsViewmodel extends Cubit<AddressDetailsStates>{
           long: event.long,
           username: event.username
         );
-      case getAddressFromCoordinatesEvent():
+      case GetAddressFromCoordinatesEvent():
         _getAddressFromCoordinates(
           lat: event.latitude,
           lng: event.longitude
