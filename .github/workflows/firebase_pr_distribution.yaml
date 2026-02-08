@@ -1,8 +1,9 @@
-name: Flutter Firebase Distribution
+name: Firebase Distribution
 
 on:
   pull_request:
     types: [labeled]
+    
 
 jobs:
   distribute:
@@ -20,35 +21,30 @@ jobs:
           flutter-version: '3.19.5'
           channel: 'stable'
       
-      - name: Install Dependencies
-        run: |
-          flutter pub get
-          flutter doctor -v
-      
-      - name: Setup Android
-        uses: android-actions/setup-android@v3
-      
-      - name: Accept Licenses
-        run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+      - name: Install dependencies
+        run: flutter pub get
       
       - name: Build APK
         run: |
           flutter clean
           flutter build apk --release
-          ls -la build/app/outputs/flutter-apk/
       
-      - name: Setup Firebase CLI
-        run: |
-          npm install -g firebase-tools
-          firebase --version
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
       
       - name: Upload to Firebase
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: |
-          # Upload the APK
           firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
             --app ${{ secrets.ANDROID_APP_ID }} \
             --groups "testers" \
-            --release-notes "PR #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
+            --release-notes "PR #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}"
+      
+      - name: Comment on PR
+        if: success()
+        run: |
+          echo "✅ Build uploaded to Firebase App Distribution!" >> comment.txt
+          echo "" >> comment.txt
+          echo "Testers have been notified." >> comment.txt
+        # Note: For commenting, you'd need to use GitHub API or another action
