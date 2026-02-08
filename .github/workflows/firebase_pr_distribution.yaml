@@ -2,11 +2,15 @@ name: Firebase PR Distribution
 
 on:
   push:
-    branches: [ "feature/*" ]
+    branches:
+      - "feature/*"  # كل branch يبدأ بـ feature/
 
 jobs:
   distribute:
-    if: github.event.label.name == 'ReadyForTesting'
+    # يشغّل job فقط إذا فيه PR على هذا branch والـ PR عليه label ReadyForTesting
+    if: >
+      github.event.pull_request != null &&
+      contains(github.event.pull_request.labels.*.name, 'ReadyForTesting')
     runs-on: ubuntu-latest
 
     steps:
