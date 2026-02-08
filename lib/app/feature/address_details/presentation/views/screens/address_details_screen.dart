@@ -43,7 +43,7 @@ class _AddressDetailsScreenState extends State<AddressDetailsScreen> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     if (widget.userAddressEntity != null) {
-      viewmodel.doIntent(getAddressFromCoordinatesEvent(
+      viewmodel.doIntent(GetAddressFromCoordinatesEvent(
         latitude: double.parse(widget.userAddressEntity!.lat!),
         longitude: double.parse(widget.userAddressEntity!.long!)
       ));
@@ -76,7 +76,7 @@ class _AddressDetailsScreenState extends State<AddressDetailsScreen> {
                        initialCenter: LatLng(26.8206, 30.8025), // Center the map over London, UK
                        initialZoom: 9.2,
                        onTap: (tapPosition, point) {
-                         viewmodel.doIntent(getAddressFromCoordinatesEvent(
+                         viewmodel.doIntent(GetAddressFromCoordinatesEvent(
                           latitude: point.latitude,
                           longitude: point.longitude
                          ));
