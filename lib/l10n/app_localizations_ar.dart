@@ -68,6 +68,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dontHaveAnAccount => 'ليس لديك حساب؟';
 
   @override
+  String get register => 'تسجيل دخول';
+
+  @override
   String get home => 'الرئيسية';
 
   @override
@@ -187,6 +190,61 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loading => 'جاري التحميل...';
 
   @override
+  String get welcome => 'مرحباً';
+
+  @override
+  String get occasion => 'المناسبات';
+
+  @override
+  String get occasionSubtitle => 'ازدهر مع أفضل المبيعات الرائعة لدينا';
+
+  @override
+  String get bloomWithOurExquisiteBestSellers =>
+      'تألق مع منتجاتنا الأكثر مبيعاً والراقية';
+
+  @override
+  String get wedding => 'زفاف';
+
+  @override
+  String get graduation => 'تخرج';
+
+  @override
+  String get birthday => 'عيد ميلاد';
+
+  @override
+  String get katbKetab => 'كتب كتاب';
+
+  @override
+  String get addToCart => 'أضف إلى عربة التسوق';
+
+  @override
+  String get add_to_cart => 'أضف إلى السلة';
+
+  @override
+  String get addtocart => 'أضف إلى السلة';
+
+  @override
+  String get egp => 'ج.م';
+
+  @override
+  String get viewAll => 'عرض الكل';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get networkError => 'لا يوجد اتصال بالإنترنت';
+
+  @override
+  String get serverError => 'حدث خطأ ما. يرجى المحاولة مرة أخرى';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get noProductsForOccasion => 'لا توجد منتجات متاحة لهذه المناسبة';
+
+  @override
   String get categories => 'الفئات';
 
   @override
@@ -215,6 +273,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get termsandconditions => 'الشروط والأحكام';
 
   @override
+  String get account_created_successfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get creating_an_account_you_agree_to_our =>
+      'بإنشاء حساب، فإنك توافق على شروطنا';
+
+  @override
+  String get terms_and_conditions => 'الشروط والأحكام';
+
+  @override
   String get connectionFailed => 'لا يوجد اتصال بالانترنت';
 
   @override
@@ -224,19 +292,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get search => 'بحث';
 
   @override
+  String get add_to_cart => 'Add to cart';
+
+  @override
+  String get out_of_stock => 'Out of Stock';
+
+  @override
+  String get in_stock => 'In Stock';
+
+  @override
+  String get bouquet_include => 'Bouquet include';
+  
+  @override
   String get deliveryLocation => 'التوصيل إلى 2XVP+XC - الشيخ زايد';
 
   @override
   String get empty_data => 'لا توجد منتجات لعرضها';
 
   @override
-  String get view_all => 'عرض الكل';
-
-  @override
   String get egyptianLivre => 'ج.م';
-
-  @override
-  String get occasion => 'المناسبة';
 
   @override
   String get bestSeller => 'الأكثر مبيعاً';
@@ -257,68 +331,34 @@ class AppLocalizationsAr extends AppLocalizations {
   String get continueAsGuest => 'المتابعة كزائر';
 
   @override
-  String get account_created_successfully => 'تم إنشاء الحساب بنجاح';
-
-  @override
-  String get creating_an_account_you_agree_to_our =>
-      'بإنشاء حساب، فإنك توافق على شروطنا';
-
-  @override
-  String get terms_and_conditions => 'الشروط والأحكام';
-
-  @override
   String get status => 'الحاله';
 
   @override
-  String get all_prices_include_tax => 'All prices include tax';
+  String get allpricesincludetax => 'جميع الأسعار تشمل الضريبة';
 
   @override
   String get description => 'الوصف';
 
   @override
-  String get add_to_cart => 'Add to cart';
+  String get outofstock => 'إنتهى من المخزن';
 
   @override
-  String get out_of_stock => 'Out of Stock';
+  String get instock => 'في المخزن';
 
   @override
-  String get in_stock => 'In Stock';
+  String get bouquetinclude => 'الباقه تحتوي على';
 
   @override
-  String get bouquet_include => 'Bouquet include';
+  String get current_password => 'كلمة السر الحالية';
 
   @override
-  String get egp => 'ج.م';
+  String get new_password => 'كلمة السر الجديدة';
 
   @override
-  String get items => 'أغراض';
+  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
 
   @override
-  String get clearall => 'حذف الكل';
-
-  @override
-  String get noitemsincart => 'لا توجد عناصر في سلة التسوق';
-
-  @override
-  String get total => 'المجموع';
-
-  @override
-  String get checkout => 'الدفع';
-
-  @override
-  String get add_to_cart => 'Add to cart';
-
-  @override
-  String get out_of_stock => 'Out of Stock';
-
-  @override
-  String get in_stock => 'In Stock';
-
-  @override
-  String get bouquet_include => 'Bouquet include';
-
-  @override
-  String get my_orders => 'hطلباتي';
+  String get my_orders => 'طلباتي';
 
   @override
   String get saved_addresses => 'المواقع المحفوظة';
@@ -342,60 +382,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get logout => 'خروج';
 
   @override
-  String get current_password => 'كلمة السر الحالية';
-
-  @override
-  String get new_password => 'كلمة السر الجديدة';
-
-  @override
-  String get update => 'تحديث';
-
-  @override
-  String get password_changed => 'تم تغيير كلمة المرور بنجاح';
-
-  @override
-  String get welcome => 'Welcome';
-
-  @override
-  String get occasionSubtitle => 'Bloom with our exquisite best sellers';
-
-  @override
-  String get wedding => 'Wedding';
-
-  @override
-  String get graduation => 'Graduation';
-
-  @override
-  String get birthday => 'Birthday';
-
-  @override
-  String get katbKetab => 'Katb Ketab';
-
-  @override
-  String get addToCart => 'Add to cart';
-
-  @override
-  String get viewAll => 'View All';
-
-  @override
-  String get networkError => 'No internet connection';
-
-  @override
-  String get serverError => 'Something went wrong. Please try again';
-
-  @override
-  String get retry => 'Retry';
-
-  @override
-  String get noProductsForOccasion => 'No products available for this occasion';
-
-  @override
-  String get success => 'تم بنجاح';
-
-  @override
-  String get error => 'Error';
-
-  @override
   String get change => 'تغيير';
 
   @override
@@ -412,4 +398,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get uploading_photo_error => 'خطأ في تحديث الصورة';
+
+  @override
+  String get addNewAddress => 'اضف موقعا جديدا';
+
+  @override
+  String get savedAddress => 'الاماكن المسجلة';
+
+  @override
+  String get someThingWrong => 'هناك خطأ ما';
+
+  @override
+  String get update => 'تحديث';
+
+  @override
+  String get changeLanguage => 'تغيير اللغة';
+
+  @override
+  String get items => 'أغراض';
+
+  @override
+  String get clearall => 'حذف الكل';
+
+  @override
+  String get noitemsincart => 'لا توجد عناصر في سلة التسوق';
+
+  @override
+  String get total => 'المجموع';
+
+  @override
+  String get checkout => 'الدفع';
+
+  @override
+  String get delivery_time => 'وقت التوصيل';
+
+  @override
+  String get schedule => 'الجدولة';
+
+  @override
+  String get instant => 'فوري';
+
+  @override
+  String get arrive_by => 'يصل بحلول';
+
+  @override
+  String get success => 'تم بنجاح';
+
+  @override
+  String get location_error => 'تفاصيل الموقع غير متوفرة';
+
+  @override
+  String get delivery_address => 'عنوان التوصيل';
+
+  @override
+  String get no_addresses => 'لم يتم العثور على عناوين محفوظة';
+
+  @override
+  String get add_new => 'إضافة جديد';
 }

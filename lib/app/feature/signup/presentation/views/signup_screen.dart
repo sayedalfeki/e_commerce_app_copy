@@ -151,6 +151,7 @@ class SignupScreen extends StatelessWidget {
                         SizedBox(width: 3.w),
                         InkWell(
                           onTap: () {
+                            Navigator.pushNamed(context, Routes.terms);
                           },
                           child: Text(
                             "Terms&Conditions",

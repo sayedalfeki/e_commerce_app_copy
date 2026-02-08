@@ -1,25 +1,70 @@
-import 'package:flower_app/app/config/local_storage_processes/local_storage_processes.dart';
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flower_app/app/core/resources/assets_manager.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
+import 'package:flower_app/app/feature/splash/presentation/view_model/splash_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SplashScreen extends StatelessWidget {
+import '../../../../config/di/di.dart';
+import '../../../../core/utils/helper_function.dart';
+import '../view_model/splash_event.dart';
+import '../view_model/splash_intent.dart';
+import '../view_model/splash_state.dart';
+
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    Future.delayed(Duration(milliseconds: 3500), () async{
-      Navigator.pushReplacementNamed(context,await LocalStorageProcesses.readToken()==null?  Routes.login:Routes.home);
-      
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  final SplashViewModel splashViewModel = getIt<SplashViewModel>();
+
+  @override
+  void initState() {
+    super.initState();
+    splashViewModel.doIntent(NavigateAction());
+    splashViewModel.cubitStream.listen((event) {
+      switch (event) {
+        case NavigateToLoginEvent():
+          if (mounted) {
+            Navigator.pushReplacementNamed(context, Routes.login);
+          }
+          break;
+        case NavigateToHomeEvent():
+          if (mounted) {
+            Navigator.pushReplacementNamed(context, Routes.home);
+          }
+      }
     });
-    return Scaffold(
-      body: Center(
-        child: SvgPicture.asset(AssetsSvg.logoSvg, width: 200).animate().scale(
-          delay: Duration(milliseconds: 1500),
-          duration: Duration(milliseconds: 500),
-          curve: Curves.fastOutSlowIn,
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<SplashViewModel, SplashState>(
+      bloc: splashViewModel,
+      listener: (context, state) {
+        if (state.splashState.error != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(getException(context, state.splashState.error)),
+            ),
+          );
+        }
+      },
+      child: Scaffold(
+        body: Center(
+          child: SvgPicture.asset(AssetsSvg.logoSvg, width: 200)
+              .animate()
+              .scale(
+                delay: Duration(milliseconds: 1500),
+                duration: Duration(milliseconds: 500),
+                curve: Curves.fastOutSlowIn,
+              ),
         ),
       ),
     );

@@ -1,57 +1,65 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/app/config/base_response/base_response.dart';
+import 'package:flower_app/app/config/base_state/base_state.dart';
 import 'package:flower_app/app/feature/occasion/data/models/occasion_model.dart';
 import 'package:flower_app/app/feature/occasion/domain/use_cases/get_all_occasions_use_case.dart';
-import 'package:flutter/material.dart';
+import 'package:flower_app/app/feature/occasion/presentation/view_model/occasion_events.dart';
+import 'package:flower_app/app/feature/occasion/presentation/view_model/occasion_states.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class OccasionViewModel extends ChangeNotifier {
+class OccasionViewModel extends Cubit<OccasionStates> {
   final GetAllOccasionsUseCase _getAllOccasionsUseCase;
 
-  OccasionViewModel(this._getAllOccasionsUseCase);
+  OccasionViewModel(this._getAllOccasionsUseCase)
+    : super(const OccasionStates());
 
-  List<OccasionModel> _occasions = [];
-  List<OccasionModel> get occasions => _occasions;
-
-  int _selectedTabIndex = 0;
-  int get selectedTabIndex => _selectedTabIndex;
-
-  bool _isLoading = false;
-  bool get isLoading => _isLoading;
-
-  String? _errorMessage;
-  String? get errorMessage => _errorMessage;
-
-  void selectTab(int index) {
-    _selectedTabIndex = index;
-    notifyListeners();
+  void doIntent(OccasionEvents event) {
+    switch (event) {
+      case GetAllOccasionsEvent():
+        _getAllOccasions();
+        break;
+      case SelectTabEvent():
+        _selectTab(event.index);
+        break;
+    }
   }
 
-  Future<void> getAllOccasions() async {
-    _isLoading = true;
-    _errorMessage = null;
-    notifyListeners();
+  Future<void> _getAllOccasions() async {
+    emit(state.copyWith(occasionsState: BaseState(isLoading: true)));
 
     final response = await _getAllOccasionsUseCase();
 
     switch (response) {
       case SuccessResponse<List<OccasionModel>>():
-        _occasions = response.data;
-        _errorMessage = null;
+        emit(
+          state.copyWith(
+            occasionsState: BaseState(isLoading: false, success: response.data),
+          ),
+        );
         break;
       case ErrorResponse<List<OccasionModel>>():
-        _errorMessage = response.error.toString();
+        emit(
+          state.copyWith(
+            occasionsState: BaseState(
+              isLoading: false,
+              error: Exception(response.error.toString()),
+            ),
+          ),
+        );
         break;
     }
+  }
 
-    _isLoading = false;
-    notifyListeners();
+  void _selectTab(int index) {
+    emit(state.copyWith(selectedTabIndex: index));
   }
 
   OccasionModel? get selectedOccasion {
-    if (_occasions.isEmpty || _selectedTabIndex >= _occasions.length) {
+    final occasions = state.occasionsState?.success ?? [];
+    if (occasions.isEmpty || state.selectedTabIndex >= occasions.length) {
       return null;
     }
-    return _occasions[_selectedTabIndex];
+    return occasions[state.selectedTabIndex];
   }
 }

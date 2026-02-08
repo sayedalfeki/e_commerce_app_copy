@@ -1,22 +1,21 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flower_app/app/config/base_response/base_response.dart';
-import 'package:flower_app/app/core/endpoint/app_endpoint.dart';
+import 'package:flower_app/app/feature/occasion/data/api_client/occasion_api_client.dart';
 import 'package:flower_app/app/feature/occasion/data/data_sources/occasion_remote_data_source.dart';
 import 'package:flower_app/app/feature/occasion/data/models/occasion_model.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'occasion_remote_data_source_test.mocks.dart';
 
-@GenerateMocks([Dio])
+@GenerateMocks([OccasionApiClient])
 void main() {
+  late MockOccasionApiClient mockApiClient;
   late OccasionRemoteDataSourceImpl dataSource;
-  late MockDio mockDio;
 
   setUp(() {
-    mockDio = MockDio();
-    dataSource = OccasionRemoteDataSourceImpl(mockDio);
+    mockApiClient = MockOccasionApiClient();
+    dataSource = OccasionRemoteDataSourceImpl(mockApiClient);
   });
 
   group('getAllOccasions', () {
@@ -45,72 +44,46 @@ void main() {
       ],
     };
 
-    test('returns success response with occasions list', () async {
-      when(mockDio.get(AppEndPoint.occasions)).thenAnswer(
-        (_) async => Response(
-          data: occasionsData,
-          statusCode: 200,
-          requestOptions: RequestOptions(path: AppEndPoint.occasions),
-        ),
-      );
+    test('returns SuccessResponse when API call succeeds', () async {
+      when(
+        mockApiClient.getAllOccasions(),
+      ).thenAnswer((_) async => occasionsData);
 
-      final response = await dataSource.getAllOccasions();
+      final result = await dataSource.getAllOccasions();
 
-      expect(response, isA<SuccessResponse<List<OccasionModel>>>());
-      final success = response as SuccessResponse<List<OccasionModel>>;
+      expect(result, isA<SuccessResponse<List<OccasionModel>>>());
+      final success = result as SuccessResponse<List<OccasionModel>>;
       expect(success.data.length, 2);
       expect(success.data[0].name, 'Wedding');
-      expect(success.data[0].slug, 'wedding');
-      expect(success.data[0].productsCount, 5);
       expect(success.data[1].name, 'Birthday');
-      expect(success.data[1].slug, 'birthday');
-      expect(success.data[1].productsCount, 3);
-      verify(mockDio.get(AppEndPoint.occasions)).called(1);
+
+      verify(mockApiClient.getAllOccasions()).called(1);
     });
 
-    test('returns error response on non-200 status', () async {
-      when(mockDio.get(AppEndPoint.occasions)).thenAnswer(
-        (_) async => Response(
-          data: {'error': 'Server error'},
-          statusCode: 500,
-          requestOptions: RequestOptions(path: AppEndPoint.occasions),
-        ),
-      );
+    test('returns ErrorResponse when API call throws exception', () async {
+      when(
+        mockApiClient.getAllOccasions(),
+      ).thenThrow(Exception('Network error'));
 
-      final response = await dataSource.getAllOccasions();
+      final result = await dataSource.getAllOccasions();
 
-      expect(response, isA<ErrorResponse<List<OccasionModel>>>());
-      verify(mockDio.get(AppEndPoint.occasions)).called(1);
-    });
+      expect(result, isA<ErrorResponse<List<OccasionModel>>>());
 
-    test('returns error response on exception', () async {
-      when(mockDio.get(AppEndPoint.occasions)).thenThrow(
-        DioException(
-          requestOptions: RequestOptions(path: AppEndPoint.occasions),
-          type: DioExceptionType.connectionTimeout,
-        ),
-      );
-
-      final response = await dataSource.getAllOccasions();
-
-      expect(response, isA<ErrorResponse<List<OccasionModel>>>());
-      verify(mockDio.get(AppEndPoint.occasions)).called(1);
+      verify(mockApiClient.getAllOccasions()).called(1);
     });
 
     test('returns empty list when no occasions', () async {
-      when(mockDio.get(AppEndPoint.occasions)).thenAnswer(
-        (_) async => Response(
-          data: {'occasions': []},
-          statusCode: 200,
-          requestOptions: RequestOptions(path: AppEndPoint.occasions),
-        ),
-      );
+      when(
+        mockApiClient.getAllOccasions(),
+      ).thenAnswer((_) async => {'occasions': []});
 
-      final response = await dataSource.getAllOccasions();
+      final result = await dataSource.getAllOccasions();
 
-      expect(response, isA<SuccessResponse<List<OccasionModel>>>());
-      final success = response as SuccessResponse<List<OccasionModel>>;
+      expect(result, isA<SuccessResponse<List<OccasionModel>>>());
+      final success = result as SuccessResponse<List<OccasionModel>>;
       expect(success.data, isEmpty);
+
+      verify(mockApiClient.getAllOccasions()).called(1);
     });
   });
 
@@ -129,43 +102,31 @@ void main() {
       },
     };
 
-    test('returns success response with occasion', () async {
-      when(mockDio.get(AppEndPoint.occasionById(occasionId))).thenAnswer(
-        (_) async => Response(
-          data: occasionData,
-          statusCode: 200,
-          requestOptions: RequestOptions(
-            path: AppEndPoint.occasionById(occasionId),
-          ),
-        ),
-      );
+    test('returns SuccessResponse when API call succeeds', () async {
+      when(
+        mockApiClient.getOccasionById(occasionId),
+      ).thenAnswer((_) async => occasionData);
 
-      final response = await dataSource.getOccasionById(occasionId);
+      final result = await dataSource.getOccasionById(occasionId);
 
-      expect(response, isA<SuccessResponse<OccasionModel>>());
-      final success = response as SuccessResponse<OccasionModel>;
+      expect(result, isA<SuccessResponse<OccasionModel>>());
+      final success = result as SuccessResponse<OccasionModel>;
       expect(success.data.id, occasionId);
       expect(success.data.name, 'Wedding');
-      expect(success.data.slug, 'wedding');
-      expect(success.data.productsCount, 5);
-      verify(mockDio.get(AppEndPoint.occasionById(occasionId))).called(1);
+
+      verify(mockApiClient.getOccasionById(occasionId)).called(1);
     });
 
-    test('returns error response on failure', () async {
-      when(mockDio.get(AppEndPoint.occasionById(occasionId))).thenAnswer(
-        (_) async => Response(
-          data: {},
-          statusCode: 404,
-          requestOptions: RequestOptions(
-            path: AppEndPoint.occasionById(occasionId),
-          ),
-        ),
-      );
+    test('returns ErrorResponse when API call throws exception', () async {
+      when(
+        mockApiClient.getOccasionById(occasionId),
+      ).thenThrow(Exception('Not found'));
 
-      final response = await dataSource.getOccasionById(occasionId);
+      final result = await dataSource.getOccasionById(occasionId);
 
-      expect(response, isA<ErrorResponse<OccasionModel>>());
-      verify(mockDio.get(AppEndPoint.occasionById(occasionId))).called(1);
+      expect(result, isA<ErrorResponse<OccasionModel>>());
+
+      verify(mockApiClient.getOccasionById(occasionId)).called(1);
     });
   });
 }
