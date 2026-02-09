@@ -4,11 +4,14 @@ import 'package:flower_app/app/feature/auth/domain/repo/auth_repo_contract.dart'
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetAuthUseCase {
+class LoginUserUseCase {
   final AuthRepoContract authRepo;
-  GetAuthUseCase(this.authRepo);
+  
 
-  Future<BaseResponse<AuthModel>> login(String email, String password) {
-    return authRepo.login(email, password);
+  LoginUserUseCase(this.authRepo);
+
+  Future<BaseResponse<AuthModel>> invoke(String email, String password,
+      {bool rememberMe = false}) {
+    return authRepo.login(email, password, rememberMe: rememberMe);
   }
 }

@@ -9,14 +9,17 @@ import 'package:flower_app/app/feature/profile/domain/profile_repo_contract.dart
 import 'package:flower_app/app/feature/profile/domain/request/update_profile_request.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../config/local_storage_processes/local_storage_processes.dart';
+import '../../../config/local_storage_processes/domain/storage_data_source_contract.dart';
 import '../domain/request/change_password_request.dart';
 import 'model/change_password_response.dart';
 
 @Injectable(as: ProfileRepoContract)
 class ProfileRepoImpl extends ProfileRepoContract {
   final ProfileDataSourceContract _profileDataSourceContract;
-  ProfileRepoImpl(this._profileDataSourceContract);
+  final StorageDataSourceContract _storageDataSourceContract;
+
+  ProfileRepoImpl(this._profileDataSourceContract,
+      this._storageDataSourceContract);
   @override
   Future<BaseResponse<UserEntity>> getProfile() async {
     final response = await _profileDataSourceContract.getProfile();
@@ -60,7 +63,8 @@ class ProfileRepoImpl extends ProfileRepoContract {
     );
     switch (response) {
       case SuccessResponse<ChangePasswordResponse>():
-        await LocalStorageProcesses.clearToken();
+        _storageDataSourceContract.clearToken();
+        _storageDataSourceContract.clearRememberMe();
         return SuccessResponse(data: response.data.message ?? '');
       case ErrorResponse<ChangePasswordResponse>():
         return ErrorResponse(error: response.error);

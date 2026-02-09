@@ -1,16 +1,21 @@
 import 'package:dio/dio.dart';
-import 'package:flower_app/app/config/local_storage_processes/local_storage_processes.dart';
+import 'package:flower_app/app/config/di_model/token_interceptors.dart';
+import 'package:flower_app/app/config/local_storage_processes/domain/use_case/read_and_write_tokin_usecase.dart';
 import 'package:flower_app/app/core/endpoint/app_endpoint.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../feature/address/api/address_client.dart';
 import '../../feature/forget_password/api/forget_password_api_client.dart';
 import '../../feature/profile/api/profile_api_client.dart';
+import '../local_storage_processes/domain/storage_data_source_contract.dart';
 
 @module
 abstract class DiAuthModel {
+
 
   @lazySingleton
   ForgetPasswordApiClient provideForgetPasswordApiClient(Dio dio) =>
@@ -28,20 +33,25 @@ abstract class DiAuthModel {
   Dio provideDio(
       BaseOptions baseOptions,
       PrettyDioLogger logger,
+      TokenInterceptor tokenInterceptor,
+      ReadAndWriteTokinUsecase readAndWriteTokinUsecase
       ) {
     final Dio dio = Dio(BaseOptions(baseUrl: AppEndPoint.baseUrl));
+    dio.interceptors.add(tokenInterceptor);
     dio.interceptors.add(logger);
-    dio.interceptors.add(
+    
     InterceptorsWrapper(
       onRequest: (options, handler) async {
-        String? token = await LocalStorageProcesses.readToken();
+        String? token = await readAndWriteTokinUsecase.invokeGetToken();
         if (token != null && token.isNotEmpty) {
         options.headers["Authorization"] = "Bearer $token";
        }
         return handler.next(options);
       },
-    ),
-  );
+    );
+  
+
+
     return dio;
   }
 
@@ -60,4 +70,16 @@ abstract class DiAuthModel {
     responseBody: kDebugMode,
     responseHeader: kDebugMode,
   );
+
+  @lazySingleton
+  FlutterSecureStorage provideFlutterSecureStorage() => FlutterSecureStorage();
+
+  @lazySingleton
+  TokenInterceptor provideTokenInterceptor(
+      StorageDataSourceContract storageDataSourceContract) =>
+      TokenInterceptor(storageDataSourceContract);
+
+  @preResolve
+  Future<SharedPreferences> provideSharedPreferences() =>
+      SharedPreferences.getInstance();
 }

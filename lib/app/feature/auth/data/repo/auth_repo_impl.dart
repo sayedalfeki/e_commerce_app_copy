@@ -5,18 +5,23 @@ import 'package:flower_app/app/feature/auth/domain/model/auth_model.dart';
 import 'package:flower_app/app/feature/auth/domain/repo/auth_repo_contract.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../config/local_storage_processes/domain/storage_data_source_contract.dart';
+
 @Injectable(as: AuthRepoContract)
 class AuthRepoImpl implements AuthRepoContract {
   AuthRemoteDatasourceContract authRemoteDatasourceContract;
-  AuthRepoImpl(this.authRemoteDatasourceContract);
+  final StorageDataSourceContract storageDataSourceContract;
+
+  AuthRepoImpl(this.authRemoteDatasourceContract,
+      this.storageDataSourceContract);
   @override
   Future<void> getAuthData() {
-    // TODO: implement getAuthData
     throw UnimplementedError();
   }
 
   @override
-  Future<BaseResponse<AuthModel>> login(String email, String password) async {
+  Future<BaseResponse<AuthModel>> login(String email, String password,
+      {bool rememberMe = false}) async {
     BaseResponse<AuthDto> response = await authRemoteDatasourceContract.login(
       email,
       password,
@@ -27,6 +32,8 @@ class AuthRepoImpl implements AuthRepoContract {
           massage: successResponse.data.message!,
           tokin: successResponse.data.token,
         );
+        await storageDataSourceContract.addRememberMe(rememberMe);
+        await storageDataSourceContract.addToken(authModel.tokin!);
         return SuccessResponse(data: authModel);
       case ErrorResponse<AuthDto> errorResponse:
         return ErrorResponse(error: errorResponse.error);
