@@ -17,7 +17,6 @@ class CheckOutViewModel extends Cubit<CheckOutStates>{
   final GetUserAddressesUseCase _checkOutUseCase;
   final CheckoutWithCashOnDeliveryUsecase _cashOnDeliveryUsecase;
   final CheckoutWithCreditCardUseCase _cardUseCase;
-  bool _addressesLoaded = false;
   final List<PaymentMethodModel> paymentMethods=[
     PaymentMethodModel(key: AppConsts.cashOptionKey,name: 'Cash on delivery'),
     PaymentMethodModel(key: AppConsts.creditOptionKey,name: 'Credit card')
@@ -33,9 +32,10 @@ class CheckOutViewModel extends Cubit<CheckOutStates>{
     switch(event){
       
       case GetUserAddressesEvent():
-        if (!_addressesLoaded) {
-          _getUserAddresses();
-        }
+        // if (!_addressesLoaded) {
+        //   _getUserAddresses();
+        // }
+        _getUserAddresses();
       case PayCashEvent():
         _payCash(street: event.street,phone: event.phone,city: event.city,long: event.long,lat: event.lat);
       case PayCreditEvent():
@@ -56,7 +56,6 @@ class CheckOutViewModel extends Cubit<CheckOutStates>{
     switch(res){
       
       case SuccessResponse<List<AddressModel>>():
-        _addressesLoaded = true;
         AddressModel? selectedAddress = state.selectedAddress;
         if (selectedAddress == null && res.data.isNotEmpty) {
           selectedAddress = res.data.first;

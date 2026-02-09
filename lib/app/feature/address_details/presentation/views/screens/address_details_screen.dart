@@ -194,12 +194,6 @@ class _AddressDetailsScreenState extends State<AddressDetailsScreen> {
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               if(widget.userAddressEntity == null){
-                                print(viewmodel.address??"no address");
-                                print(viewmodel.phone??"no phone");
-                                print(viewmodel.area??"no area");
-                                print(viewmodel.latitude??"no latitude");
-                                print(viewmodel.longitude??"no longitude");
-                                print(viewmodel.recipientName??"no recipient name");
                                 viewmodel.doIntent(AddAddressEvent(
                                   street: viewmodel.address!,
                                   phone: viewmodel.phone!,

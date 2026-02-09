@@ -59,146 +59,153 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
           fontSize: AppSize.s16
         ),),
       ),
-      body: BlocProvider<CheckOutViewModel>(
-        create: (context) => viewModel..doIntent(GetUserAddressesEvent()),
-        child: BlocConsumer<CheckOutViewModel,CheckOutStates>(
-          builder: (context, state) {
-            final addressesState=state.getAddressesState;
-            final selectedAddress = state.selectedAddress;
-            final hasAddresses = state.getAddressesState?.success?.isNotEmpty;
-            final selectedPaymentMethod = state.selectedPaymentMethod;
-            if(addressesState?.isLoading==false && addressesState?.error!=null){
-              return Center(child: Text(getException(context, addressesState!.error!),style: Theme.of(context).textTheme.bodyMedium,),);
-            }else if(addressesState?.isLoading==false && addressesState?.success!=null ){
-              return SingleChildScrollView(
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      DeliveryTimeSectionHeaderWidget(),
-                      SizedBox(height: 0.01*height,),
-                      DeliveryDateAndTimeEstimationWidget(),
-                      SizedBox(
-                        height: 0.02*height,
-                      ),
-                      DividerWidget(),
-                      AddressSelectionSectionWidget(
-                        addresses: addressesState?.success ??[],
-                        selectedAddressId: selectedAddress?.id, 
-                        onAddNewAddress: () {
-                          Navigator.pushNamed(context, Routes.addressDetails);
-                        },
-                        onAddressSelected: (value) {
-                          viewModel.doIntent(SelectAddressEvent(value));
-                        },
-                      ),
-                      DividerWidget(),
-                      PaymentSelectionSectionWidget(
-                        paymentMethods: paymentMethods, 
-                        onPaymentSelected: (value) {
-                          if (value != null) {
-                            viewModel.doIntent(
-                              SelectPaymentMethodEvent(value.key!)
-                            );
-                          }
-                        }, 
-                        selectedPaymentMethod: selectedPaymentMethod ?? paymentMethods.first.key!,
-                      ),
-                      DividerWidget(),
-                      Visibility(
-                        visible: selectedPaymentMethod==paymentMethods.last.key,
-                        child: Column(
-                          children: [
-                            GiftSectionWidget(),
-                            DividerWidget()
-                          ],
-                        )
-                      ),
-                      PlacingOrderSectionWidget(
-                        itemsPrice: price,
-                        isEnabled: hasAddresses!, 
-                        onTap: () {
-                          if(selectedAddress!=null && hasAddresses){
-                            if(selectedPaymentMethod==paymentMethods.first.key){
-                              viewModel.doIntent(PayCashEvent(
-                                city: selectedAddress.city,
-                                lat: selectedAddress.lat,
-                                long: selectedAddress.long,
-                                street: selectedAddress.street,
-                                phone: selectedAddress.phone
-                              ));
-                            }else if(selectedPaymentMethod==paymentMethods.last.key){
-                              viewModel.doIntent(PayCreditEvent(
-                                city: selectedAddress.city,
-                                lat: selectedAddress.lat,
-                                long: selectedAddress.long,
-                                street: selectedAddress.street,
-                                phone: selectedAddress.phone
-                              ));
+      body: RefreshIndicator(
+        onRefresh: () {
+          return Future.delayed(Duration(seconds: 1),(){
+            viewModel.doIntent(GetUserAddressesEvent());
+          });
+        },
+        child: BlocProvider<CheckOutViewModel>(
+          create: (context) => viewModel..doIntent(GetUserAddressesEvent()),
+          child: BlocConsumer<CheckOutViewModel,CheckOutStates>(
+            builder: (context, state) {
+              final addressesState=state.getAddressesState;
+              final selectedAddress = state.selectedAddress;
+              final hasAddresses = state.getAddressesState?.success?.isNotEmpty;
+              final selectedPaymentMethod = state.selectedPaymentMethod;
+              if(addressesState?.isLoading==false && addressesState?.error!=null){
+                return Center(child: Text(getException(context, addressesState!.error!),style: Theme.of(context).textTheme.bodyMedium,),);
+              }else if(addressesState?.isLoading==false && addressesState?.success!=null ){
+                return SingleChildScrollView(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        DeliveryTimeSectionHeaderWidget(),
+                        SizedBox(height: 0.01*height,),
+                        DeliveryDateAndTimeEstimationWidget(),
+                        SizedBox(
+                          height: 0.02*height,
+                        ),
+                        DividerWidget(),
+                        AddressSelectionSectionWidget(
+                          addresses: addressesState?.success ??[],
+                          selectedAddressId: selectedAddress?.id, 
+                          onAddNewAddress: () {
+                            Navigator.pushNamed(context, Routes.addressDetails);
+                          },
+                          onAddressSelected: (value) {
+                            viewModel.doIntent(SelectAddressEvent(value));
+                          },
+                        ),
+                        DividerWidget(),
+                        PaymentSelectionSectionWidget(
+                          paymentMethods: paymentMethods, 
+                          onPaymentSelected: (value) {
+                            if (value != null) {
+                              viewModel.doIntent(
+                                SelectPaymentMethodEvent(value.key!)
+                              );
                             }
-                          }
-                        },
-                      )
-                    ],
+                          }, 
+                          selectedPaymentMethod: selectedPaymentMethod ?? paymentMethods.first.key!,
+                        ),
+                        DividerWidget(),
+                        Visibility(
+                          visible: selectedPaymentMethod==paymentMethods.last.key,
+                          child: Column(
+                            children: [
+                              GiftSectionWidget(),
+                              DividerWidget()
+                            ],
+                          )
+                        ),
+                        PlacingOrderSectionWidget(
+                          itemsPrice: price,
+                          isEnabled: hasAddresses!, 
+                          onTap: () {
+                            if(selectedAddress!=null && hasAddresses){
+                              if(selectedPaymentMethod==paymentMethods.first.key){
+                                viewModel.doIntent(PayCashEvent(
+                                  city: selectedAddress.city,
+                                  lat: selectedAddress.lat,
+                                  long: selectedAddress.long,
+                                  street: selectedAddress.street,
+                                  phone: selectedAddress.phone
+                                ));
+                              }else if(selectedPaymentMethod==paymentMethods.last.key){
+                                viewModel.doIntent(PayCreditEvent(
+                                  city: selectedAddress.city,
+                                  lat: selectedAddress.lat,
+                                  long: selectedAddress.long,
+                                  street: selectedAddress.street,
+                                  phone: selectedAddress.phone
+                                ));
+                              }
+                            }
+                          },
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              );
-            }else{
-              return Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),);
-            }
-          }, 
-          listener: (context, state) {
-            final cashState=state.payCashState;
-            final creditState=state.payCreditState;
-            if(cashState?.isLoading==true){
-              ShowDialogUtils.showLoading(context);
-            }else if(cashState?.isLoading==false && cashState?.success!=null){
-              ShowDialogUtils.hideLoading(context);
-              ShowDialogUtils.showMessage(
-                context,
-                title: cashState!.success!.message!,
-                posActionName: AppLocalizations.of(context)!.ok,
-                posAction: (){
-                  Navigator.pop(context);
-                }
-              );
-            }else if(cashState?.isLoading==false && cashState?.error!=null){
-              ShowDialogUtils.hideLoading(context);
-              ShowDialogUtils.showMessage(
-                context,
-                title: getException(context, cashState!.error!),
-                nigActionName: AppLocalizations.of(context)!.ok,
-                nigAction: (){
-                  Navigator.pop(context);
-                }
-              );
-            }
-            if(creditState?.isLoading==true){
-              ShowDialogUtils.showLoading(context);
-            }else if(creditState?.isLoading==false && creditState?.success!=null){
-              ShowDialogUtils.hideLoading(context);
-              ShowDialogUtils.showMessage(
-                context,
-                title: creditState!.success!.message,
-                posActionName: AppLocalizations.of(context)!.ok,
-                posAction: (){
-                  Navigator.pop(context);
-                }
-              );
-              Navigator.pushNamed(context, Routes.onlinePayment,arguments: creditState.success?.url);
-            }else if(creditState?.isLoading==false && creditState?.error!=null){
-              ShowDialogUtils.showLoading(context);
-              ShowDialogUtils.showMessage(
-                context,
-                title: getException(context, creditState!.error!),
-                nigActionName: AppLocalizations.of(context)!.ok,
-                nigAction: (){
-                  Navigator.pop(context);
-                }
-              );
-            }
-          },
+                );
+              }else{
+                return Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),);
+              }
+            }, 
+            listener: (context, state) {
+              final cashState=state.payCashState;
+              final creditState=state.payCreditState;
+              if(cashState?.isLoading==true){
+                ShowDialogUtils.showLoading(context);
+              }else if(cashState?.isLoading==false && cashState?.success!=null){
+                ShowDialogUtils.hideLoading(context);
+                ShowDialogUtils.showMessage(
+                  context,
+                  title: cashState!.success!.message!,
+                  posActionName: AppLocalizations.of(context)!.ok,
+                  posAction: (){
+                    Navigator.pop(context);
+                  }
+                );
+              }else if(cashState?.isLoading==false && cashState?.error!=null){
+                ShowDialogUtils.hideLoading(context);
+                ShowDialogUtils.showMessage(
+                  context,
+                  title: getException(context, cashState!.error!),
+                  nigActionName: AppLocalizations.of(context)!.ok,
+                  nigAction: (){
+                    Navigator.pop(context);
+                  }
+                );
+              }
+              if(creditState?.isLoading==true){
+                ShowDialogUtils.showLoading(context);
+              }else if(creditState?.isLoading==false && creditState?.success!=null){
+                ShowDialogUtils.hideLoading(context);
+                ShowDialogUtils.showMessage(
+                  context,
+                  title: creditState!.success!.message,
+                  posActionName: AppLocalizations.of(context)!.ok,
+                  posAction: (){
+                    Navigator.pop(context);
+                  }
+                );
+                Navigator.pushNamed(context, Routes.onlinePayment,arguments: creditState.success?.url);
+              }else if(creditState?.isLoading==false && creditState?.error!=null){
+                ShowDialogUtils.showLoading(context);
+                ShowDialogUtils.showMessage(
+                  context,
+                  title: getException(context, creditState!.error!),
+                  nigActionName: AppLocalizations.of(context)!.ok,
+                  nigAction: (){
+                    Navigator.pop(context);
+                  }
+                );
+              }
+            },
+          ),
         ),
       ),
     );
