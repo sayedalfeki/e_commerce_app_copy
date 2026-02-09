@@ -46,7 +46,13 @@ class CartScreen extends StatelessWidget{
                 ],
               ),
               SizedBox(height: height*0.05,),
-              InkWell(onTap:(){viewModel.doIntent(ClearCartEvent());} ,child: Text(AppLocale(context).clearall,style:Theme.of(context).textTheme.labelMedium,)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(onTap:(){viewModel.doIntent(GetLoggedUserCartEvent());} ,child: Text(AppLocale(context).refresh,style:Theme.of(context).textTheme.labelMedium,)),
+                  InkWell(onTap:(){viewModel.doIntent(ClearCartEvent());} ,child: Text(AppLocale(context).clearall,style:Theme.of(context).textTheme.labelMedium,)),
+                ],
+              ),
               SizedBox(height: height*0.02,),
               BlocBuilder<CartScreenViewModel,CartScreenStates>(builder: (context, state) {
                 if(state.cartItems?.isLoading==true){
@@ -102,13 +108,18 @@ class CartScreen extends StatelessWidget{
                 ],
               ),
               SizedBox(height: height*0.05,),
-              Visibility(child: Container(
-                width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 7),
-                child: ElevatedButton(onPressed: (){Navigator.pushNamed(context, Routes.checkOut,arguments: viewModel.state.totalPrice?.success!);}, child: Text(AppLocale(context).checkout,style: Theme.of(context).textTheme.titleMedium,)),
-                ),
-                
-                )
+              BlocBuilder<CartScreenViewModel,CartScreenStates>(builder: (context, state) {
+                if (state.numOfCartItems?.success==null||state.numOfCartItems?.success==0){
+                  return Container();
+                }else{
+                return Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.symmetric(horizontal: 7),
+                  child: ElevatedButton(onPressed: (){Navigator.pushNamed(context, Routes.checkOut,arguments: viewModel.state.totalPrice?.success!);}, child: Text(AppLocale(context).checkout,style: Theme.of(context).textTheme.titleMedium,)),
+                 );
+                }
+              }),
+              
             ],
           ),
         ),
@@ -118,4 +129,3 @@ class CartScreen extends StatelessWidget{
   }
 
 }
-

@@ -941,6 +941,98 @@ abstract class AppLocalizations {
   /// No description provided for @no_addresses.
   ///
   /// In en, this message translates to:
+  /// **'error in uploading photo'**
+  String get uploading_photo_error;
+
+  /// No description provided for @addNewAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'add new address'**
+  String get addNewAddress;
+
+  /// No description provided for @savedAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'saved address'**
+  String get savedAddress;
+
+  /// No description provided for @someThingWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'some thing wrong'**
+  String get someThingWrong;
+
+  /// No description provided for @addressdetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Address Details'**
+  String get addressdetails;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @pleaseEnterYourAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Your Address'**
+  String get pleaseEnterYourAddress;
+
+  /// No description provided for @pleaseEnterYourPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Your PhoneNumber'**
+  String get pleaseEnterYourPhoneNumber;
+
+  /// No description provided for @recipientName.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipient name'**
+  String get recipientName;
+
+  /// No description provided for @pleaseEnterTheRecipientname.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Recipient name'**
+  String get pleaseEnterTheRecipientname;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @pleaseSelectCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Select City'**
+  String get pleaseSelectCity;
+
+  /// No description provided for @area.
+  ///
+  /// In en, this message translates to:
+  /// **'Area'**
+  String get area;
+
+  /// No description provided for @pleaseSelectArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Select Area'**
+  String get pleaseSelectArea;
+
+  /// No description provided for @addAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Address'**
+  String get addAddress;
+
+  /// No description provided for @updateAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Address'**
+  String get updateAddress;
   /// **'No saved addresses found'**
   String get no_addresses;
 

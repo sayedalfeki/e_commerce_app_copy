@@ -1,4 +1,5 @@
- import 'package:flower_app/app/config/di/di.dart';
+ import 'package:firebase_core/firebase_core.dart';
+import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/routes/app_page.dart';
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/theme/app_theme.dart';
@@ -9,7 +10,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'app/feature/start/presentation/view_model/start_view_model.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main()async {
