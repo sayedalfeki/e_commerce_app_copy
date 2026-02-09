@@ -187,6 +187,16 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                 }
               );
               Navigator.pushNamed(context, Routes.onlinePayment,arguments: creditState.success?.url);
+            }else if(creditState?.isLoading==false && creditState?.error!=null){
+              ShowDialogUtils.showLoading(context);
+              ShowDialogUtils.showMessage(
+                context,
+                title: getException(context, creditState!.error!),
+                nigActionName: AppLocalizations.of(context)!.ok,
+                nigAction: (){
+                  Navigator.pop(context);
+                }
+              );
             }
           },
         ),

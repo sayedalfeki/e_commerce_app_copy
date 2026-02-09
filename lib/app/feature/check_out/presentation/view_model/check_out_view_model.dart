@@ -29,7 +29,7 @@ class CheckOutViewModel extends Cubit<CheckOutStates>{
       ));
     }
   }
-  void doIntent(CheckOutEvents event){
+  Future<void> doIntent(CheckOutEvents event)async{
     switch(event){
       
       case GetUserAddressesEvent():
