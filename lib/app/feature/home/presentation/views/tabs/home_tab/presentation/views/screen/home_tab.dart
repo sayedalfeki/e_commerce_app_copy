@@ -28,111 +28,147 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  HomeTabViewModel viewModel=getIt<HomeTabViewModel>();
+  HomeTabViewModel viewModel = getIt<HomeTabViewModel>();
   @override
   Widget build(BuildContext context) {
-    var width=MediaQuery.sizeOf(context).width;
-    var height=MediaQuery.sizeOf(context).height;
+    var width = MediaQuery.sizeOf(context).width;
+    var height = MediaQuery.sizeOf(context).height;
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 0.04*width),
+          padding: EdgeInsets.symmetric(horizontal: 0.04 * width),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(height: 0.01*height,),
+              SizedBox(height: 0.01 * height),
               Row(
                 children: [
                   Image.asset(AssetsImage.flower),
                   Expanded(
-                    child: Text(AppLocalizations.of(context)!.flowery,style: GoogleFonts.imFellEnglish(
-                      fontSize: FontSize.s20,color: AppColors.primaryColor
-                    ),),
+                    child: Text(
+                      AppLocalizations.of(context)!.flowery,
+                      style: GoogleFonts.imFellEnglish(
+                        fontSize: FontSize.s20,
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
                   ),
                   Expanded(
                     flex: 2,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search,color: AppColors.lightGrayColor,),
-                        hintText: AppLocalizations.of(context)!.search
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.search);
+                      },
+                      child: TextFormField(
+                        enabled: false,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: AppColors.lightGrayColor,
+                          ),
+                          hintText: AppLocalizations.of(context)!.search,
+                        ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
-              SizedBox(height: 0.02*height,),
+              SizedBox(height: 0.02 * height),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.location_on_outlined),
-                  Expanded(child: Text(AppLocalizations.of(context)!.deliveryLocation,style: Theme.of(context).textTheme.bodyMedium,)),
+                  Expanded(
+                    child: Text(
+                      AppLocalizations.of(context)!.deliveryLocation,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ),
                   IconButton(
-                    onPressed: (){}, 
-                    icon: ImageIcon(AssetImage(AssetsIcons.dropIcon),color: AppColors.primaryColor,)
-                  )
+                    onPressed: () {},
+                    icon: ImageIcon(
+                      AssetImage(AssetsIcons.dropIcon),
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
                 ],
               ),
-              SizedBox(height: 0.02*height,),
+              SizedBox(height: 0.02 * height),
               BlocProvider<HomeTabViewModel>(
-                create: (context) => viewModel..doIntent(GetHomeTabDetailsEvent()),
-                child: BlocBuilder<HomeTabViewModel,HomeTabStates>(
+                create: (context) =>
+                    viewModel..doIntent(GetHomeTabDetailsEvent()),
+                child: BlocBuilder<HomeTabViewModel, HomeTabStates>(
                   builder: (context, state) {
-                    final homeTabState=state.getHomeTabDetailsState;
-                    if(homeTabState?.isLoading==false && homeTabState?.error!=null){
+                    final homeTabState = state.getHomeTabDetailsState;
+                    if (homeTabState?.isLoading == false &&
+                        homeTabState?.error != null) {
                       return Center(
-                        child: Text(getException(context, homeTabState!.error!),style: Theme.of(context).textTheme.bodyMedium,),
+                        child: Text(
+                          getException(context, homeTabState!.error!),
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       );
-                    }else if(homeTabState?.isLoading==false && homeTabState?.success==null){
+                    } else if (homeTabState?.isLoading == false &&
+                        homeTabState?.success == null) {
                       return Center(
-                        child: Text(AppLocalizations.of(context)!.empty_data,style: Theme.of(context).textTheme.bodyMedium,),
+                        child: Text(
+                          AppLocalizations.of(context)!.empty_data,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       );
-                    }else if(homeTabState?.isLoading==false && homeTabState?.success!=null){
+                    } else if (homeTabState?.isLoading == false &&
+                        homeTabState?.success != null) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           HeaderWidget(
-                            name: AppLocalizations.of(context)!.categories, 
+                            name: AppLocalizations.of(context)!.categories,
                             onTap: () {
                               context.read<HomeViewModel>().doIntent(
-                                  ChangeCurrentTabAction(AppTab.categories));
+                                ChangeCurrentTabAction(AppTab.categories),
+                              );
                               //switchTab(AppTab.categories);
                             },
                           ),
-                          SizedBox(
-                            height: 0.02*height,
+                          SizedBox(height: 0.02 * height),
+                          CategoriesWidget(
+                            categoryModels: homeTabState!.success!.categories!,
                           ),
-                          CategoriesWidget(categoryModels: homeTabState!.success!.categories!),
-                          SizedBox(height: 0.03*height,),
+                          SizedBox(height: 0.03 * height),
                           HeaderWidget(
-                            name: AppLocalizations.of(context)!.bestSeller, 
+                            name: AppLocalizations.of(context)!.bestSeller,
                             onTap: () {
                               Navigator.pushNamed(context, Routes.bestSeller);
                             },
                           ),
-                          SizedBox(
-                            height: 0.02*height,
+                          SizedBox(height: 0.02 * height),
+                          BestSellerWidget(
+                            bestSellers: homeTabState.success!.bestSellers!,
                           ),
-                          BestSellerWidget(bestSellers: homeTabState.success!.bestSellers!),
-                          SizedBox(height: 0.03*height,),
+                          SizedBox(height: 0.03 * height),
                           HeaderWidget(
-                            name: AppLocalizations.of(context)!.occasion, 
+                            name: AppLocalizations.of(context)!.occasion,
                             onTap: () {
                               Navigator.pushNamed(context, Routes.occasion);
                             },
                           ),
-                          SizedBox(
-                            height: 0.02*height,
+                          SizedBox(height: 0.02 * height),
+                          OccasionWidget(
+                            occasions: homeTabState.success!.occasions!,
                           ),
-                          OccasionWidget(occasions: homeTabState.success!.occasions!),
-                          SizedBox(height: 0.01*height,)
+                          SizedBox(height: 0.01 * height),
                         ],
                       );
-                    }else{
-                      return Center(child:CircularProgressIndicator(color: AppColors.primaryColor,) ,);
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primaryColor,
+                        ),
+                      );
                     }
                   },
                 ),
-              )
+              ),
             ],
           ),
         ),
