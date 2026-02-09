@@ -24,7 +24,6 @@ abstract class AppEndPoint {
   static String productsByOccasion(String occasionId) =>
       '/products?occasion=$occasionId';
   // Orders Endpoints
-
   static const String orders = '/orders';
   static const String createCashOrder = '/orders';
   static const String checkoutSession = '/orders/checkout';
