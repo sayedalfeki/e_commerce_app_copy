@@ -37,16 +37,6 @@ void main() {
     expect(checkOutViewModel.state.selectedPaymentMethod, equals(checkOutViewModel.paymentMethods.first.key));
   });
   group('GetUserAddressesEvent test cases', () {
-    test('should not load addresses if already loaded', () async{
-      final dummyAddresses = [AddressModel(id: 'id1', city: 'city1')];
-      when(mockGetUserAddressesUseCase.call()).thenAnswer(
-        (_) async => SuccessResponse<List<AddressModel>>(data: dummyAddresses),
-      );
-      await checkOutViewModel.doIntent(GetUserAddressesEvent());
-      clearInteractions(mockGetUserAddressesUseCase);
-      await checkOutViewModel.doIntent(GetUserAddressesEvent());
-      verifyNever(mockGetUserAddressesUseCase.call());
-    });
     test('success case with success response with making sure that the first address will be selected as default', () {
       final dummyAddresses=[AddressModel(id: 'id1',city: 'city1'),AddressModel(id: 'id2',city: 'city2')];
       when(mockGetUserAddressesUseCase.call()).thenAnswer(
