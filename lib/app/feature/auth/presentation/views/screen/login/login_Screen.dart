@@ -24,7 +24,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(appBar: _buildAppBar(context), body: _buildBody(context));
   }
 

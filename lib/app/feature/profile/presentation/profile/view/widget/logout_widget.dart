@@ -1,4 +1,3 @@
-import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view_model/profile_view_model.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +40,6 @@ class _LogoutWidgetState extends State<LogoutWidget> {
                     onPressed: () {
                       profileViewModel.doIntent(LogoutUserAction());
                       Navigator.pop(context);
-                      Navigator.pushReplacementNamed(context,Routes.login);
                     },
                     child: Text(AppLocale(context).yes,
                       style: Theme
