@@ -31,12 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     viewModel.doIntent(GetTokenAction());
   }
-  List<Widget> tabs=[
-    HomeTab(),
-    CategoriesTab(),
-    CartScreen(),
-    ProfileNavigatorWidget()
-  ];
+  
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return Scaffold(
             body: IndexedStack(
               index: state.currAppTab.index,
-              children: tabs,
+              children: viewModel.tabs,
             ),
             bottomNavigationBar: Container(
               decoration: BoxDecoration(
