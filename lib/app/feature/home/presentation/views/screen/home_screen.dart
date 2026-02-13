@@ -1,7 +1,7 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
-import 'package:flower_app/app/feature/categories/presentation/view/categories_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/app_tab.dart';
+import 'package:flower_app/app/feature/home/presentation/view_model/home_intent.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_states.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_view_model.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/cart_tab/presentation/views/screen/cart_tab.dart';
@@ -21,20 +21,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  HomeViewModel viewModel=getIt<HomeViewModel>();
-  List<Widget> tabs=[
-    HomeTab(),
-    CategoriesScreen(),
-    CartTab(),
-    ProfileNavigatorWidget()
-  ];
+  final HomeViewModel viewModel = getIt<HomeViewModel>();
+
+  @override
+  void initState() {
+    super.initState();
+    viewModel.doIntent(GetTokenAction());
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeViewModel>.value(
       value: viewModel,
-      child: BlocBuilder<HomeViewModel,HomeStates>(
+      child: BlocBuilder<HomeViewModel, HomeStates>(
         builder: (context, state) {
+          final tabs = _buildTabs(state);
+
           return Scaffold(
             body: IndexedStack(
               index: state.currAppTab.index,
@@ -42,27 +44,74 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             bottomNavigationBar: Container(
               decoration: BoxDecoration(
-                border: Border(top: BorderSide(color: AppColors.borderBottomNavBarColor,width: 1))
+                border: Border(
+                  top: BorderSide(
+                    color: AppColors.borderBottomNavBarColor,
+                    width: 1,
+                  ),
+                ),
               ),
               child: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
                 backgroundColor: AppColors.secondaryColor,
                 currentIndex: state.currAppTab.index,
                 onTap: (index) {
-                  final tab=AppTab.values[index];
-                  context.read<HomeViewModel>().switchTab(tab);
+                  final tab = AppTab.values[index];
+                  context
+                      .read<HomeViewModel>()
+                      .doIntent(ChangeCurrentTabAction(tab));
                 },
-                items: [
-                  BottomNavigationBarItem(icon: Icon(Icons.home_outlined,),label: AppLocalizations.of(context)!.home),
-                  BottomNavigationBarItem(icon: Icon(Icons.category_outlined),label: AppLocalizations.of(context)!.categories),
-                  BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined),label: AppLocalizations.of(context)!.cart),
-                  BottomNavigationBarItem(icon: Icon(CupertinoIcons.person),label: AppLocalizations.of(context)!.profile)
-                ]
+                items: _buildNavItems(context, state),
               ),
             ),
           );
         },
       ),
     );
+  }
+
+  List<Widget> _buildTabs(HomeStates state) {
+    final tabs = <Widget>[
+      const HomeTab(),
+      const CategoriesTab(),
+    ];
+
+    if (state.isLoggedIn) {
+      tabs.add(const CartTab());
+      tabs.add(const ProfileNavigatorWidget());
+    }
+
+    return tabs;
+  }
+
+  List<BottomNavigationBarItem> _buildNavItems(
+      BuildContext context, HomeStates state) {
+    final items = [
+      BottomNavigationBarItem(
+        icon: const Icon(Icons.home_outlined),
+        label: AppLocalizations.of(context)!.home,
+      ),
+      BottomNavigationBarItem(
+        icon: const Icon(Icons.category_outlined),
+        label: AppLocalizations.of(context)!.categories,
+      ),
+    ];
+
+    if (state.isLoggedIn) {
+      items.add(
+        BottomNavigationBarItem(
+          icon: const Icon(Icons.shopping_cart_outlined),
+          label: AppLocalizations.of(context)!.cart,
+        ),
+      );
+      items.add(
+        BottomNavigationBarItem(
+          icon: const Icon(CupertinoIcons.person),
+          label: AppLocalizations.of(context)!.profile,
+        ),
+      );
+    }
+
+    return items;
   }
 }

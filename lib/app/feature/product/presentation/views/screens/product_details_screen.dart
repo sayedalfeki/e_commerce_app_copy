@@ -1,18 +1,18 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/core/reusable_widgets/show_dialog_utils.dart';
 import 'package:flower_app/app/core/utils/app_locale.dart';
-import 'package:flower_app/app/feature/product/presentation/view_model/product_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../view_model/product_intent.dart';
-import '../../view_model/product_states.dart';
-import '../../view_model/product_view_model.dart';
+import '../view_model/product_intent.dart';
+import '../view_model/product_states.dart';
+import '../view_model/product_view_model.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final String? productId;
 
-  ProductDetailsScreen({super.key, this.productId});
+  const ProductDetailsScreen({super.key, this.productId});
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -25,167 +25,177 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   void initState() {
     super.initState();
     viewModel.doIntent(GetProductDetailsAction(widget.productId ?? ""));
+
     viewModel.cubitStream.listen((event) {
       switch (event) {
-        case NavigateToProductDetailsEvent():
-          return;
         case BackNavigationFromProductEvent():
-          if (mounted) {
-            Navigator.pop(context);
-          }
+          if (mounted) Navigator.pop(context);
+          break;
+
         case AddToCartEvent():
           if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('${event.name} added to cart'),
-              ),
+            ShowDialogUtils.showMessage(
+              context,
+              title: AppLocale(context).success,
+              content: '${event.name} added to cart',
+              posActionName: AppLocale(context).ok,
             );
           }
+          break;
+
+        default:
+          break;
       }
-    },);
+    });
   }
+
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
 
-    return BlocProvider<ProductDetailsViewModel>(
-      create: (context) => viewModel,
+    return BlocProvider<ProductDetailsViewModel>.value(
+      value: viewModel,
+      child: Scaffold(
+        body: BlocConsumer<ProductDetailsViewModel, ProductDetailsStates>(
+          listener: (context, state) {
+            if (state.addToCartState?.isLoading == true) {
+              ShowDialogUtils.showLoading(context);
+            } else if (state.addToCartState?.isLoading == false) {
+              ShowDialogUtils.hideLoading(context);
 
-      child:Scaffold(
+              if (state.addToCartState?.error != null) {
+                ShowDialogUtils.showMessage(
+                  context,
+                  title: AppLocale(context).serverError,
+                  content: state.addToCartState!.error.toString(),
+                  posActionName: AppLocale(context).ok,
+                );
+              }
+            }
+          },
+          builder: (context, state) {
+            if (state.productDetailsState?.isLoading == true) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-          body:BlocBuilder<ProductDetailsViewModel,ProductDetailsStates>(
-        builder: (context, state) {
-          if(state.productDetailsState?.isLoading==true){
-            return Center(child: CircularProgressIndicator(),);
-          }else if (state.productDetailsState?.isLoading==false && state.productDetailsState?.success!=null)
-          {
+            if (state.productDetailsState?.success != null) {
+              final product = state.productDetailsState!.success!;
 
-           return CustomScrollView(
-              slivers: [
-              SliverAppBar(
-                pinned: true,
-
-                leading: Icon(Icons.arrow_back_ios_rounded),
-                expandedHeight: height*0.50,
-                flexibleSpace: FlexibleSpaceBar(
-
-                  collapseMode: CollapseMode.parallax,
-                  background: Container(
-                    color: AppColors.secondaryColor,
-                    child: SizedBox(
-                      height: height*0.50,
-                      child: CarouselView(itemExtent: width,
-
-                        itemSnapping: true,
-                       children: state.productDetailsState!.success!.images!.map((e) {
-                         return Image.network(e!,
-                         fit: BoxFit.fill,
-
-                         );
-                       },).toList(),
-
+              return CustomScrollView(
+                slivers: [
+                  SliverAppBar(
+                    pinned: true,
+                    leading: InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: const Icon(Icons.arrow_back_ios_rounded),
+                    ),
+                    expandedHeight: height * 0.5,
+                    flexibleSpace: FlexibleSpaceBar(
+                      collapseMode: CollapseMode.parallax,
+                      background: Container(
+                        color: AppColors.secondaryColor,
+                        child: CarouselView(
+                          itemExtent: width,
+                          itemSnapping: true,
+                          children: product.images!
+                              .map((e) => Image.network(e!, fit: BoxFit.fill))
+                              .toList(),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(height: height*0.02,),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    children: [
-                      Text("${AppLocale(context).egp} ${state.productDetailsState!.success!.price}",style: Theme.of(context).textTheme.headlineLarge,),
-                      Spacer(),
-                      Text("${AppLocale(context).status} :",style: Theme.of(context).textTheme.headlineLarge),
-                      Text(state.productDetailsState!.success!.quantity! <= 0
-                          ? AppLocale(context).out_of_stock
-                          : AppLocale(context).in_stock,
-                      style: Theme.of(context).textTheme.headlineMedium)
-                    ],
+
+                  /// Price & Status
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Row(
+                        children: [
+                          Text(
+                            "${AppLocale(context).egp} ${product.price}",
+                            style: Theme.of(context).textTheme.headlineLarge,
+                          ),
+                          const Spacer(),
+                          Text("${AppLocale(context).status}: "),
+                          Text(
+                            product.quantity! <= 0
+                                ? AppLocale(context).out_of_stock
+                                : AppLocale(context).in_stock,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Text(AppLocale(context).all_prices_include_tax),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(state.productDetailsState!.success!.title??"",style:Theme.of(context).textTheme.headlineMedium ,),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(height: height*0.04,),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(AppLocale(context).description,style:Theme.of(context).textTheme.headlineLarge ,),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(height: height*0.01,),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(state.productDetailsState!.success!.description??"",style:Theme.of(context).textTheme.headlineMedium ,),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(height: height*0.04,),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(AppLocale(context).bouquet_include, style: Theme
-                      .of(context)
-                      .textTheme
-                      .headlineLarge,),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(height: height*0.01,),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(state.productDetailsState!.success!.description??"",style:Theme.of(context).textTheme.headlineMedium ,),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ElevatedButton(onPressed: () {
-                    viewModel.doIntent(AddToCartAction(
-                        productId: state.productDetailsState!.success!.id
-                        , name: state.productDetailsState!.success!.title));
-                  }, child: Text(AppLocale(
-                      context).add_to_cart, style: TextStyle(fontSize: 20),)),
-                ),
-              ),
-              ],
-            );
-          }else if (state.productDetailsState?.isLoading==false && state.productDetailsState?.error!=null){
 
-            return Center(child: Text(state.productDetailsState!.error!.toString()),);
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child:
+                      Text(AppLocale(context).all_prices_include_tax),
+                    ),
+                  ),
 
-          }else{
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(product.title ?? ""),
+                    ),
+                  ),
 
-            return Container();
+                  /// Description
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(AppLocale(context).description),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(product.description ?? ""),
+                    ),
+                  ),
 
-          }
-        },
-      )
+                  /// Bouquet
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(AppLocale(context).bouquet_include),
+                    ),
+                  ),
 
-      ) ,
-   ) ;
+                  /// Add to cart
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          viewModel.doIntent(
+                            AddToCartAction(
+                              productId: product.id,
+                              name: product.title,
+                            ),
+                          );
+                        },
+                        child: Text(AppLocale(context).add_to_cart),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }
+
+            if (state.productDetailsState?.error != null) {
+              return Center(
+                child: Text(state.productDetailsState!.error.toString()),
+              );
+            }
+
+            return const SizedBox();
+          },
+        ),
+      ),
+    );
   }
 }

@@ -24,11 +24,17 @@ abstract class AppEndPoint {
   //and to delete item cart
   static const String updateCart = "/cart/{productId}";
 
+  // addresses end points
+  static const String addAddresses = '/addresses';
+  static const String updateAddresses = '/addresses/{addressId}';
   // Best Seller endpoint
   static const String bestSeller = "/best-seller";
 
   // Address endpoint
   static const String address = "/addresses";
+  //this end point used for checkout page, ether cash on delivery or Credit card
+  static const String cashOnDelivery='/orders';
+  static const String creditCard ='/orders/checkout?url=http://localhost:3000';
   static const String allOccasions = '/occasions';
   static const String allCategories = '/categories';
 }
