@@ -1,10 +1,11 @@
 import 'package:flower_app/app/config/di/di.dart';
 import 'package:flower_app/app/core/resources/app_colors.dart';
+import 'package:flower_app/app/feature/categories/presentation/view/categories_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/app_tab.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_intent.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_states.dart';
 import 'package:flower_app/app/feature/home/presentation/view_model/home_view_model.dart';
-import 'package:flower_app/app/feature/home/presentation/views/tabs/cart_tab/presentation/views/screen/cart_tab.dart';
+import 'package:flower_app/app/feature/home/presentation/views/tabs/cart/presentation/views/screens/cart_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/categories_tab/presentation/views/screen/categories_tab.dart';
 import 'package:flower_app/app/feature/home/presentation/views/tabs/home_tab/presentation/views/screen/home_tab.dart';
 import 'package:flower_app/app/feature/profile/presentation/profile/view/widget/profile_navigator_widget.dart';
@@ -72,12 +73,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> _buildTabs(HomeStates state) {
     final tabs = <Widget>[
-      const HomeTab(),
-      const CategoriesTab(),
-    ];
+      const HomeTab(), const CategoriesScreen()]];
 
     if (state.isLoggedIn) {
-      tabs.add(const CartTab());
+      tabs.add(CartScreen());
       tabs.add(const ProfileNavigatorWidget());
     }
 

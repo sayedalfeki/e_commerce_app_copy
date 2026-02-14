@@ -1,7 +1,7 @@
-import 'package:flower_app/app/feature/product_details/domain/models/product_details_model.dart';
+import 'package:flower_app/app/feature/product/domain/models/products_entity.dart';
 
 class CartItemModel {
-  ProductDetailsModel? product;
+  ProductEntity? product;
   int? price;
   int? quantity;
   String? id;

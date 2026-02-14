@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flower_app/app/config/base_error/custom_exceptions.dart';
 import 'package:flower_app/app/config/base_response/base_response.dart';
 import 'package:flower_app/app/feature/product/api/api_client/api_client.dart';
 import 'package:flower_app/app/feature/product/api/data_source_impls/product_details_remote_data_source_impl.dart';
@@ -54,7 +55,7 @@ void main() {
       var result = await productDataSource.getProductDetails(
           "1") as ErrorResponse<ProductResponse>;
       expect(result, isA<ErrorResponse<ProductResponse>>());
-      expect((result).error, isA<IOException>());
+      expect((result).error, isA<UnexpectedError>());
     });
   },);
   group("query Product  test cases", () {

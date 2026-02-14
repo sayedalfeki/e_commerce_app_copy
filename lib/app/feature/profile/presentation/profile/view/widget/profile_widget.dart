@@ -20,7 +20,6 @@ import '../../view_model/profile_state.dart';
 import '../../view_model/profile_view_model.dart';
 import 'logout_widget.dart';
 
-
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({
     super.key,
@@ -55,7 +54,7 @@ class ProfileWidget extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                NotificationWidget()
+                NotificationWidget(),
               ],
             ),
             const SizedBox(height: 20),
@@ -79,7 +78,6 @@ class ProfileWidget extends StatelessWidget {
               leading: Icon(Icons.location_on_outlined),
               onTap: () =>
                   profileViewModel.doIntent(NavigateToAddressScreenAction()),
-
             ),
             Divider(thickness: 1),
             ProfileItemsWidget(
@@ -99,18 +97,24 @@ class ProfileWidget extends StatelessWidget {
                   profileViewModel.doIntent(ChangeLanguageAction());
                 },
                 child: Text(
-                  startViewModel.language == 'en' ?
-                  AppLocale(context).english : AppLocale(context).arabic,
+                  startViewModel.language == 'en'
+                      ? AppLocale(context).english
+                      : AppLocale(context).arabic,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: AppColors.primaryColor,
-                  )),
+                  ),
+                ),
               ),
             ),
-            ProfileItemsWidget(data: AppLocale(context).about_us,onTap: () {
-              Navigator.pushNamed(context, Routes.aboutApp);
-            },),
-            
-            ProfileItemsWidget(data: AppLocale(context).terms_and_conditions,
+            ProfileItemsWidget(
+              data: AppLocale(context).about_us,
+              onTap: () {
+                Navigator.pushNamed(context, Routes.aboutApp);
+              },
+            ),
+
+            ProfileItemsWidget(
+              data: AppLocale(context).terms_and_conditions,
               onTap: () {
                 Navigator.pushNamed(context, Routes.terms);
               },
@@ -121,7 +125,9 @@ class ProfileWidget extends StatelessWidget {
               leading: Icon(Icons.logout),
               trailing: Icon(Icons.logout),
               onTap: () {
-                showDialog(context: context, builder: (context) {
+                showDialog(
+                  context: context,
+                  builder: (context) {
                     return AlertDialog(
                       backgroundColor: AppColors.whiteColor,
                       shape: RoundedRectangleBorder(
@@ -130,9 +136,10 @@ class ProfileWidget extends StatelessWidget {
                       content: LogoutWidget(),
                       contentPadding: EdgeInsets.zero,
                     );
-                  },).then((value) {
+                  },
+                ).then((value) {
                   homeViewModel.doIntent(GetTokenAction());
-                  },);
+                });
               },
             ),
             Spacer(),

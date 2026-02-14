@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:flower_app/app/core/routes/app_route.dart';
 import 'package:flower_app/app/feature/about_app/presentation/views/screen/about_app_screen.dart';
 import 'package:flower_app/app/feature/address/domain/model/user_address_entity.dart';
@@ -13,14 +11,15 @@ import 'package:flower_app/app/feature/forget_password/presentation/reset_passwo
 import 'package:flower_app/app/feature/forget_password/presentation/verify_otp/view/verify_otp_screen.dart';
 import 'package:flower_app/app/feature/home/presentation/views/screen/home_screen.dart';
 import 'package:flower_app/app/feature/occasion/presentation/views/screen/occasion_screen.dart';
-import 'package:flower_app/app/feature/product_details/presentation/view_model/product_details_args.dart';
-import 'package:flower_app/app/feature/product_details/presentation/views/screens/product_details_screen.dart';
 import 'package:flower_app/app/feature/profile/domain/model/user_entity.dart';
 import 'package:flower_app/app/feature/profile/presentation/reset_password/view/change_password_screen.dart';
 import 'package:flower_app/app/feature/profile/presentation/update_profile/view/update_profile_widget.dart';
 import 'package:flower_app/app/feature/signup/presentation/views/signup_screen.dart';
 import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.dart';
 import 'package:flower_app/app/feature/terms_and_conditions/presentation/views/screen/terms_and_conditions_screen.dart';
+import 'package:flutter/material.dart';
+
+import '../../feature/product/presentation/views/screens/product_details_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {
@@ -55,9 +54,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const BestSellerScreen());
 
       case Routes.productDetails:
-        final args = settings.arguments as ProductDetailsArgs;
+        final args = settings.arguments as String?;
         return MaterialPageRoute(
-          builder: (_) => ProductDetailsScreen(productId: args.productId),
+          builder: (_) => ProductDetailsScreen(productId: args),
         );
 
       case Routes.addressDetails:

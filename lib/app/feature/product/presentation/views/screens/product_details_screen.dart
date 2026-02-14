@@ -5,9 +5,10 @@ import 'package:flower_app/app/core/utils/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../view_model/product_intent.dart';
-import '../view_model/product_states.dart';
-import '../view_model/product_view_model.dart';
+import '../../view_model/product_event.dart';
+import '../../view_model/product_intent.dart';
+import '../../view_model/product_states.dart';
+import '../../view_model/product_view_model.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final String? productId;
@@ -59,20 +60,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       child: Scaffold(
         body: BlocConsumer<ProductDetailsViewModel, ProductDetailsStates>(
           listener: (context, state) {
-            if (state.addToCartState?.isLoading == true) {
-              ShowDialogUtils.showLoading(context);
-            } else if (state.addToCartState?.isLoading == false) {
-              ShowDialogUtils.hideLoading(context);
-
-              if (state.addToCartState?.error != null) {
-                ShowDialogUtils.showMessage(
-                  context,
-                  title: AppLocale(context).serverError,
-                  content: state.addToCartState!.error.toString(),
-                  posActionName: AppLocale(context).ok,
-                );
-              }
-            }
+            // if (state.productDetailsState?.isLoading == true) {
+            //   ShowDialogUtils.showLoading(context);
+            // } else if (state.productDetailsState?.isLoading == false) {
+            //   ShowDialogUtils.hideLoading(context);
+            //
+            //   if (state.productDetailsState?.error != null) {
+            //     ShowDialogUtils.showMessage(
+            //       context,
+            //       title: AppLocale(context).serverError,
+            //       content: state.productDetailsState!.error.toString(),
+            //       posActionName: AppLocale(context).ok,
+            //     );
+            //   }
+            // }
           },
           builder: (context, state) {
             if (state.productDetailsState?.isLoading == true) {

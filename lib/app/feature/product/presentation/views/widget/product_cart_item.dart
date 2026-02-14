@@ -32,7 +32,8 @@ class _ProductCartItemState extends State<ProductCartItem> {
         case NavigateToProductDetailsEvent():
           if (mounted) {
             Navigator.pushNamed(
-                context, Routes.productDetails, arguments: event.productId);
+                context, Routes.productDetails,
+                arguments: widget.productEntity?.id);
           }
         case BackNavigationFromProductEvent():
           if (mounted) {
