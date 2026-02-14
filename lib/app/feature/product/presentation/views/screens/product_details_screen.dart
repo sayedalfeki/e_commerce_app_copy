@@ -100,7 +100,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           itemExtent: width,
                           itemSnapping: true,
                           children: product.images!
-                              .map((e) => Image.network(e!, fit: BoxFit.fill))
+                              .map((e) => Image.network(e, fit: BoxFit.fill))
                               .toList(),
                         ),
                       ),
