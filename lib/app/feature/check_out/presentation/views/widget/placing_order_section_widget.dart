@@ -52,7 +52,7 @@ class PlacingOrderSectionWidget extends StatelessWidget {
                 fontWeight: FontWeights.medium,
                 fontSize: AppSize.s18
               ),),
-              Text('${itemsPrice+fee!}${AppLocalizations.of(context)!.egp}',style: Theme.of(context).textTheme.labelLarge?.copyWith(
+              Text('${itemsPrice+(fee ?? 10)}${AppLocalizations.of(context)!.egp}',style: Theme.of(context).textTheme.labelLarge?.copyWith(
                 color: AppColors.blackColor,
                 fontWeight: FontWeights.medium,
                 fontSize: AppSize.s18

@@ -121,6 +121,5 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
       addressDetails = fallBackDetails;
     }
     if (!mounted) return;
-    setState(() {});
   }
 }

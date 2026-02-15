@@ -3,14 +3,19 @@ import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class GiftSectionWidget extends StatelessWidget {
+class GiftSectionWidget extends StatefulWidget {
   const GiftSectionWidget({super.key});
 
+  @override
+  State<GiftSectionWidget> createState() => _GiftSectionWidgetState();
+}
+
+class _GiftSectionWidgetState extends State<GiftSectionWidget> {
   @override
   Widget build(BuildContext context) {
     var width=MediaQuery.sizeOf(context).width;
     var height=MediaQuery.sizeOf(context).height;
-    final selected=true;
+    bool selected=true;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 0.04*width),
       child: Column(
@@ -24,6 +29,9 @@ class GiftSectionWidget extends StatelessWidget {
                 activeTrackColor: AppColors.primaryColor, 
                 onChanged: (value) {
                   selected==value;
+                  setState(() {
+                    
+                  });
                 },
               ),
               SizedBox(width: 0.02*width,),

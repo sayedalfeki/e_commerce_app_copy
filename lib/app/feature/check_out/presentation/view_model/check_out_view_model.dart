@@ -32,9 +32,6 @@ class CheckOutViewModel extends Cubit<CheckOutStates>{
     switch(event){
       
       case GetUserAddressesEvent():
-        // if (!_addressesLoaded) {
-        //   _getUserAddresses();
-        // }
         _getUserAddresses();
       case PayCashEvent():
         _payCash(street: event.street,phone: event.phone,city: event.city,long: event.long,lat: event.lat);

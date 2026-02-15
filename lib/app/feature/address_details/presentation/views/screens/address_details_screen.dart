@@ -44,8 +44,8 @@ class _AddressDetailsScreenState extends State<AddressDetailsScreen> {
     var height = MediaQuery.of(context).size.height;
     if (widget.userAddressEntity != null && widget.userAddressEntity?.lat != null && widget.userAddressEntity?.long != null) {
       viewmodel.doIntent(GetAddressFromCoordinatesEvent(
-        latitude: double.tryParse(widget.userAddressEntity?.lat??"22")??0.0,
-        longitude: double.tryParse(widget.userAddressEntity?.long??"22")??0.0
+        latitude: double.tryParse(widget.userAddressEntity?.lat??"0.0")??0.0,
+        longitude: double.tryParse(widget.userAddressEntity?.long??"0.0")??0.0
       ));
       viewmodel.area=widget.userAddressEntity?.city;
     }
