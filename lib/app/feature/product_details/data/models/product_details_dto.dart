@@ -38,7 +38,7 @@ class ProductDetailsDto {
 
 @JsonSerializable()
 class Product {
-  @@JsonKey(name: "_id")
+  @JsonKey(name: "_id")
   String? id;
   @JsonKey(name: "title")
   String? title;
