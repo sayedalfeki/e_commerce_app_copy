@@ -34,12 +34,12 @@ class AddressViewModel extends CustomCubit<AddressEvent, AddressState> {
   }
 
   Future<void> _deleteUserAddress(String id) async {
-    // emit(state.copyWith(addressState: BaseState(isLoading: true)));
+
     final response = await _deleteAddressUseCase.invoke(id);
     switch (response) {
       case SuccessResponse<List<UserAddressEntity>>():
         _getUserAddresses();
-        // emit(state.copyWith(addressState: BaseState(success: response.data)));
+
         break;
       case ErrorResponse<List<UserAddressEntity>>():
         emit(state.copyWith(

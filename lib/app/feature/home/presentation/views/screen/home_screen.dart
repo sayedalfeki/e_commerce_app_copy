@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: BlocBuilder<HomeViewModel, HomeStates>(
         builder: (context, state) {
           final tabs = _buildTabs(state);
+          final navItems = _buildNavItems(context, state);
 
           return Scaffold(
             body: IndexedStack(
@@ -61,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       .read<HomeViewModel>()
                       .doIntent(ChangeCurrentTabAction(tab));
                 },
-                items: _buildNavItems(context, state),
+                items: navItems,
               ),
             ),
           );
@@ -72,7 +73,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> _buildTabs(HomeStates state) {
     final tabs = <Widget>[
-      const HomeTab(), const CategoriesScreen()];
+      const HomeTab(),
+      const CategoriesScreen(),
+    ];
 
     if (state.isLoggedIn) {
       tabs.add(CartScreen());
