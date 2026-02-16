@@ -1,31 +1,32 @@
 import 'package:flower_app/app/config/base_response/base_response.dart';
-import 'package:flower_app/app/feature/product/data/data_sources/product_remote_data_source_contract.dart';
-import 'package:flower_app/app/feature/product/data/models/product/product_dto.dart';
-import 'package:flower_app/app/feature/product/data/models/product/product_response.dart';
-import 'package:flower_app/app/feature/product/data/models/products/products_response.dart';
-import 'package:flower_app/app/feature/product/data/repo/product_repo_impl.dart';
-import 'package:flower_app/app/feature/product/domain/models/products_entity.dart';
-import 'package:flower_app/app/feature/product/domain/request/query_product_request.dart';
+import 'package:flower_app/app/feature/product_details/data/data_sources/product_details_remote_data_source_contract.dart';
+import 'package:flower_app/app/feature/product_details/data/models/product_details_dto.dart';
+import 'package:flower_app/app/feature/product_details/data/models/products/products_response.dart';
+import 'package:flower_app/app/feature/product_details/data/repo/product_details_repo_impl.dart';
+import 'package:flower_app/app/feature/product_details/domain/models/product_details_model.dart';
+import 'package:flower_app/app/feature/product_details/domain/models/products_entity.dart';
+import 'package:flower_app/app/feature/product_details/domain/request/query_product_request.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'product_details_repo_impl_test.mocks.dart';
-@GenerateMocks([ProductRemoteDataSourceContract])
+
+@GenerateMocks([ProductDetailsRemoteDataSourceContract])
 void main() {
-  late ProductRemoteDataSourceContract productRemoteDataSource;
-  late ProductRepoImpl productRepo;
-  late ProductResponse productResponse;
+  late ProductDetailsRemoteDataSourceContract productRemoteDataSource;
+  late ProductDetailsRepoImpl productRepo;
+  late ProductDetailsDto productResponse;
   late ProductsResponse productsResponse;
   late QueryProductRequest queryProductRequest;
   setUpAll(() {
-    productRemoteDataSource = MockProductRemoteDataSourceContract();
-    productRepo = ProductRepoImpl(productRemoteDataSource);
-    productResponse = ProductResponse(
-      product: ProductDto(id: "1", title: "flower"),
+    productRemoteDataSource = MockProductDetailsRemoteDataSourceContract();
+    productRepo = ProductDetailsRepoImpl(productRemoteDataSource);
+    productResponse = ProductDetailsDto(
+      product: Product(id: "1", title: "flower"),
     );
     productsResponse = ProductsResponse(
-      products: [ProductDto(id: "1", title: "flower")],
+      products: [Product(id: "1", title: "flower")],
     );
     queryProductRequest = QueryProductRequest(category: '1');
   },);
@@ -33,19 +34,20 @@ void main() {
 
   group("Test Get Product Details function test cases", () {
     test("Test Success case with Product Details", ()async{
-      provideDummy<BaseResponse<ProductResponse>>(
+      provideDummy<BaseResponse<ProductDetailsDto>>(
           SuccessResponse(data: productResponse));
       when(productRemoteDataSource.getProductDetails("1")).thenAnswer((
           _) async {
-        return SuccessResponse<ProductResponse>(data: productResponse);
+        return SuccessResponse<ProductDetailsDto>(data: productResponse);
       },);
       var response = await productRepo.getProductDetails("1");
-      expect(response, isA<SuccessResponse<ProductEntity>>());
-      expect((response as SuccessResponse<ProductEntity>).data.id, isNotEmpty);
+      expect(response, isA<SuccessResponse<ProductDetailsModel>>());
+      expect((response as SuccessResponse<ProductDetailsModel>).data.id,
+          isNotEmpty);
     });
   },);
   test(
-    'when calling query product it must get data from data source', () async {
+    'when calling query product_details it must get data from data source', () async {
     provideDummy<BaseResponse<ProductsResponse>>(
         SuccessResponse(data: productsResponse));
     when(productRemoteDataSource.getQueryProducts(queryProductRequest))

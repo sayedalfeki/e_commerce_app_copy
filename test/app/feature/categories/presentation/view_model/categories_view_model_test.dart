@@ -7,9 +7,10 @@ import 'package:flower_app/app/feature/categories/domain/use_case/get_all_catego
 import 'package:flower_app/app/feature/categories/presentation/view_model/categories_intent.dart';
 import 'package:flower_app/app/feature/categories/presentation/view_model/categories_state.dart';
 import 'package:flower_app/app/feature/categories/presentation/view_model/categories_view_model.dart';
-import 'package:flower_app/app/feature/product/domain/models/products_entity.dart';
-import 'package:flower_app/app/feature/product/domain/request/query_product_request.dart';
-import 'package:flower_app/app/feature/product/domain/use_cases/get_products_category_use_case.dart';
+import 'package:flower_app/app/feature/product_details/domain/models/product_details_model.dart';
+import 'package:flower_app/app/feature/product_details/domain/models/products_entity.dart';
+import 'package:flower_app/app/feature/product_details/domain/request/query_product_request.dart';
+import 'package:flower_app/app/feature/product_details/domain/use_cases/get_products_category_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -30,7 +31,8 @@ void main() {
     categoriesEntity = CategoriesEntity(
       categoriesEntity: [CategoryEntity(title: "flower")],
     );
-    productsEntity = ProductsEntity(product: [ProductEntity(title: "flower")]);
+    productsEntity =
+        ProductsEntity(product: [ProductDetailsModel(title: "flower")]);
     queryProductRequest = QueryProductRequest(category: '1');
   });
   setUp(() {

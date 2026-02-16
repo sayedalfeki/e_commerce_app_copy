@@ -4,9 +4,9 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../config/base_response/base_response.dart';
 import '../../../../config/base_state/base_state.dart';
-import '../../../product/domain/models/products_entity.dart';
-import '../../../product/domain/request/query_product_request.dart';
-import '../../../product/domain/use_cases/get_products_category_use_case.dart';
+import '../../../product_details/domain/models/products_entity.dart';
+import '../../../product_details/domain/request/query_product_request.dart';
+import '../../../product_details/domain/use_cases/get_products_category_use_case.dart';
 import 'categories_event.dart';
 import 'categories_intent.dart';
 import 'categories_state.dart';

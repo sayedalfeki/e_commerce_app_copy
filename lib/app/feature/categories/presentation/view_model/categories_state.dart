@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flower_app/app/config/base_state/base_state.dart';
+import 'package:flower_app/app/feature/product_details/domain/models/products_entity.dart';
 
-import '../../../product/domain/models/products_entity.dart';
 import '../../domain/model/categories_entity.dart';
 
 class CategoriesState extends Equatable {

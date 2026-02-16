@@ -19,7 +19,7 @@ import 'package:flower_app/app/feature/splash/presentation/views/splash_screen.d
 import 'package:flower_app/app/feature/terms_and_conditions/presentation/views/screen/terms_and_conditions_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../feature/product/presentation/views/screens/product_details_screen.dart';
+import '../../feature/product_details/presentation/views/screens/product_details_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {

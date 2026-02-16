@@ -11,7 +11,7 @@ import 'package:flower_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../product/presentation/views/screens/product_details_screen.dart';
+import '../../../../product_details/presentation/views/screens/product_details_screen.dart';
 
 class BestSellerScreen extends StatefulWidget {
   const BestSellerScreen({super.key});

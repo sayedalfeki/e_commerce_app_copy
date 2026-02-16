@@ -7,7 +7,7 @@ import 'package:flower_app/app/feature/categories/presentation/view_model/catego
 import 'package:flutter/material.dart';
 
 import '../../../../../core/reusable_widgets/custom_error_widget.dart';
-import '../../../../product/presentation/views/widget/product_cart_item.dart';
+import '../../../../product_details/presentation/views/widget/product_cart_item.dart';
 import '../../view_model/categories_state.dart';
 import 'categories_item_widget.dart';
 
