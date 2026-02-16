@@ -12,9 +12,9 @@ class NavigateToProductDetailsAction extends ProductIntent {
   NavigateToProductDetailsAction({required this.productId});
 }
 
-class AddToCartAction extends ProductIntent {
-  final String? productId;
-  final String? name;
+class AddProductToCartEvent extends ProductIntent {
+  String productId;
+  int quantity;
 
-  AddToCartAction({required this.productId, required this.name});
+  AddProductToCartEvent(this.productId, this.quantity);
 }

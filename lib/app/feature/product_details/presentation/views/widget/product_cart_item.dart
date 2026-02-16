@@ -5,9 +5,9 @@ import 'package:flower_app/app/feature/product_details/domain/models/product_det
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../view_model/product_details_states.dart';
 import '../../view_model/product_event.dart';
 import '../../view_model/product_intent.dart';
-import '../../view_model/product_states.dart';
 import '../../view_model/product_view_model.dart';
 
 class ProductCartItem extends StatefulWidget {
@@ -110,8 +110,8 @@ class _ProductCartItemState extends State<ProductCartItem> {
                       ? ElevatedButton(
                     onPressed: () {
                       productViewModel.doIntent(
-                          AddToCartAction(productId: widget.productEntity?.id,
-                              name: widget.productEntity?.title));
+                          AddProductToCartEvent(
+                              widget.productEntity?.id ?? '', 1));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

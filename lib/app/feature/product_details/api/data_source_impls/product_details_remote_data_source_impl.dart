@@ -3,6 +3,7 @@ import 'package:flower_app/app/feature/product_details/data/models/product_detai
 import 'package:injectable/injectable.dart';
 
 import '../../../../config/api_utils/api_utils.dart';
+import '../../../home/presentation/views/tabs/cart/data/models/update_cart_response.dart';
 import '../../data/data_sources/product_details_remote_data_source_contract.dart';
 import '../../data/models/products/products_response.dart';
 import '../../domain/request/query_product_request.dart';
@@ -19,6 +20,15 @@ class ProductDetailsRemoteDataSourceImpl
       String productId) async =>
       executeApi(() => apiClient.getProductDetails(productId));
 
+  @override
+  Future<BaseResponse<UpdateCartResponse>> addProductToCart(
+      {String? productId, int? quantity}) async {
+    return await executeApi(() =>
+        apiClient.addProductToCart({
+          "product": productId,
+          "quantity": quantity
+        }));
+  }
   @override
   Future<BaseResponse<ProductsResponse>> getQueryProducts(
       QueryProductRequest queryProductRequest) =>
