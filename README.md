@@ -552,7 +552,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **Sayed Al Feki**
 - GitHub: [@sayedalfeki](https://github.com/sayedalfeki)
-- Email: your-email@example.com
+- Email: selfeki207@gmail.com 
 
 ---
 
@@ -567,7 +567,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📞 Support
 
-For support, email your-email@example.com or open an issue on GitHub.
+For support, email selfeki207@gmail.com or open an issue on GitHub.
 
 ---
 
